@@ -1,0 +1,235 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.rackspace.maas</groupId>
+  <artifactId>getting-started-docs</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+
+  <name>docs</name>
+
+
+   <build>
+        <resources>
+            <resource>
+                <directory>target/docbkx/pdf</directory>
+                <excludes>
+                    <exclude>**/*.fo</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <plugins>
+            <!--            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                <execution>
+                <id>unpack-dependencies</id>
+                <phase>generate-sources</phase>
+                <goals>
+                <goal>unpack</goal>
+                </goals>
+                <configuration>
+                <artifactItems>
+                <artifactItem>
+                <groupId>com.rackspace.cloud.api</groupId>
+                <artifactId>glossary</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <outputDirectory>${project.build.directory}/mvn/com.rackspace.cloud.api/glossary</outputDirectory>
+                </artifactItem>
+                </artifactItems>
+                </configuration>
+                </execution>
+                </executions>
+                </plugin>-->
+            <plugin>
+                <groupId>com.rackspace.cloud.api</groupId>
+                <artifactId>clouddocs-maven-plugin</artifactId>
+                <version>1.3.1</version>
+                <executions>
+                    <execution>
+                        <id>g1</id>
+                        <goals>
+                           <goal>generate-pdf</goal>
+                            <goal>generate-webhelp</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+			  <security>internal</security>
+                            <includes>cm-devguide.xml, cm-getting-started.xml</includes>
+                            <!-- Entry below is for creating Alpha letters in the TOC for appendices -->
+                            <appendixAutolabel>A</appendixAutolabel>
+                            <xincludeSupported>true</xincludeSupported>
+                            <!--The entry below enables HashCode comments (internal) -->
+                            <enableDisqus>intranet</enableDisqus>
+                            <enableGoogleAnalytics>1</enableGoogleAnalytics>
+                            <feedbackEmail>monitoring@RACKSPACE.COM</feedbackEmail>
+                            <failOnValidationError>no</failOnValidationError>
+                            <glossaryCollection>file://${project.build.directory}/../src/docbkx/glossary.xml</glossaryCollection>
+			    <postProcess>
+			      <copy todir="target/docbkx/webhelp/cm-getting-started/content/img">
+				<fileset dir="src/docbkx/img" includes="**/*.png"/>
+			      </copy> 
+			        <copy todir="target/docbkx/webhelp/cm-devguide/content/img">
+			            <fileset dir="src/docbkx/img" includes="**/*.png"/>			            
+			        </copy> 
+			    </postProcess>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>g2</id>
+                        <goals>
+                            <goal>generate-pdf</goal>
+                            <goal>generate-webhelp</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+			  <security>internal</security>
+                            <includes>cm-releasenotes.xml</includes>
+                            <!-- Supress chapter numbers -->
+                            <chapterAutolabel>0</chapterAutolabel>
+                            <sectionAutolabel>0</sectionAutolabel>
+			    <generateToc>
+			      book title,figure,table,example,equation
+			      chapter noop
+			      section noop
+			    </generateToc>
+                            <xincludeSupported>true</xincludeSupported>
+                            <!--The entry below enables HashCode comments (internal) -->
+                            <enableDisqus>intranet</enableDisqus>
+                            <feedbackEmail>monitoring@RACKSPACE.COM</feedbackEmail>
+                            <failOnValidationError>no</failOnValidationError>
+                            <glossaryCollection>file://${project.build.directory}/../src/docbkx/glossary.xml</glossaryCollection>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>g3</id>
+                        <goals>
+                            <goal>generate-pdf</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <includes>dummy.xml</includes>
+			    <postProcess>
+			      <move todir="target/docbkx-internal">
+				<fileset dir="target/docbkx" includes="**/*"/>			            
+			      </move> 
+			      <delete dir="target/docbkx"/>
+			    </postProcess>
+			</configuration>
+		    </execution>
+                    <execution>
+                        <id>g4</id>
+                        <goals>
+                           <goal>generate-pdf</goal>
+                            <goal>generate-webhelp</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <includes>cm-devguide.xml, cm-getting-started.xml</includes>
+                            <!-- Entry below is for creating Alpha letters in the TOC for appendices -->
+                            <appendixAutolabel>A</appendixAutolabel>
+                            <security>external</security>
+                            <xincludeSupported>true</xincludeSupported>
+                            <!--The entry below enables Disqus-->
+                            <enableDisqus>1</enableDisqus>
+                            <!-- <disqusShortname>rc-docs-beta</disqusShortname>  -->
+                            <enableGoogleAnalytics>1</enableGoogleAnalytics>
+                            <!-- <googleAnalyticsId>UA-26410723-1</googleAnalyticsId> -->
+                            <feedbackEmail>monitoring@RACKSPACE.COM</feedbackEmail>
+                            <!-- The entry below inserts Twitter, Facebook, and Google+ icons in the webhelp output -->
+                            <!-- Enable this when you go out of beta!!! -->
+                            <socialIcons>1</socialIcons>
+                            <!-- !!!!!! Remove this when you go out of beta !!!!!! -->
+                            <!-- <metaRobots>1</metaRobots> -->
+                            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                            <failOnValidationError>no</failOnValidationError>
+                            <glossaryCollection>file://${project.build.directory}/../src/docbkx/glossary.xml</glossaryCollection>
+			    <postProcess>
+			      <copy todir="target/docbkx/webhelp/cm-getting-started/content/img">
+				<fileset dir="src/docbkx/img" includes="**/*.png"/>
+			      </copy> 
+			        <copy todir="target/docbkx/webhelp/cm-devguide/content/img">
+			            <fileset dir="src/docbkx/img" includes="**/*.png"/>			            
+			        </copy> 
+			    </postProcess>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>g5</id>
+                        <goals>
+                            <goal>generate-pdf</goal>
+                            <goal>generate-webhelp</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <includes>cm-releasenotes.xml</includes>
+                            <!-- Supress chapter numbers -->
+                            <chapterAutolabel>0</chapterAutolabel>
+                            <sectionAutolabel>0</sectionAutolabel>
+                            <security>external</security>
+                            <xincludeSupported>true</xincludeSupported>
+                            <!--The entry below enables Disqus-->
+                            <enableDisqus>1</enableDisqus>
+                            <!-- <disqusShortname>rc-docs-beta</disqusShortname>  -->
+                            <enableGoogleAnalytics>1</enableGoogleAnalytics>
+                            <!-- <googleAnalyticsId>UA-26410723-1</googleAnalyticsId> -->
+                            <feedbackEmail>monitoring@RACKSPACE.COM</feedbackEmail>
+                            <!-- The entry below inserts Twitter, Facebook, and Google+ icons in the webhelp output -->
+                            <!-- Enable this when you go out of beta!!! -->
+                            <socialIcons>1</socialIcons>
+                            <!-- !!!!!! Remove this when you go out of beta !!!!!! -->
+                            <!-- <metaRobots>1</metaRobots> -->
+                            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                            <failOnValidationError>no</failOnValidationError>
+                            <glossaryCollection>file://${project.build.directory}/../src/docbkx/glossary.xml</glossaryCollection>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>g6</id>
+                        <goals>
+                            <goal>generate-pdf</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <includes>dummy.xml</includes>
+			    <postProcess>
+			      <move todir="target/docbkx-external">
+				<fileset dir="target/docbkx" includes="**/*"/>			            
+			      </move> 
+			      <delete dir="target/docbkx"/>
+			    </postProcess>
+			</configuration>
+		    </execution>
+		</executions>
+		<configuration>
+		  <showXslMessages>true</showXslMessages>
+		</configuration>
+            </plugin>	    
+        </plugins>
+    </build>
+ <profiles>                                                                                              
+        <profile>                                                                                           
+            <id>Rackspace Research Repositories</id>                                                        
+            <activation>                                                                                    
+                <activeByDefault>true</activeByDefault>                                                     
+            </activation>                                                                                   
+            <repositories>                                                                                  
+                <repository>                                                                                
+                    <id>rackspace-research</id>                                                             
+                    <name>Rackspace Research Repository</name>                                              
+                    <url>http://maven.research.rackspacecloud.com/content/groups/public/</url>              
+                </repository>                                                                               
+            </repositories>                                                                                 
+            <pluginRepositories>                                                                            
+                <pluginRepository>                                                                          
+                    <id>rackspace-research</id>                                                             
+                    <name>Rackspace Research Repository</name>                                              
+                    <url>http://maven.research.rackspacecloud.com/content/groups/public/</url>              
+                </pluginRepository>                                                                         
+            </pluginRepositories>                                                                           
+        </profile> 
+</profiles>
+</project>
+

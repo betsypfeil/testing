@@ -1,0 +1,28 @@
+{
+  "timestamp": 1320248988595,
+  "monitoring_zone_id": "mzxJ4L2IU",
+  "available": true,
+  "status": "connected,banner_match=matched,rt=0.119s",
+  "metrics": {
+    "banner": {
+      "type": "s",
+      "data": "220-\r\n"
+    },
+    "banner_match": {
+      "type": "s",
+      "data": "220-\r"
+    },
+    "duration": {
+      "type": "I",
+      "data": 119
+    },
+    "tt_connect": {
+      "type": "I",
+      "data": 59
+    },
+    "tt_firstbyte": {
+      "type": "I",
+      "data": 119
+    }
+  }
+}

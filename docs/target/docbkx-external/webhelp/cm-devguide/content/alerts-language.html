@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:exsl="http://exslt.org/common" xmlns:ng="http://docbook.org/docbook-ng" xmlns:fb="http://ogp.me/ns/fb#"><head>
+<meta http-equiv="X-UA-Compatible" content="IE=7"/>
+<title>Appendix A. Alert Triggering and Alarms - Rackspace Cloud Monitoring Developer Guide
+   - API v1.4</title><meta name="generator" content="DocBook XSL-NS Stylesheets V1.76.1"/><link rel="home" href="index.html" title="Rackspace Cloud Monitoring Developer Guide"/><link rel="up" href="index.html" title="Rackspace Cloud Monitoring Developer Guide"/><link rel="prev" href="service-alarm-examples.html" title="4.14. Alarm Examples"/><link rel="next" href="appendix-client-libraries-tools.html" title="Appendix B. Client Libraries and Tools"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script type="text/javascript">
+            //The id for tree cookie
+            var treeCookieId = "treeview-10217";
+            var language = "en";
+            var w = new Object();
+            //Localization
+            txt_filesfound = 'Results';
+            txt_enter_at_least_1_char = "You must enter at least one character.";
+            txt_browser_not_supported = "Your browser is not supported. Use of Mozilla Firefox is recommended.";
+            txt_please_wait = "Please wait. Search in progress...";
+            txt_results_for = "Results for: ";
+        </script><style type="text/css">
+            input {
+            margin-bottom: 5px;
+            margin-top: 2px;
+            }
+
+            .folder {
+            display: block;
+            height: 22px;
+            padding-left: 20px;
+            background: transparent url(../common/jquery/treeview/images/folder.gif) 0 0px no-repeat;
+            }
+            
+        </style><link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/><link rel="stylesheet" type="text/css" href="../common/css/positioning.css"/><link rel="stylesheet" type="text/css" href="../common/css/custom.css"/><link href="../atom.xml" type="application/atom+xml" rel="alternate" title="Document ATOM Feed"/><link rel="canonical" href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/alerts-language.html"/><!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="../common/css/ie.css"/>
+	<![endif]--><link rel="stylesheet" type="text/css" href="../common/jquery/theme-redmond/jquery-ui-1.8.2.custom.css"/><link rel="stylesheet" type="text/css" href="../common/jquery/treeview/jquery.treeview.css"/><script type="text/javascript" src="../common/jquery/jquery-1.4.3.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery-ui-1.8.2.custom.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery.cookie.js"><!----></script><script type="text/javascript" src="../common/jquery/treeview/jquery.treeview.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery.qtip-1.0.0-rc3/jquery.qtip-1.0.0-rc3.min.js"><!--jQuery plugin for glossary popups. --></script><script type="text/javascript" src="search/htmlFileList.js"><!----></script><script type="text/javascript" src="search/htmlFileInfoList.js"><!----></script><script type="text/javascript" src="search/nwSearchFnt.js"><!----></script><script type="text/javascript" src="search/stemmers/en_stemmer.js"><!--//make this scalable to other languages as well.--></script><script type="text/javascript" src="search/index-1.js"><!----></script><script type="text/javascript" src="search/index-2.js"><!----></script><script type="text/javascript" src="search/index-3.js"><!----></script><script type="text/javascript">
+	    var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-23102455-4']);
+	  </script><script type="text/javascript" src="../common/ga.js"><!----></script><script type="text/javascript" src="http://www.tabpress.com/_js/ga_social_tracking.js"><!----></script><script>
+	    (function(){var twitterWidgets = document.createElement('script');
+        twitterWidgets.type = 'text/javascript';
+        twitterWidgets.async = true;
+        twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+        // Setup a callback to track once the script loads.
+        twitterWidgets.onload = _ga.trackTwitter;
+        document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+        })();
+      </script></head><body><div id="header"><a onclick="_gaq.push(['_trackEvent', 'Header', 'logo', 'click', 1]);" target="_blank" href="http://www.rackspace.com"><img src="../common/images/rackspace-logo.png" alt="Rackspace Documentation" width="157" height="47"/></a><h1>Appendix A. Alert Triggering and Alarms</h1><div id="navheader" align="right"><!----><table class="navLinks"><tr><td><a id="showHideButton" onclick="showHideToc(); _gaq.push(['_trackEvent', 'Header', 'show/hide', 'click', 1]);" class="pointLeft" title="Hide TOC tree">Sidebar
+                            </a></td><td><a accesskey="p" class="navLinkPrevious" onclick="_gaq.push(['_trackEvent', 'Header', 'prevLink', 'click', 1]);" tabindex="5" href="service-alarm-examples.html">Prev</a> 
+				  |
+                                    <a accesskey="n" class="navLinkNext" onclick="_gaq.push(['_trackEvent', 'Header', 'nextLink', 'click', 1]);" tabindex="5" href="appendix-client-libraries-tools.html">Next</a></td></tr></table></div></div><div id="toolbar" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all"><div id="toolbar-left"><p class="breadcrumbs"><a href="http://docs.rackspace.com/api/">Rackspace Manuals</a><a href="index.html">Rackspace Cloud Monitoring Developer Guide
+   - API v1.4</a></p><a onclick="_gaq.push(['_trackEvent', 'Header', 'pdfDownload', 'click', 1]);" alt="Download a pdf of this document" class="pdficon" href="../../../cm-devguide-latest.pdf"><img src="../common/images/pdf.png"/></a>
+       
+      <a href="../atom.xml"><img alt="Atom feed of this document" src="../common/images/feed-icon.png"/></a><div id="fb-root"> </div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"><!----></script><script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script><script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script><style>
+.fb_edge_comment_widget {
+    margin-left: -280px;
+}
+.fb-like{vertical-align:text-top;position:absolute;top:.5em;right:311px}
+#gplusone{display:inline;position:absolute;right:410px;top:.5em}
+#rstwitter{vertical-align:text-top;display:inline;position:absolute;right:450px;top:.5em}
+</style><!--[if IE]>
+	<style>
+#gplusone{top:0em}
+#rstwitter{top:-.15em}
+.fb-like{top:-.5em}
+</style><![endif]--><script type="text/javascript">_ga.trackFacebook();</script><div class="fb-like" data-send="false" data-width="50" data-show-faces="false" data-layout="button_count" data-font="arial">   </div><div id="gplusone"><g:plusone xmlns:g="http://www.google.com" size="medium" annotation="none"/></div><div id="rstwitter"><a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out this Rackspace documentation page:" data-lang="en" data-count="none">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div></div></div><div id="content"><div class="statustext"> </div><div class="appendix"><div xmlns="" class="titlepage"><div><div><h2 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="alerts-language"> </a>Appendix A. Alert Triggering and Alarms</h2></div></div></div><div class="toc"><p><strong>Contents</strong></p><dl><dt><span class="section"><a href="alerts-language.html#alert-flow">A.1. Alert Flow</a></span></dt><dt><span class="section"><a href="alerts-language.html#concepts-alarms-alarm-language">A.2. Alarm Language</a></span></dt><dd><dl><dt><span class="section"><a href="alerts-language.html#concepts-alarms-availability">A.2.1. Check Availability</a></span></dt><dt><span class="section"><a href="alerts-language.html#concepts-alarms-alarm-language-anatomy">A.2.2. Anatomy of a Query</a></span></dt><dt><span class="section"><a href="alerts-language.html#concepts-alarms-alarm-language-limits">A.2.3. Limits and Defaults</a></span></dt><dt><span class="section"><a href="alerts-language.html#concepts-alarms-status-strings">A.2.4. Status Messages</a></span></dt></dl></dd><dt><span class="section"><a href="alerts-language.html#concepts-alarms-alert-policies">A.3. Alert Policies (Consistency Level)</a></span></dt><dd><dl><dt><span class="section"><a href="alerts-language.html#concepts-alarms-alert-policies-one">A.3.1. One</a></span></dt><dt><span class="section"><a href="alerts-language.html#concepts-alarms-alert-policies-quorum">A.3.2. Quorum</a></span></dt><dt><span class="section"><a href="alerts-language.html#concepts-alarms-alert-policies-all">A.3.3. All</a></span></dt></dl></dd><dt><span class="section"><a href="alerts-language.html#concepts-alarms-constructs">A.4. Constructs and Functions</a></span></dt><dd><dl><dt><span class="section"><a href="alerts-language.html#concepts-alarms-constructs-previous">A.4.1. Previous</a></span></dt><dt><span class="section"><a href="alerts-language.html#concepts-alarms-constructs-rate">A.4.2. Rate</a></span></dt></dl></dd><dt><span class="section"><a href="alerts-language.html#concepts-alarms-best-practices">A.5. Best Practices on Alerting</a></span></dt><dd><dl><dt><span class="section"><a href="alerts-language.html#concepts-alarms-best-practices-http">A.5.1. Best Practices for HTTP/S Check</a></span></dt><dt><span class="section"><a href="alerts-language.html#concepts-alarms-best-practices-port">A.5.2. Best Practices for Port/Banner Checks</a></span></dt><dt><span class="section"><a href="alerts-language.html#concepts-alarms-best-practices-dns">A.5.3. Best Practices for DNS Checks</a></span></dt><dt><span class="section"><a href="alerts-language.html#concepts-alarms-best-practices-ssh">A.5.4. Best Practices for SSH Checks</a></span></dt></dl></dd></dl></div><p>This section describes alerting including an explanation of the alert flow, the alarm
+        language, the policies that you can create using alarms and example best practices. In
+        short, Rackspace Cloud Monitoring uses alarms to evaluate the metrics of a check and decide
+        if a notification plan should be executed. It is the primary way to describe exactly what
+        you want to be alerted on.</p><div class="section"><div xmlns="" class="titlepage"><div><div><h2 xmlns="http://www.w3.org/1999/xhtml" class="title" style="clear: both"><a id="alert-flow"> </a>A.1. Alert Flow</h2></div></div></div><p>Let's take an example user work flow of creating a monitor for a particular resource
+            and follow it through the system to understand how the alerting system works: </p><p>
+            </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>Using the <a class="link" href="service-checks.html#service-checks-create" title="4.4.3. Create Check">Create Check call</a>,
+                        create a check with one or more monitoring zones (per the
+                            <code class="code">monitoring_zone_poll</code> attribute). </p></li><li class="listitem"><p>Using the <a class="link" href="service-alarms.html#service-alarms-create" title="4.6.3. Create Alarm">Create Alarm call</a>,
+                        create a new alarm on the entity that matches this particular check.</p><p>Note that alarms are created to match when a specific condition occurs. On
+                        this alarm let's assume you've specified the alarm policy as
+                            <code class="code">QUORUM</code>. This parameter describes a deterministic way to
+                        represent mixed results in a "multi-datacenter" monitoring environment. To
+                        learn more about this concept, see <a class="link" href="alerts-language.html#concepts-alarms-alert-policies" title="A.3. Alert Policies (Consistency Level)">Alert Policies</a>. You can
+                        also read <a class="link" href="alerts-language.html#concepts-alarms-best-practices" title="A.5. Best Practices on Alerting">Best Practices on
+                            Alerting</a> for more pattern applications of the alarm language.
+                    </p></li><li class="listitem"><p>When you apply the check, events provision the collectors. If the check is
+                        successfully applied (as indicated by the HTTP response code) the monitor
+                        starts executing its checks.</p></li><li class="listitem"><p>If the monitored resource fails, a state change event is generated (since
+                        all the collectors agree on the status per the <code class="code">QUORUM</code> alert
+                        policy) and an alert is triggered. Based on the logic you created in the
+                        associated notification plan an error notification is sent (the call itself
+                        is a webhook).</p></li></ol></div><p>
+        </p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h2 xmlns="http://www.w3.org/1999/xhtml" class="title" style="clear: both"><a id="concepts-alarms-alarm-language"> </a>A.2. Alarm Language</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="alerts-language.html#concepts-alarms-availability">A.2.1. Check Availability</a></span></dt><dt><span class="section"><a href="alerts-language.html#concepts-alarms-alarm-language-anatomy">A.2.2. Anatomy of a Query</a></span></dt><dt><span class="section"><a href="alerts-language.html#concepts-alarms-alarm-language-limits">A.2.3. Limits and Defaults</a></span></dt><dt><span class="section"><a href="alerts-language.html#concepts-alarms-status-strings">A.2.4. Status Messages</a></span></dt></dl></div><p>The alarm language is one of the most powerful parts of Rackspace Cloud Monitoring. It describes the
+            mechanism to trigger an event. Upon triggering an event a notification plan is executed
+            that describes how to send different notifications. </p><p class="bold">
+            </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>If a check fails to execute, by default alarm associated with check returns a
+                        <code class="code">CRITICAL</code> state.</p></td></tr></table></div><p class="bold">
+        </p><p class="bold">This may change in future versions of the product, however this is
+            currently the only behavior allowed. This represents a subclass of failures similar to
+                <span class="emphasis"><em>"Connection Timeout"</em></span>'s or other errors where the result wasn't
+            simply a failure result, but a result where the user was unable to run the check at
+            all.</p><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="concepts-alarms-availability"> </a>A.2.1. Check Availability</h3></div></div></div><p>As mentioned above the default evaluation of a check depends upon whether the
+                check is able to run successfully. We can illustrate this concept using the HTTP
+                check as an example. If the alarm checks the status of a 404 response, but the check
+                is actually getting a Connection Refused message, the result of that check is
+                    <code class="code">ERROR</code>. The availability of the check is determined by the ability
+                to run the check.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p> This is <span class="bold"><strong>very important</strong></span> to
+                        understand this concept.  All checks that go
+                        into a <code class="code">CRITICAL</code> state will always
+                force an <script>
+             $(document).ready(function(){
+               $("a.gloss#alarm").qtip({
+               content: '<strong>alarm:</strong> <p>An alarm contains a set of rules that determine when a notification is                     triggered.                 </p>',
+               show: {event:'mouseover',delay:500},
+               hide: {event:'mouseout',delay:500, fixed:true},
+               style: { 
+                        width: 200,
+                        padding: 5,
+                        background: '#FFFFCC',
+                        color: 'black',
+                        textAlign: 'left',
+                        border: {
+                                    width: 1,
+                                    radius: 4,
+                                    color: '#EEEEBB'
+                        },
+                        tip: true,
+                        name: 'cream' // Inherit the rest of the attributes from the preset cream style
+                },
+                position: {
+                    corner: {
+                            target: 'topMiddle',
+                            tooltip: 'bottomLeft'
+                    }
+                }
+               });
+             });
+             </script><a class="gloss" href="#" id="alarm">alarm</a> on an <script>
+             $(document).ready(function(){
+               $("a.gloss#entity").qtip({
+               content: '<strong>entity:</strong> <p>An entity is a resource that you want to monitor. Some examples are                     a server, a website, or a service. </p>',
+               show: {event:'mouseover',delay:500},
+               hide: {event:'mouseout',delay:500, fixed:true},
+               style: { 
+                        width: 200,
+                        padding: 5,
+                        background: '#FFFFCC',
+                        color: 'black',
+                        textAlign: 'left',
+                        border: {
+                                    width: 1,
+                                    radius: 4,
+                                    color: '#EEEEBB'
+                        },
+                        tip: true,
+                        name: 'cream' // Inherit the rest of the attributes from the preset cream style
+                },
+                position: {
+                    corner: {
+                            target: 'topMiddle',
+                            tooltip: 'bottomLeft'
+                    }
+                }
+               });
+             });
+             </script><a class="gloss" href="#" id="entity">entity</a>,
+                            <code class="code">CRITICAL</code>.</p></td></tr></table></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="concepts-alarms-alarm-language-anatomy"> </a>A.2.2. Anatomy of a Query</h3></div></div></div><p>An alarm query is broken down into the following main parts:</p><div class="variablelist"><dl><dt><span class="term"><span class="bold"><strong>Comments</strong></span></span></dt><dd><p> Comments are either line by line comments that begin with a # or
+                            c-style comments /*
+                            */.</p><pre class="programlisting"># This is a comment
+/* This is a comment */
+<span class="bold"><strong>// This is <span class="underline">NOT</span> a comment</strong></span></pre></dd><dt><span class="term"><span class="bold"><strong>String Literals</strong></span></span></dt><dd><p>String literals are surrounded with either ' or ". String literals
+                            support the following escape sequences:</p><table rules="all" id="d254e4104"><tbody><tr>
+                              <th>Sequence</th>
+                              <th>Value</th>
+                            </tr><tr>
+                              <td><code class="code">\"</code></td>
+                              <td>Double quote</td>
+                            </tr><tr>
+                              <td><code class="code">\'</code></td>
+                              <td>Single quote</td>
+                            </tr><tr>
+                              <td><code class="code">\\</code></td>
+                              <td>Backslash</td>
+                            </tr><tr>
+                              <td><code class="code">\b</code></td>
+                              <td>Backspace</td>
+                            </tr><tr>
+                              <td><code class="code">\f</code></td>
+                              <td>Formfeed</td>
+                            </tr><tr>
+                              <td><code class="code">\n</code></td>
+                              <td>Newline</td>
+                            </tr><tr>
+                              <td><code class="code">\r</code></td>
+                              <td>Carriage return</td>
+                            </tr><tr>
+                              <td><code class="code">\t</code></td>
+                              <td>Tab</td>
+                            </tr><tr>
+                              <td><code class="code">\uXXXX</code></td>
+                              <td>Unicode character where XXXX is the hex unicode character code</td>
+                            </tr></tbody></table><p>Some example string literals:</p><pre class="programlisting">"Foo"           /* A double quoted string */
+'Foo'           /* A single quoted string */
+'"Foo\'s bar\"' /* Single quoted strings may contain unescaped double quotes */
+                /* as well as escaped single or double quotes */
+"'Bar's foo\'"  /* Double quoted strings may contain unescaped single quotes */
+                /* as well as escaped single or double quotes */
+'\u0027abc'     /* A string containing an escaped unicode character */</pre><p>
+                        </p></dd><dt><span class="term"><span class="bold"><strong>Numeric Literals</strong></span></span></dt><dd><p>Numeric literals are written without quotation marks. Below are some
+                            examples:</p><pre class="programlisting">2773.2                 /* Numeric literal */
+200                    /* Numeric literal */
+-200                   /* Numeric literal */
+1.2e-7                 /* Numeric literal with exponential notation */</pre></dd><dt><span class="term"><span class="bold"><strong>Declarations</strong></span></span></dt><dd><p>This part of the alarm language is the setting declarations, which
+                            globally control the evaluation of the query. The syntax is shown
+                            below:</p><pre class="programlisting">:set &lt;name&gt;=&lt;value&gt;</pre><p>The current version of the product supports two settings. The first
+                            setting specifies the <a class="link" href="alerts-language.html#concepts-alarms-alert-policies" title="A.3. Alert Policies (Consistency Level)">consistency
+                            level</a>.</p><pre class="programlisting">:set consistencyLevel=&lt;value&gt;</pre><p>This is an important setting that is typically left as
+                                <code class="code">QUORUM</code> (the default) unless there is a specific need to
+                            change it. For more information about alerting policies and consistency
+                            levels, see <a class="link" href="alerts-language.html#concepts-alarms-alert-policies" title="A.3. Alert Policies (Consistency Level)">Alert
+                                Policies</a>. </p><p>The second setting is the consecutive alert count. It determines how
+                            many consecutive evaluations of a state occur before issuing a state
+                            change. The default for this setting is <span class="bold"><strong>1</strong></span>.</p><pre class="programlisting">:set consecutiveCount=&lt;value&gt;</pre></dd><dt><span class="term"><span class="bold"><strong>Conditionals</strong></span></span></dt><dd><p>The second part of the query is the conditional statement. The
+                            conditional statements determine what criterion constitute sending an
+                            alert on behalf of the user. This is by far the most configurable part
+                            of the alarm language. There are two types of comparisons: numeric
+                            comparisons and text comparisons.</p><p>Numeric comparisons have a number of different operators, which are
+                            listed
+                            below:</p><pre class="programlisting">== /* Equality when compared with a literal numeric */
+!= /* Inequality */
+&gt;= /* Greater than or equal to */
+&lt;= /* Less than or equal to */
+&lt;  /* Less than */
+&gt;  /* Greater than */</pre><p>If the left hand side of the conditional is a metric statement and the
+                            right hand side of the equality is another metric statement, then
+                            equality and inequality is evaluated based on lexicographical
+                            comparison. </p><p>Or if the left or right hand side is a literal than the following
+                            operators are available for use.</p><pre class="programlisting">==     /* String comparison */
+!=     /* String comparison */
+regex  /* Regular expression match */
+nregex /* Regular expression inverse match */</pre><p>On top of the single conditional operators, you can also use boolean
+                            logic to evaluate multiple conditionals in a single alarm. When trying
+                            to determine if a resource is functioning correctly, this built-in
+                            flexibility provides you with a powerful tool that lets you examine
+                            multiple aspects of a single resource. </p><p>The operators available
+                            are:</p><pre class="programlisting">&amp;&amp; /* And */
+|| /* Or */</pre><p>
+                        </p></dd><dt><span class="term"><span class="bold"><strong>Return Statements</strong></span></span></dt><dd><p>The third part of the query is the return statements. The return
+                            statements determine the notification or notifications to execute on the
+                            notification plan as well as the state of the alarm. There are two
+                            separate methods to represent a return query:</p><p>Returning the status:</p><pre class="programlisting">return &lt;OK|WARNING|CRITICAL&gt;</pre><p>Returning the status and message:</p><pre class="programlisting">return &lt;OK|WARNING|CRITICAL&gt;, &lt;String Status Message&gt;</pre></dd></dl></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="concepts-alarms-alarm-language-limits"> </a>A.2.3. Limits and Defaults</h3></div></div></div><p>Alarms have limits in their constructs. For instance, there are a limited set of
+                conditionals you can use in a single alarm query. </p><p>The following list describes the limits and defaults for alarms:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Minimum conditionals in a single query: <span class="bold"><strong>0</strong></span>
+                        </p></li><li class="listitem"><p>Maximum limit of conditionals in a single query:<span class="bold"><strong>10</strong></span></p></li><li class="listitem"><p>Criteria: <span class="bold"><strong>Optional</strong></span></p><p>Not that if criteria is not specified the availability of the check
+                            determines the alarm state.</p></li><li class="listitem"><p>Default consistency level of the alert policy: <span class="bold"><strong>QUORUM</strong></span></p></li><li class="listitem"><p>Default consecutive alert count: <span class="bold"><strong>1</strong></span></p></li></ul></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="concepts-alarms-status-strings"> </a>A.2.4. Status Messages</h3></div></div></div><p>Checks and Alarms have status strings and there is a
+                resolution policy for final message that get displayed
+                to a user in an email or <a class="link" href="service-changelogs.html" title="4.12. Changelogs">alarm change
+                    log</a> or webhook.  This message represents a
+                human readable string for the status of the
+                alarm.</p><p>The resolution policy is as follows:</p><p>
+                </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>If no status is specified, then use the
+                            value from the most recent run <script>
+             $(document).ready(function(){
+               $("a.gloss#check").qtip({
+               content: '<strong>check:</strong> <p>Checks explicitly specify how you want to monitor an entity.  </p>',
+               show: {event:'mouseover',delay:500},
+               hide: {event:'mouseout',delay:500, fixed:true},
+               style: { 
+                        width: 200,
+                        padding: 5,
+                        background: '#FFFFCC',
+                        color: 'black',
+                        textAlign: 'left',
+                        border: {
+                                    width: 1,
+                                    radius: 4,
+                                    color: '#EEEEBB'
+                        },
+                        tip: true,
+                        name: 'cream' // Inherit the rest of the attributes from the preset cream style
+                },
+                position: {
+                    corner: {
+                            target: 'topMiddle',
+                            tooltip: 'bottomLeft'
+                    }
+                }
+               });
+             });
+             </script><a class="gloss" href="#" id="check">check</a>.</p></li><li class="listitem"><p>If it's specified then use the specified
+                            string from the <script>
+             $(document).ready(function(){
+               $("a.gloss#alarm").qtip({
+               content: '<strong>alarm:</strong> <p>An alarm contains a set of rules that determine when a notification is                     triggered.                 </p>',
+               show: {event:'mouseover',delay:500},
+               hide: {event:'mouseout',delay:500, fixed:true},
+               style: { 
+                        width: 200,
+                        padding: 5,
+                        background: '#FFFFCC',
+                        color: 'black',
+                        textAlign: 'left',
+                        border: {
+                                    width: 1,
+                                    radius: 4,
+                                    color: '#EEEEBB'
+                        },
+                        tip: true,
+                        name: 'cream' // Inherit the rest of the attributes from the preset cream style
+                },
+                position: {
+                    corner: {
+                            target: 'topMiddle',
+                            tooltip: 'bottomLeft'
+                    }
+                }
+               });
+             });
+             </script><a class="gloss" href="#" id="alarm">alarm</a>.</p></li><li class="listitem"><p>String interpolate the message if metric
+                            is present.</p></li></ul></div><p>
+            </p><p>Status string interpolation will substitute metrics
+                in a special format to the point in time metric. It
+                looks like this:</p><pre class="programlisting">return WARNING, "The check took #{duration}s to execute"</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>String Interpolation will substitute a
+                        <code class="code">#{metric-name}</code> for its
+                    corresponding point in time value, it is a very
+                    powerful feature.</p></td></tr></table></div></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h2 xmlns="http://www.w3.org/1999/xhtml" class="title" style="clear: both"><a id="concepts-alarms-alert-policies"> </a>A.3. Alert Policies (Consistency Level)</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="alerts-language.html#concepts-alarms-alert-policies-one">A.3.1. One</a></span></dt><dt><span class="section"><a href="alerts-language.html#concepts-alarms-alert-policies-quorum">A.3.2. Quorum</a></span></dt><dt><span class="section"><a href="alerts-language.html#concepts-alarms-alert-policies-all">A.3.3. All</a></span></dt></dl></div><p>Alert policies define a system for interpreting mixed results from a check. Mixed
+            results can occur during failure scenarios if you are monitoring a resource in multiple
+            monitoring zones. For instance, if you're monitoring a website from three different
+            monitoring zones and the website goes down, a <code class="code">QUORUM</code> calculation consisting
+            of two monitoring zones would need to agree before sending an alert.</p><p>There three different interpretations and alert policies for handling mixed results.
+            Each interpretation has trade-offs that should be considered when determining which
+            policy to use. The interpretation policy and their trade-offs are described below</p><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="concepts-alarms-alert-policies-one"> </a>A.3.1. One</h3></div></div></div><p>A single monitoring zone failure. For example, an alert is triggered if one of
+                three, or say one of five, monitoring zones report the failure. </p><p>The <code class="code">ONE</code> policy optimizes speed of alerting at the expense of
+                correctness. For instance, any network blip from the Rackspace Cloud Monitoring to the monitored
+                resource would potentially generate an alert. This is mitigated in the
+                    <code class="code">QUORUM</code> policy.</p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="concepts-alarms-alert-policies-quorum"> </a>A.3.2. Quorum</h3></div></div></div><p>A failure is detected in a majority of the monitoring zones. For example, two of
+                three, or three of five monitoring zones report the failure. The calculation is
+                    <span class="symbol">TOTAL / 2 + 1</span></p><p>The <code class="code">QUORUM</code> policy is the recommended solution. It offers the best
+                speed to correctness trade-off. Only a majority of the infrastructure monitoring
+                your resource has to agree that the resource is in fact down before sending an
+                alert. This is the best approach to maintain speed and low time-to-alert.</p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="concepts-alarms-alert-policies-all"> </a>A.3.3. All</h3></div></div></div><p>All monitoring zone's agree the resource is down. For example, three of out of
+                three monitoring zones report the failure.</p><p>The <code class="code">ALL</code> policy is the most accurate, but is also prone to failure in
+                significant failure scenarios. If a network partition between our internal
+                datacenters happens the alert could be delayed due to the election process. In this
+                case a machine has to be marked down, then the checks will be re-evaluated as a
+                group. If they come to a consensus (with the downed collector) then an alert is
+                generated.</p></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h2 xmlns="http://www.w3.org/1999/xhtml" class="title" style="clear: both"><a id="concepts-alarms-constructs"> </a>A.4. Constructs and Functions</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="alerts-language.html#concepts-alarms-constructs-previous">A.4.1. Previous</a></span></dt><dt><span class="section"><a href="alerts-language.html#concepts-alarms-constructs-rate">A.4.2. Rate</a></span></dt></dl></div><p>Function modifiers serve to alter the interpretation of a metric. There is currently a
+            single modifier. The format of a modifier is as follows:</p><p>
+            </p><pre class="programlisting">ex: &lt;funcname&gt;(metric['response_time'])</pre><p>
+        </p><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="concepts-alarms-constructs-previous"> </a>A.4.1. Previous</h3></div></div></div><p>Function name: <span class="bold"><strong>previous</strong></span></p><p>This is used to look back at the same metric in the
+                previous time period from the same datacenter.  This
+                is useful to make sure a value is always incrementing.
+                Or another use is detecting string changes and sending
+                an alert on that.</p><pre class="programlisting">
+if (previous(metric['fingerprint']) != metric['fingerprint']) {
+    return new AlarmStatus(CRITICAL, 'Fingerprint has changed to: #{fingerprint}');
+}
+            </pre></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="concepts-alarms-constructs-rate"> </a>A.4.2. Rate</h3></div></div></div><p>Function name: <span class="bold"><strong>rate</strong></span></p><p>This is best used for counters. For instance if you are tracking a
+                gauge such as bytes_in on an network interface, this will give you the
+                <span class="italic">rate</span> as defined by this formula
+                where V=value, and T=time.</p><p>
+                <code class="code">(V<sub>1</sub> - V<sub>0</sub>) /
+                    (T<sub>1</sub> - T<sub>0</sub>)</code>
+            </p></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h2 xmlns="http://www.w3.org/1999/xhtml" class="title" style="clear: both"><a id="concepts-alarms-best-practices"> </a>A.5. Best Practices on Alerting</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="alerts-language.html#concepts-alarms-best-practices-http">A.5.1. Best Practices for HTTP/S Check</a></span></dt><dt><span class="section"><a href="alerts-language.html#concepts-alarms-best-practices-port">A.5.2. Best Practices for Port/Banner Checks</a></span></dt><dt><span class="section"><a href="alerts-language.html#concepts-alarms-best-practices-dns">A.5.3. Best Practices for DNS Checks</a></span></dt><dt><span class="section"><a href="alerts-language.html#concepts-alarms-best-practices-ssh">A.5.4. Best Practices for SSH Checks</a></span></dt></dl></div><p>This section covers common solution patterns for creating useful alerts. It focuses on
+            alarms and how you can use the alarm language to best achieve these patterns.</p><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="concepts-alarms-best-practices-http"> </a>A.5.1. Best Practices for HTTP/S Check</h3></div></div></div><div class="toc"><dl><dt><span class="section"><a href="alerts-language.html#concepts-alarms-best-practices-http-check-404">A.5.1.1. Check for HTTP 404</a></span></dt><dt><span class="section"><a href="alerts-language.html#concepts-alarms-best-practices-reverse-body-match">A.5.1.2. Critical on a specific body match</a></span></dt><dt><span class="section"><a href="alerts-language.html#concepts-alarms-best-practices-error-certificate">A.5.1.3. Critical on certificate expiration</a></span></dt></dl></div><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="concepts-alarms-best-practices-http-check-404"> </a>A.5.1.1. Check for HTTP 404</h4></div></div></div><p><span class="bold"><strong>Critical on 404 or Connection Refused</strong></span></p><p>This example assumes a provisioned <a class="link" href="service-check-types.html#section-check-types-remote.http" title="4.5.3.4. remote.http">Remote HTTP</a> with standard
+                    settings. It checks that the return code (which is a metric of type string) is
+                    the string equivalent of a 404. HTTP response codes are numeric, but since they
+                    hold no numeric value, we interpret them as strings.</p><pre class="programlisting">if (metric['code'] == "404") {
+  return CRITICAL, "Page not found!"
+}
+</pre></div><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="concepts-alarms-best-practices-reverse-body-match"> </a>A.5.1.2. Critical on a specific body match</h4></div></div></div><p><span class="bold"><strong>Check for the existence of a body match and error out if
+                        present</strong></span></p><p>This example assumes a provisioned <a class="link" href="service-check-types.html#section-check-types-remote.http" title="4.5.3.4. remote.http">Remote HTTP</a> with an metric
+                    called <code class="code">body_match</code> added to the response. You can use this string
+                    metric to check the existence of the text, and error out if found.</p><p>Using the <code class="code">HTTPS</code> prefix automatically defaults the port to the
+                    standard <code class="code">443</code> instead of port <code class="code">80</code>. This particular
+                    example looks for the word "forbidden" in the body match, and if found returns
+                        <code class="code">CRITICAL</code> with the error message: <code class="code">"Forbidden found,
+                        returning CRITICAL."</code></p><pre class="programlisting">if (metric['body_match'] regex ".*forbidden.*") {
+  return CRITICAL, "Forbidden found, returning CRITICAL."
+}
+</pre></div><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="concepts-alarms-best-practices-error-certificate"> </a>A.5.1.3. Critical on certificate expiration</h4></div></div></div><p><span class="bold"><strong>Check the <code class="code">cert_end_in</code> metric; critical if
+                        less than a week away</strong></span></p><p>This example assumes a provisioned <a class="link" href="service-check-types.html#section-check-types-remote.http" title="4.5.3.4. remote.http">Remote HTTP</a> against an
+                    HTTPS server and adds a set of metrics that are specific to SSL in the hash of
+                    metrics.</p><p>This example checks the certificate expiration in seconds, abbreviated as the
+                        <code class="code">cert_end_in</code>:</p><pre class="programlisting">/* 1 week = 604 800 seconds */
+if (metric['cert_end_in'] &lt; 604800) {
+  return WARNING, "Cert expiring in less than 1 week."
+}
+/* 2 days = 172 800 seconds */
+if (metric['cert_end_in'] &lt; 172800) {
+  return CRITICAL, "Cert expiring in less than 2 days."
+}
+</pre></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="concepts-alarms-best-practices-port"> </a>A.5.2. Best Practices for Port/Banner Checks</h3></div></div></div><div class="toc"><dl><dt><span class="section"><a href="alerts-language.html#concepts-alarms-best-practices-port-failure-match">A.5.2.1. Failure on banner match</a></span></dt></dl></div><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="concepts-alarms-best-practices-port-failure-match"> </a>A.5.2.1. Failure on banner match</h4></div></div></div><p>This example assumes a provisioned <a class="link" href="service-check-types.html#section-check-types-remote.tcp" title="4.5.3.5. remote.tcp">Remote TCP</a> check. It also specifies a
+                        <code class="code">banner_match</code>
+                    <em class="replaceable"><code>'OpenSSH.*'</code></em>, which
+                    matches content based on the text sent from the
+                    server upon connection. For a complete
+                    description, see <a class="link" href="service-check-types.html#section-check-types-remote.tcp" title="4.5.3.5. remote.tcp">Remote TCP</a>. However if a banner
+                    matches, then a metric is added to the result,
+                    called <code class="code">banner_match</code>. One common
+                    solution is to check for the existence of that
+                    metric and return <code class="code">CRITICAL</code>
+                    otherwise.</p><pre class="programlisting">/* Have the check match at the edge */
+if (metric['banner_matched'] != "") {
+  return OK
+}
+/* Or use the regex parser in the
+   language to build multiple matches
+   in a single alarm. */
+if (metric['banner'] regex "OpenSSH.*") {
+  return OK
+}
+
+return CRITICAL, "Match not found."
+</pre></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="concepts-alarms-best-practices-dns"> </a>A.5.3. Best Practices for DNS Checks</h3></div></div></div><div class="toc"><dl><dt><span class="section"><a href="alerts-language.html#concepts-alarms-best-practices-dns-1">A.5.3.1. Check for an IP in a DNS query, fail otherwise.</a></span></dt></dl></div><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="concepts-alarms-best-practices-dns-1"> </a>A.5.3.1. Check for an IP in a DNS query, fail otherwise.</h4></div></div></div><p>This example assumes a provisioned <a class="link" href="service-check-types.html#section-check-types-remote.dns" title="4.5.3.1. remote.dns">Remote DNS</a> check against a
+                    working nameserver. In this example, the alarm matches against the
+                        <code class="code">answer</code> metric. As with all alarms, if the check is marked
+                    available=false (which in this case means the nameserver fails to respond) than
+                    the alarm is
+                    <code class="code">CRITICAL</code>.</p><pre class="programlisting"># Match if the 127... address was in the resolution
+# if it wasn't than default to CRITICAL
+
+if (metric["answer"] regex ".*127.8.2.1.*") {
+  return OK, "Resolved the correct address!"
+}
+return CRITICAL
+</pre></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="concepts-alarms-best-practices-ssh"> </a>A.5.4. Best Practices for SSH Checks</h3></div></div></div><p>The following example uses the Rackspace Cloud Monitoring command line interface (CLI). For
+                information on downloading and installing the CLI, see <a class="link" href="https://github.com/racker/rackspace-monitoring-cli" target="_top">https://github.com/racker/rackspace-monitoring-cli</a>.</p><p>One of the most widely used remote checks is the SSH check. This check not only
+                verifies that something is listening on the expected port, but establishes an SSH
+                session and returns the host key fingerprint as a metric, further verifying that the
+                SSH server is operating as expected. </p><p>The following example assumes the existence of an entity with the IP address eth0
+                and ID enk8YUv0Cd,  and a notification plan with ID nplU9hLUgc. This check connects
+                to an SSH server using port 22 by default:</p><pre class="programlisting">raxmon-checks-create \ 
+--entity-id=enk8YUv0Cd \
+--label=ssh \ 
+--type=remote.ssh \ 
+--target-alias=eth0 \ 
+--monitoring-zones=mzord,mzdfw,mzlon</pre><p><span class="bold"><strong>Alarm for this check:</strong></span></p><p>If the monitoring service is unable to connect to the SSH server for the check,
+                any alarms using the check will automatically fail. However, we can additionally
+                verify that the server returns the expected host key fingerprint, which could reveal
+                an unexpected change on the server or a man in the middle attack.</p><pre class="programlisting">raxmon-alarms-create \ 
+--entity-id=enk8YUv0Cd \ 
+--notification-plan-id=nplU9hLUgc \ 
+--check-id=chTFHxHn0p \ 
+--criteria="if (metric['fingerprint'] != '13dd6c5df600f9a15c67ea5db491ac9a') { return CRITICAL, 'Incorrect SSH Host Fingerprint' }"</pre></div></div></div><script type="text/javascript" src="../common/main.js"><!----></script><hr/><div id="disqus_thread"><script type="text/javascript">
+	      var disqus_shortname = 'rc-api-docs';
+	      
+	      var disqus_identifier = 'monitoring-developer-guidealerts-language';
+	      </script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><script type="text/javascript" src="../common/comments.js"><!----></script></div><hr/><div class="legal"><a href="index.html">Legal notices</a></div></div><div><div id="leftnavigation" style="padding-top:3px; background-color:white;"><div id="tabs"><ul><li><a href="#treeDiv" tabindex="1"><span class="contentsTab">Contents</span></a></li><li><a href="#searchDiv" tabindex="1"><span class="searchTab">Search</span></a></li></ul><div id="treeDiv"><img src="../common/images/loading.gif" alt="loading table of contents..." id="tocLoading" style="display:block;"/><div id="ulTreeDiv" style="display:none" class="thisisthat"><ul id="tree" class="filetree"><li tabindex="2"><span class="file"><a href="overview.html">1. Overview</a></span><ul><li tabindex="2"><span class="file"><a href="how-it-works.html">1.1. How Rackspace Cloud Monitoring Works</a></span></li><li tabindex="2"><span class="file"><a href="intended-audience.html">1.2. Intended Audience</a></span></li><li tabindex="2"><span class="file"><a href="document-change-history.html">1.3. Document Change History</a></span></li><li tabindex="2"><span class="file"><a href="additional-resources.html">1.4. Additional Resources</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="Concepts.html">2. Concepts</a></span><ul><li tabindex="2"><span class="file"><a href="concepts-key-terms.html">2.1. Monitoring Key Terms and Concepts</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="general-api-information.html">3. General API Information</a></span><ul><li tabindex="2"><span class="file"><a href="general-api-info-authentication.html">3.1. Authentication</a></span><ul><li tabindex="2"><span class="file"><a href="general-api-info-authentication.html#Authenticate-d1e171">3.1.1. Retrieving the Authentication Token</a></span></li><li tabindex="2"><span class="file"><a href="general-api-info-authentication.html#token-expiration">3.1.2. Token Expiration</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="general-api-info-endpoint-access.html">3.2. Endpoint Access</a></span></li><li tabindex="2"><span class="file"><a href="api-request-response-types.html">3.3. Request/Response Types</a></span></li><li tabindex="2"><span class="file"><a href="api-versions.html">3.4. Versions</a></span></li><li tabindex="2"><span class="file"><a href="api-paginated-collections.html">3.5. Paginated Collections</a></span></li><li tabindex="2"><span class="file"><a href="api-time-series-collections.html">3.6. Time Series Collections</a></span></li><li tabindex="2"><span class="file"><a href="general-api-info-audits.html">3.7. Audits</a></span></li><li tabindex="2"><span class="file"><a href="api-rsource-limits.html">3.8. Resource Limits</a></span></li><li tabindex="2"><span class="file"><a href="api-rate-limits.html">3.9. Rate Limits</a></span></li><li tabindex="2"><span class="file"><a href="general-api-info-api-faults.html">3.10. Faults</a></span><ul><li tabindex="2"><span class="file"><a href="general-api-info-api-faults.html#section-faults">3.10.1. Fault and Error Code Descriptions</a></span></li></ul></li></ul></li><li tabindex="2"><span class="file"><a href="service-api-operations.html">4. Service API Operations</a></span><ul><li tabindex="2"><span class="file"><a href="maas-core-service-calls.html">4.1. Core Quick Reference</a></span></li><li tabindex="2"><span class="file"><a href="service-account.html">4.2. Account</a></span><ul><li tabindex="2"><span class="file"><a href="service-account.html#service-account-summary">4.2.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-account.html#service-account-root">4.2.2. Get Account</a></span></li><li tabindex="2"><span class="file"><a href="service-account.html#service-account-put-account">4.2.3. Update Account</a></span><ul><li tabindex="2"><span class="file"><a href="service-account.html#section-Public_accounts">4.2.3.1. Attributes</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-account.html#service-account-get-limits">4.2.4. Get Limits</a></span></li><li tabindex="2"><span class="file"><a href="service-account.html#service-account-list-audits">4.2.5. List Audits</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-entities.html">4.3. Entities</a></span><ul><li tabindex="2"><span class="file"><a href="service-entities.html#service-entities-summary">4.3.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-entities.html#section-Entities">4.3.2. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-entities.html#service-entities-create">4.3.3. Create Entity</a></span></li><li tabindex="2"><span class="file"><a href="service-entities.html#service-entities-list">4.3.4. List Entities</a></span></li><li tabindex="2"><span class="file"><a href="service-entities.html#service-entities-get">4.3.5. Get Entity</a></span></li><li tabindex="2"><span class="file"><a href="service-entities.html#service-entities-update">4.3.6. Update Entity</a></span></li><li tabindex="2"><span class="file"><a href="service-entities.html#service-entities-delete">4.3.7. Delete Entity</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-checks.html">4.4. Checks</a></span><ul><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-summary">4.4.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#section-Checks">4.4.2. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-create">4.4.3. Create Check</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-test">4.4.4. Test Check</a></span><ul><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-test-debug">4.4.4.1. Test Check And Include Debug Information</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-test-existing">4.4.5. Test Existing Check</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-list">4.4.6. List Checks</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-get">4.4.7. Get Check</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-update">4.4.8. Update Checks</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-delete">4.4.9. Delete Checks</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html">4.5. Check Types</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#service-check-types-summary">4.5.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-Check_types">4.5.2. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-available-check-types-and-fields">4.5.3. Available Check Types and Fields</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.dns">4.5.3.1. remote.dns</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-remote.dns">4.5.3.1.1. standard metrics</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.ssh">4.5.3.2. remote.ssh</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-remote.ssh">4.5.3.2.1. standard metrics</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.smtp">4.5.3.3. remote.smtp</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.http">4.5.3.4. remote.http</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-remote.http">4.5.3.4.1. standard metrics</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.tcp">4.5.3.5. remote.tcp</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-remote.tcp">4.5.3.5.1. standard metrics</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.ping">4.5.3.6. remote.ping</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-remote.ping">4.5.3.6.1. standard metrics</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.ftp-banner">4.5.3.7. remote.ftp-banner</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-remote.ftp-banner">4.5.3.7.1. standard metrics</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.imap-banner">4.5.3.8. remote.imap-banner</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.pop3-banner">4.5.3.9. remote.pop3-banner</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.smtp-banner">4.5.3.10. remote.smtp-banner</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-remote.smtp-banner">4.5.3.10.1. standard metrics</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.postgresql-banner">4.5.3.11. remote.postgresql-banner</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.telnet-banner">4.5.3.12. remote.telnet-banner</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.mysql-banner">4.5.3.13. remote.mysql-banner</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.mssql-banner">4.5.3.14. remote.mssql-banner</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#service-check-types-create">4.5.4. Create Check Type</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#service-check-types-list">4.5.5. List Check Types</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#service-check-types-get">4.5.6. Get Check Type</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#service-check-types-update">4.5.7. Update Check Type</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#service-check-types-delete">4.5.8. Delete Check Types</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-alarms.html">4.6. Alarms</a></span><ul><li tabindex="2"><span class="file"><a href="service-alarms.html#service-alarms-summary">4.6.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-alarms.html#section-Alarms">4.6.2. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-alarms.html#service-alarms-create">4.6.3. Create Alarm</a></span></li><li tabindex="2"><span class="file"><a href="service-alarms.html#service-alarms-test">4.6.4. Test Alarm</a></span></li><li tabindex="2"><span class="file"><a href="service-alarms.html#service-alarms-list">4.6.5. List Alarms</a></span></li><li tabindex="2"><span class="file"><a href="service-alarms.html#service-alarms-get">4.6.6. Get Alarm</a></span></li><li tabindex="2"><span class="file"><a href="service-alarms.html#service-alarms-update">4.6.7. Update Alarm</a></span></li><li tabindex="2"><span class="file"><a href="service-alarms.html#service-alarms-delete">4.6.8. Delete Alarm</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-notification-plans.html">4.7. Notification Plans</a></span><ul><li tabindex="2"><span class="file"><a href="service-notification-plans.html#service-notification-plans-summary">4.7.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-plans.html#section-Notification_plans">4.7.2. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-plans.html#service-notification-plans-create">4.7.3. Create Notification Plan</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-plans.html#service-notification-plans-list">4.7.4. List Notification Plans</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-plans.html#service-notification-plans-get">4.7.5. Get Notification Plan</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-plans.html#service-notification-plans-update">4.7.6. Update Notification Plans</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-plans.html#service-notification-plans-delete">4.7.7. Delete Notification Plans</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html">4.8. Monitoring Zones</a></span><ul><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#service-monitoring-zones-summary">4.8.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#section-Monitoring_zones">4.8.2. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#service-monitoring-zones-create">4.8.3. Create Monitoring Zone</a></span></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#service-monitoring-zones-list">4.8.4. List Monitoring Zones</a></span></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#service-monitoring-zones-get">4.8.5. Get Monitoring Zone</a></span></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#service-monitoring-zones-update">4.8.6. Update Monitoring Zone</a></span></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#service-monitoring-zones-delete">4.8.7. Delete Monitoring Zone</a></span></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#service-monitoring-zones-traceroute">4.8.8. Perform a "traceroute" from a Monitoring Zone</a></span><ul><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#section-Traceroute">4.8.8.1. Attributes</a></span></li></ul></li></ul></li><li tabindex="2"><span class="file"><a href="service-alarm-notification-history.html">4.9. Alarm Notification History</a></span><ul><li tabindex="2"><span class="file"><a href="service-alarm-notification-history.html#service-alarm-notification-history-summary">4.9.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-alarm-notification-history.html#service-alarm-notification-history-discover">4.9.2. Discover Alarm Notification History</a></span></li><li tabindex="2"><span class="file"><a href="service-alarm-notification-history.html#service-alarm-notification-history-list">4.9.3. List Alarm Notification History</a></span></li><li tabindex="2"><span class="file"><a href="service-alarm-notification-history.html#service-alarm-notification-history-get">4.9.4. Get Alarm Notification History</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-notifications.html">4.10. Notifications</a></span><ul><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-summary">4.10.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#section-Notifications">4.10.2. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-create">4.10.3. Create Notification</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-test-new">4.10.4. Test Notification</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-test-existing">4.10.5. Test Existing Notification</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-list">4.10.6.  List Notifications</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-get">4.10.7. Get Notifications</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-update">4.10.8. Update Notifications</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-delete">4.10.9. Delete Notifications</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html">4.11. Notification Types</a></span><ul><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#service-notification-type-email">4.11.1. Email Notifications</a></span><ul><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#section-Email">4.11.1.1. Attributes</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#service-notification-types-webhook">4.11.2. Webhook Notifications</a></span><ul><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#section-Webhook">4.11.2.1. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#service-notification-payload">4.11.2.2. Notification Payload</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#service-notification-headers">4.11.2.3. Notification Header Contents</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#Service-Notification-Types-create">4.11.3. Create Notification Type</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#Service-Notification-Types-List">4.11.4. List Notification Types</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#Service-Notification-Types-get">4.11.5. Get Notification Type</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#Service-Notification-Type-update">4.11.6. Update Notification Type</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#Service-Notification-Auth-Delete">4.11.7. Delete Notification Type</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-changelogs.html">4.12. Changelogs</a></span><ul><li tabindex="2"><span class="file"><a href="service-changelogs.html#service-changelogs-summary">4.12.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-changelogs.html#service-changelogs-alarms-list">4.12.2. List Alarm Changelogs</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-views.html">4.13. Views</a></span><ul><li tabindex="2"><span class="file"><a href="service-views.html#service-views-overview">4.13.1. Get Overview</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-alarm-examples.html">4.14. Alarm Examples</a></span><ul><li tabindex="2"><span class="file"><a href="service-alarm-examples.html#service-alarm-examples-list">4.14.1. List Alarm Examples</a></span></li><li tabindex="2"><span class="file"><a href="service-alarm-examples.html#service-alarm-examples-get">4.14.2. Get Alarm Example</a></span></li><li tabindex="2"><span class="file"><a href="service-alarm-examples.html#service-alarm-examples-post">4.14.3. Evaluate Alarm Example</a></span></li></ul></li></ul></li><li tabindex="2" id="webhelp-currentid"><span class="file"><a href="alerts-language.html">A. Alert Triggering and Alarms</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#alert-flow">A.1. Alert Flow</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-alarm-language">A.2. Alarm Language</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-availability">A.2.1. Check Availability</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-alarm-language-anatomy">A.2.2. Anatomy of a Query</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-alarm-language-limits">A.2.3. Limits and Defaults</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-status-strings">A.2.4. Status Messages</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-alert-policies">A.3. Alert Policies (Consistency Level)</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-alert-policies-one">A.3.1. One</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-alert-policies-quorum">A.3.2. Quorum</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-alert-policies-all">A.3.3. All</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-constructs">A.4. Constructs and Functions</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-constructs-previous">A.4.1. Previous</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-constructs-rate">A.4.2. Rate</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices">A.5. Best Practices on Alerting</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-http">A.5.1. Best Practices for HTTP/S Check</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-http-check-404">A.5.1.1. Check for HTTP 404</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-reverse-body-match">A.5.1.2. Critical on a specific body match</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-error-certificate">A.5.1.3. Critical on certificate expiration</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-port">A.5.2. Best Practices for Port/Banner Checks</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-port-failure-match">A.5.2.1. Failure on banner match</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-dns">A.5.3. Best Practices for DNS Checks</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-dns-1">A.5.3.1. Check for an IP in a DNS query, fail otherwise.</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-ssh">A.5.4. Best Practices for SSH Checks</a></span></li></ul></li></ul></li><li tabindex="2"><span class="file"><a href="appendix-client-libraries-tools.html">B. Client Libraries and Tools</a></span><ul><li tabindex="2"><span class="file"><a href="appendix-client-libraries-tools.html#client-libraries">B.1. Client Libraries</a></span><ul><li tabindex="2"><span class="file"><a href="appendix-client-libraries-tools.html#client-libraries-rackspace-monitoring">B.1.1. Python - "rackspace-monitoring" Library</a></span></li><li tabindex="2"><span class="file"><a href="appendix-client-libraries-tools.html#client-libraries-rackspace-monitoring-rb">B.1.2. Ruby - "rackspace-monitoring" Library</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="appendix-client-libraries-tools.html#client-tools">B.2. Tools (CLI, etc...)</a></span><ul><li tabindex="2"><span class="file"><a href="appendix-client-libraries-tools.html#client-tools-rackspace-monitoring-cli">B.2.1. Command Line Interface - "Raxmon" Tool</a></span></li><li tabindex="2"><span class="file"><a href="appendix-client-libraries-tools.html#client-tools-rackspace-monitoring-chef">B.2.2. Integration - "Cloud Monitoring Cookbook"</a></span></li></ul></li></ul></li><li tabindex="2"><span class="file"><a href="rs_glossary.html">Glossary</a></span></li></ul></div></div><div id="searchDiv"><div id="search"><form onsubmit="Verifie(ditaSearch_Form);return false" name="ditaSearch_Form" class="searchForm"><fieldset class="searchFieldSet"><legend>Search</legend><center><input id="textToSearch" name="textToSearch" type="text" class="searchText"/> &nbsp; <input onclick="Verifie(ditaSearch_Form)" type="button" class="searchButton" value="Go" id="doSearch"/></center></fieldset></form></div><div id="searchResults"><center/></div><p class="searchHighlight"><a href="#" onclick="toggleHighlight()">Search Highlighter (On/Off)</a></p></div></div></div></div><script type="text/javascript" src="../common/jquery/jquery.qtip-1.0.0-rc3/jquery.qtip-1.0.0-rc3.min.js"><!--jQuery plugin for glossary popups. -->
+                   $('a[title]').qtip({ style: { name: 'cream', tip: true } })
+                </script></body></html>

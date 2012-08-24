@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?><section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="section-available-check-types-and-fields">
+<title>Available Check Types and Fields</title>
+<section xml:id="section-check-types-remote.dns"><title>remote.dns</title>    
+    <informaltable rules ="all">
+            
+<thead>
+<tr><td>Field</td><td>Description</td><td>Validation</td></tr>
+</thead>
+<tbody><tr>
+<td><command>query</command></td>
+<td>DNS Query</td>
+<td><itemizedlist><listitem><para>String</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>record_type</command></td>
+<td>DNS Record Type</td>
+<td><itemizedlist><listitem><para>String matching the regex /^(A|AAAA|TXT|MX|SOA|CNAME|PTR|NS|MB|MD|MF|MG|MR|\|)+$/</para></listitem>
+</itemizedlist></td>
+</tr>
+</tbody></informaltable>
+<para>The remote.dns check will run a DNS check against a given target.  This check should assist in verifying functionality of a DNS server</para>
+</section><section xml:id="section-check-types-remote.ftp-banner"><title>remote.ftp-banner</title><informaltable rules ="all">
+<thead>
+<tr><td>Field</td><td>Description</td><td>Validation</td></tr>
+</thead>
+<tbody><tr>
+<td><command>port</command></td>
+<td>Port number (default: 21)</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>Integer between 1-65535 inclusive</para></listitem>
+<listitem><para>Whole number (may be zero padded)</para></listitem>
+</itemizedlist></td>
+</tr>
+</tbody></informaltable>
+<para>The remote.ftp-banner check will attempt to connect to a FTP server and verify that it responds to the connection.</para>
+</section><section xml:id="section-check-types-remote.pop3-banner"><title>remote.pop3-banner</title><informaltable rules ="all">
+<thead>
+<tr><td>Field</td><td>Description</td><td>Validation</td></tr>
+</thead>
+<tbody><tr>
+<td><command>port</command></td>
+<td>Port number (default: 110)</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>Integer between 1-65535 inclusive</para></listitem>
+<listitem><para>Whole number (may be zero padded)</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>ssl</command></td>
+<td>Enable SSL</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>Boolean</para></listitem>
+</itemizedlist></td>
+</tr>
+</tbody></informaltable>
+<para>The remote.pop3-banner check will attempt to connect to a POP3 mailbox server and verify that it responds to the connection.</para>
+</section><section xml:id="section-check-types-remote.smtp-banner"><title>remote.smtp-banner</title><informaltable rules ="all">
+<thead>
+<tr><td>Field</td><td>Description</td><td>Validation</td></tr>
+</thead>
+<tbody><tr>
+<td><command>port</command></td>
+<td>Port number (default: 25)</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>Integer between 1-65535 inclusive</para></listitem>
+<listitem><para>Whole number (may be zero padded)</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>ssl</command></td>
+<td>Enable SSL</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>Boolean</para></listitem>
+</itemizedlist></td>
+</tr>
+</tbody></informaltable>
+<para>The remote.smtp-banner check will attempt to connect to a SMTP mail server and verify that a HELO/EHLO is received.</para>
+</section><section xml:id="section-check-types-remote.postgresql-banner"><title>remote.postgresql-banner</title><informaltable rules ="all">
+<thead>
+<tr><td>Field</td><td>Description</td><td>Validation</td></tr>
+</thead>
+<tbody><tr>
+<td><command>port</command></td>
+<td>Port number (default: 5432)</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>Integer between 1-65535 inclusive</para></listitem>
+<listitem><para>Whole number (may be zero padded)</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>ssl</command></td>
+<td>Enable SSL</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>Boolean</para></listitem>
+</itemizedlist></td>
+</tr>
+</tbody></informaltable>
+<para>The remote.postgresql-banner check will attempt to connect to a PostgreSQL database server and verify that it is accepting connections.</para>
+</section><section xml:id="section-check-types-remote.telnet-banner"><title>remote.telnet-banner</title><informaltable rules ="all">
+<thead>
+<tr><td>Field</td><td>Description</td><td>Validation</td></tr>
+</thead>
+<tbody><tr>
+<td><command>banner_check</command></td>
+<td>Banner to check</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>String</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>port</command></td>
+<td>Port number (default: 23)</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>Integer between 1-65535 inclusive</para></listitem>
+<listitem><para>Whole number (may be zero padded)</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>ssl</command></td>
+<td>Enable SSL</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>Boolean</para></listitem>
+</itemizedlist></td>
+</tr>
+</tbody></informaltable>
+<para>The remote.telnet-banner check will attempt to connect to a Telnet (or similar protocol) server and verify that an appropriate banner is received.</para>
+</section><section xml:id="section-check-types-remote.mysql-banner"><title>remote.mysql-banner</title><informaltable rules ="all">
+<thead>
+<tr><td>Field</td><td>Description</td><td>Validation</td></tr>
+</thead>
+<tbody><tr>
+<td><command>port</command></td>
+<td>Port number (default: 3306)</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>Integer between 1-65535 inclusive</para></listitem>
+<listitem><para>Whole number (may be zero padded)</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>ssl</command></td>
+<td>Enable SSL</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>Boolean</para></listitem>
+</itemizedlist></td>
+</tr>
+</tbody></informaltable>
+<para>The remote.mysql-banner check will attempt to connect to a MySQL database server and verify that it is accepting connections.</para>
+</section><section xml:id="section-check-types-remote.mssql-banner"><title>remote.mssql-banner</title><informaltable rules ="all">
+<thead>
+<tr><td>Field</td><td>Description</td><td>Validation</td></tr>
+</thead>
+<tbody><tr>
+<td><command>port</command></td>
+<td>Port number (default: 1433)</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>Integer between 1-65535 inclusive</para></listitem>
+<listitem><para>Whole number (may be zero padded)</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>ssl</command></td>
+<td>Enable SSL</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>Boolean</para></listitem>
+</itemizedlist></td>
+</tr>
+</tbody></informaltable>
+<para>The remote.mssql-banner check will attempt to connect to a Microsoft SQL database server and verify that it is accepting connections.</para>
+</section><section xml:id="section-check-types-remote.smtp"><title>remote.smtp</title><informaltable rules ="all">
+<thead>
+<tr><td>Field</td><td>Description</td><td>Validation</td></tr>
+</thead>
+<tbody><tr>
+<td><command>ehlo</command></td>
+<td>EHLO parameter</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>String</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>from</command></td>
+<td>From parameter</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>String</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>payload</command></td>
+<td>Specifies the payload</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>String</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>port</command></td>
+<td>Port number (default: 25)</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>Integer between 1-65535 inclusive</para></listitem>
+<listitem><para>Whole number (may be zero padded)</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>starttls</command></td>
+<td>Should the connection be upgraded to TLS/SSL</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>Boolean</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>to</command></td>
+<td>To parameter</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>String</para></listitem>
+</itemizedlist></td>
+</tr>
+</tbody></informaltable>
+<para>The remote.smtp check will attempt to connect to a SMTP mail server, send an email from the 'from' parameter, to the 'to' parameter, with a payload specified by the 'payload' parameter setting the EHLO from host to the value in 'ehlo'.</para>
+</section><section xml:id="section-check-types-remote.http"><title>remote.http</title><informaltable rules ="all">
+<thead>
+<tr><td>Field</td><td>Description</td><td>Validation</td></tr>
+</thead>
+<tbody><tr>
+<td><command>body</command></td>
+<td>Body match regular expression</td>
+<td><itemizedlist><listitem><para>String matching the regex /undefined/</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>method</command></td>
+<td>HTTP method</td>
+<td><itemizedlist><listitem><para>String</para></listitem>
+<listitem><para>One of (head, get, post, put, delete, info)</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>url</command></td>
+<td>Target URL</td>
+<td><itemizedlist><listitem><para>URL</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>auth_password</command></td>
+<td>Optional auth password</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>String</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>auth_user</command></td>
+<td>Optional auth user</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>String</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>ssl</command></td>
+<td>Enable SSL</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>Boolean</para></listitem>
+</itemizedlist></td>
+</tr>
+</tbody></informaltable>
+<para>The remote.http check will try to connect to the server and retrieve the specified URL using the specified method, optionally with the password and user for authentication, using SSL, and checking the body with a regex.</para>
+</section><section xml:id="section-check-types-remote.tcp"><title>remote.tcp</title><informaltable rules ="all">
+<thead>
+<tr><td>Field</td><td>Description</td><td>Validation</td></tr>
+</thead>
+<tbody><tr>
+<td><command>port</command></td>
+<td>Port number</td>
+<td><itemizedlist><listitem><para>Integer between 1-65535 inclusive</para></listitem>
+<listitem><para>Whole number (may be zero padded)</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>banner_match</command></td>
+<td>Banner match regex (default: .+)</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>String</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>ssl</command></td>
+<td>Enable SSL</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>Boolean</para></listitem>
+</itemizedlist></td>
+</tr>
+</tbody></informaltable>
+</section><section xml:id="section-check-types-remote.ping"><title>remote.ping</title><para>none</para></section></section>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<container>
+  <values>
+    <alarm id="alAAAA">
+      <check_type>remote.http</check_type>
+      <criteria>if (metric["t"] &gt;= 2.1) { return OK } return CRITICAL</criteria>
+    </alarm>
+  </values>
+  <metadata>
+    <count>1</count>
+    <limit>50</limit>
+    <marker/>
+    <next_marker/>
+    <next_href/>
+  </metadata>
+</container>

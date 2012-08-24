@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="section-Alarm_examples">
+<title>Attributes</title>
+<para><informaltable rules ="all">
+<thead>
+<tr><td>Name</td><td>Description</td><td>Validation</td></tr>
+</thead>
+<tbody><tr>
+<td><command>criteria</command></td>
+<td>Alarm criteria</td>
+<td><itemizedlist><listitem><para>String between 1 and 16384 characters long</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>description</command></td>
+<td>Template description.</td>
+<td><itemizedlist><listitem><para>String between 1 and 500 characters long</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>fields</command></td>
+<td>Alarm placeholders.</td>
+<td><itemizedlist><listitem><para>Array [Optional]</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>label</command></td>
+<td>Template label.</td>
+<td><itemizedlist><listitem><para>String between 1 and 255 characters long</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>check_type</command></td>
+<td>The type of check to alert on.</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>Immutable</para></listitem>
+<listitem><para>String</para></listitem>
+<listitem><para>One of (remote.dns, remote.ssh, remote.smtp, remote.http, remote.tcp, remote.ping, remote.ftp-banner, remote.imap-banner, remote.pop3-banner, remote.smtp-banner, remote.postgresql-banner, remote.telnet-banner, remote.mysql-banner, remote.mssql-banner)</para></listitem>
+</itemizedlist></td>
+</tr>
+</tbody></informaltable>
+</para></section>

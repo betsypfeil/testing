@@ -1,0 +1,5 @@
+:set dimensionFilter="disk.*"
+
+if (metric["free_space"] > 1024) {
+  return CRITICAL
+}

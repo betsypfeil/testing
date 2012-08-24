@@ -1,0 +1,7 @@
+# Docs Readme
+
+Generate the end-user API 
+
+```
+mvn generate-sources
+```

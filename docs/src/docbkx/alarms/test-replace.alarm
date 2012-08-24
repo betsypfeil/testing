@@ -1,0 +1,4 @@
+if (metric['foo'] > 1) {
+  return OK, '${filterId} ${entityId} ${acctId} ${alarmId} ${filterSelector}'
+} 
+return CRITICAL, '${filterId} ${entityId} ${acctId} ${alarmId} ${filterSelector}'

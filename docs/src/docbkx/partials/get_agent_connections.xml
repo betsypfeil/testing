@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<agent_connections>
+  <agent_connection>
+    <agent_id>2090dcec-6452-49f3-be53-cb95a712108b</agent_id>
+    <endpoint>127.0.0.1:1234</endpoint>
+  </agent_connection>
+  <agent_connection>
+    <agent_id>2090dcec-6452-49f3-be53-cb95a712108b</agent_id>
+    <endpoint>127.0.0.1:1235</endpoint>
+  </agent_connection>
+</agent_connections>

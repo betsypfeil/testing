@@ -1,0 +1,12 @@
+/* Have the check match at the edge */
+if (metric['banner_matched'] != "") {
+  return OK
+}
+/* Or use the regex parser in the
+   language to build multiple matches
+   in a single alarm. */
+if (metric['banner'] regex "OpenSSH.*") {
+  return OK
+}
+
+return CRITICAL, "Match not found."

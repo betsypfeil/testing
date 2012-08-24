@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:exsl="http://exslt.org/common" xmlns:ng="http://docbook.org/docbook-ng" xmlns:fb="http://ogp.me/ns/fb#"><head>
+<meta http-equiv="X-UA-Compatible" content="IE=7"/>
+<title>2.3. Create Checks - Rackspace Cloud Monitoring Getting Started Guide
+   - API v1.4</title><meta name="generator" content="DocBook XSL-NS Stylesheets V1.76.1"/><link rel="home" href="index.html" title="Rackspace Cloud Monitoring Getting Started Guide"/><link rel="up" href="tutorials.html" title="Chapter 2. Create Your First Monitor"/><link rel="prev" href="concepts-tutorial-monitoring-zones.html" title="2.2. List Monitoring Zones"/><link rel="next" href="tutorial-list-all-checks.html" title="2.4. List All Checks for the Entity"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script type="text/javascript">
+            //The id for tree cookie
+            var treeCookieId = "treeview-1518";
+            var language = "en";
+            var w = new Object();
+            //Localization
+            txt_filesfound = 'Results';
+            txt_enter_at_least_1_char = "You must enter at least one character.";
+            txt_browser_not_supported = "Your browser is not supported. Use of Mozilla Firefox is recommended.";
+            txt_please_wait = "Please wait. Search in progress...";
+            txt_results_for = "Results for: ";
+        </script><style type="text/css">
+            input {
+            margin-bottom: 5px;
+            margin-top: 2px;
+            }
+
+            .folder {
+            display: block;
+            height: 22px;
+            padding-left: 20px;
+            background: transparent url(../common/jquery/treeview/images/folder.gif) 0 0px no-repeat;
+            }
+            
+        </style><link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/><link rel="stylesheet" type="text/css" href="../common/css/positioning.css"/><link rel="stylesheet" type="text/css" href="../common/css/custom.css"/><link href="../atom.xml" type="application/atom+xml" rel="alternate" title="Document ATOM Feed"/><link rel="canonical" href="http://docs.rackspace.com/cm/api/v1.0/cm-getting-started/content/concepts-tutorial-create-checks.html"/><!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="../common/css/ie.css"/>
+	<![endif]--><link rel="stylesheet" type="text/css" href="../common/jquery/theme-redmond/jquery-ui-1.8.2.custom.css"/><link rel="stylesheet" type="text/css" href="../common/jquery/treeview/jquery.treeview.css"/><script type="text/javascript" src="../common/jquery/jquery-1.4.3.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery-ui-1.8.2.custom.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery.cookie.js"><!----></script><script type="text/javascript" src="../common/jquery/treeview/jquery.treeview.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery.qtip-1.0.0-rc3/jquery.qtip-1.0.0-rc3.min.js"><!--jQuery plugin for glossary popups. --></script><script type="text/javascript" src="search/htmlFileList.js"><!----></script><script type="text/javascript" src="search/htmlFileInfoList.js"><!----></script><script type="text/javascript" src="search/nwSearchFnt.js"><!----></script><script type="text/javascript" src="search/stemmers/en_stemmer.js"><!--//make this scalable to other languages as well.--></script><script type="text/javascript" src="search/index-1.js"><!----></script><script type="text/javascript" src="search/index-2.js"><!----></script><script type="text/javascript" src="search/index-3.js"><!----></script><script type="text/javascript">
+	    var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-23102455-4']);
+	  </script><script type="text/javascript" src="../common/ga.js"><!----></script><script type="text/javascript" src="http://www.tabpress.com/_js/ga_social_tracking.js"><!----></script><script>
+	    (function(){var twitterWidgets = document.createElement('script');
+        twitterWidgets.type = 'text/javascript';
+        twitterWidgets.async = true;
+        twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+        // Setup a callback to track once the script loads.
+        twitterWidgets.onload = _ga.trackTwitter;
+        document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+        })();
+      </script></head><body><div id="header"><a onclick="_gaq.push(['_trackEvent', 'Header', 'logo', 'click', 1]);" target="_blank" href="http://www.rackspace.com"><img src="../common/images/rackspace-logo.png" alt="Rackspace Documentation" width="157" height="47"/></a><h1>2.3. Create Checks</h1><div id="navheader" align="right"><!----><table class="navLinks"><tr><td><a id="showHideButton" onclick="showHideToc(); _gaq.push(['_trackEvent', 'Header', 'show/hide', 'click', 1]);" class="pointLeft" title="Hide TOC tree">Sidebar
+                            </a></td><td><a accesskey="p" class="navLinkPrevious" onclick="_gaq.push(['_trackEvent', 'Header', 'prevLink', 'click', 1]);" tabindex="5" href="concepts-tutorial-monitoring-zones.html">Prev</a>
+				      |
+                                        <a accesskey="u" class="navLinkUp" onclick="_gaq.push(['_trackEvent', 'Header', 'upLink', 'click', 1]);" tabindex="5" href="tutorials.html">Up</a>
+				  |
+                                    <a accesskey="n" class="navLinkNext" onclick="_gaq.push(['_trackEvent', 'Header', 'nextLink', 'click', 1]);" tabindex="5" href="tutorial-list-all-checks.html">Next</a></td></tr></table></div></div><div id="toolbar" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all"><div id="toolbar-left"><p class="breadcrumbs"><a href="http://docs.rackspace.com/api/">Rackspace Manuals</a><a href="index.html">Rackspace Cloud Monitoring Getting Started Guide
+   - API v1.4</a></p><a onclick="_gaq.push(['_trackEvent', 'Header', 'pdfDownload', 'click', 1]);" alt="Download a pdf of this document" class="pdficon" href="../../../cm-getting-started-latest.pdf"><img src="../common/images/pdf.png"/></a>
+       
+      <a href="../atom.xml"><img alt="Atom feed of this document" src="../common/images/feed-icon.png"/></a><div id="fb-root"> </div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"><!----></script><script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script><script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script><style>
+.fb_edge_comment_widget {
+    margin-left: -280px;
+}
+.fb-like{vertical-align:text-top;position:absolute;top:.5em;right:311px}
+#gplusone{display:inline;position:absolute;right:410px;top:.5em}
+#rstwitter{vertical-align:text-top;display:inline;position:absolute;right:450px;top:.5em}
+</style><!--[if IE]>
+	<style>
+#gplusone{top:0em}
+#rstwitter{top:-.15em}
+.fb-like{top:-.5em}
+</style><![endif]--><script type="text/javascript">_ga.trackFacebook();</script><div class="fb-like" data-send="false" data-width="50" data-show-faces="false" data-layout="button_count" data-font="arial">   </div><div id="gplusone"><g:plusone xmlns:g="http://www.google.com" size="medium" annotation="none"/></div><div id="rstwitter"><a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out this Rackspace documentation page:" data-lang="en" data-count="none">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div></div></div><div id="content"><div class="statustext"> </div><div class="section"><div xmlns="" class="titlepage"><div><div><h2 xmlns="http://www.w3.org/1999/xhtml" class="title" style="clear: both"><a id="concepts-tutorial-create-checks"> </a>2.3. Create Checks</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="concepts-tutorial-create-checks.html#tutorial-create-ping-check">2.3.1. Create a PING Check</a></span></dt><dt><span class="section"><a href="concepts-tutorial-create-checks.html#tutorial-test-check">2.3.2. Test the Check</a></span></dt><dt><span class="section"><a href="concepts-tutorial-create-checks.html#tutorial-create-http-check">2.3.3. Create HTTP Checks</a></span></dt></dl></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="tutorial-create-ping-check"> </a>2.3.1. Create a PING Check</h3></div></div></div><p>Any entity that you create can have a multitude of checks, each monitoring a different
+          aspect of the entity. And since you can monitor many different aspects of a single entity,
+          you'll practice creating several new checks in this exercise. </p><p>First, you'll create a PING check to verify the web server is responding to the
+          following attributes to create the ping check: </p><div class="variablelist"><dl><dt><span class="term"><em class="parameter"><code>label</code></em></span></dt><dd><p>Assigns a meaningful name to the check. In the examples below, we've named the
+                  check "Website check 1". You can choose a different name or use the same
+                  one.</p></dd><dt><span class="term"><em class="parameter"><code>type</code></em></span></dt><dd><p>Specifies the type of check you're creating.</p></dd><dt><span class="term"><em class="parameter"><code>monitoring_zones_poll</code></em></span></dt><dd><p>Specifies the monitoring zones that will launch the check. In this example
+                  we'll use "mzdfw".</p></dd><dt><span class="term"><em class="parameter"><code>timeout</code></em></span></dt><dd><p>Specifies the timeout in seconds for the check. This has to be less than the
+                  period. </p></dd><dt><span class="term"><em class="parameter"><code>period</code></em></span></dt><dd><p>Specifies the period in seconds for the check. This specifies how often Rackspace Cloud Monitoring
+                    <script>
+             $(document).ready(function(){
+               $("a.gloss#collectors").qtip({
+               content: '<strong>collectors:</strong> ',
+               show: {event:'mouseover',delay:500},
+               hide: {event:'mouseout',delay:500, fixed:true},
+               style: { 
+                        width: 200,
+                        padding: 5,
+                        background: '#FFFFCC',
+                        color: 'black',
+                        textAlign: 'left',
+                        border: {
+                                    width: 1,
+                                    radius: 4,
+                                    color: '#EEEEBB'
+                        },
+                        tip: true,
+                        name: 'cream' // Inherit the rest of the attributes from the preset cream style
+                },
+                position: {
+                    corner: {
+                            target: 'topMiddle',
+                            tooltip: 'bottomLeft'
+                    }
+                }
+               });
+             });
+             </script><a class="gloss" href="#" id="collectors">collectors</a> run this check. </p></dd><dt><span class="term"><em class="parameter"><code>target_alias</code></em></span></dt><dd><p> Resolves the check to an IP address. </p></dd></dl></div><div class="example"><a id="d6e372"> </a><p class="title"><strong>Example 2.11. Create a PING Check using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i \
+--data-binary \
+'{ "details" : {  },
+  "label" : "Website check 1",
+  "monitoring_zones_poll" : [ "mzdfw" ],
+  "period" : "60",
+  "target_alias" : "default",
+  "timeout" : 30,
+  "type" : "remote.ping"
+}' \
+-H "X-Auth-Token: auth_token" \
+-H "Content-Type: application/json" \
+-H "Accept: application/json" \
+'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/checks' </pre></div></div><br class="example-break"/><div class="example"><a id="d6e375"> </a><p class="title"><strong>Example 2.12. Create Ping Check cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
+Date: Fri, 24 Feb 2012 06:28:51 GMT
+Location: https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/checks/chyYWNw59I
+X-RateLimit-Limit: 50000
+X-RateLimit-Remaining: 49969
+X-RateLimit-Window: 24 hours
+X-RateLimit-Type: global
+X-Response-Id: .rh-9pAY.h-lon3-maas-prod-api1.r-2ruPuxLu.c-99739.ts-1330064931513.v-c576983
+X-LB: lon3-maas-prod-api1
+Content-Length: 0
+Content-Type: text/plain
+</pre></div></div><br class="example-break"/><p>If the check is successfully created, the endpoint returns a response code of
+            <span class="returnvalue">201</span> and a <code class="code">Location:</code> Header containing the URL of
+          the check. In this example, the check id is chyYWNw59I, but yours will be
+          different.</p><p>If an error message is returned, the monitoring system was unable to create the check.
+          For information about errors, see the <a class="link" href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/general-api-info-api-faults.html" target="_top">Rackspace Cloud Monitoring Developers Guide</a>.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Checks <span class="emphasis"><em>always</em></span> have a parent entity associated with them.
+            Therefore all URLs are contained underneath the check URL. For example, if the ID of the
+            entity we created earlier is enn14Ch5mc, then the URLs would be underneath
+            https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/.</p></td></tr></table></div><div class="example"><a id="d6e386"> </a><p class="title"><strong>Example 2.13. Create a PING Check using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-checks-create --entity-id=enn14Ch5mc --type=remote.ping --label="Website check 1" --monitoring-zones=mzdfw --timeout=30 --period=60 --target-alias=default</pre></div></div><br class="example-break"/><div class="example"><a id="d6e389"> </a><p class="title"><strong>Example 2.14. Create a PING Check raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource created. ID: chyYWNw59I
+</pre></div></div><br class="example-break"/><p><a class="link" href="concepts-tutorial-create-checks.html#tutorial-test-check" title="2.3.2. Test the Check"><span class="bold"><strong>NEXT UP:</strong></span></a>  Test the new check to make sure it works. </p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="tutorial-test-check"> </a>2.3.2. Test the Check</h3></div></div></div><p>Testing the check runs the check once and lists the check's metrics. This is an easy
+          way to verify and view your metrics. Later, you can use the test check output to help you
+          build alarms.</p><div class="example"><a id="d6e398"> </a><p class="title"><strong>Example 2.15. Create Test Check Request using cURL </strong></p><div class="example-contents"><pre class="programlisting">curl -i \
+--data-binary \
+'{ "details" : {  },
+  "label" : "Website check 1",
+  "monitoring_zones_poll" : [ "mzdfw" ],
+  "period" : "60",
+  "target_alias" : "default",
+  "timeout" : 30,
+  "type" : "remote.ping"
+}' \
+-H 'X-Auth-Token: auth_code' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/test-check/' </pre></div></div><br class="example-break"/><div class="example"><a id="d6e401"> </a><p class="title"><strong>Example 2.16. Create Test Check cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 200 OK
+X-Ratelimit-Remaining: 497
+X-Response-Id: .rh-VE2m.h-lon3-maas-prod-api0.r-pm6oiwjm.c-37726.ts-1329263604920.v-3aec925
+Transfer-Encoding: chunked
+Vary: Accept-Encoding
+X-Lb: lon3-maas-prod-api1
+X-Ratelimit-Type: test_check
+X-Ratelimit-Limit: 500
+Date: Tue, 14 Feb 2012 23:53:24 GMT
+X-Ratelimit-Window: 24 hours
+Content-Type: application/json; charset=UTF-8
+
+[
+    {
+        "timestamp": 1329263613579,
+        "monitoring_zone_id": "mzdfw",
+        "available": true,
+        "status": "cnt=5,avail=100,min=0.0018,max=0.0020,avg=0.0019",
+        "metrics": {
+            "minimum": {
+                "type": "n",
+                "data": "1.808000029996e-03"
+            },
+            "available": {
+                "type": "n",
+                "data": "1.000000000000e+02"
+            },
+            "maximum": {
+                "type": "n",
+                "data": "1.990000018850e-03"
+            },
+            "count": {
+                "type": "i",
+                "data": "5"
+            },
+            "average": {
+                "type": "n",
+                "data": "1.866600010544e-03"
+            }
+        }
+    }
+]</pre></div></div><br class="example-break"/><div class="example"><a id="d6e404"> </a><p class="title"><strong>Example 2.17. Test Check Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-checks-test --entity-id=enn14Ch5mc --type=remote.ping --monitoring-zones=mzdfw --timeout=30 --period=60 --target-alias=default</pre></div></div><br class="example-break"/><div class="example"><a id="d6e407"> </a><p class="title"><strong>Example 2.18. Test Check raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">[{u'available': True, u'timestamp': 1329334696399, 
+u'monitoring_zone_id': u'mzdfw', 
+u'status': u'cnt=5,avail=100,min=0.0018,max=0.0020,avg=0.0019', 
+u'metrics': {u'count': {u'data': u'5', u'type': u'i'}, 
+u'available': {u'data': u'1.000000000000e+02', u'type': u'n'}, 
+u'average': {u'data': u'1.874800003134e-03', u'type': u'n'}, 
+u'minimum': {u'data': u'1.803999999538e-03', u'type': u'n'}, 
+u'maximum': {u'data': u'2.022000029683e-03', u'type': u'n'}}}]</pre></div></div><br class="example-break"/><p><a class="link" href="concepts-tutorial-create-checks.html" title="2.3. Create Checks"><span class="bold"><strong>NEXT
+              UP:</strong></span></a> A PING check doesn't tell you if your web server is running, it
+          only tells you that the server is up. So, let's create an HTTP check to monitor the
+          website directly. </p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="tutorial-create-http-check"> </a>2.3.3. Create HTTP Checks</h3></div></div></div><p>The HTTP check attempts to retrieve the given URL from the server's IP address. Since
+          an HTTP server might host pages for multiple, different domain names on a single IP
+          address, the check needs a full URL to know which server name and which URL to examine.
+          Likewise, a heavy traffic site might have multiple HTTP servers for the same domain name.
+          The HTTP check lets you monitor each individual web server.</p><div class="example"><a id="d6e416"> </a><p class="title"><strong>Example 2.19. Create HTTP Check Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X POST \
+--data-binary \
+{ "details" : { "body" : "foo",
+      "method" : "GET",
+      "url" : "www.examples.org"
+    },
+  "label" : "Website check 1",
+  "monitoring_zones_poll" : [ "mzdfw" ],
+  "period" : "60",
+  "target_alias" : "default",
+  "type" : "remote.http"
+} \
+-H 'X-Auth-Token: auth_token' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/checks'
+
+</pre></div></div><br class="example-break"/><div class="example"><a id="d6e419"> </a><p class="title"><strong>Example 2.20. Create HTTP Check cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
+X-Ratelimit-Remaining: 49960
+X-Response-Id: .rh-vgB4.h-ord1-maas-prod-api1.r-W0REfAoy.c-2650.ts-1329337042872.v-b9d7626
+Content-Length: 0
+X-Lb: ord1-maas-prod-api0
+X-Ratelimit-Type: global
+X-Ratelimit-Limit: 50000
+Location: https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/checks/chTTslRf7v
+Date: Wed, 15 Feb 2012 20:17:22 GMT
+X-Ratelimit-Window: 24 hours
+Content-Type: text/plain
+
+</pre></div></div><br class="example-break"/><div class="example"><a id="d6e422"> </a><p class="title"><strong>Example 2.21. Create HTTP Check Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-checks-create --entity-id=enn14Ch5mc --type=remote.http --label="Website check 1" --monitoring-zones=mzdfw --details=url=www.examples.org,body=foo,method=GET timeout=30 --period=60 --target-alias=default</pre></div></div><br class="example-break"/><div class="example"><a id="d6e425"> </a><p class="title"><strong>Example 2.22. Create HTTP Check raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource created. ID: chTTslRf7v
+</pre></div></div><br class="example-break"/><p><span class="bold"><strong>NEXT UP:</strong></span> Now let's configure a second HTTP check to
+          monitor a <span class="italic">different</span> page on the web server. </p><div class="example"><a id="d6e431"> </a><p class="title"><strong>Example 2.23. Create a Second HTTP Check Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X POST \
+--data-binary \
+'{ "details" : { "body" : "foo",
+      "method" : "GET",
+      "url" : "www.examples.org/test/"
+    },
+  "label" : "RemoteHTTP for Test page",
+  "monitoring_zones_poll" : [ "mzdfw" ],
+  "period" : "60",
+  "target_alias" : "default",
+  "timeout" : "30",
+  "type" : "remote.http"
+}' \
+-H 'X-Auth-Token: auth_token' \
+-H "Content-Type: application/json" \
+-H 'Accept: application/json' \
+'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/checks</pre></div></div><br class="example-break"/><div class="example"><a id="d6e434"> </a><p class="title"><strong>Example 2.24. Create a Second HTTP Check cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
+X-Ratelimit-Remaining: 49957
+X-Response-Id: .rh-pBYi.h-lon3-maas-prod-api0.r-5VLDWtbw.c-4363.ts-1329346442692.v-b9d7626
+Content-Length: 0
+X-Lb: lon3-maas-prod-api0
+X-Ratelimit-Type: global
+X-Ratelimit-Limit: 50000
+Location: https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/checks/ch4ccHWyyI
+Date: Wed, 15 Feb 2012 22:54:02 GMT
+X-Ratelimit-Window: 24 hours
+Content-Type: text/plain
+</pre></div></div><br class="example-break"/><div class="example"><a id="d6e437"> </a><p class="title"><strong>Example 2.25. Create a Second HTTP Check Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-checks-create --entity-id=enn14Ch5mc --type=remote.http --label="RemoteHTTP for Test page" --monitoring-zones=mzdfw --details=url=www.examples.org/test/,body=foo,method=GET --timeout=30 --period=60 --target-alias=default</pre></div></div><br class="example-break"/><div class="example"><a id="d6e440"> </a><p class="title"><strong>Example 2.26. Create a Second HTTP Check raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource created. ID: ch4ccHWyyI</pre></div></div><br class="example-break"/><p><a class="link" href="tutorial-list-all-checks.html" title="2.4. List All Checks for the Entity"><span class="bold"><strong>NEXT UP:
+            </strong></span></a>Get a list of the checks you've created for your entity.</p></div></div><script type="text/javascript" src="../common/main.js"><!----></script><hr/><div id="disqus_thread"><script type="text/javascript">
+	      var disqus_shortname = 'rc-api-docs';
+	      
+	      var disqus_identifier = 'cm-getting-startedconcepts-tutorial-create-checks';
+	      </script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><script type="text/javascript" src="../common/comments.js"><!----></script></div><hr/><div class="legal"><a href="index.html">Legal notices</a></div></div><div><div id="leftnavigation" style="padding-top:3px; background-color:white;"><div id="tabs"><ul><li><a href="#treeDiv" tabindex="1"><span class="contentsTab">Contents</span></a></li><li><a href="#searchDiv" tabindex="1"><span class="searchTab">Search</span></a></li></ul><div id="treeDiv"><img src="../common/images/loading.gif" alt="loading table of contents..." id="tocLoading" style="display:block;"/><div id="ulTreeDiv" style="display:none" class="thisisthat"><ul id="tree" class="filetree"><li tabindex="2"><span class="file"><a href="Introduction.html">1. Introduction</a></span><ul><li tabindex="2"><span class="file"><a href="how-it-works.html">1.1. How Rackspace Cloud Monitoring Works</a></span></li><li tabindex="2"><span class="file"><a href="pre-reqs.html">1.2. Prerequisites</a></span></li><li tabindex="2"><span class="file"><a href="endpoint-access.html">1.3. Accessing the API</a></span></li><li tabindex="2"><span class="file"><a href="Authentication.html">1.4. Authentication</a></span><ul><li tabindex="2"><span class="file"><a href="Authentication.html#auth-endpoint">1.4.1. The Authentication Endpoint</a></span></li><li tabindex="2"><span class="file"><a href="Authentication.html#finding-key">1.4.2. The Authentication Process</a></span></li><li tabindex="2"><span class="file"><a href="Authentication.html#example-auth">1.4.3. Example Authentication</a></span></li><li tabindex="2"><span class="file"><a href="Authentication.html#auth-response-description">1.4.4. Authentication Response Description</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="working-with-tutorial.html">1.5. Working with the Exercises in this Guide</a></span><ul><li tabindex="2"><span class="file"><a href="curl.html">1.5.1. Using cURL</a></span><ul><li tabindex="2"><span class="file"><a href="curl-copying-examples.html">1.5.1.1. Copying Request Examples</a></span></li><li tabindex="2"><span class="file"><a href="curl-escaping-returns.html">1.5.1.2. Escaping Carriage Returns</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="using-raxmon.html">1.5.2. Using the raxmon Command Line Interface</a></span></li></ul></li></ul></li><li tabindex="2"><span class="file"><a href="tutorials.html">2. Create Your First Monitor</a></span><ul><li tabindex="2"><span class="file"><a href="concepts-tutorial-create-entity.html">2.1. Create an Entity</a></span></li><li tabindex="2"><span class="file"><a href="concepts-tutorial-monitoring-zones.html">2.2. List Monitoring Zones</a></span></li><li tabindex="2" id="webhelp-currentid"><span class="file"><a href="concepts-tutorial-create-checks.html">2.3. Create Checks</a></span><ul><li tabindex="2"><span class="file"><a href="concepts-tutorial-create-checks.html#tutorial-create-ping-check">2.3.1. Create a PING Check</a></span></li><li tabindex="2"><span class="file"><a href="concepts-tutorial-create-checks.html#tutorial-test-check">2.3.2. Test the Check</a></span></li><li tabindex="2"><span class="file"><a href="concepts-tutorial-create-checks.html#tutorial-create-http-check">2.3.3. Create HTTP Checks</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="tutorial-list-all-checks.html">2.4. List All Checks for the Entity</a></span></li><li tabindex="2"><span class="file"><a href="concepts-tutorial-setup-notifications.html">2.5. Set Up Notifications</a></span><ul><li tabindex="2"><span class="file"><a href="concepts-tutorial-setup-notifications.html#create-notification-plan">2.5.1. Create a Notification Plan</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="concepts-tutorial-create-alarm.html">2.6. Create an Alarm</a></span></li><li tabindex="2"><span class="file"><a href="concepts-tutorial-modify-entity.html">2.7. Modify an Entity</a></span></li><li tabindex="2"><span class="file"><a href="concepts-tutorial-delete-entity.html">2.8. Delete an Entity</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="additional-resources.html">3. Additional Resources</a></span><ul><li tabindex="2"><span class="file"><a href="additional-resources.html#resources-monitoring-docs">3.1. More on Monitoring </a></span></li><li tabindex="2"><span class="file"><a href="additional-resources.html#resources-talk">3.2. Talk to Us</a></span></li><li tabindex="2"><span class="file"><a href="additional-resources.html#resouces-talk">3.3. More From Rackspace</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="rs_glossary.html">Glossary</a></span></li></ul></div></div><div id="searchDiv"><div id="search"><form onsubmit="Verifie(ditaSearch_Form);return false" name="ditaSearch_Form" class="searchForm"><fieldset class="searchFieldSet"><legend>Search</legend><center><input id="textToSearch" name="textToSearch" type="text" class="searchText"/> &nbsp; <input onclick="Verifie(ditaSearch_Form)" type="button" class="searchButton" value="Go" id="doSearch"/></center></fieldset></form></div><div id="searchResults"><center/></div><p class="searchHighlight"><a href="#" onclick="toggleHighlight()">Search Highlighter (On/Off)</a></p></div></div></div></div><script type="text/javascript" src="../common/jquery/jquery.qtip-1.0.0-rc3/jquery.qtip-1.0.0-rc3.min.js"><!--jQuery plugin for glossary popups. -->
+                   $('a[title]').qtip({ style: { name: 'cream', tip: true } })
+                </script></body></html>

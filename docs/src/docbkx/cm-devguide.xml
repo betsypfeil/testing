@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book[<!-- Some useful entities borrowed from HTML -->
+  <!ENTITY ndash  "&#x2013;">
+  <!ENTITY mdash  "&#x2014;">
+  <!ENTITY hellip "&#x2026;">
+
+  <!-- Useful for describing APIs -->
+  <!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+  <!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+  <!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+  <!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+
+
+  <!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+         <imageobject>
+          <imagedata fileref="img/Check_mark_23x20_02.svg"
+               format="SVG" scale="60"/>
+        </imageobject>
+        </inlinemediaobject>'>
+  <!ENTITY CODES       'Normal Response Code(s):'>
+  <!ENTITY ERROR_CODES 'Error Response Code(s):'>
+  <!ENTITY NO_REQUEST '<para xmlns="http://docbook.org/ns/docbook">
+              This operation does not require a request body.</para>'>
+  <!ENTITY LONG_URI_REFHEAD '
+      <thead xmlns="http://docbook.org/ns/docbook">
+      <tr>
+        <td colspan="1">Verb</td>
+        <td colspan="4">URI</td>
+        <td colspan="3">Description</td>
+      </tr>
+      </thead>'>
+  <!ENTITY URI_REFHEAD '
+      <thead xmlns="http://docbook.org/ns/docbook">
+      <tr>
+        <td colspan="1">Verb</td>
+        <td colspan="1">URI</td>
+        <td colspan="4">Description</td>
+      </tr>
+      </thead>'>
+<!ENTITY MAAS 'Rackspace Cloud Monitoring'>
+]>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:html="http://www.w3.org/1999/xhtml" version="5.0" xml:id="monitoring-developer-guide">
+  <?rax  pdf.url="../../../cm-devguide-latest.pdf" canonical.url.base="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content"?> 
+  <title>Rackspace Cloud Monitoring Developer Guide</title>
+  <info>
+  <author>
+    <personname>
+    <firstname/>
+    <surname/>
+    </personname>
+    <affiliation>
+        <orgname>Rackspace Cloud</orgname>
+      </affiliation>
+  </author>
+  <copyright>
+    <year>2011</year>
+    <year>2012</year>
+    <holder>Rackspace</holder>
+  </copyright>
+  <releaseinfo>API v1.4</releaseinfo>
+  <productname>Rackspace Cloud Monitoring</productname>
+  <pubdate>2012-08-22</pubdate>
+    <revhistory>
+      <revision>
+        <date>2012-08-22</date>
+        <revdescription>
+          <para>Unlimited Availability</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2012-08-08</date>
+        <revdescription>
+          <para>Fixed broken link.</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2012-06-17</date>
+        <revdescription>
+          <para>Miscellaneous updates.</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2012-03-28</date>
+        <revdescription>
+          <para>EAP</para>
+        </revdescription>
+      </revision>
+    </revhistory>
+    <legalnotice role="rs-api">
+      <annotation>
+        <remark>Copyright details are filled in by the template.</remark>
+      </annotation>
+    </legalnotice>
+  <abstract>
+    <para>This document is intended for software developers interested in developing applications
+        using the Rackspace Cloud Monitoring Application Programming Interface (<abbrev>API</abbrev>). </para>
+  </abstract>
+  </info>
+  <include xmlns="http://www.w3.org/2001/XInclude" href="Overview.xml"/>
+  <include xmlns="http://www.w3.org/2001/XInclude" href="Concepts.xml"/>
+  <include xmlns="http://www.w3.org/2001/XInclude" href="GeneralAPIInformation.xml"/>
+  <include xmlns="http://www.w3.org/2001/XInclude" href="ServiceAPIOperations.xml"/>
+  <include xmlns="http://www.w3.org/2001/XInclude" href="AgentAPIOperations.xml"/>
+  <include xmlns="http://www.w3.org/2001/XInclude" href="ManagementAPIOperations.xml" />
+  <include xmlns="http://www.w3.org/2001/XInclude" href="AlertsLanguage.xml"/>
+  <include xmlns="http://www.w3.org/2001/XInclude" href="ClientLibrariesAndTools.xml"/>
+  <include xmlns="http://www.w3.org/2001/XInclude" href="Appendix.xml"/>
+  <include xmlns="http://www.w3.org/2001/XInclude" href="glossary.xml"/>
+  
+  
+</book>

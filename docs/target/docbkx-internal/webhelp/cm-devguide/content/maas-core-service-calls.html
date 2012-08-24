@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:exsl="http://exslt.org/common" xmlns:ng="http://docbook.org/docbook-ng" xmlns:fb="http://ogp.me/ns/fb#"><head>
+<meta http-equiv="X-UA-Compatible" content="IE=7"/>
+<title>4.1. Core Quick Reference - Rackspace Cloud Monitoring Developer Guide
+   - API v1.4</title><meta name="generator" content="DocBook XSL-NS Stylesheets V1.76.1"/><link rel="home" href="index.html" title="Rackspace Cloud Monitoring Developer Guide"/><link rel="up" href="service-api-operations.html" title="Chapter 4. Service API Operations"/><link rel="prev" href="service-api-operations.html" title="Chapter 4. Service API Operations"/><link rel="next" href="maas-core-agents-service-calls.html" title="4.2. Agent Quick Reference"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script type="text/javascript">
+            //The id for tree cookie
+            var treeCookieId = "treeview-10217";
+            var language = "en";
+            var w = new Object();
+            //Localization
+            txt_filesfound = 'Results';
+            txt_enter_at_least_1_char = "You must enter at least one character.";
+            txt_browser_not_supported = "Your browser is not supported. Use of Mozilla Firefox is recommended.";
+            txt_please_wait = "Please wait. Search in progress...";
+            txt_results_for = "Results for: ";
+        </script><style type="text/css">
+            input {
+            margin-bottom: 5px;
+            margin-top: 2px;
+            }
+
+            .folder {
+            display: block;
+            height: 22px;
+            padding-left: 20px;
+            background: transparent url(../common/jquery/treeview/images/folder.gif) 0 0px no-repeat;
+            }
+            
+        </style><link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/><link rel="stylesheet" type="text/css" href="../common/css/positioning.css"/><link rel="stylesheet" type="text/css" href="../common/css/custom.css"/><link href="../atom.xml" type="application/atom+xml" rel="alternate" title="Document ATOM Feed"/><link rel="canonical" href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/maas-core-service-calls.html"/><!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="../common/css/ie.css"/>
+	<![endif]--><link rel="stylesheet" type="text/css" href="../common/jquery/theme-redmond/jquery-ui-1.8.2.custom.css"/><link rel="stylesheet" type="text/css" href="../common/jquery/treeview/jquery.treeview.css"/><script type="text/javascript" src="../common/jquery/jquery-1.4.3.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery-ui-1.8.2.custom.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery.cookie.js"><!----></script><script type="text/javascript" src="../common/jquery/treeview/jquery.treeview.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery.qtip-1.0.0-rc3/jquery.qtip-1.0.0-rc3.min.js"><!--jQuery plugin for glossary popups. --></script><script type="text/javascript" src="search/htmlFileList.js"><!----></script><script type="text/javascript" src="search/htmlFileInfoList.js"><!----></script><script type="text/javascript" src="search/nwSearchFnt.js"><!----></script><script type="text/javascript" src="search/stemmers/en_stemmer.js"><!--//make this scalable to other languages as well.--></script><script type="text/javascript" src="search/index-1.js"><!----></script><script type="text/javascript" src="search/index-2.js"><!----></script><script type="text/javascript" src="search/index-3.js"><!----></script><script type="text/javascript">
+	    var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-23102455-4']);
+	  </script><script type="text/javascript" src="../common/ga.js"><!----></script><script type="text/javascript" src="http://www.tabpress.com/_js/ga_social_tracking.js"><!----></script><script>
+	    (function(){var twitterWidgets = document.createElement('script');
+        twitterWidgets.type = 'text/javascript';
+        twitterWidgets.async = true;
+        twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+        // Setup a callback to track once the script loads.
+        twitterWidgets.onload = _ga.trackTwitter;
+        document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+        })();
+      </script></head><body><div id="header"><a onclick="_gaq.push(['_trackEvent', 'Header', 'logo', 'click', 1]);" target="_blank" href="http://www.rackspace.com"><img src="../common/images/rackspace-logo.png" alt="Rackspace Documentation" width="157" height="47"/></a><h1>4.1. Core Quick Reference</h1><div id="navheader" align="right"><!----><table class="navLinks"><tr><td><a id="showHideButton" onclick="showHideToc(); _gaq.push(['_trackEvent', 'Header', 'show/hide', 'click', 1]);" class="pointLeft" title="Hide TOC tree">Sidebar
+                            </a></td><td><a accesskey="p" class="navLinkPrevious" onclick="_gaq.push(['_trackEvent', 'Header', 'prevLink', 'click', 1]);" tabindex="5" href="service-api-operations.html">Prev</a>
+				      |
+                                        <a accesskey="u" class="navLinkUp" onclick="_gaq.push(['_trackEvent', 'Header', 'upLink', 'click', 1]);" tabindex="5" href="service-api-operations.html">Up</a>
+				  |
+                                    <a accesskey="n" class="navLinkNext" onclick="_gaq.push(['_trackEvent', 'Header', 'nextLink', 'click', 1]);" tabindex="5" href="maas-core-agents-service-calls.html">Next</a></td></tr></table></div></div><div id="toolbar" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all"><div id="toolbar-left"><p class="breadcrumbs"><a href="http://docs.rackspace.com/api/">Rackspace Manuals</a><a href="index.html">Rackspace Cloud Monitoring Developer Guide
+   - API v1.4</a></p><a onclick="_gaq.push(['_trackEvent', 'Header', 'pdfDownload', 'click', 1]);" alt="Download a pdf of this document" class="pdficon" href="../../../cm-devguide-latest.pdf"><img src="../common/images/pdf.png"/></a>
+       
+      <a href="../atom.xml"><img alt="Atom feed of this document" src="../common/images/feed-icon.png"/></a></div></div><div id="content"><div class="statustext">INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL - </div><div class="section"><div xmlns="" class="titlepage"><div><div><h2 xmlns="http://www.w3.org/1999/xhtml" class="title" style="clear: both"><a id="maas-core-service-calls"> </a>4.1. Core Quick Reference</h2></div></div></div><p>The following table lists the core service calls
+      for the Rackspace Cloud Monitoring API:</p><table rules="all" id="d255e626"><thead><tr>
+<td>Verb</td>
+<td>URI</td>
+<td colspan="4">Description</td>
+</tr></thead><tbody><tr>
+          <th align="center" colspan="6"> Account </th>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/limits</td>
+          <td colspan="4">View an account resource and rate limits.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/account</td>
+          <td>Retrieve account attributes.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>PUT</strong></span> </td>
+          <td>/account</td>
+          <td colspan="4">Update specific account attributes.</td>
+        </tr><tr>
+          <th align="center" colspan="6"> Audit </th>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/audits</td>
+          <td colspan="4">Retrieve API operation history for a given
+            period of time (defaults to last seven days). </td>
+        </tr><tr>
+          <th align="center" colspan="6"> Usage </th>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/usage</td>
+          <td colspan="4">Retrieves usage information for a given
+            period of time (defaults to last seven days).</td>
+        </tr><tr>
+          <th align="center" colspan="6"> Entities </th>
+        </tr><tr>
+          <td> <span class="command"><strong>POST</strong></span> </td>
+          <td>/entities</td>
+          <td colspan="4">Create an entity in the system.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/entities</td>
+          <td colspan="4">List all entities associated with your
+            account.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/entities/<em class="replaceable"><code>entityId</code></em></td>
+          <td colspan="4">Examine the entity.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>PUT</strong></span> </td>
+          <td>/entities/<em class="replaceable"><code>entityId</code></em></td>
+          <td colspan="4">Update specific characteristics of an
+            entity.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>DELETE</strong></span> </td>
+          <td>/entities/<em class="replaceable"><code>entityId</code></em></td>
+          <td colspan="4">Delete an entity.</td>
+        </tr><tr>
+          <th align="center" colspan="6">Checks </th>
+        </tr><tr>
+          <td> <span class="command"><strong>POST</strong></span> </td>
+          <td>/entities/<em class="replaceable"><code>entityId</code></em>/checks</td>
+          <td colspan="4">Create a check.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>POST</strong></span> </td>
+          <td>/entities/<em class="replaceable"><code>entityId</code></em>/test-check</td>
+          <td colspan="4">Test a check.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>POST</strong></span> </td>
+          <td>/entities/<em class="replaceable"><code>entityId</code></em>/test-check?debug=true</td>
+          <td colspan="4">Test a check and include extra check type
+            specific debugging information if available.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>POST</strong></span> </td>
+          <td>/entities/<em class="replaceable"><code>entityId</code></em>/checks/<em class="replaceable"><code>checkId</code></em>/test</td>
+          <td colspan="4">Test an existing check.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>POST</strong></span> </td>
+          <td>/entities/<em class="replaceable"><code>entityId</code></em>/checks/<em class="replaceable"><code>checkId</code></em>/test?debug=true</td>
+          <td colspan="4">Test an existing check and include extra check type
+            specific debugging information if available.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/entities/<em class="replaceable"><code>entityId</code></em>/checks</td>
+          <td colspan="4">List all checks associated with your
+            account.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/entities/<em class="replaceable"><code>entityId</code></em>/checks/<em class="replaceable"><code>checkId</code></em></td>
+          <td colspan="4">Get information for a single check.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>PUT</strong></span> </td>
+          <td>/entities/<em class="replaceable"><code>entityId</code></em>/checks/<em class="replaceable"><code>checkId</code></em></td>
+          <td colspan="4">Update specific characteristics of a
+            check.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>DELETE</strong></span> </td>
+          <td>/entities/<em class="replaceable"><code>entityId</code></em>/checks/<em class="replaceable"><code>checkId</code></em></td>
+          <td colspan="4">Delete a check for a specific entity.</td>
+        </tr><tr>
+          <th align="center" colspan="6">Check Types</th>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/check_types</td>
+          <td colspan="4">List all check types associated with your
+            account.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/check_types/<em class="replaceable"><code>checkTypeId</code></em></td>
+          <td colspan="4">Get information for a single check type.</td>
+        </tr><tr>
+          <th align="center" colspan="6">Monitoring Zones</th>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/monitoring_zones</td>
+          <td colspan="4">List all monitoring zones for your
+            account.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/monitoring_zones/<em class="replaceable"><code>monitoringZoneId</code></em></td>
+          <td colspan="4">Get information for a single monitoring zone.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>POST</strong></span> </td>
+          <td>/monitoring_zones/<em class="replaceable"><code>monitoringZoneId</code></em>/traceroute</td>
+          <td colspan="4">Perform a traceroute from a collector in the specified monitoring zones.</td>
+        </tr><tr>
+          <th align="center" colspan="6">Alarms</th>
+        </tr><tr>
+          <td> <span class="command"><strong>POST</strong></span> </td>
+          <td>/entities/<em class="replaceable"><code>entityId</code></em>/alarms</td>
+          <td colspan="4">Create an alarm for a specific entity.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>POST</strong></span> </td>
+          <td>/entities/<em class="replaceable"><code>entityId</code></em>/test-alarm</td>
+          <td colspan="4">Test an alarm.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/entities/<em class="replaceable"><code>entityId</code></em>/alarms</td>
+          <td colspan="4">List all alarms for your account.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/entities/<em class="replaceable"><code>entityId</code></em>/alarms/<em class="replaceable"><code>alarmId</code></em></td>
+          <td colspan="4">Get information for a single alarm.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>PUT</strong></span> </td>
+          <td>/entities/<em class="replaceable"><code>entityId</code></em>/alarms/<em class="replaceable"><code>alarmId</code></em></td>
+          <td colspan="4">Update a specific alarm.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>DELETE</strong></span> </td>
+          <td>/entities/<em class="replaceable"><code>entityId</code></em>/alarms/<em class="replaceable"><code>alarmId</code></em></td>
+          <td colspan="4">Delete an alarm from the specified
+            entity.</td>
+        </tr><tr>
+          <th align="center" colspan="6">Alarm Notification History</th>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/entities/<em class="replaceable"><code>entityId</code></em>/alarms/<em class="replaceable"><code>alarmId</code></em>/notification_history</td>
+          <td colspan="4">Discover which checks this alarm has a notification history for.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/entities/<em class="replaceable"><code>entityId</code></em>/alarms/<em class="replaceable"><code>alarmId</code></em>/notification_history/<em class="replaceable"><code>checkId</code></em></td>
+          <td colspan="4">List the notification history for a specific alarm and check.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/entities/<em class="replaceable"><code>entityId</code></em>/alarms/<em class="replaceable"><code>alarmId</code></em>/notification_history/<em class="replaceable"><code>checkId</code></em>/<em class="replaceable"><code>uuid</code></em></td>
+          <td colspan="4">Retrieve a specific notification history event for this alarm and check.</td>
+        </tr><tr>
+          <th align="center" colspan="6">Notification Plans</th>
+        </tr><tr>
+          <td> <span class="command"><strong>POST</strong></span> </td>
+          <td>/notification_plans</td>
+          <td colspan="4">Create a notification plan.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/notification_plans</td>
+          <td colspan="4">List all notifications plans for your
+            account.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/notification_plans/<em class="replaceable"><code>notificationPlanId</code></em></td>
+          <td colspan="4">Get information for a single notification plan.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>PUT</strong></span> </td>
+          <td>/notification_plans/<em class="replaceable"><code>notificationPlanId</code></em></td>
+          <td colspan="4">Update a specific notification plan.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>DELETE</strong></span> </td>
+          <td>/notification_plans/<em class="replaceable"><code>notificationPlanId</code></em></td>
+          <td colspan="4">Delete a notification plan from the
+            specified entity.</td>
+        </tr><tr>
+          <th align="center" colspan="6">Notifications</th>
+        </tr><tr>
+          <td> <span class="command"><strong>POST</strong></span> </td>
+          <td>/notifications</td>
+          <td colspan="4">Create a notification.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/notifications</td>
+          <td colspan="4">List all notifications for your
+            account.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/notifications/<em class="replaceable"><code>notificationId</code></em></td>
+          <td colspan="4">Get information for a single notification.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>PUT</strong></span> </td>
+          <td>/notifications/<em class="replaceable"><code>notificationId</code></em></td>
+          <td colspan="4">Update a specific notification.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>POST</strong></span> </td>
+          <td>/notifications/<em class="replaceable"><code>notificationId</code></em>/test</td>
+          <td colspan="4">Test an existing notification.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>POST</strong></span> </td>
+          <td>/test-notification</td>
+          <td colspan="4">Test a notification.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>DELETE</strong></span> </td>
+          <td>/notifications/<em class="replaceable"><code>notificationId</code></em></td>
+          <td colspan="4">Delete a notification from the specified
+            notification plan.</td>
+        </tr><tr>
+          <th align="center" colspan="6">Notification Types</th>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/notification_types</td>
+          <td colspan="4">List all notifications for your
+            account.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/notification_types/<em class="replaceable"><code>notificationTypeId</code></em></td>
+          <td colspan="4">Get information for a single notification type.</td>
+        </tr><tr>
+          <th align="center" colspan="6">Changelogs</th>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/changelogs/alarms</td>
+          <td colspan="4">Lists alarm changelogs for this account.</td>
+        </tr><tr>
+          <th align="center" colspan="6">Views</th>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/views/overview</td>
+          <td colspan="4">Return the overview view for this account.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/views/overview?id=<em class="replaceable"><code>entityId</code></em>&amp;id=<em class="replaceable"><code>entityId</code></em></td>
+          <td colspan="4">Return the overview view for this account,
+            filtering returned entities by a list of entity IDs.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/views/overview?uri=<em class="replaceable"><code>URI</code></em>&amp;uri=<em class="replaceable"><code>URI</code></em></td>
+          <td colspan="4">Return the overview view for this account,
+            filtering returned entities by a list of entity URIs.</td>
+        </tr><tr>
+          <th align="center" colspan="6">Changelogs</th>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/changelogs/alarms</td>
+          <td colspan="4">Lists alarm changelogs for this account.</td>
+        </tr><tr>
+          <th align="center" colspan="6">Alarm Examples</th>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/alarm_examples</td>
+          <td colspan="4">Lists examples for alarms.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>GET</strong></span> </td>
+          <td>/alarm_examples/<em class="replaceable"><code>alarmExampleId</code></em></td>
+          <td colspan="4">Get a specific alarm example.</td>
+        </tr><tr>
+          <td> <span class="command"><strong>POST</strong></span> </td>
+          <td>/alarm_examples/<em class="replaceable"><code>alarmExampleId</code></em></td>
+          <td colspan="4">Use template parameters to evaluate alarm examples and return the bound criteria.</td>
+        </tr></tbody></table></div><script type="text/javascript" src="../common/main.js"><!----></script><hr/><script language="JavaScript" src="/comments.php?email=monitoring@RACKSPACE.COM" type="text/javascript"><!----></script><noscript>You must have JavaScript enabled to view and post comments.</noscript><hr/><div class="legal"><a href="index.html">Legal notices</a></div></div><div><div id="leftnavigation" style="padding-top:3px; background-color:white;"><div id="tabs"><ul><li><a href="#treeDiv" tabindex="1"><span class="contentsTab">Contents</span></a></li><li><a href="#searchDiv" tabindex="1"><span class="searchTab">Search</span></a></li></ul><div id="treeDiv"><img src="../common/images/loading.gif" alt="loading table of contents..." id="tocLoading" style="display:block;"/><div id="ulTreeDiv" style="display:none" class="thisisthat"><ul id="tree" class="filetree"><li tabindex="2"><span class="file"><a href="overview.html">1. Overview</a></span><ul><li tabindex="2"><span class="file"><a href="how-it-works.html">1.1. How Rackspace Cloud Monitoring Works</a></span></li><li tabindex="2"><span class="file"><a href="intended-audience.html">1.2. Intended Audience</a></span></li><li tabindex="2"><span class="file"><a href="document-change-history.html">1.3. Document Change History</a></span></li><li tabindex="2"><span class="file"><a href="additional-resources.html">1.4. Additional Resources</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="Concepts.html">2. Concepts</a></span><ul><li tabindex="2"><span class="file"><a href="concepts-key-terms.html">2.1. Monitoring Key Terms and Concepts</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="general-api-information.html">3. General API Information</a></span><ul><li tabindex="2"><span class="file"><a href="general-api-info-authentication.html">3.1. Authentication</a></span><ul><li tabindex="2"><span class="file"><a href="general-api-info-authentication.html#Authenticate-d1e171">3.1.1. Retrieving the Authentication Token</a></span></li><li tabindex="2"><span class="file"><a href="general-api-info-authentication.html#token-expiration">3.1.2. Token Expiration</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="general-api-info-endpoint-access.html">3.2. Endpoint Access</a></span></li><li tabindex="2"><span class="file"><a href="api-request-response-types.html">3.3. Request/Response Types</a></span></li><li tabindex="2"><span class="file"><a href="api-versions.html">3.4. Versions</a></span></li><li tabindex="2"><span class="file"><a href="api-paginated-collections.html">3.5. Paginated Collections</a></span></li><li tabindex="2"><span class="file"><a href="api-time-series-collections.html">3.6. Time Series Collections</a></span></li><li tabindex="2"><span class="file"><a href="general-api-info-audits.html">3.7. Audits</a></span></li><li tabindex="2"><span class="file"><a href="api-rsource-limits.html">3.8. Resource Limits</a></span></li><li tabindex="2"><span class="file"><a href="api-rate-limits.html">3.9. Rate Limits</a></span></li><li tabindex="2"><span class="file"><a href="general-api-info-api-faults.html">3.10. Faults</a></span><ul><li tabindex="2"><span class="file"><a href="general-api-info-api-faults.html#section-faults">3.10.1. Fault and Error Code Descriptions</a></span></li></ul></li></ul></li><li tabindex="2"><span class="file"><a href="service-api-operations.html">4. Service API Operations</a></span><ul><li tabindex="2" id="webhelp-currentid"><span class="file"><a href="maas-core-service-calls.html">4.1. Core Quick Reference</a></span></li><li tabindex="2"><span class="file"><a href="maas-core-agents-service-calls.html">4.2. Agent Quick Reference</a></span></li><li tabindex="2"><span class="file"><a href="service-account.html">4.3. Account</a></span><ul><li tabindex="2"><span class="file"><a href="service-account.html#service-account-summary">4.3.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-account.html#service-account-root">4.3.2. Get Account</a></span></li><li tabindex="2"><span class="file"><a href="service-account.html#service-account-put-account">4.3.3. Update Account</a></span><ul><li tabindex="2"><span class="file"><a href="service-account.html#section-Public_accounts">4.3.3.1. Attributes</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-account.html#service-account-get-limits">4.3.4. Get Limits</a></span></li><li tabindex="2"><span class="file"><a href="service-account.html#service-account-list-audits">4.3.5. List Audits</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-entities.html">4.4. Entities</a></span><ul><li tabindex="2"><span class="file"><a href="service-entities.html#service-entities-summary">4.4.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-entities.html#service-entities-prefix">4.4.2. Hash Prefix</a></span></li><li tabindex="2"><span class="file"><a href="service-entities.html#section-Entities">4.4.3. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-entities.html#service-entities-create">4.4.4. Create Entity</a></span></li><li tabindex="2"><span class="file"><a href="service-entities.html#service-entities-list">4.4.5. List Entities</a></span></li><li tabindex="2"><span class="file"><a href="service-entities.html#service-entities-get">4.4.6. Get Entity</a></span></li><li tabindex="2"><span class="file"><a href="service-entities.html#service-entities-update">4.4.7. Update Entity</a></span></li><li tabindex="2"><span class="file"><a href="service-entities.html#service-entities-delete">4.4.8. Delete Entity</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-checks.html">4.5. Checks</a></span><ul><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-summary">4.5.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-prefix">4.5.2. Hash Prefix</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#section-Checks">4.5.3. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-cupdatehecks-internal-structure">4.5.4. Internal Structure</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-application-of-checks">4.5.5. Application of Checks</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-create">4.5.6. Create Check</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-test">4.5.7. Test Check</a></span><ul><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-test-debug">4.5.7.1. Test Check And Include Debug Information</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-test-existing">4.5.8. Test Existing Check</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-list">4.5.9. List Checks</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-get">4.5.10. Get Check</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-update">4.5.11. Update Checks</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-delete">4.5.12. Delete Checks</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html">4.6. Check Types</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#service-check-types-summary">4.6.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-Check_types">4.6.2. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-available-check-types-and-fields">4.6.3. Available Check Types and Fields</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.dns">4.6.3.1. remote.dns</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-remote.dns">4.6.3.1.1. standard metrics</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.ssh">4.6.3.2. remote.ssh</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-remote.ssh">4.6.3.2.1. standard metrics</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.smtp">4.6.3.3. remote.smtp</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.http">4.6.3.4. remote.http</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-remote.http">4.6.3.4.1. standard metrics</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.tcp">4.6.3.5. remote.tcp</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-remote.tcp">4.6.3.5.1. standard metrics</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.ping">4.6.3.6. remote.ping</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-remote.ping">4.6.3.6.1. standard metrics</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.ftp-banner">4.6.3.7. remote.ftp-banner</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-remote.ftp-banner">4.6.3.7.1. standard metrics</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.imap-banner">4.6.3.8. remote.imap-banner</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.pop3-banner">4.6.3.9. remote.pop3-banner</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.smtp-banner">4.6.3.10. remote.smtp-banner</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-remote.smtp-banner">4.6.3.10.1. standard metrics</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.postgresql-banner">4.6.3.11. remote.postgresql-banner</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.telnet-banner">4.6.3.12. remote.telnet-banner</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.mysql-banner">4.6.3.13. remote.mysql-banner</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.mssql-banner">4.6.3.14. remote.mssql-banner</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#service-check-types-create">4.6.4. Create Check Type</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#service-check-types-list">4.6.5. List Check Types</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#service-check-types-get">4.6.6. Get Check Type</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#service-check-types-update">4.6.7. Update Check Type</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#service-check-types-delete">4.6.8. Delete Check Types</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-alarms.html">4.7. Alarms</a></span><ul><li tabindex="2"><span class="file"><a href="service-alarms.html#service-alarms-summary">4.7.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-alarms.html#service-alarms-prefix">4.7.2. Hash Prefix</a></span></li><li tabindex="2"><span class="file"><a href="service-alarms.html#section-Alarms">4.7.3. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-alarms.html#service-alarms-create">4.7.4. Create Alarm</a></span></li><li tabindex="2"><span class="file"><a href="service-alarms.html#service-alarms-test">4.7.5. Test Alarm</a></span></li><li tabindex="2"><span class="file"><a href="service-alarms.html#service-alarms-list">4.7.6. List Alarms</a></span></li><li tabindex="2"><span class="file"><a href="service-alarms.html#service-alarms-get">4.7.7. Get Alarm</a></span></li><li tabindex="2"><span class="file"><a href="service-alarms.html#service-alarms-update">4.7.8. Update Alarm</a></span></li><li tabindex="2"><span class="file"><a href="service-alarms.html#service-alarms-delete">4.7.9. Delete Alarm</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-notification-plans.html">4.8. Notification Plans</a></span><ul><li tabindex="2"><span class="file"><a href="service-notification-plans.html#service-notification-plans-summary">4.8.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-plans.html#service-notification-plans-prefix">4.8.2. Hash Prefix</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-plans.html#section-Notification_plans">4.8.3. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-plans.html#service-notification-plans-create">4.8.4. Create Notification Plan</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-plans.html#service-notification-plans-list">4.8.5. List Notification Plans</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-plans.html#service-notification-plans-get">4.8.6. Get Notification Plan</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-plans.html#service-notification-plans-update">4.8.7. Update Notification Plans</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-plans.html#service-notification-plans-delete">4.8.8. Delete Notification Plans</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html">4.9. Monitoring Zones</a></span><ul><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#service-monitoring-zones-summary">4.9.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#service-monitoring-zones-prefix">4.9.2. Hash Prefix</a></span></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#section-Monitoring_zones">4.9.3. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#service-monitoring-zones-create">4.9.4. Create Monitoring Zone</a></span></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#service-monitoring-zones-list">4.9.5. List Monitoring Zones</a></span></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#service-monitoring-zones-get">4.9.6. Get Monitoring Zone</a></span></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#service-monitoring-zones-update">4.9.7. Update Monitoring Zone</a></span></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#service-monitoring-zones-delete">4.9.8. Delete Monitoring Zone</a></span></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#service-monitoring-zones-traceroute">4.9.9. Perform a "traceroute" from a Monitoring Zone</a></span><ul><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#section-Traceroute">4.9.9.1. Attributes</a></span></li></ul></li></ul></li><li tabindex="2"><span class="file"><a href="service-alarm-notification-history.html">4.10. Alarm Notification History</a></span><ul><li tabindex="2"><span class="file"><a href="service-alarm-notification-history.html#service-alarm-notification-history-summary">4.10.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-alarm-notification-history.html#service-alarm-notification-history-discover">4.10.2. Discover Alarm Notification History</a></span></li><li tabindex="2"><span class="file"><a href="service-alarm-notification-history.html#service-alarm-notification-history-list">4.10.3. List Alarm Notification History</a></span></li><li tabindex="2"><span class="file"><a href="service-alarm-notification-history.html#service-alarm-notification-history-get">4.10.4. Get Alarm Notification History</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-notifications.html">4.11. Notifications</a></span><ul><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-summary">4.11.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-prefix">4.11.2. Hash Prefix</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#section-Notifications">4.11.3. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-create">4.11.4. Create Notification</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-test-new">4.11.5. Test Notification</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-test-existing">4.11.6. Test Existing Notification</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-list">4.11.7.  List Notifications</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-get">4.11.8. Get Notifications</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-update">4.11.9. Update Notifications</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-delete">4.11.10. Delete Notifications</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html">4.12. Notification Types</a></span><ul><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#service-notification-type-rackspace_managed">4.12.1. Rackspace Managed Notifications</a></span><ul><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#section-rackspace_managed">4.12.1.1. No Attributes</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#service-notification-type-email">4.12.2. Email Notifications</a></span><ul><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#section-Email">4.12.2.1. Attributes</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#service-notification-types-webhook">4.12.3. Webhook Notifications</a></span><ul><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#section-Webhook">4.12.3.1. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#service-notification-payload">4.12.3.2. Notification Payload</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#service-notification-headers">4.12.3.3. Notification Header Contents</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#Service-Notification-Types-create">4.12.4. Create Notification Type</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#Service-Notification-Types-List">4.12.5. List Notification Types</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#Service-Notification-Types-get">4.12.6. Get Notification Type</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#Service-Notification-Type-update">4.12.7. Update Notification Type</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#Service-Notification-Auth-Delete">4.12.8. Delete Notification Type</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-changelogs.html">4.13. Changelogs</a></span><ul><li tabindex="2"><span class="file"><a href="service-changelogs.html#service-changelogs-summary">4.13.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-changelogs.html#service-changelogs-alarms-list">4.13.2. List Alarm Changelogs</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-views.html">4.14. Views</a></span><ul><li tabindex="2"><span class="file"><a href="service-views.html#service-views-overview">4.14.1. Get Overview</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-alarm-examples.html">4.15. Alarm Examples</a></span><ul><li tabindex="2"><span class="file"><a href="service-alarm-examples.html#service-alarm-examples-list">4.15.1. List Alarm Examples</a></span></li><li tabindex="2"><span class="file"><a href="service-alarm-examples.html#service-alarm-examples-get">4.15.2. Get Alarm Example</a></span></li><li tabindex="2"><span class="file"><a href="service-alarm-examples.html#service-alarm-examples-post">4.15.3. Evaluate Alarm Example</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-agent.html">4.16. Agents</a></span><ul><li tabindex="2"><span class="file"><a href="service-agent.html#service-agent.agents">4.16.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-agent.html#service-agent.hp">4.16.2. Hash Prefix</a></span></li><li tabindex="2"><span class="file"><a href="service-agent.html#service-agent-list-agents">4.16.3. List Agents</a></span></li><li tabindex="2"><span class="file"><a href="service-agent.html#service-agent-list-agent">4.16.4. List Agent</a></span></li><li tabindex="2"><span class="file"><a href="service-agent.html#service-agent-list-agent-connections">4.16.5. List Agent Connections</a></span></li><li tabindex="2"><span class="file"><a href="service-agent.html#service-agent-list-agent-connection">4.16.6. List Agent Connection</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-agent-tokens.html">4.17. Agent Token</a></span><ul><li tabindex="2"><span class="file"><a href="service-agent-tokens.html#service-agent-token-summary">4.17.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-agent-tokens.html#service-agent-token-hp">4.17.2. Hash Prefix</a></span></li><li tabindex="2"><span class="file"><a href="service-agent-tokens.html#section-Agent_tokens">4.17.3. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-agent-tokens.html#service-agent-token-create-token">4.17.4. Create Agent Token</a></span></li><li tabindex="2"><span class="file"><a href="service-agent-tokens.html#service-agent-token-list">4.17.5. List Agent Tokens</a></span></li><li tabindex="2"><span class="file"><a href="service-agent-tokens.html#service-agent-token-get">4.17.6. Get Agent Token</a></span></li><li tabindex="2"><span class="file"><a href="service-agent-tokens.html#service-agent-token-update">4.17.7. Update Agent Token</a></span></li><li tabindex="2"><span class="file"><a href="service-agent-tokens.html#service-agent-token-delete">4.17.8. Delete Agent Token</a></span></li></ul></li></ul></li><li tabindex="2"><span class="file"><a href="agent-api-operations.html">5. Agent API Operations</a></span><ul><li tabindex="2"><span class="file"><a href="protocol-overview.html">5.1. Protocol Overview</a></span><ul><li tabindex="2"><span class="file"><a href="protocol-overview.html#protocol-overview-background">5.1.1. Protocol Background</a></span></li><li tabindex="2"><span class="file"><a href="protocol-overview.html#protocol-syntax">5.1.2. Protocol Syntax Example</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="protocol-commands.html">5.2. Protocol Commands</a></span><ul><li tabindex="2"><span class="file"><a href="protocol-commands.html#protocol-commands.handshake">5.2.1. Handshake Commands</a></span><ul><li tabindex="2"><span class="file"><a href="protocol-commands.html#handshake.hello">5.2.1.1. handshake.hello</a></span></li><li tabindex="2"><span class="file"><a href="protocol-commands.html#handshake.accepted">5.2.1.2. handshake.accepted</a></span></li><li tabindex="2"><span class="file"><a href="protocol-commands.html#handshake.ping">5.2.1.3. handshake.ping</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="protocol-commands.html#protocol-commands.agent">5.2.2. Agent Commands</a></span><ul><li tabindex="2"><span class="file"><a href="protocol-commands.html#agent.restart">5.2.2.1. agent.restart</a></span></li><li tabindex="2"><span class="file"><a href="protocol-commands.html#agent.update_version">5.2.2.2. agent.update_version</a></span></li><li tabindex="2"><span class="file"><a href="protocol-commands.html#agent.sysinfo">5.2.2.3. agent.sysinfo</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="protocol-commands.html#protocol-commands.check_schedule">5.2.3. </a></span><ul><li tabindex="2"><span class="file"><a href="protocol-commands.html#check_schedule.get">5.2.3.1. check_schedule.get</a></span></li><li tabindex="2"><span class="file"><a href="protocol-commands.html#check_schedule.changed">5.2.3.2. check_schedule.changed</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="protocol-commands.html#protocol-commands.check">5.2.4. Check Commands</a></span><ul><li tabindex="2"><span class="file"><a href="protocol-commands.html#check.run">5.2.4.1. check.run</a></span></li><li tabindex="2"><span class="file"><a href="protocol-commands.html#check.result">5.2.4.2. check.result</a></span></li></ul></li></ul></li></ul></li><li tabindex="2"><span class="file"><a href="management-api-operations.html">6. Management API Operations</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html">A. Alert Triggering and Alarms</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#alert-flow">A.1. Alert Flow</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-alarm-language">A.2. Alarm Language</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-availability">A.2.1. Check Availability</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-alarm-language-anatomy">A.2.2. Anatomy of a Query</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-alarm-language-limits">A.2.3. Limits and Defaults</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-status-strings">A.2.4. Status Messages</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-alert-policies">A.3. Alert Policies (Consistency Level)</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-alert-policies-one">A.3.1. One</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-alert-policies-quorum">A.3.2. Quorum</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-alert-policies-all">A.3.3. All</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-constructs">A.4. Constructs and Functions</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-constructs-previous">A.4.1. Previous</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-constructs-rate">A.4.2. Rate</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices">A.5. Best Practices on Alerting</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-http">A.5.1. Best Practices for HTTP/S Check</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-http-check-404">A.5.1.1. Check for HTTP 404</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-reverse-body-match">A.5.1.2. Critical on a specific body match</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-error-certificate">A.5.1.3. Critical on certificate expiration</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-port">A.5.2. Best Practices for Port/Banner Checks</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-port-failure-match">A.5.2.1. Failure on banner match</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-dns">A.5.3. Best Practices for DNS Checks</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-dns-1">A.5.3.1. Check for an IP in a DNS query, fail otherwise.</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-ssh">A.5.4. Best Practices for SSH Checks</a></span></li></ul></li></ul></li><li tabindex="2"><span class="file"><a href="appendix-client-libraries-tools.html">B. Client Libraries and Tools</a></span><ul><li tabindex="2"><span class="file"><a href="appendix-client-libraries-tools.html#client-libraries">B.1. Client Libraries</a></span><ul><li tabindex="2"><span class="file"><a href="appendix-client-libraries-tools.html#client-libraries-rackspace-monitoring">B.1.1. Python - "rackspace-monitoring" Library</a></span></li><li tabindex="2"><span class="file"><a href="appendix-client-libraries-tools.html#client-libraries-rackspace-monitoring-rb">B.1.2. Ruby - "rackspace-monitoring" Library</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="appendix-client-libraries-tools.html#client-tools">B.2. Tools (CLI, etc...)</a></span><ul><li tabindex="2"><span class="file"><a href="appendix-client-libraries-tools.html#client-tools-rackspace-monitoring-cli">B.2.1. Command Line Interface - "Raxmon" Tool</a></span></li><li tabindex="2"><span class="file"><a href="appendix-client-libraries-tools.html#client-tools-rackspace-monitoring-chef">B.2.2. Integration - "Cloud Monitoring Cookbook"</a></span></li></ul></li></ul></li><li tabindex="2"><span class="file"><a href="appendix-alarm-dsl-specification.html">C. Alarm DSL Specification</a></span></li><li tabindex="2"><span class="file"><a href="rs_glossary.html">Glossary</a></span></li></ul></div></div><div id="searchDiv"><div id="search"><form onsubmit="Verifie(ditaSearch_Form);return false" name="ditaSearch_Form" class="searchForm"><fieldset class="searchFieldSet"><legend>Search</legend><center><input id="textToSearch" name="textToSearch" type="text" class="searchText"/> &nbsp; <input onclick="Verifie(ditaSearch_Form)" type="button" class="searchButton" value="Go" id="doSearch"/></center></fieldset></form></div><div id="searchResults"><center/></div><p class="searchHighlight"><a href="#" onclick="toggleHighlight()">Search Highlighter (On/Off)</a></p></div></div></div></div><script type="text/javascript" src="../common/jquery/jquery.qtip-1.0.0-rc3/jquery.qtip-1.0.0-rc3.min.js"><!--jQuery plugin for glossary popups. -->
+                   $('a[title]').qtip({ style: { name: 'cream', tip: true } })
+                </script></body></html>

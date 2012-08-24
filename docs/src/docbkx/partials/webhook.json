@@ -1,0 +1,82 @@
+{
+    "event_id": "acOne:enOne:alOne:chOne:1342040250000:WARNING",
+    "log_entry_id": "5f14e5c0-cb9b-11e1-8166-ef8804c534d2",
+    "details": {
+        "target": null,
+        "timestamp": 1342040397340,
+        "metrics": {
+            "tt_firstbyte": {
+                "type": "I",
+                "data": 2
+            },
+            "duration": {
+                "type": "I",
+                "data": 2
+            },
+            "bytes": {
+                "type": "i",
+                "data": 17
+            },
+            "tt_connect": {
+                "type": "I",
+                "data": 0
+            },
+            "code": {
+                "type": "s",
+                "data": "200"
+            }
+        },
+        "state": "WARNING",
+        "status": "warn.",
+        "txn_id": "sometransaction",
+        "collector_address_v4": "127.0.0.1",
+        "collector_address_v6": null
+    },
+    "entity": {
+        "id": "enOne",
+        "label": "entity one",
+        "ip_addresses": {
+            "default": "127.0.0.1"
+        },
+        "metadata": null,
+        "managed": false,
+        "uri": null,
+        "agent_id": null,
+        "created_at": 1342040693248,
+        "updated_at": 1342040693248
+    },
+    "check": {
+        "id": "chOne",
+        "label": "ch a",
+        "type": "remote.http",
+        "details": {
+            "url": "http://www.foo.com",
+            "body": "b",
+            "method": "GET"
+        },
+        "monitoring_zones_poll": [
+            "mzOne"
+        ],
+        "timeout": 60,
+        "period": 150,
+        "target_alias": "default",
+        "target_hostname": "",
+        "target_resolver": "",
+        "disabled": false,
+        "metadata": null,
+        "created_at": 1342040693329,
+        "updated_at": 1342040693329
+    },
+    "alarm": {
+        "id": "alOne",
+        "label": "Alarm 1",
+        "check_type": "remote.http",
+        "check_id": null,
+        "criteria": "if (metric[\"t\"] >= 2.1) { return WARNING } return WARNING",
+        "notification_plan_id": "npOne",
+        "metadata": null,
+        "created_at": 1342040694156,
+        "updated_at": 1342040694156
+    },
+    "tenant_id": "91111"
+}

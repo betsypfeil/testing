@@ -1,0 +1,3 @@
+if (metric['code'] == "404") {
+  return CRITICAL, "Page not found!"
+}

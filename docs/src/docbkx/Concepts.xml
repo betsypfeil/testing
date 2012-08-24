@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter [<!-- Some useful entities borrowed from HTML -->
+<!ENTITY ndash  "&#x2013;">
+<!ENTITY mdash  "&#x2014;">
+<!ENTITY hellip "&#x2026;">
+
+<!-- Useful for describing APIs -->
+<!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+<!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+<!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+<!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+
+
+<!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+<imageobject>
+<imagedata fileref="img/Check_mark_23x20_02.svg"
+format="SVG" scale="60"/>
+</imageobject>
+</inlinemediaobject>'>
+<!ENTITY CODES       'Normal Response Code(s):'>
+<!ENTITY ERROR_CODES 'Error Response Code(s):'>
+<!ENTITY NO_REQUEST '<para xmlns="http://docbook.org/ns/docbook">
+This operation does not require a request body.</para>'>
+<!ENTITY LONG_URI_REFHEAD '
+<thead xmlns="http://docbook.org/ns/docbook">
+<tr>
+<td colspan="1">Verb</td>
+<td colspan="4">URI</td>
+<td colspan="3">Description</td>
+</tr>
+</thead>'>
+<!ENTITY URI_REFHEAD '
+<thead xmlns="http://docbook.org/ns/docbook">
+<tr>
+<td colspan="1">Verb</td>
+<td colspan="1">URI</td>
+<td colspan="4">Description</td>
+</tr>
+</thead>'>
+<!ENTITY MAAS 'Rackspace Cloud Monitoring'>
+<!ENTITY HOST 'monitoring.api.rackspacecloud.com'>
+<!ENTITY URL 'https://&HOST;/v1.0/'>
+]>
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg" version="5.0"
+    xml:id="Concepts">
+    <title>Concepts</title>
+    <section xml:id="concepts-key-terms">
+        <title>Monitoring Key Terms and Concepts</title>
+        <info>
+            <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+	      <raxm:type>concept</raxm:type>
+	      <raxm:product version="v1.0">cm</raxm:product>
+	      <raxm:priority>2</raxm:priority>
+            </raxm:metadata> 
+        </info>
+        <variablelist>
+            <varlistentry xml:id="terminology-entity">
+                <term><emphasis role="bold">Entity</emphasis></term>
+                <listitem>
+                    <para>In &MAAS;, an entity is the object or <emphasis role="italic"
+                            >resource</emphasis> that you want to monitor.  It can be any object or
+                        device that you want to monitor.  It's commonly a web server, but it might
+                        also be a website, a web page or a web service. </para>
+                    <para>When you create an entity, you'll specify characteristics that describe
+                            <emphasis>what</emphasis> you are monitoring. At a minimum you must
+                        specify a name for the entity. The name is a user-friendly label or
+                        description that helps you identify the resource. You can also specify other
+                        attributes of the entity, such the entity's IP address, and any meta data
+                        that you'd like to associate with the entity. </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry xml:id="concepts-check">
+                <term><emphasis role="bold">Check</emphasis></term>
+                <listitem>
+                    <para>Once you've created an entity, you can configure one or more <emphasis
+                            role="italic">checks</emphasis> for it. A check is the foundational
+                        building block of the monitoring system, and is always associated with an
+                        entity. The check specifies the parts or pieces of the entity that you want
+                        to monitor, the monitoring frequency, how many monitoring zones are
+                        launching the check, and so on. Basically it contains the specific details
+                        of how you are monitoring the entity.</para>
+                    <para>You can associate one or more checks with an entity. An entity must have
+                        at least one check, but by creating multiple checks for an entity, you can
+                        monitor several different aspects of a single resource. </para>
+                    <para>For each check you create within the monitoring system, you'll designate a
+                            <emphasis role="italic">check type</emphasis>. The check type tells the
+                        monitoring system which method to use, PING, HTTP, SMTP, and so on, when
+                        investigating the monitored resource. &MAAS; check types are fully described
+                            <link linkend="service-check-types">here</link>. </para>
+                    <para>Note that if something happens to your resource, the check does not
+                        trigger a <link linkend="concepts-notification">notification</link> action.
+                        Instead, notifications are triggered by <link linkend="concepts-alarms"
+                            >alarms</link> that you create separately and associate with the
+                        check.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry xml:id="concepts-monitoring-zone">
+                <term><emphasis role="bold">Monitoring Zones</emphasis></term>
+                <listitem>
+                    <para>When you create a check, you specify which monitoring zone(s) you want to
+                        launch the check from. A monitoring zone is the point of origin or "launch
+                        point" of the check. This concept of a monitoring zone is similar to that of
+                        a datacenter, however in the monitoring system, you can think of it more as
+                        a geographical region. </para>
+                    <para>You can launch checks for a particular entity from multiple monitoring
+                        zones. This allows you to observe the performance of an entity from
+                        different regions of the world. It is also a way to prevent false alarms.
+                        For example, if the check from one monitoring zone reports that an entity is
+                        down, a second or third monitoring zone might report that the entity is up
+                        and running. This gives you a better picture of an entity's overall
+                        health.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry xml:id="concepts-collector">
+                <term><emphasis role="bold">Collectors</emphasis></term>
+                <listitem>
+                    <para>A collector collects data from the monitoring zone and is mapped directly
+                        to an individual machine or a virtual machine. Monitoring zones contain many
+                        collectors, all of which will be within the IP address range listed in the
+                        response. Note that there may also be unallocated IP addresses or unrelated
+                        machines within that IP address range. </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry xml:id="concepts-alarms">
+                <term><emphasis role="bold">Alarms</emphasis></term>
+                <listitem>
+                    <para>An alarm contains a set of rules that determine when the monitoring system
+                        sends a notification. You can create multiple alarms for the different
+                        checks types associated with an entity. For example, if your entity is a web
+                        server that hosts your company's website, you can create one alarm to
+                        monitor the server itself, and another alarm to monitor the website.</para>
+                    <para>The alarms language provides you with scoping parameters that let you
+                        pinpoint the value that will trigger the alarm. The scoping parameters are
+                        inherently flexible, so that you can set up multiple checks to trigger a
+                        single alarm. The alarm language supplies an adaptable triggering system
+                        that makes it easy for you to define different formulas for each alarm that
+                        monitors an entity's uptime. To learn how to use the alarm language to
+                        create robust monitors, see <link linkend="alerts-language">Alert Triggering
+                            and Alarms</link>. </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry xml:id="concepts-notification">
+                <term><emphasis role="bold">Notifications</emphasis></term>
+                <listitem>
+                    <para>A notification is an informational message that you receive from the
+                        monitoring system when an alarm is triggered. You can set up notifications
+                        to alert a single individual or an entire team. &MAAS; currently supports
+                        webhooks and email for sending notifications. </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry xml:id="concepts-notification-plan">
+                <term><emphasis role="bold">Notification Plans</emphasis></term>
+                <listitem>
+                    <para>A notification plan contains a set of notification rules to execute when
+                        an alarm is triggered. A notification plan can contain multiple
+                        notifications for each of the following states: <itemizedlist>
+                            <listitem>
+                                <para>Critical</para>
+                            </listitem>
+                            <listitem>
+                                <para>Warning</para>
+                            </listitem>
+                            <listitem>
+                                <para>Ok</para>
+                            </listitem>
+                        </itemizedlist></para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><emphasis role="bold">Id</emphasis></term>
+                <listitem>
+                    <para>All objects in the monitoring system are identified by a uniquely
+                        generated Id, consisting of a two-character type prefix followed by a string
+                        of alphanumeric characters. You'll use an object's id when you want to
+                        perform certain operations on it. For example, when you want to create a
+                        check and associate it to an entity, you'll need to know the entity's id.
+                    </para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </section>
+    
+</chapter>

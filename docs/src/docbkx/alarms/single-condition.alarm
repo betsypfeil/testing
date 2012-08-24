@@ -1,0 +1,13 @@
+# comment
+# woaha
+:set consistencyLevel=ALL
+:set consecutiveCount=2
+
+# Testing!
+/* More comments */
+
+if (metric['t'] >= 2.1) {
+  return OK
+}
+
+return CRITICAL

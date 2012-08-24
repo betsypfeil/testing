@@ -1,0 +1,22 @@
+# Single quoted strings, text value operator, constant rhs
+if (metric['abcde'] == 'a\bb\f\r\nc\t\'\""\\\/d\u0027e/\u0000\uEEEEꪽ') {
+  return CRITICAL, 'a\bb\f\r\nc\t\'\""\\\/d\u0027e/\u0000\uEEEEꪽ'
+}
+
+# Double quoted strings, text value operator, constant rhs
+if (metric["abcde"] == "a\bb\f\r\nc\t\"\''\\\/d\u0027e/\u0000\uEEEEꪽ") {
+  return CRITICAL, "a\bb\f\r\nc\t\"\''\\\/d\u0027e/\u0000\uEEEEꪽ"
+}
+
+# Single quoted strings, constant string operator
+if (metric['abcde'] regex 'a\bb\f\r\nc\t\'\""\\\/d\u0027e/\u0000\uEEEEꪽ') {
+  return CRITICAL, 'a\bb\f\r\nc\t\'\""\\\/d\u0027e/\u0000\uEEEEꪽ'
+}
+
+# Double quoted strings, constant string operator
+if (metric["abcde"] regex "a\bb\f\r\nc\t\"\''\\\/d\u0027e/\u0000\uEEEEꪽ") {
+  return CRITICAL, "a\bb\f\r\nc\t\"\''\\\/d\u0027e/\u0000\uEEEEꪽ"
+}
+
+# Return outside of a conditional
+return CRITICAL, "a\bb\f\r\nc\t\"\''\\\/d\u0027e/\u0000\uEEEEꪽ"

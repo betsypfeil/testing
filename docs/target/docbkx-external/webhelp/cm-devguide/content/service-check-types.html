@@ -1,0 +1,984 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:exsl="http://exslt.org/common" xmlns:ng="http://docbook.org/docbook-ng" xmlns:fb="http://ogp.me/ns/fb#"><head>
+<meta http-equiv="X-UA-Compatible" content="IE=7"/><link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/><script type="text/javascript" src="scripts/shCore.js"><!----></script><script type="text/javascript">
+               SyntaxHighlighter.config.space = ' ';
+               SyntaxHighlighter.all();
+    </script>
+<title>4.5. Check Types - Rackspace Cloud Monitoring Developer Guide
+   - API v1.4</title><meta name="generator" content="DocBook XSL-NS Stylesheets V1.76.1"/><link rel="home" href="index.html" title="Rackspace Cloud Monitoring Developer Guide"/><link rel="up" href="service-api-operations.html" title="Chapter 4. Service API Operations"/><link rel="prev" href="service-checks.html" title="4.4. Checks"/><link rel="next" href="service-alarms.html" title="4.6. Alarms"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script type="text/javascript">
+            //The id for tree cookie
+            var treeCookieId = "treeview-10217";
+            var language = "en";
+            var w = new Object();
+            //Localization
+            txt_filesfound = 'Results';
+            txt_enter_at_least_1_char = "You must enter at least one character.";
+            txt_browser_not_supported = "Your browser is not supported. Use of Mozilla Firefox is recommended.";
+            txt_please_wait = "Please wait. Search in progress...";
+            txt_results_for = "Results for: ";
+        </script><style type="text/css">
+            input {
+            margin-bottom: 5px;
+            margin-top: 2px;
+            }
+
+            .folder {
+            display: block;
+            height: 22px;
+            padding-left: 20px;
+            background: transparent url(../common/jquery/treeview/images/folder.gif) 0 0px no-repeat;
+            }
+            
+        </style><link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/><link rel="stylesheet" type="text/css" href="../common/css/positioning.css"/><link rel="stylesheet" type="text/css" href="../common/css/custom.css"/><link href="../atom.xml" type="application/atom+xml" rel="alternate" title="Document ATOM Feed"/><link rel="canonical" href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/service-check-types.html"/><!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="../common/css/ie.css"/>
+	<![endif]--><link rel="stylesheet" type="text/css" href="../common/jquery/theme-redmond/jquery-ui-1.8.2.custom.css"/><link rel="stylesheet" type="text/css" href="../common/jquery/treeview/jquery.treeview.css"/><script type="text/javascript" src="../common/jquery/jquery-1.4.3.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery-ui-1.8.2.custom.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery.cookie.js"><!----></script><script type="text/javascript" src="../common/jquery/treeview/jquery.treeview.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery.qtip-1.0.0-rc3/jquery.qtip-1.0.0-rc3.min.js"><!--jQuery plugin for glossary popups. --></script><script type="text/javascript" src="search/htmlFileList.js"><!----></script><script type="text/javascript" src="search/htmlFileInfoList.js"><!----></script><script type="text/javascript" src="search/nwSearchFnt.js"><!----></script><script type="text/javascript" src="search/stemmers/en_stemmer.js"><!--//make this scalable to other languages as well.--></script><script type="text/javascript" src="search/index-1.js"><!----></script><script type="text/javascript" src="search/index-2.js"><!----></script><script type="text/javascript" src="search/index-3.js"><!----></script><script type="text/javascript">
+	    var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-23102455-4']);
+	  </script><script type="text/javascript" src="../common/ga.js"><!----></script><script type="text/javascript" src="http://www.tabpress.com/_js/ga_social_tracking.js"><!----></script><script>
+	    (function(){var twitterWidgets = document.createElement('script');
+        twitterWidgets.type = 'text/javascript';
+        twitterWidgets.async = true;
+        twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+        // Setup a callback to track once the script loads.
+        twitterWidgets.onload = _ga.trackTwitter;
+        document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+        })();
+      </script></head><body><div id="header"><a onclick="_gaq.push(['_trackEvent', 'Header', 'logo', 'click', 1]);" target="_blank" href="http://www.rackspace.com"><img src="../common/images/rackspace-logo.png" alt="Rackspace Documentation" width="157" height="47"/></a><h1>4.5. Check Types</h1><div id="navheader" align="right"><!----><table class="navLinks"><tr><td><a id="showHideButton" onclick="showHideToc(); _gaq.push(['_trackEvent', 'Header', 'show/hide', 'click', 1]);" class="pointLeft" title="Hide TOC tree">Sidebar
+                            </a></td><td><a accesskey="p" class="navLinkPrevious" onclick="_gaq.push(['_trackEvent', 'Header', 'prevLink', 'click', 1]);" tabindex="5" href="service-checks.html">Prev</a>
+				      |
+                                        <a accesskey="u" class="navLinkUp" onclick="_gaq.push(['_trackEvent', 'Header', 'upLink', 'click', 1]);" tabindex="5" href="service-api-operations.html">Up</a>
+				  |
+                                    <a accesskey="n" class="navLinkNext" onclick="_gaq.push(['_trackEvent', 'Header', 'nextLink', 'click', 1]);" tabindex="5" href="service-alarms.html">Next</a></td></tr></table></div></div><div id="toolbar" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all"><div id="toolbar-left"><p class="breadcrumbs"><a href="http://docs.rackspace.com/api/">Rackspace Manuals</a><a href="index.html">Rackspace Cloud Monitoring Developer Guide
+   - API v1.4</a></p><a onclick="_gaq.push(['_trackEvent', 'Header', 'pdfDownload', 'click', 1]);" alt="Download a pdf of this document" class="pdficon" href="../../../cm-devguide-latest.pdf"><img src="../common/images/pdf.png"/></a>
+       
+      <a href="../atom.xml"><img alt="Atom feed of this document" src="../common/images/feed-icon.png"/></a><div id="fb-root"> </div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"><!----></script><script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script><script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script><style>
+.fb_edge_comment_widget {
+    margin-left: -280px;
+}
+.fb-like{vertical-align:text-top;position:absolute;top:.5em;right:311px}
+#gplusone{display:inline;position:absolute;right:410px;top:.5em}
+#rstwitter{vertical-align:text-top;display:inline;position:absolute;right:450px;top:.5em}
+</style><!--[if IE]>
+	<style>
+#gplusone{top:0em}
+#rstwitter{top:-.15em}
+.fb-like{top:-.5em}
+</style><![endif]--><script type="text/javascript">_ga.trackFacebook();</script><div class="fb-like" data-send="false" data-width="50" data-show-faces="false" data-layout="button_count" data-font="arial">   </div><div id="gplusone"><g:plusone xmlns:g="http://www.google.com" size="medium" annotation="none"/></div><div id="rstwitter"><a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out this Rackspace documentation page:" data-lang="en" data-count="none">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div></div></div><div id="content"><div class="statustext"> </div><div class="section"><div xmlns="" class="titlepage"><div><div><h2 xmlns="http://www.w3.org/1999/xhtml" class="title" style="clear: both"><a id="service-check-types"> </a>4.5. Check Types</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="service-check-types.html#service-check-types-summary">4.5.1. Summary</a></span></dt><dt><span class="section"><a href="service-check-types.html#section-Check_types">4.5.2. Attributes</a></span></dt><dt><span class="section"><a href="service-check-types.html#section-available-check-types-and-fields">4.5.3. Available Check Types and Fields</a></span></dt><dt><span class="section"><a href="service-check-types.html#service-check-types-create">4.5.4. Create Check Type</a></span></dt><dt><span class="section"><a href="service-check-types.html#service-check-types-list">4.5.5. List Check Types</a></span></dt><dt><span class="section"><a href="service-check-types.html#service-check-types-get">4.5.6. Get Check Type</a></span></dt><dt><span class="section"><a href="service-check-types.html#service-check-types-update">4.5.7. Update Check Type</a></span></dt><dt><span class="section"><a href="service-check-types.html#service-check-types-delete">4.5.8. Delete Check Types</a></span></dt></dl></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-check-types-summary"> </a>4.5.1. Summary</h3></div></div></div><p>Each check within the Rackspace Cloud Monitoring has a designated check type.
+        The check type instructs the monitoring system how to check
+        the monitored resource. </p><p>
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Users cannot create, update or delete check
+            types.</p></td></tr></table></div><p>
+      </p><p>Check types for commonly encountered web protocols, such
+        as HTTP (remote.http), IMAP (remote.imap-banner) , SMTP
+        (remote.stmp), and DNS (remote.dns) are provided. Monitoring
+        commonly encountered infrastructure servers like MySQL
+        (remote.mysql-banner) and PostgreSQL
+        (remote.postgresql-banner) are also available. Monitoring
+        custom server uptime can be accomplished with the remote.tcp
+        banner check to check for a protocol-defined banner at the
+        beginning of a connection. Gathering metrics from server
+        software to create alerts against can be accomplished using
+        the remote.http check type and the 'extract' attribute to
+        define the format.</p><p>Checks generate metrics that alarms will alert based upon.
+        The metrics generated often times depend on the check's
+        parameters.. for example, using the 'extract' attribute on the
+        remote.http check, however the default metrics will always be
+        present. To determine the exact metrics available, the <a class="link" href="service-checks.html#service-checks-test" title="4.4.4. Test Check">Test Check</a> API is
+        provided</p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-Check_types"> </a>4.5.2. Attributes</h3></div></div></div><table rules="all" id="d254e1786"><thead><tr><td>Name</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
+<td><span class="command"><strong>type</strong></span></td>
+<td>The name of the supported check type.</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>String</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>fields</strong></span></td>
+<td>Check type fields.</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Array [Optional]</p></li></ul></div></td>
+</tr></tbody></table><p>
+</p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-available-check-types-and-fields"> </a>4.5.3. Available Check Types and Fields</h3></div></div></div><div class="toc"><dl><dt><span class="section"><a href="service-check-types.html#section-check-types-remote.dns">4.5.3.1. remote.dns</a></span></dt><dt><span class="section"><a href="service-check-types.html#section-check-types-remote.ssh">4.5.3.2. remote.ssh</a></span></dt><dt><span class="section"><a href="service-check-types.html#section-check-types-remote.smtp">4.5.3.3. remote.smtp</a></span></dt><dt><span class="section"><a href="service-check-types.html#section-check-types-remote.http">4.5.3.4. remote.http</a></span></dt><dt><span class="section"><a href="service-check-types.html#section-check-types-remote.tcp">4.5.3.5. remote.tcp</a></span></dt><dt><span class="section"><a href="service-check-types.html#section-check-types-remote.ping">4.5.3.6. remote.ping</a></span></dt><dt><span class="section"><a href="service-check-types.html#section-check-types-remote.ftp-banner">4.5.3.7. remote.ftp-banner</a></span></dt><dt><span class="section"><a href="service-check-types.html#section-check-types-remote.imap-banner">4.5.3.8. remote.imap-banner</a></span></dt><dt><span class="section"><a href="service-check-types.html#section-check-types-remote.pop3-banner">4.5.3.9. remote.pop3-banner</a></span></dt><dt><span class="section"><a href="service-check-types.html#section-check-types-remote.smtp-banner">4.5.3.10. remote.smtp-banner</a></span></dt><dt><span class="section"><a href="service-check-types.html#section-check-types-remote.postgresql-banner">4.5.3.11. remote.postgresql-banner</a></span></dt><dt><span class="section"><a href="service-check-types.html#section-check-types-remote.telnet-banner">4.5.3.12. remote.telnet-banner</a></span></dt><dt><span class="section"><a href="service-check-types.html#section-check-types-remote.mysql-banner">4.5.3.13. remote.mysql-banner</a></span></dt><dt><span class="section"><a href="service-check-types.html#section-check-types-remote.mssql-banner">4.5.3.14. remote.mssql-banner</a></span></dt></dl></div><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-check-types-remote.dns"> </a>4.5.3.1. remote.dns</h4></div></div></div><div class="toc"><dl><dt><span class="section"><a href="service-check-types.html#section-remote.dns">4.5.3.1.1. standard metrics</a></span></dt></dl></div><table rules="all" id="d254e1815"><thead><tr><td>Field</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
+<td><span class="command"><strong>query</strong></span></td>
+<td>DNS Query</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>String between 1 and 255 characters long</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>record_type</strong></span></td>
+<td>DNS Record Type</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>String matching the regex /^(A|AAAA|TXT|MX|SOA|CNAME|PTR|NS|MB|MD|MF|MG|MR|\|)+$/</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>port</strong></span></td>
+<td>Port number (default: 53)</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Whole number (may be zero padded)</p></li><li class="listitem"><p>Integer between 1-65535 inclusive</p></li></ul></div></td>
+</tr></tbody></table><p>The remote.dns check will run a DNS check against a given target. This check should assist in verifying functionality of a DNS server, for example ensuring that it is publishing the domains you think that it should be publishing.</p><div class="section"><div xmlns="" class="titlepage"><div><div><h5 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-remote.dns"> </a>4.5.3.1.1. standard metrics</h5></div></div></div><table rules="all" id="d254e1854"><thead><tr><td>Metric</td><td>Description</td><td>Type</td></tr></thead><tbody><tr><td><span class="command"><strong>answer</strong></span></td><td>The list of space seperated IP addresses for the specified name resolution. (ex: "74.125.225.80, 74.125.225.81, 74.125.225.82, 74.125.225.83, 74.125.225.84")</td><td>String</td></tr><tr><td><span class="command"><strong>rtt</strong></span></td><td>The roundtrip time to execute a remote.dns check. (ex: 17.814)</td><td>Double</td></tr><tr><td><span class="command"><strong>ttl</strong></span></td><td>The TTL returned by the dns query. (ex: 300)</td><td>Uint32</td></tr></tbody></table><p>
+</p></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-check-types-remote.ssh"> </a>4.5.3.2. remote.ssh</h4></div></div></div><div class="toc"><dl><dt><span class="section"><a href="service-check-types.html#section-remote.ssh">4.5.3.2.1. standard metrics</a></span></dt></dl></div><table rules="all" id="d254e1878"><thead><tr><td>Field</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
+<td><span class="command"><strong>port</strong></span></td>
+<td>Port number (default: 22)</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Whole number (may be zero padded)</p></li><li class="listitem"><p>Integer between 1-65535 inclusive</p></li></ul></div></td>
+</tr></tbody></table><p>The remote.ssh check will attempt to SSH to a target.</p><div class="section"><div xmlns="" class="titlepage"><div><div><h5 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-remote.ssh"> </a>4.5.3.2.1. standard metrics</h5></div></div></div><table rules="all" id="d254e1901"><thead><tr><td>Metric</td><td>Description</td><td>Type</td></tr></thead><tbody><tr><td><span class="command"><strong>duration</strong></span></td><td>The time took to finish executing the check in milliseconds. (ex: 59)</td><td>Uint32</td></tr><tr><td><span class="command"><strong>fingerprint</strong></span></td><td>The ssh fingerprint used to verify identity. (ex: "4ea6a02e7e52469c3274d59f61bf2f14")</td><td>String</td></tr></tbody></table><p>
+</p></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-check-types-remote.smtp"> </a>4.5.3.3. remote.smtp</h4></div></div></div><table rules="all" id="d254e1920"><thead><tr><td>Field</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
+<td><span class="command"><strong>ehlo</strong></span></td>
+<td>EHLO parameter</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>String between 1 and 255 characters long</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>from</strong></span></td>
+<td>From parameter</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>String between 1 and 255 characters long</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>payload</strong></span></td>
+<td>Specifies the payload</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>String between 1 and 1024 characters long</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>port</strong></span></td>
+<td>Port number (default: 25)</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Whole number (may be zero padded)</p></li><li class="listitem"><p>Integer between 1-65535 inclusive</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>starttls</strong></span></td>
+<td>Should the connection be upgraded to TLS/SSL</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Boolean</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>to</strong></span></td>
+<td>To parameter</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>String between 1 and 255 characters long</p></li></ul></div></td>
+</tr></tbody></table><p>The remote.smtp check will attempt to connect to a SMTP mail server, send an email from the 'from' parameter, to the 'to' parameter, with a payload specified by the 'payload' parameter setting the EHLO from host to the value in 'ehlo'</p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-check-types-remote.http"> </a>4.5.3.4. remote.http</h4></div></div></div><div class="toc"><dl><dt><span class="section"><a href="service-check-types.html#section-remote.http">4.5.3.4.1. standard metrics</a></span></dt></dl></div><table rules="all" id="d254e1992"><thead><tr><td>Field</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
+<td><span class="command"><strong>url</strong></span></td>
+<td>Target URL</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>URL</p></li><li class="listitem"><p>String between 1 and 8096 characters long</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>auth_password</strong></span></td>
+<td>Optional auth password</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>String between 1 and 255 characters long</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>auth_user</strong></span></td>
+<td>Optional auth user</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>String between 1 and 255 characters long</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>body</strong></span></td>
+<td>Body match regular expression (body is limited to 100k)</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>String between 1 and 255 characters long</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>body_matches</strong></span></td>
+<td>Body match regular expressions (body is limited to 100k)</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Hash [String,String between 1 and 50 characters long,String matching the regex /^[-_ a-z0-9]+$/i:String,String between 1 and 255 characters long]</p></li><li class="listitem"><p>Array or object with number of items between 0 and 4</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>extract</strong></span></td>
+<td>Regex to capture key/value pairs.</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>String between 1 and 255 characters long</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>follow_redirects</strong></span></td>
+<td>Follow redirects (default: true)</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Boolean</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>headers</strong></span></td>
+<td>Arbitrary headers which are sent with the request.</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Hash [String,String between 1 and 50 characters long:String,String between 1 and 50 characters long]</p></li><li class="listitem"><p>Array or object with number of items between 0 and 10</p></li><li class="listitem"><p>A value which is not one of: content-length, user-agent, host, connection, keep-alive, transfer-encoding, upgrade</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>method</strong></span></td>
+<td>HTTP method (default: GET)</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>String</p></li><li class="listitem"><p>One of (HEAD, GET, POST, PUT, DELETE, INFO)</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>payload</strong></span></td>
+<td>Specify a request body (limited to 1024 characters). If following a redirect, payload will only be sent to first location</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>String between 0 and 1024 characters long</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>ssl</strong></span></td>
+<td>Enable SSL</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Boolean</p></li></ul></div></td>
+</tr></tbody></table><p>The remote.http check will try to connect to the server and retrieve the specified URL using the specified method, optionally with the password and user for authentication, using SSL, and checking the body with a regex.  This can be used to test that a web application running on a server is responding without generating error messages.  It can also test if the SSL certificate is valid and extract metrics from a properly formatted page</p><div class="section"><div xmlns="" class="titlepage"><div><div><h5 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-remote.http"> </a>4.5.3.4.1. standard metrics</h5></div></div></div><table rules="all" id="d254e2121"><thead><tr><td>Metric</td><td>Description</td><td>Type</td></tr></thead><tbody><tr><td><span class="command"><strong>body_match</strong></span></td><td>The string representing the body match specified in a remote.http check. (ex: "&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta http-equiv="content-type" content="text/html; c")</td><td>String</td></tr><tr><td><span class="command"><strong>bytes</strong></span></td><td>The number of bytes returned from a response payload. (ex: 10577)</td><td>Int32</td></tr><tr><td><span class="command"><strong>cert_end</strong></span></td><td>The absolute timestamp in seconds for the certificate expiration.  This is only available performing a check on an HTTPS server. (ex: 1324252799)</td><td>Uint32</td></tr><tr><td><span class="command"><strong>cert_end_in</strong></span></td><td>The relative timestamp in seconds til certification expiration.  This is only available performing a check on an HTTPS server. (ex: 4003810)</td><td>Int32</td></tr><tr><td><span class="command"><strong>cert_error</strong></span></td><td>A string describing a certificate error in our validation.  This is only available performing a check on an HTTPS server. (ex: "certificate not trusted")</td><td>String</td></tr><tr><td><span class="command"><strong>cert_issuer</strong></span></td><td>The issue string for the certificate.  This is only available performing a check on an HTTPS server. (ex: "/C=ZA/O=Thawte Consulting (Pty) Ltd./CN=Thawte SGC CA")</td><td>String</td></tr><tr><td><span class="command"><strong>cert_start</strong></span></td><td>The absolute timestamp of the issue of the certificate.  This is only available performing a check on an HTTPS server. (ex: 1261094400)</td><td>Uint32</td></tr><tr><td><span class="command"><strong>cert_subject</strong></span></td><td>The subject of the certificate.  This is only available performing a check on an HTTPS server. (ex: "/C=US/ST=California/L=Mountain View/O=Google Inc/CN=www.google.com")</td><td>String</td></tr><tr><td><span class="command"><strong>code</strong></span></td><td>The status code returned. (ex: "200")</td><td>String</td></tr><tr><td><span class="command"><strong>duration</strong></span></td><td>The time took to finish executing the check in milliseconds. (ex: 237)</td><td>Uint32</td></tr><tr><td><span class="command"><strong>tt_connect</strong></span></td><td>The time to connect measured in milliseconds. (ex: 50)</td><td>Uint32</td></tr><tr><td><span class="command"><strong>tt_firstbyte</strong></span></td><td>The time to first byte measured in milliseconds. (ex: 237)</td><td>Uint32</td></tr></tbody></table><p>
+</p></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-check-types-remote.tcp"> </a>4.5.3.5. remote.tcp</h4></div></div></div><div class="toc"><dl><dt><span class="section"><a href="service-check-types.html#section-remote.tcp">4.5.3.5.1. standard metrics</a></span></dt></dl></div><table rules="all" id="d254e2190"><thead><tr><td>Field</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
+<td><span class="command"><strong>port</strong></span></td>
+<td>Port number</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Whole number (may be zero padded)</p></li><li class="listitem"><p>Integer between 1-65535 inclusive</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>banner_match</strong></span></td>
+<td>Banner match regex.</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>String</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>body_match</strong></span></td>
+<td>Body match regex. Key/Values are captured when matches are specified within the regex. Note: Maximum body size 1024 bytes.</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>String</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>send_body</strong></span></td>
+<td>Send a body. If a banner is provided the body is sent after the banner is verified.</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>String</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>ssl</strong></span></td>
+<td>Enable SSL</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Boolean</p></li></ul></div></td>
+</tr></tbody></table><p>The remote.tcp check will attempt to connect to a host and port, and optionally issue a banner match to ensure that the service is responding as specified.  This can be used to test services that are not covered by the existing HTTP, SMTP, SSH, MySQL, etc. checks.</p><div class="section"><div xmlns="" class="titlepage"><div><div><h5 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-remote.tcp"> </a>4.5.3.5.1. standard metrics</h5></div></div></div><table rules="all" id="d254e2251"><thead><tr><td>Metric</td><td>Description</td><td>Type</td></tr></thead><tbody><tr><td><span class="command"><strong>banner</strong></span></td><td>The string sent from the server on connect. (ex: "SSH-2.0-OpenSSH_5.3p1 Debian-3ubuntu7
+")</td><td>String</td></tr><tr><td><span class="command"><strong>banner_match</strong></span></td><td>The matched string from the <span class="command"><strong>banner_match</strong></span> regular expression specified during check creation. (ex: "SSH-2.0-OpenSSH_5.3p1 Debian-3ubuntu7
+")</td><td>String</td></tr><tr><td><span class="command"><strong>duration</strong></span></td><td>The time took to finish executing the check in milliseconds. (ex: 10)</td><td>Uint32</td></tr><tr><td><span class="command"><strong>tt_connect</strong></span></td><td>The time to connect measured in milliseconds. (ex: 0)</td><td>Uint32</td></tr><tr><td><span class="command"><strong>tt_firstbyte</strong></span></td><td>The time to first byte measured in milliseconds. (ex: 10)</td><td>Uint32</td></tr></tbody></table><p>
+</p></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-check-types-remote.ping"> </a>4.5.3.6. remote.ping</h4></div></div></div><div class="toc"><dl><dt><span class="section"><a href="service-check-types.html#section-remote.ping">4.5.3.6.1. standard metrics</a></span></dt></dl></div><table rules="all" id="d254e2286"><thead><tr><td>Field</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
+<td><span class="command"><strong>count</strong></span></td>
+<td>Number of pings to send within a single check</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Whole number (may be zero padded)</p></li><li class="listitem"><p>Value (1..50)</p></li></ul></div></td>
+</tr></tbody></table><p>The remote.ping check will attempt to ping a server.</p><div class="section"><div xmlns="" class="titlepage"><div><div><h5 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-remote.ping"> </a>4.5.3.6.1. standard metrics</h5></div></div></div><table rules="all" id="d254e2309"><thead><tr><td>Metric</td><td>Description</td><td>Type</td></tr></thead><tbody><tr><td><span class="command"><strong>available</strong></span></td><td>The whole number representing the percent of pings that returned back for a remote.ping check. (ex: 60)</td><td>Double</td></tr><tr><td><span class="command"><strong>average</strong></span></td><td>The average response time for all ping packets sent out and later retrieved. (ex: 0.0002513333359578)</td><td>Double</td></tr><tr><td><span class="command"><strong>count</strong></span></td><td>The number of ping ping's returned. (ex: 5)</td><td>Int32</td></tr><tr><td><span class="command"><strong>maximum</strong></span></td><td>The maximum roundtrip time of an ICMP packet. (ex: 0.0002770000137389)</td><td>Double</td></tr><tr><td><span class="command"><strong>minimum</strong></span></td><td>The minimum roundtrip time of an ICMP packet. (ex: 0.0002329999988433)</td><td>Double</td></tr></tbody></table><p>
+</p></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-check-types-remote.ftp-banner"> </a>4.5.3.7. remote.ftp-banner</h4></div></div></div><div class="toc"><dl><dt><span class="section"><a href="service-check-types.html#section-remote.ftp-banner">4.5.3.7.1. standard metrics</a></span></dt></dl></div><table rules="all" id="d254e2343"><thead><tr><td>Field</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
+<td><span class="command"><strong>port</strong></span></td>
+<td>Port number (default: 21)</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Whole number (may be zero padded)</p></li><li class="listitem"><p>Integer between 1-65535 inclusive</p></li></ul></div></td>
+</tr></tbody></table><p>The remote.ftp-banner check will attempt to connect to a FTP server and verify that it responds to the connection.</p><div class="section"><div xmlns="" class="titlepage"><div><div><h5 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-remote.ftp-banner"> </a>4.5.3.7.1. standard metrics</h5></div></div></div><table rules="all" id="d254e2366"><thead><tr><td>Metric</td><td>Description</td><td>Type</td></tr></thead><tbody><tr><td><span class="command"><strong>banner</strong></span></td><td>The string sent from the server on connect. (ex: "220-
+")</td><td>String</td></tr><tr><td><span class="command"><strong>banner_match</strong></span></td><td>The matched string from the <span class="command"><strong>banner_match</strong></span> regular expression specified during check creation. (ex: "220-
+")</td><td>String</td></tr><tr><td><span class="command"><strong>duration</strong></span></td><td>The time took to finish executing the check in milliseconds. (ex: 119)</td><td>Uint32</td></tr><tr><td><span class="command"><strong>tt_connect</strong></span></td><td>The time to connect measured in milliseconds. (ex: 59)</td><td>Uint32</td></tr><tr><td><span class="command"><strong>tt_firstbyte</strong></span></td><td>The time to first byte measured in milliseconds. (ex: 119)</td><td>Uint32</td></tr></tbody></table><p>
+</p></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-check-types-remote.imap-banner"> </a>4.5.3.8. remote.imap-banner</h4></div></div></div><table rules="all" id="d254e2401"><thead><tr><td>Field</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
+<td><span class="command"><strong>port</strong></span></td>
+<td>Port number (default: 143)</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Whole number (may be zero padded)</p></li><li class="listitem"><p>Integer between 1-65535 inclusive</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>ssl</strong></span></td>
+<td>Enable SSL</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Boolean</p></li></ul></div></td>
+</tr></tbody></table><p>The remote.imap-banner check will attempt to connect to an IMAP server and verify that it response to the connection</p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-check-types-remote.pop3-banner"> </a>4.5.3.9. remote.pop3-banner</h4></div></div></div><table rules="all" id="d254e2433"><thead><tr><td>Field</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
+<td><span class="command"><strong>port</strong></span></td>
+<td>Port number (default: 110)</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Whole number (may be zero padded)</p></li><li class="listitem"><p>Integer between 1-65535 inclusive</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>ssl</strong></span></td>
+<td>Enable SSL</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Boolean</p></li></ul></div></td>
+</tr></tbody></table><p>The remote.pop3-banner check will attempt to connect to a POP3 mailbox server and verify that it responds to the connection.</p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-check-types-remote.smtp-banner"> </a>4.5.3.10. remote.smtp-banner</h4></div></div></div><div class="toc"><dl><dt><span class="section"><a href="service-check-types.html#section-remote.smtp-banner">4.5.3.10.1. standard metrics</a></span></dt></dl></div><table rules="all" id="d254e2465"><thead><tr><td>Field</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
+<td><span class="command"><strong>port</strong></span></td>
+<td>Port number (default: 25)</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Whole number (may be zero padded)</p></li><li class="listitem"><p>Integer between 1-65535 inclusive</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>ssl</strong></span></td>
+<td>Enable SSL</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Boolean</p></li></ul></div></td>
+</tr></tbody></table><p>The remote.smtp-banner check will attempt to connect to a SMTP mail server and verify that a HELO/EHLO is received.</p><div class="section"><div xmlns="" class="titlepage"><div><div><h5 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-remote.smtp-banner"> </a>4.5.3.10.1. standard metrics</h5></div></div></div><table rules="all" id="d254e2498"><thead><tr><td>Metric</td><td>Description</td><td>Type</td></tr></thead><tbody><tr><td><span class="command"><strong>tt_connect</strong></span></td><td>The time to connect measured in milliseconds. (ex: 34)</td><td>Uint32</td></tr></tbody></table><p>
+</p></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-check-types-remote.postgresql-banner"> </a>4.5.3.11. remote.postgresql-banner</h4></div></div></div><table rules="all" id="d254e2512"><thead><tr><td>Field</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
+<td><span class="command"><strong>port</strong></span></td>
+<td>Port number (default: 5432)</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Whole number (may be zero padded)</p></li><li class="listitem"><p>Integer between 1-65535 inclusive</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>ssl</strong></span></td>
+<td>Enable SSL</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Boolean</p></li></ul></div></td>
+</tr></tbody></table><p>The remote.postgresql-banner check will attempt to connect to a PostgreSQL database server and verify that it is accepting connections.</p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-check-types-remote.telnet-banner"> </a>4.5.3.12. remote.telnet-banner</h4></div></div></div><table rules="all" id="d254e2544"><thead><tr><td>Field</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
+<td><span class="command"><strong>banner_match</strong></span></td>
+<td>Banner to check</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>String between 1 and 255 characters long</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>port</strong></span></td>
+<td>Port number (default: 23)</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Whole number (may be zero padded)</p></li><li class="listitem"><p>Integer between 1-65535 inclusive</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>ssl</strong></span></td>
+<td>Enable SSL</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Boolean</p></li></ul></div></td>
+</tr></tbody></table><p>The remote.telnet-banner check will attempt to connect to a Telnet (or similar protocol) server and verify that an appropriate banner is received.</p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-check-types-remote.mysql-banner"> </a>4.5.3.13. remote.mysql-banner</h4></div></div></div><table rules="all" id="d254e2586"><thead><tr><td>Field</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
+<td><span class="command"><strong>port</strong></span></td>
+<td>Port number (default: 3306)</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Whole number (may be zero padded)</p></li><li class="listitem"><p>Integer between 1-65535 inclusive</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>ssl</strong></span></td>
+<td>Enable SSL</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Boolean</p></li></ul></div></td>
+</tr></tbody></table><p>The remote.mysql-banner check will attempt to connect to a MySQL database server and verify that it is accepting connections.</p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-check-types-remote.mssql-banner"> </a>4.5.3.14. remote.mssql-banner</h4></div></div></div><table rules="all" id="d254e2618"><thead><tr><td>Field</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
+<td><span class="command"><strong>port</strong></span></td>
+<td>Port number (default: 1433)</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Whole number (may be zero padded)</p></li><li class="listitem"><p>Integer between 1-65535 inclusive</p></li></ul></div></td>
+</tr><tr>
+<td><span class="command"><strong>ssl</strong></span></td>
+<td>Enable SSL</td>
+<td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Boolean</p></li></ul></div></td>
+</tr></tbody></table><p>The remote.mssql-banner check will attempt to connect to a Microsoft SQL database server and verify that it is accepting connections.</p></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-check-types-create"> </a>4.5.4. Create Check Type</h3></div></div></div><p>
+        <span class="emphasis"><em>Users cannot create check types.</em></span>
+      </p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-check-types-list"> </a>4.5.5. List Check Types</h3></div></div></div><table rules="all" id="d254e2654"><thead><tr>
+<td>Verb</td>
+<td colspan="4">URI</td>
+<td colspan="3">Description</td>
+</tr></thead><tbody><tr>
+            <td> <span class="command"><strong>GET</strong></span> </td>
+            <td colspan="4">/check_types</td>
+            <td colspan="3">List all the available check types.</td>
+          </tr></tbody></table><p>There are no parameters for this call.</p><p>Normal Response Code:
+        <span class="returnvalue">200</span></p><p>Error Response Codes: <span class="errorcode">401</span>,
+          <span class="errorcode">403</span>, <span class="errorcode">500</span>,
+          <span class="errorcode">503</span></p><div class="example"><a id="d254e2674"> </a><p class="title"><strong>Example 4.35. List Check Types: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;container&gt;
+  &lt;values&gt;
+    &lt;check_type id="remote.dns"&gt;
+      &lt;type&gt;remote&lt;/type&gt;
+      &lt;fields&gt;
+        &lt;field&gt;
+          &lt;name&gt;port&lt;/name&gt;
+          &lt;description&gt;Port number (default: 53)&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;query&lt;/name&gt;
+          &lt;description&gt;DNS Query&lt;/description&gt;
+          &lt;optional&gt;false&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;record_type&lt;/name&gt;
+          &lt;description&gt;DNS Record Type&lt;/description&gt;
+          &lt;optional&gt;false&lt;/optional&gt;
+        &lt;/field&gt;
+      &lt;/fields&gt;
+    &lt;/check_type&gt;
+    &lt;check_type id="remote.ssh"&gt;
+      &lt;type&gt;remote&lt;/type&gt;
+      &lt;fields&gt;
+        &lt;field&gt;
+          &lt;name&gt;port&lt;/name&gt;
+          &lt;description&gt;Port number (default: 22)&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+      &lt;/fields&gt;
+    &lt;/check_type&gt;
+    &lt;check_type id="remote.smtp"&gt;
+      &lt;type&gt;remote&lt;/type&gt;
+      &lt;fields&gt;
+        &lt;field&gt;
+          &lt;name&gt;port&lt;/name&gt;
+          &lt;description&gt;Port number (default: 25)&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;ehlo&lt;/name&gt;
+          &lt;description&gt;EHLO parameter&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;from&lt;/name&gt;
+          &lt;description&gt;From parameter&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;to&lt;/name&gt;
+          &lt;description&gt;To parameter&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;payload&lt;/name&gt;
+          &lt;description&gt;Specifies the payload&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;starttls&lt;/name&gt;
+          &lt;description&gt;Should the connection be upgraded to TLS/SSL&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+      &lt;/fields&gt;
+    &lt;/check_type&gt;
+    &lt;check_type id="remote.http"&gt;
+      &lt;type&gt;remote&lt;/type&gt;
+      &lt;fields&gt;
+        &lt;field&gt;
+          &lt;name&gt;url&lt;/name&gt;
+          &lt;description&gt;Target URL&lt;/description&gt;
+          &lt;optional&gt;false&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;body&lt;/name&gt;
+          &lt;description&gt;Body match regular expression (body is limited to 100k)&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;headers&lt;/name&gt;
+          &lt;description&gt;Arbitrary headers which are sent with the request.&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;body_matches&lt;/name&gt;
+          &lt;description&gt;Body match regular expressions (body is limited to 100k)&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;ssl&lt;/name&gt;
+          &lt;description&gt;Enable SSL&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;method&lt;/name&gt;
+          &lt;description&gt;HTTP method (default: GET)&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;auth_user&lt;/name&gt;
+          &lt;description&gt;Optional auth user&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;auth_password&lt;/name&gt;
+          &lt;description&gt;Optional auth password&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;extract&lt;/name&gt;
+          &lt;description&gt;Regex to capture key/value pairs.&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;follow_redirects&lt;/name&gt;
+          &lt;description&gt;Follow redirects (default: true)&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;payload&lt;/name&gt;
+          &lt;description&gt;Specify a request body (limited to 1024 characters). If following a redirect, payload will only be sent to first location&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+      &lt;/fields&gt;
+    &lt;/check_type&gt;
+    &lt;check_type id="remote.tcp"&gt;
+      &lt;type&gt;remote&lt;/type&gt;
+      &lt;fields&gt;
+        &lt;field&gt;
+          &lt;name&gt;port&lt;/name&gt;
+          &lt;description&gt;Port number&lt;/description&gt;
+          &lt;optional&gt;false&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;banner_match&lt;/name&gt;
+          &lt;description&gt;Banner match regex.&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;send_body&lt;/name&gt;
+          &lt;description&gt;Send a body. If a banner is provided the body is sent after the banner is verified.&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;body_match&lt;/name&gt;
+          &lt;description&gt;Body match regex. Key/Values are captured when matches are specified within the regex. Note: Maximum body size 1024 bytes.&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;ssl&lt;/name&gt;
+          &lt;description&gt;Enable SSL&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+      &lt;/fields&gt;
+    &lt;/check_type&gt;
+    &lt;check_type id="remote.ping"&gt;
+      &lt;type&gt;remote&lt;/type&gt;
+      &lt;fields&gt;
+        &lt;field&gt;
+          &lt;name&gt;count&lt;/name&gt;
+          &lt;description&gt;Number of pings to send within a single check&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+      &lt;/fields&gt;
+    &lt;/check_type&gt;
+    &lt;check_type id="remote.ftp-banner"&gt;
+      &lt;type&gt;remote&lt;/type&gt;
+      &lt;fields&gt;
+        &lt;field&gt;
+          &lt;name&gt;port&lt;/name&gt;
+          &lt;description&gt;Port number (default: 21)&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+      &lt;/fields&gt;
+    &lt;/check_type&gt;
+    &lt;check_type id="remote.imap-banner"&gt;
+      &lt;type&gt;remote&lt;/type&gt;
+      &lt;fields&gt;
+        &lt;field&gt;
+          &lt;name&gt;port&lt;/name&gt;
+          &lt;description&gt;Port number (default: 143)&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;ssl&lt;/name&gt;
+          &lt;description&gt;Enable SSL&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+      &lt;/fields&gt;
+    &lt;/check_type&gt;
+    &lt;check_type id="remote.pop3-banner"&gt;
+      &lt;type&gt;remote&lt;/type&gt;
+      &lt;fields&gt;
+        &lt;field&gt;
+          &lt;name&gt;port&lt;/name&gt;
+          &lt;description&gt;Port number (default: 110)&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;ssl&lt;/name&gt;
+          &lt;description&gt;Enable SSL&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+      &lt;/fields&gt;
+    &lt;/check_type&gt;
+    &lt;check_type id="remote.smtp-banner"&gt;
+      &lt;type&gt;remote&lt;/type&gt;
+      &lt;fields&gt;
+        &lt;field&gt;
+          &lt;name&gt;port&lt;/name&gt;
+          &lt;description&gt;Port number (default: 25)&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;ssl&lt;/name&gt;
+          &lt;description&gt;Enable SSL&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+      &lt;/fields&gt;
+    &lt;/check_type&gt;
+    &lt;check_type id="remote.postgresql-banner"&gt;
+      &lt;type&gt;remote&lt;/type&gt;
+      &lt;fields&gt;
+        &lt;field&gt;
+          &lt;name&gt;port&lt;/name&gt;
+          &lt;description&gt;Port number (default: 5432)&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;ssl&lt;/name&gt;
+          &lt;description&gt;Enable SSL&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+      &lt;/fields&gt;
+    &lt;/check_type&gt;
+    &lt;check_type id="remote.telnet-banner"&gt;
+      &lt;type&gt;remote&lt;/type&gt;
+      &lt;fields&gt;
+        &lt;field&gt;
+          &lt;name&gt;port&lt;/name&gt;
+          &lt;description&gt;Port number (default: 23)&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;banner_match&lt;/name&gt;
+          &lt;description&gt;Banner to check&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;ssl&lt;/name&gt;
+          &lt;description&gt;Enable SSL&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+      &lt;/fields&gt;
+    &lt;/check_type&gt;
+    &lt;check_type id="remote.mysql-banner"&gt;
+      &lt;type&gt;remote&lt;/type&gt;
+      &lt;fields&gt;
+        &lt;field&gt;
+          &lt;name&gt;port&lt;/name&gt;
+          &lt;description&gt;Port number (default: 3306)&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;ssl&lt;/name&gt;
+          &lt;description&gt;Enable SSL&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+      &lt;/fields&gt;
+    &lt;/check_type&gt;
+    &lt;check_type id="remote.mssql-banner"&gt;
+      &lt;type&gt;remote&lt;/type&gt;
+      &lt;fields&gt;
+        &lt;field&gt;
+          &lt;name&gt;port&lt;/name&gt;
+          &lt;description&gt;Port number (default: 1433)&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+        &lt;field&gt;
+          &lt;name&gt;ssl&lt;/name&gt;
+          &lt;description&gt;Enable SSL&lt;/description&gt;
+          &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/field&gt;
+      &lt;/fields&gt;
+    &lt;/check_type&gt;
+  &lt;/values&gt;
+  &lt;metadata&gt;
+    &lt;count&gt;14&lt;/count&gt;
+    &lt;limit&gt;50&lt;/limit&gt;
+    &lt;marker/&gt;
+    &lt;next_marker/&gt;
+    &lt;next_href/&gt;
+  &lt;/metadata&gt;
+&lt;/container&gt;
+
+</pre></div></div><br class="example-break"/><div class="example"><a id="d254e2677"> </a><p class="title"><strong>Example 4.36. List Check Types: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+{
+    "values": [
+        {
+            "id": "remote.dns",
+            "type": "remote",
+            "fields": [
+                {
+                    "name": "port",
+                    "description": "Port number (default: 53)",
+                    "optional": true
+                },
+                {
+                    "name": "query",
+                    "description": "DNS Query",
+                    "optional": false
+                },
+                {
+                    "name": "record_type",
+                    "description": "DNS Record Type",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "id": "remote.ssh",
+            "type": "remote",
+            "fields": [
+                {
+                    "name": "port",
+                    "description": "Port number (default: 22)",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "id": "remote.smtp",
+            "type": "remote",
+            "fields": [
+                {
+                    "name": "port",
+                    "description": "Port number (default: 25)",
+                    "optional": true
+                },
+                {
+                    "name": "ehlo",
+                    "description": "EHLO parameter",
+                    "optional": true
+                },
+                {
+                    "name": "from",
+                    "description": "From parameter",
+                    "optional": true
+                },
+                {
+                    "name": "to",
+                    "description": "To parameter",
+                    "optional": true
+                },
+                {
+                    "name": "payload",
+                    "description": "Specifies the payload",
+                    "optional": true
+                },
+                {
+                    "name": "starttls",
+                    "description": "Should the connection be upgraded to TLS/SSL",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "id": "remote.http",
+            "type": "remote",
+            "fields": [
+                {
+                    "name": "url",
+                    "description": "Target URL",
+                    "optional": false
+                },
+                {
+                    "name": "body",
+                    "description": "Body match regular expression (body is limited to 100k)",
+                    "optional": true
+                },
+                {
+                    "name": "headers",
+                    "description": "Arbitrary headers which are sent with the request.",
+                    "optional": true
+                },
+                {
+                    "name": "body_matches",
+                    "description": "Body match regular expressions (body is limited to 100k)",
+                    "optional": true
+                },
+                {
+                    "name": "ssl",
+                    "description": "Enable SSL",
+                    "optional": true
+                },
+                {
+                    "name": "method",
+                    "description": "HTTP method (default: GET)",
+                    "optional": true
+                },
+                {
+                    "name": "auth_user",
+                    "description": "Optional auth user",
+                    "optional": true
+                },
+                {
+                    "name": "auth_password",
+                    "description": "Optional auth password",
+                    "optional": true
+                },
+                {
+                    "name": "extract",
+                    "description": "Regex to capture key/value pairs.",
+                    "optional": true
+                },
+                {
+                    "name": "follow_redirects",
+                    "description": "Follow redirects (default: true)",
+                    "optional": true
+                },
+                {
+                    "name": "payload",
+                    "description": "Specify a request body (limited to 1024 characters). If following a redirect, payload will only be sent to first location",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "id": "remote.tcp",
+            "type": "remote",
+            "fields": [
+                {
+                    "name": "port",
+                    "description": "Port number",
+                    "optional": false
+                },
+                {
+                    "name": "banner_match",
+                    "description": "Banner match regex.",
+                    "optional": true
+                },
+                {
+                    "name": "send_body",
+                    "description": "Send a body. If a banner is provided the body is sent after the banner is verified.",
+                    "optional": true
+                },
+                {
+                    "name": "body_match",
+                    "description": "Body match regex. Key/Values are captured when matches are specified within the regex. Note: Maximum body size 1024 bytes.",
+                    "optional": true
+                },
+                {
+                    "name": "ssl",
+                    "description": "Enable SSL",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "id": "remote.ping",
+            "type": "remote",
+            "fields": [
+                {
+                    "name": "count",
+                    "description": "Number of pings to send within a single check",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "id": "remote.ftp-banner",
+            "type": "remote",
+            "fields": [
+                {
+                    "name": "port",
+                    "description": "Port number (default: 21)",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "id": "remote.imap-banner",
+            "type": "remote",
+            "fields": [
+                {
+                    "name": "port",
+                    "description": "Port number (default: 143)",
+                    "optional": true
+                },
+                {
+                    "name": "ssl",
+                    "description": "Enable SSL",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "id": "remote.pop3-banner",
+            "type": "remote",
+            "fields": [
+                {
+                    "name": "port",
+                    "description": "Port number (default: 110)",
+                    "optional": true
+                },
+                {
+                    "name": "ssl",
+                    "description": "Enable SSL",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "id": "remote.smtp-banner",
+            "type": "remote",
+            "fields": [
+                {
+                    "name": "port",
+                    "description": "Port number (default: 25)",
+                    "optional": true
+                },
+                {
+                    "name": "ssl",
+                    "description": "Enable SSL",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "id": "remote.postgresql-banner",
+            "type": "remote",
+            "fields": [
+                {
+                    "name": "port",
+                    "description": "Port number (default: 5432)",
+                    "optional": true
+                },
+                {
+                    "name": "ssl",
+                    "description": "Enable SSL",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "id": "remote.telnet-banner",
+            "type": "remote",
+            "fields": [
+                {
+                    "name": "port",
+                    "description": "Port number (default: 23)",
+                    "optional": true
+                },
+                {
+                    "name": "banner_match",
+                    "description": "Banner to check",
+                    "optional": true
+                },
+                {
+                    "name": "ssl",
+                    "description": "Enable SSL",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "id": "remote.mysql-banner",
+            "type": "remote",
+            "fields": [
+                {
+                    "name": "port",
+                    "description": "Port number (default: 3306)",
+                    "optional": true
+                },
+                {
+                    "name": "ssl",
+                    "description": "Enable SSL",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "id": "remote.mssql-banner",
+            "type": "remote",
+            "fields": [
+                {
+                    "name": "port",
+                    "description": "Port number (default: 1433)",
+                    "optional": true
+                },
+                {
+                    "name": "ssl",
+                    "description": "Enable SSL",
+                    "optional": true
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "count": 14,
+        "limit": 50,
+        "marker": null,
+        "next_marker": null,
+        "next_href": null
+    }
+}
+
+</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-check-types-get"> </a>4.5.6. Get Check Type</h3></div></div></div><table rules="all" id="d254e2682"><thead><tr>
+<td>Verb</td>
+<td colspan="4">URI</td>
+<td colspan="3">Description</td>
+</tr></thead><tbody><tr>
+            <td> <span class="command"><strong>GET</strong></span> </td>
+            <td colspan="4">/check_types/<em class="parameter"><code>checkTypeId</code></em></td>
+            <td colspan="3">Retrieve information for a single check type.</td>
+          </tr></tbody></table><p>There are no parameters for this call.</p><p>Normal Response Code:
+        <span class="returnvalue">200</span></p><p>Error Response Codes: <span class="errorcode">401</span>,
+          <span class="errorcode">403</span>, <span class="errorcode">500</span>,
+          <span class="errorcode">503</span></p><div class="example"><a id="d254e2703"> </a><p class="title"><strong>Example 4.37. Get Check Type: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;check_type id="remote.dns"&gt;
+  &lt;type&gt;remote&lt;/type&gt;
+  &lt;fields&gt;
+    &lt;field&gt;
+      &lt;name&gt;port&lt;/name&gt;
+      &lt;description&gt;Port number (default: 53)&lt;/description&gt;
+      &lt;optional&gt;true&lt;/optional&gt;
+    &lt;/field&gt;
+    &lt;field&gt;
+      &lt;name&gt;query&lt;/name&gt;
+      &lt;description&gt;DNS Query&lt;/description&gt;
+      &lt;optional&gt;false&lt;/optional&gt;
+    &lt;/field&gt;
+    &lt;field&gt;
+      &lt;name&gt;record_type&lt;/name&gt;
+      &lt;description&gt;DNS Record Type&lt;/description&gt;
+      &lt;optional&gt;false&lt;/optional&gt;
+    &lt;/field&gt;
+  &lt;/fields&gt;
+&lt;/check_type&gt;
+
+</pre></div></div><br class="example-break"/><div class="example"><a id="d254e2706"> </a><p class="title"><strong>Example 4.38. Get Check Type: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+{
+    "id": "remote.dns",
+    "type": "remote",
+    "fields": [
+        {
+            "name": "port",
+            "description": "Port number (default: 53)",
+            "optional": true
+        },
+        {
+            "name": "query",
+            "description": "DNS Query",
+            "optional": false
+        },
+        {
+            "name": "record_type",
+            "description": "DNS Record Type",
+            "optional": false
+        }
+    ]
+}
+
+</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-check-types-update"> </a>4.5.7. Update Check Type</h3></div></div></div><p>
+        <span class="emphasis"><em>Users cannot update check types.</em></span>
+      </p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-check-types-delete"> </a>4.5.8. Delete Check Types</h3></div></div></div><p>
+        <span class="emphasis"><em>Users cannot delete check types.</em></span>
+      </p></div></div><script type="text/javascript" src="../common/main.js"><!----></script><hr/><div id="disqus_thread"><script type="text/javascript">
+	      var disqus_shortname = 'rc-api-docs';
+	      
+	      var disqus_identifier = 'monitoring-developer-guideservice-check-types';
+	      </script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><script type="text/javascript" src="../common/comments.js"><!----></script></div><hr/><div class="legal"><a href="index.html">Legal notices</a></div></div><div><div id="leftnavigation" style="padding-top:3px; background-color:white;"><div id="tabs"><ul><li><a href="#treeDiv" tabindex="1"><span class="contentsTab">Contents</span></a></li><li><a href="#searchDiv" tabindex="1"><span class="searchTab">Search</span></a></li></ul><div id="treeDiv"><img src="../common/images/loading.gif" alt="loading table of contents..." id="tocLoading" style="display:block;"/><div id="ulTreeDiv" style="display:none" class="thisisthat"><ul id="tree" class="filetree"><li tabindex="2"><span class="file"><a href="overview.html">1. Overview</a></span><ul><li tabindex="2"><span class="file"><a href="how-it-works.html">1.1. How Rackspace Cloud Monitoring Works</a></span></li><li tabindex="2"><span class="file"><a href="intended-audience.html">1.2. Intended Audience</a></span></li><li tabindex="2"><span class="file"><a href="document-change-history.html">1.3. Document Change History</a></span></li><li tabindex="2"><span class="file"><a href="additional-resources.html">1.4. Additional Resources</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="Concepts.html">2. Concepts</a></span><ul><li tabindex="2"><span class="file"><a href="concepts-key-terms.html">2.1. Monitoring Key Terms and Concepts</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="general-api-information.html">3. General API Information</a></span><ul><li tabindex="2"><span class="file"><a href="general-api-info-authentication.html">3.1. Authentication</a></span><ul><li tabindex="2"><span class="file"><a href="general-api-info-authentication.html#Authenticate-d1e171">3.1.1. Retrieving the Authentication Token</a></span></li><li tabindex="2"><span class="file"><a href="general-api-info-authentication.html#token-expiration">3.1.2. Token Expiration</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="general-api-info-endpoint-access.html">3.2. Endpoint Access</a></span></li><li tabindex="2"><span class="file"><a href="api-request-response-types.html">3.3. Request/Response Types</a></span></li><li tabindex="2"><span class="file"><a href="api-versions.html">3.4. Versions</a></span></li><li tabindex="2"><span class="file"><a href="api-paginated-collections.html">3.5. Paginated Collections</a></span></li><li tabindex="2"><span class="file"><a href="api-time-series-collections.html">3.6. Time Series Collections</a></span></li><li tabindex="2"><span class="file"><a href="general-api-info-audits.html">3.7. Audits</a></span></li><li tabindex="2"><span class="file"><a href="api-rsource-limits.html">3.8. Resource Limits</a></span></li><li tabindex="2"><span class="file"><a href="api-rate-limits.html">3.9. Rate Limits</a></span></li><li tabindex="2"><span class="file"><a href="general-api-info-api-faults.html">3.10. Faults</a></span><ul><li tabindex="2"><span class="file"><a href="general-api-info-api-faults.html#section-faults">3.10.1. Fault and Error Code Descriptions</a></span></li></ul></li></ul></li><li tabindex="2"><span class="file"><a href="service-api-operations.html">4. Service API Operations</a></span><ul><li tabindex="2"><span class="file"><a href="maas-core-service-calls.html">4.1. Core Quick Reference</a></span></li><li tabindex="2"><span class="file"><a href="service-account.html">4.2. Account</a></span><ul><li tabindex="2"><span class="file"><a href="service-account.html#service-account-summary">4.2.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-account.html#service-account-root">4.2.2. Get Account</a></span></li><li tabindex="2"><span class="file"><a href="service-account.html#service-account-put-account">4.2.3. Update Account</a></span><ul><li tabindex="2"><span class="file"><a href="service-account.html#section-Public_accounts">4.2.3.1. Attributes</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-account.html#service-account-get-limits">4.2.4. Get Limits</a></span></li><li tabindex="2"><span class="file"><a href="service-account.html#service-account-list-audits">4.2.5. List Audits</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-entities.html">4.3. Entities</a></span><ul><li tabindex="2"><span class="file"><a href="service-entities.html#service-entities-summary">4.3.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-entities.html#section-Entities">4.3.2. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-entities.html#service-entities-create">4.3.3. Create Entity</a></span></li><li tabindex="2"><span class="file"><a href="service-entities.html#service-entities-list">4.3.4. List Entities</a></span></li><li tabindex="2"><span class="file"><a href="service-entities.html#service-entities-get">4.3.5. Get Entity</a></span></li><li tabindex="2"><span class="file"><a href="service-entities.html#service-entities-update">4.3.6. Update Entity</a></span></li><li tabindex="2"><span class="file"><a href="service-entities.html#service-entities-delete">4.3.7. Delete Entity</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-checks.html">4.4. Checks</a></span><ul><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-summary">4.4.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#section-Checks">4.4.2. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-create">4.4.3. Create Check</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-test">4.4.4. Test Check</a></span><ul><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-test-debug">4.4.4.1. Test Check And Include Debug Information</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-test-existing">4.4.5. Test Existing Check</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-list">4.4.6. List Checks</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-get">4.4.7. Get Check</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-update">4.4.8. Update Checks</a></span></li><li tabindex="2"><span class="file"><a href="service-checks.html#service-checks-delete">4.4.9. Delete Checks</a></span></li></ul></li><li tabindex="2" id="webhelp-currentid"><span class="file"><a href="service-check-types.html">4.5. Check Types</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#service-check-types-summary">4.5.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-Check_types">4.5.2. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-available-check-types-and-fields">4.5.3. Available Check Types and Fields</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.dns">4.5.3.1. remote.dns</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-remote.dns">4.5.3.1.1. standard metrics</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.ssh">4.5.3.2. remote.ssh</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-remote.ssh">4.5.3.2.1. standard metrics</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.smtp">4.5.3.3. remote.smtp</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.http">4.5.3.4. remote.http</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-remote.http">4.5.3.4.1. standard metrics</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.tcp">4.5.3.5. remote.tcp</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-remote.tcp">4.5.3.5.1. standard metrics</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.ping">4.5.3.6. remote.ping</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-remote.ping">4.5.3.6.1. standard metrics</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.ftp-banner">4.5.3.7. remote.ftp-banner</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-remote.ftp-banner">4.5.3.7.1. standard metrics</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.imap-banner">4.5.3.8. remote.imap-banner</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.pop3-banner">4.5.3.9. remote.pop3-banner</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.smtp-banner">4.5.3.10. remote.smtp-banner</a></span><ul><li tabindex="2"><span class="file"><a href="service-check-types.html#section-remote.smtp-banner">4.5.3.10.1. standard metrics</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.postgresql-banner">4.5.3.11. remote.postgresql-banner</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.telnet-banner">4.5.3.12. remote.telnet-banner</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.mysql-banner">4.5.3.13. remote.mysql-banner</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#section-check-types-remote.mssql-banner">4.5.3.14. remote.mssql-banner</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-check-types.html#service-check-types-create">4.5.4. Create Check Type</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#service-check-types-list">4.5.5. List Check Types</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#service-check-types-get">4.5.6. Get Check Type</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#service-check-types-update">4.5.7. Update Check Type</a></span></li><li tabindex="2"><span class="file"><a href="service-check-types.html#service-check-types-delete">4.5.8. Delete Check Types</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-alarms.html">4.6. Alarms</a></span><ul><li tabindex="2"><span class="file"><a href="service-alarms.html#service-alarms-summary">4.6.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-alarms.html#section-Alarms">4.6.2. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-alarms.html#service-alarms-create">4.6.3. Create Alarm</a></span></li><li tabindex="2"><span class="file"><a href="service-alarms.html#service-alarms-test">4.6.4. Test Alarm</a></span></li><li tabindex="2"><span class="file"><a href="service-alarms.html#service-alarms-list">4.6.5. List Alarms</a></span></li><li tabindex="2"><span class="file"><a href="service-alarms.html#service-alarms-get">4.6.6. Get Alarm</a></span></li><li tabindex="2"><span class="file"><a href="service-alarms.html#service-alarms-update">4.6.7. Update Alarm</a></span></li><li tabindex="2"><span class="file"><a href="service-alarms.html#service-alarms-delete">4.6.8. Delete Alarm</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-notification-plans.html">4.7. Notification Plans</a></span><ul><li tabindex="2"><span class="file"><a href="service-notification-plans.html#service-notification-plans-summary">4.7.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-plans.html#section-Notification_plans">4.7.2. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-plans.html#service-notification-plans-create">4.7.3. Create Notification Plan</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-plans.html#service-notification-plans-list">4.7.4. List Notification Plans</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-plans.html#service-notification-plans-get">4.7.5. Get Notification Plan</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-plans.html#service-notification-plans-update">4.7.6. Update Notification Plans</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-plans.html#service-notification-plans-delete">4.7.7. Delete Notification Plans</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html">4.8. Monitoring Zones</a></span><ul><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#service-monitoring-zones-summary">4.8.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#section-Monitoring_zones">4.8.2. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#service-monitoring-zones-create">4.8.3. Create Monitoring Zone</a></span></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#service-monitoring-zones-list">4.8.4. List Monitoring Zones</a></span></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#service-monitoring-zones-get">4.8.5. Get Monitoring Zone</a></span></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#service-monitoring-zones-update">4.8.6. Update Monitoring Zone</a></span></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#service-monitoring-zones-delete">4.8.7. Delete Monitoring Zone</a></span></li><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#service-monitoring-zones-traceroute">4.8.8. Perform a "traceroute" from a Monitoring Zone</a></span><ul><li tabindex="2"><span class="file"><a href="service-monitoring-zones.html#section-Traceroute">4.8.8.1. Attributes</a></span></li></ul></li></ul></li><li tabindex="2"><span class="file"><a href="service-alarm-notification-history.html">4.9. Alarm Notification History</a></span><ul><li tabindex="2"><span class="file"><a href="service-alarm-notification-history.html#service-alarm-notification-history-summary">4.9.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-alarm-notification-history.html#service-alarm-notification-history-discover">4.9.2. Discover Alarm Notification History</a></span></li><li tabindex="2"><span class="file"><a href="service-alarm-notification-history.html#service-alarm-notification-history-list">4.9.3. List Alarm Notification History</a></span></li><li tabindex="2"><span class="file"><a href="service-alarm-notification-history.html#service-alarm-notification-history-get">4.9.4. Get Alarm Notification History</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-notifications.html">4.10. Notifications</a></span><ul><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-summary">4.10.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#section-Notifications">4.10.2. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-create">4.10.3. Create Notification</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-test-new">4.10.4. Test Notification</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-test-existing">4.10.5. Test Existing Notification</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-list">4.10.6.  List Notifications</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-get">4.10.7. Get Notifications</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-update">4.10.8. Update Notifications</a></span></li><li tabindex="2"><span class="file"><a href="service-notifications.html#service-notifications-delete">4.10.9. Delete Notifications</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html">4.11. Notification Types</a></span><ul><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#service-notification-type-email">4.11.1. Email Notifications</a></span><ul><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#section-Email">4.11.1.1. Attributes</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#service-notification-types-webhook">4.11.2. Webhook Notifications</a></span><ul><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#section-Webhook">4.11.2.1. Attributes</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#service-notification-payload">4.11.2.2. Notification Payload</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#service-notification-headers">4.11.2.3. Notification Header Contents</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#Service-Notification-Types-create">4.11.3. Create Notification Type</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#Service-Notification-Types-List">4.11.4. List Notification Types</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#Service-Notification-Types-get">4.11.5. Get Notification Type</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#Service-Notification-Type-update">4.11.6. Update Notification Type</a></span></li><li tabindex="2"><span class="file"><a href="service-notification-types-crud.html#Service-Notification-Auth-Delete">4.11.7. Delete Notification Type</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-changelogs.html">4.12. Changelogs</a></span><ul><li tabindex="2"><span class="file"><a href="service-changelogs.html#service-changelogs-summary">4.12.1. Summary</a></span></li><li tabindex="2"><span class="file"><a href="service-changelogs.html#service-changelogs-alarms-list">4.12.2. List Alarm Changelogs</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-views.html">4.13. Views</a></span><ul><li tabindex="2"><span class="file"><a href="service-views.html#service-views-overview">4.13.1. Get Overview</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="service-alarm-examples.html">4.14. Alarm Examples</a></span><ul><li tabindex="2"><span class="file"><a href="service-alarm-examples.html#service-alarm-examples-list">4.14.1. List Alarm Examples</a></span></li><li tabindex="2"><span class="file"><a href="service-alarm-examples.html#service-alarm-examples-get">4.14.2. Get Alarm Example</a></span></li><li tabindex="2"><span class="file"><a href="service-alarm-examples.html#service-alarm-examples-post">4.14.3. Evaluate Alarm Example</a></span></li></ul></li></ul></li><li tabindex="2"><span class="file"><a href="alerts-language.html">A. Alert Triggering and Alarms</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#alert-flow">A.1. Alert Flow</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-alarm-language">A.2. Alarm Language</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-availability">A.2.1. Check Availability</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-alarm-language-anatomy">A.2.2. Anatomy of a Query</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-alarm-language-limits">A.2.3. Limits and Defaults</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-status-strings">A.2.4. Status Messages</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-alert-policies">A.3. Alert Policies (Consistency Level)</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-alert-policies-one">A.3.1. One</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-alert-policies-quorum">A.3.2. Quorum</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-alert-policies-all">A.3.3. All</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-constructs">A.4. Constructs and Functions</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-constructs-previous">A.4.1. Previous</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-constructs-rate">A.4.2. Rate</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices">A.5. Best Practices on Alerting</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-http">A.5.1. Best Practices for HTTP/S Check</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-http-check-404">A.5.1.1. Check for HTTP 404</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-reverse-body-match">A.5.1.2. Critical on a specific body match</a></span></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-error-certificate">A.5.1.3. Critical on certificate expiration</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-port">A.5.2. Best Practices for Port/Banner Checks</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-port-failure-match">A.5.2.1. Failure on banner match</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-dns">A.5.3. Best Practices for DNS Checks</a></span><ul><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-dns-1">A.5.3.1. Check for an IP in a DNS query, fail otherwise.</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="alerts-language.html#concepts-alarms-best-practices-ssh">A.5.4. Best Practices for SSH Checks</a></span></li></ul></li></ul></li><li tabindex="2"><span class="file"><a href="appendix-client-libraries-tools.html">B. Client Libraries and Tools</a></span><ul><li tabindex="2"><span class="file"><a href="appendix-client-libraries-tools.html#client-libraries">B.1. Client Libraries</a></span><ul><li tabindex="2"><span class="file"><a href="appendix-client-libraries-tools.html#client-libraries-rackspace-monitoring">B.1.1. Python - "rackspace-monitoring" Library</a></span></li><li tabindex="2"><span class="file"><a href="appendix-client-libraries-tools.html#client-libraries-rackspace-monitoring-rb">B.1.2. Ruby - "rackspace-monitoring" Library</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="appendix-client-libraries-tools.html#client-tools">B.2. Tools (CLI, etc...)</a></span><ul><li tabindex="2"><span class="file"><a href="appendix-client-libraries-tools.html#client-tools-rackspace-monitoring-cli">B.2.1. Command Line Interface - "Raxmon" Tool</a></span></li><li tabindex="2"><span class="file"><a href="appendix-client-libraries-tools.html#client-tools-rackspace-monitoring-chef">B.2.2. Integration - "Cloud Monitoring Cookbook"</a></span></li></ul></li></ul></li><li tabindex="2"><span class="file"><a href="rs_glossary.html">Glossary</a></span></li></ul></div></div><div id="searchDiv"><div id="search"><form onsubmit="Verifie(ditaSearch_Form);return false" name="ditaSearch_Form" class="searchForm"><fieldset class="searchFieldSet"><legend>Search</legend><center><input id="textToSearch" name="textToSearch" type="text" class="searchText"/> &nbsp; <input onclick="Verifie(ditaSearch_Form)" type="button" class="searchButton" value="Go" id="doSearch"/></center></fieldset></form></div><div id="searchResults"><center/></div><p class="searchHighlight"><a href="#" onclick="toggleHighlight()">Search Highlighter (On/Off)</a></p></div></div></div></div><script type="text/javascript" src="../common/jquery/jquery.qtip-1.0.0-rc3/jquery.qtip-1.0.0-rc3.min.js"><!--jQuery plugin for glossary popups. -->
+                   $('a[title]').qtip({ style: { name: 'cream', tip: true } })
+                </script></body></html>

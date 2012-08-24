@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter [<!-- Some useful entities borrowed from HTML -->
+
+<!ENTITY MAAS 'Rackspace Cloud Monitoring'>
+<!ENTITY ENDPOINT_HOST 'agent-endpoint.monitoring.api.rackspacecloud.com'>
+]>
+
+<chapter
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    version="5.0"  xml:id="agent-api-operations"
+    security="internal">
+    <title>Agent API Operations</title>
+  <para>This section describes the protocol and API host based Agents used by &MAAS;.
+  </para>
+
+  <section xml:id="protocol-overview">
+    <title>Protocol Overview</title>
+    <?dbhtml stop-chunking?>
+    <section xml:id="protocol-overview-background">
+      <title>Protocol Background</title>
+      <para>To communicate with the Agent, a line delimited JSON protocol is used for all operations</para>
+      <para>The protocol uses TLS on port 443 by default, although the servers may listen on additional ports.</para>
+    </section>
+    <section xml:id="protocol-syntax">
+      <title>Protocol Syntax Example</title>
+      <programlisting language="javascript">
+      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/agent/handshake.hello.request.json" parse="text">
+        <xi:fallback>
+           Missing example! 
+         </xi:fallback>
+      </xi:include>
+      </programlisting>
+      <para>
+        TODO: Replies
+        TOOD: errors
+        TODO: source/target clarifications
+      </para>
+    </section>
+  </section>
+  <section xml:id="protocol-commands">
+    <title>Protocol Commands</title>
+    <?dbhtml stop-chunking?>
+    <section xml:id="protocol-commands.handshake">
+      <title>Handshake Commands</title>
+      <section xml:id="handshake.hello">
+        <title>handshake.hello</title>
+        <para>Used by the client on connection to the server. Includes
+          the Client's API key.</para>
+        <para>Sent by: client<?sbr?></para>
+        <example>
+          <title>handshake.hello Request</title>
+          <programlisting language="javascript">
+          <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/agent/handshake.hello.request.json" parse="text">
+            <xi:fallback>
+               Missing example! 
+             </xi:fallback>
+          </xi:include>
+          </programlisting>
+        </example>
+      </section>
+      <section xml:id="handshake.accepted">
+        <title>handshake.accepted</title>
+        <para>Used by the server to indicate a client has been accepted by the server.</para>
+        <para>Sent by: server</para>
+      </section>
+      <section xml:id="handshake.ping">
+        <title>handshake.ping</title>
+        <para>Used by client or server.  Reply must echo back the payload it was sent.</para>
+        <para>Sent by: both</para>
+      </section>
+    </section>
+    <section xml:id="protocol-commands.agent">
+      <title>Agent Commands</title>
+      <section xml:id="agent.restart">
+        <title>agent.restart</title>
+        <para>Used by a server to request that the client restart itself.</para>
+        <para>Sent by: server</para>
+      </section>
+      <section xml:id="agent.update_version">
+        <title>agent.update_version</title>
+        <para>Used by a server to ask an agent to upgrade.</para>
+        <para>Sent by: server</para>
+      </section>
+      <section xml:id="agent.sysinfo">
+        <title>agent.sysinfo</title>
+        <para>Used by a server to request a system information report about the agent's host..</para>
+        <para>Sent by: server</para>
+      </section>
+    </section>
+    <section xml:id="protocol-commands.check_schedule">
+      <section xml:id="check_schedule.get">
+        <title>check_schedule.get</title>
+        <para>Request the current check schedule from the server.</para>
+        <para>Sent by: client</para>
+      </section>
+      <section xml:id="check_schedule.changed">
+        <title>check_schedule.changed</title>
+        <para>Used by the server to notify a client that the schedule has changed.</para>
+        <para>Sent by: server</para>
+      </section>
+    </section>
+    <section xml:id="protocol-commands.check">
+      <title>Check Commands</title>
+      <section xml:id="check.run">
+        <title>check.run</title>
+        <para>Runs a check on demand.</para>
+        <para>Sent by: server</para>
+      </section>
+      <section xml:id="check.result">
+        <title>check.result</title>
+        <para>Results of a check ran on by the agent.</para>
+        <para>Sent by: client</para>
+      </section>
+    </section>
+  </section>
+</chapter>

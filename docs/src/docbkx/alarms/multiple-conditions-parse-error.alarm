@@ -1,0 +1,18 @@
+if (metric['foo'] == metric['bar']) {
+  return OK
+}
+
+if (rate(metric['a']) >= rate(metric['b'])) {
+  return
+}
+
+if ((dimension['path'] regex "/test")) {
+  return WARNING
+}
+
+if (metric['a'] == metric['b'] && dimension['a'] == "test" || dimension['c'] == "foo") {
+  return CRITICAL
+}
+
+return OK
+

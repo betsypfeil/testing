@@ -1,0 +1,12 @@
+{
+  "timestamp": 1320248995055,
+  "monitoring_zone_id": "mzxJ4L2IU",
+  "available": false,
+  "status": "timeout",
+  "metrics": {
+    "tt_connect": {
+      "type": "I",
+      "data": 34
+    }
+  }
+}

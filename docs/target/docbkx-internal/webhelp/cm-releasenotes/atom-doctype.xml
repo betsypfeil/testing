@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+
+<!DOCTYPE feed
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<feed xmlns="http://www.w3.org/2005/Atom">
+   <title>Cloud Monitoring Release Notes API v1.4 revision history</title>
+   <link href="http://docs.rackspace.com/cm/api/v1.0/cm-releasenotes/atom.xml" rel="self"/>
+   <link href="http://docs.rackspace.com/cm/api/v1.0/cm-releasenotes/content/index.html"/>
+   <id>cm-releasenotes</id>
+   <updated>2012-08-24T10:57:41-05:00</updated>
+   <entry>
+      <title>2012-08-22</title>
+      <link type="text/html" href="http://docs.rackspace.com/cm/api/v1.0/cm-releasenotes/content/index.html"/>
+      <id>cm-releasenotes-2012-08-22</id>
+      <updated>2012-08-22</updated>
+      <content type="xhtml">
+         <div xmlns="http://www.w3.org/1999/xhtml">
+					
+            <p>Unlimited Availability</p>
+				
+         </div>
+      </content>
+   </entry>
+   <entry>
+      <title>2012-08-14</title>
+      <link type="text/html" href="http://docs.rackspace.com/cm/api/v1.0/cm-releasenotes/content/index.html"/>
+      <id>cm-releasenotes-2012-08-14</id>
+      <updated>2012-08-14</updated>
+      <content type="xhtml">
+         <div xmlns="http://www.w3.org/1999/xhtml">
+					
+            <p>Miscellaneous updates.</p>
+				
+         </div>
+      </content>
+   </entry>
+   <entry>
+      <title>2012-06-17</title>
+      <link type="text/html" href="http://docs.rackspace.com/cm/api/v1.0/cm-releasenotes/content/index.html"/>
+      <id>cm-releasenotes-2012-06-17</id>
+      <updated>2012-06-17</updated>
+      <content type="xhtml">
+         <div xmlns="http://www.w3.org/1999/xhtml">
+					
+            <p>Miscellaneous updates.</p>
+				
+         </div>
+      </content>
+   </entry>
+   <entry>
+      <title>2012-05-10</title>
+      <link type="text/html" href="http://docs.rackspace.com/cm/api/v1.0/cm-releasenotes/content/index.html"/>
+      <id>cm-releasenotes-2012-05-10</id>
+      <updated>2012-05-10</updated>
+      <content type="xhtml">
+         <div xmlns="http://www.w3.org/1999/xhtml">
+					
+            <p>Pre-UA</p>
+				
+         </div>
+      </content>
+   </entry>
+</feed>

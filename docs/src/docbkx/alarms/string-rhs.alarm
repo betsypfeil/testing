@@ -1,0 +1,5 @@
+if (metric['code'] == "404") {
+  return WARNING
+}
+
+return OK

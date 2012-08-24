@@ -1,0 +1,109 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.rackspace.maas</groupId>
+  <artifactId>getting-started-docs</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+
+  <name>docs</name>
+
+
+   <build>
+        <resources>
+            <resource>
+                <directory>target/docbkx/pdf</directory>
+                <excludes>
+                    <exclude>**/*.fo</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <plugins>
+            <!--            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                <execution>
+                <id>unpack-dependencies</id>
+                <phase>generate-sources</phase>
+                <goals>
+                <goal>unpack</goal>
+                </goals>
+                <configuration>
+                <artifactItems>
+                <artifactItem>
+                <groupId>com.rackspace.cloud.api</groupId>
+                <artifactId>glossary</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <outputDirectory>${project.build.directory}/mvn/com.rackspace.cloud.api/glossary</outputDirectory>
+                </artifactItem>
+                </artifactItems>
+                </configuration>
+                </execution>
+                </executions>
+                </plugin>-->
+            <plugin>
+                <groupId>com.rackspace.cloud.api</groupId>
+                <artifactId>clouddocs-maven-plugin</artifactId>
+                <version>1.5.0-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <id>g1</id>
+                        <goals>
+                           <goal>generate-xhtml</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+			  <security>external</security>
+                            <includes>cm-getting-started.xml, cm-devguide.xml</includes>
+                            <!-- Entry below is for creating Alpha letters in the TOC for appendices -->
+                            <appendixAutolabel>A</appendixAutolabel>
+                            <xincludeSupported>true</xincludeSupported>
+                            <!--The entry below enables HashCode comments (internal) -->
+                            <enableDisqus>intranet</enableDisqus>
+                            <enableGoogleAnalytics>0</enableGoogleAnalytics>
+                            <feedbackEmail>monitoring@RACKSPACE.COM</feedbackEmail>
+                            <failOnValidationError>no</failOnValidationError>
+                            <glossaryCollection>file://${project.build.directory}/../src/docbkx/glossary.xml</glossaryCollection>
+			    <preProcess>
+			      <copy todir="target/docbkx/xhtml/cm-getting-started/content/img">
+				<fileset dir="src/docbkx/img" includes="**/*.png"/>
+			      </copy> 
+			        <!-- <copy todir="target/docbkx/xhtml/cm-devguide/content/img"> -->
+			        <!--     <fileset dir="src/docbkx/img" includes="**/*.png"/>			             -->
+			        <!-- </copy>  -->
+			    </preProcess>
+                        </configuration>
+                    </execution>
+		</executions>
+		<configuration>
+		  <showXslMessages>true</showXslMessages>
+		</configuration>
+            </plugin>	    
+        </plugins>
+    </build>
+ <profiles>                                                                                              
+        <profile>                                                                                           
+            <id>Rackspace Research Repositories</id>                                                        
+            <activation>                                                                                    
+                <activeByDefault>true</activeByDefault>                                                     
+            </activation>                                                                                   
+            <repositories>                                                                                  
+                <repository>                                                                                
+                    <id>rackspace-research</id>                                                             
+                    <name>Rackspace Research Repository</name>                                              
+                    <url>http://maven.research.rackspacecloud.com/content/groups/public/</url>              
+                </repository>                                                                               
+            </repositories>                                                                                 
+            <pluginRepositories>                                                                            
+                <pluginRepository>                                                                          
+                    <id>rackspace-research</id>                                                             
+                    <name>Rackspace Research Repository</name>                                              
+                    <url>http://maven.research.rackspacecloud.com/content/groups/public/</url>              
+                </pluginRepository>                                                                         
+            </pluginRepositories>                                                                           
+        </profile> 
+</profiles>
+</project>
+

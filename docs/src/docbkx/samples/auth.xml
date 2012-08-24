@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<container>
+    <values>
+        <entity created_at="1330044188322" id="enGTOR2C6u" updated_at="1330071481524">
+            <label>Monitor Test</label>
+            <ip_addresses>
+                <default>192.168.0.1</default>
+            </ip_addresses>
+            <metadata/>
+            <managed>false</managed>
+            <uri/>
+            <agent_id/>
+        </entity>
+        <entity created_at="1327976441046" id="enHBMKJpe6" updated_at="1329412867854">
+            <label>My Rackspace Server</label>
+            <ip_addresses>
+                <default>192.168.0.1</default>
+            </ip_addresses>
+            <metadata/>
+            <managed>false</managed>
+            <uri/>
+            <agent_id/>
+        </entity>
+    </values>
+    <metadata>
+        <count>2</count>
+        <limit>100</limit>
+        <marker/>
+        <next_href/>
+    </metadata>
+</container>

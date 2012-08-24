@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<container>
+  <values>
+    <alarm_template id="remote.http_body_match_1">
+      <label>Body match</label>
+      <description>Alarm which returns CRITICAL if the provided string is found in the body</description>
+      <check_type>remote.http</check_type>
+      <criteria>if (metric['body_match'] regex "${string}") {
+  return CRITICAL, "${string} found, returning CRITICAL."
+}
+</criteria>
+      <fields>
+        <field>
+          <name>string</name>
+          <description>String to check for in the body</description>
+          <type>string</type>
+        </field>
+      </fields>
+    </alarm_template>
+    <alarm_template id="remote.http_body_match_missing_string">
+      <label>Body match</label>
+      <description>Alarm which returns CRITICAL if the provided string is not found in the body</description>
+      <check_type>remote.http</check_type>
+      <criteria>if (metric['body_match'] == "") {
+  return CRITICAL, "HTTP response did not contain the correct content."
+}
+
+return OK, "HTTP response contains the correct content"
+</criteria>
+      <fields/>
+    </alarm_template>
+    <alarm_template id="remote.http_connection_time">
+      <label>Connection time</label>
+      <description>Alarm which returns WARNING or CRITICAL based on the connection time</description>
+      <check_type>remote.http</check_type>
+      <criteria>if (metric['duration'] &gt; ${critical_threshold}) {
+  return CRITICAL, "HTTP request took more than ${critical_threshold} milliseconds."
+}
+
+if (metric['duration'] &gt; ${warning_threshold}) {
+  return WARNING, "HTTP request took more than ${warning_threshold} milliseconds."
+}
+
+return OK, "HTTP connection time is normal"
+</criteria>
+      <fields>
+        <field>
+          <name>warning_threshold</name>
+          <description>Warning threshold (in milliseconds) for the connection time</description>
+          <type>integer</type>
+        </field>
+        <field>
+          <name>critical_threshold</name>
+          <description>Critical threshold (in milliseconds) for the connection time</description>
+          <type>integer</type>
+        </field>
+      </fields>
+    </alarm_template>
+    <alarm_template id="remote.http_status_code">
+      <label>Status code</label>
+      <description>Alarm which returns WARNING if the server responses with 4xx status code or CRITICAL if it responds with 5xx status code</description>
+      <check_type>remote.http</check_type>
+      <criteria>if (metric['code'] regex "4[0-9][0-9]") {
+  return CRITICAL, "HTTP server responding with 4xx status"
+}
+
+if (metric['code'] regex "5[0-9][0-9]") {
+  return CRITICAL, "HTTP server responding with 5xx status"
+}
+
+return OK, "HTTP server is functioning normally"
+</criteria>
+      <fields/>
+    </alarm_template>
+    <alarm_template id="remote.http_cert_expiration">
+      <label>SSL certificate expiration time</label>
+      <description>Alarm which returns WARNING or CRITICAL based on the certificate expiration date</description>
+      <check_type>remote.http</check_type>
+      <criteria>if (metric['cert_end_in'] &lt; ${critical_threshold}) {
+  return CRITICAL, "Cert expiring in less than ${critical_threshold} seconds."
+}
+
+if (metric['cert_end_in'] &lt; ${warning_threshold}) {
+  return WARNING, "Cert expiring in less than ${warning_threshold} seconds."
+}
+
+return OK, "HTTP certificate doesn't expire soon."
+</criteria>
+      <fields>
+        <field>
+          <name>warning_threshold</name>
+          <description>Warning threshold (in seconds) for the certificate expiration</description>
+          <type>integer</type>
+        </field>
+        <field>
+          <name>critical_threshold</name>
+          <description>Critical threshold (in seconds) for the certificate expiration</description>
+          <type>integer</type>
+        </field>
+      </fields>
+    </alarm_template>
+    <alarm_template id="remote.dns_address_match">
+      <label>DNS record address match</label>
+      <description>Alarm which returns CRITICAL if the DNS record is not resolved to the provided address</description>
+      <check_type>remote.dns</check_type>
+      <criteria># Match if the 127... address was in the resolution
+# if it wasn't than default to CRITICAL
+
+if (metric['answer'] regex ".*${address}.*") {
+  return OK, "Resolved the correct address!"
+}
+return CRITICAL
+</criteria>
+      <fields>
+        <field>
+          <name>address</name>
+          <description>Address to which the DNS record must resolve to</description>
+          <type>string</type>
+        </field>
+      </fields>
+    </alarm_template>
+    <alarm_template id="remote.ssh_banner_match">
+      <label>SSH banner match</label>
+      <description>Alarm which returns CRITICAL if the service listening on SSH port doesn't return a valid banner</description>
+      <check_type>remote.ssh</check_type>
+      <criteria>/* Have the check match at the edge */
+if (metric['banner_matched'] != "") {
+  return OK
+}
+
+/* Or use the regex parser in the
+   language to build multiple matches
+   in a single alarm. */
+if (metric['banner'] regex "OpenSSH.*") {
+  return OK
+}
+
+return CRITICAL, "Match not found."
+</criteria>
+      <fields/>
+    </alarm_template>
+    <alarm_template id="remote.ssh_fingerprint_match">
+      <label>SSH fingerprint match</label>
+      <description>Alarm which returns CRITICAL if the SSH fingerprint doesn't match the provided one</description>
+      <check_type>remote.ssh</check_type>
+      <criteria>if (metric['fingerprint'] != "${fingerprint}") {
+  return CRITICAL, "SSH fingerprint didn't match the expected one ${fingerprint}"
+}
+
+return OK, "Got expected SSH fingerprint (${fingerprint})"
+</criteria>
+      <fields>
+        <field>
+          <name>fingerprint</name>
+          <description>Expected SSH fingerprint</description>
+          <type>string</type>
+        </field>
+      </fields>
+    </alarm_template>
+    <alarm_template id="remote.ping_packet_loss">
+      <label>Ping packet loss</label>
+      <description>Alarm which returns WARNING if the packet loss is greater than 5% and CRITICAL if it's greater than 20%</description>
+      <check_type>remote.ping</check_type>
+      <criteria>if (metric['available'] &lt; 80) {
+  return CRITICAL, "Packet loss is greater than 20%"
+}
+
+if (metric['available'] &lt; 95) {
+  return WARNING, "Packet loss is greater than 5%"
+}
+
+return OK, "Packet loss is normal"
+</criteria>
+      <fields/>
+    </alarm_template>
+    <alarm_template id="remote.tcp_connection_time">
+      <label>Connection time</label>
+      <description>Alarm which returns WARNING or CRITICAL based on the connection time</description>
+      <check_type>remote.tcp</check_type>
+      <criteria>if (metric['duration'] &gt; ${critical_threshold}) {
+  return CRITICAL, "TCP Connection took more than ${critical_threshold} milliseconds."
+}
+
+if (metric['duration'] &gt; ${warning_threshold}) {
+  return WARNING, "TCP Connection took more than ${warning_threshold} milliseconds."
+}
+
+return OK, "TCP connection time is normal"
+</criteria>
+      <fields>
+        <field>
+          <name>warning_threshold</name>
+          <description>Warning threshold (in seconds) for the connection time</description>
+          <type>integer</type>
+        </field>
+        <field>
+          <name>critical_threshold</name>
+          <description>Critical threshold (in seconds) for the connection time</description>
+          <type>integer</type>
+        </field>
+      </fields>
+    </alarm_template>
+    <alarm_template id="remote.dns_spf_record_include_match">
+      <label>SPF TXT record</label>
+      <description>Alarm which returns CRITICAL if the SPF record doesn't contain an include clause with the provided domain.</description>
+      <check_type>remote.dns</check_type>
+      <criteria>if (metric['answer'] regex "v=spf1.* include:${domain} .*[~|-]all") {
+  return OK, "SPF record with include clause for domain ${domain} exists"
+}
+
+return CRITICAL, "SPF record doesn't contain an include clause for domain ${domain}"
+</criteria>
+      <fields>
+        <field>
+          <name>domain</name>
+          <description>Domain to check for</description>
+          <type>string</type>
+        </field>
+      </fields>
+    </alarm_template>
+    <alarm_template id="remote.dns_dkim_public_key_match">
+      <label>DKIM TXT record</label>
+      <description>Alarm which returns CRITICAL if the DKIM record doesn't contain or match the provided public key.</description>
+      <check_type>remote.dns</check_type>
+      <criteria>if (metric['answer'] regex ".*p=${public_key}$") {
+  return OK, "DKIM record contains a provided public key"
+}
+
+return CRITICAL, "DKIM record doesn't contain a provided public key"
+</criteria>
+      <fields>
+        <field>
+          <name>public_key</name>
+          <description>Public key to check for. Note: Special characters must be escaped.</description>
+          <type>string</type>
+        </field>
+      </fields>
+    </alarm_template>
+  </values>
+  <metadata>
+    <count>12</count>
+    <limit/>
+    <marker/>
+    <next_href/>
+  </metadata>
+</container>

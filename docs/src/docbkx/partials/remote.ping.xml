@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="section-remote.ping">
+<title>standard metrics</title>
+<para><informaltable rules ="all">
+<thead>
+<tr><td>Metric</td><td>Description</td><td>Type</td></tr>
+</thead>
+<tbody>
+<tr><td><command>available</command></td><td>The whole number representing the percent of pings that returned back for a remote.ping check. (ex: <![CDATA[60]]>)</td><td>Double</td></tr>
+<tr><td><command>average</command></td><td>The average response time for all ping packets sent out and later retrieved. (ex: <![CDATA[0.0002513333359578]]>)</td><td>Double</td></tr>
+<tr><td><command>count</command></td><td>The number of ping ping's returned. (ex: <![CDATA[5]]>)</td><td>Int32</td></tr>
+<tr><td><command>maximum</command></td><td>The maximum roundtrip time of an ICMP packet. (ex: <![CDATA[0.0002770000137389]]>)</td><td>Double</td></tr>
+<tr><td><command>minimum</command></td><td>The minimum roundtrip time of an ICMP packet. (ex: <![CDATA[0.0002329999988433]]>)</td><td>Double</td></tr>
+</tbody></informaltable>
+</para></section>

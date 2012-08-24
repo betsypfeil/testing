@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="section-remote.dns">
+<title>standard metrics</title>
+<para><informaltable rules ="all">
+<thead>
+<tr><td>Metric</td><td>Description</td><td>Type</td></tr>
+</thead>
+<tbody>
+<tr><td><command>answer</command></td><td>The list of space seperated IP addresses for the specified name resolution. (ex: <![CDATA["74.125.225.80, 74.125.225.81, 74.125.225.82, 74.125.225.83, 74.125.225.84"]]>)</td><td>String</td></tr>
+<tr><td><command>rtt</command></td><td>The roundtrip time to execute a remote.dns check. (ex: <![CDATA[17.814]]>)</td><td>Double</td></tr>
+<tr><td><command>ttl</command></td><td>The TTL returned by the dns query. (ex: <![CDATA[300]]>)</td><td>Uint32</td></tr>
+</tbody></informaltable>
+</para></section>

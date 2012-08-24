@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:exsl="http://exslt.org/common" xmlns:ng="http://docbook.org/docbook-ng" xmlns:fb="http://ogp.me/ns/fb#"><head>
+<meta http-equiv="X-UA-Compatible" content="IE=7"/>
+<title>2.1. Create an Entity - Rackspace Cloud Monitoring Getting Started Guide
+   - API v1.4</title><meta name="generator" content="DocBook XSL-NS Stylesheets V1.76.1"/><link rel="home" href="index.html" title="Rackspace Cloud Monitoring Getting Started Guide"/><link rel="up" href="tutorials.html" title="Chapter 2. Create Your First Monitor"/><link rel="prev" href="tutorials.html" title="Chapter 2. Create Your First Monitor"/><link rel="next" href="concepts-tutorial-monitoring-zones.html" title="2.2. List Monitoring Zones"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script type="text/javascript">
+            //The id for tree cookie
+            var treeCookieId = "treeview-1518";
+            var language = "en";
+            var w = new Object();
+            //Localization
+            txt_filesfound = 'Results';
+            txt_enter_at_least_1_char = "You must enter at least one character.";
+            txt_browser_not_supported = "Your browser is not supported. Use of Mozilla Firefox is recommended.";
+            txt_please_wait = "Please wait. Search in progress...";
+            txt_results_for = "Results for: ";
+        </script><style type="text/css">
+            input {
+            margin-bottom: 5px;
+            margin-top: 2px;
+            }
+
+            .folder {
+            display: block;
+            height: 22px;
+            padding-left: 20px;
+            background: transparent url(../common/jquery/treeview/images/folder.gif) 0 0px no-repeat;
+            }
+            
+        </style><link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/><link rel="stylesheet" type="text/css" href="../common/css/positioning.css"/><link rel="stylesheet" type="text/css" href="../common/css/custom.css"/><link href="../atom.xml" type="application/atom+xml" rel="alternate" title="Document ATOM Feed"/><link rel="canonical" href="http://docs.rackspace.com/cm/api/v1.0/cm-getting-started/content/concepts-tutorial-create-entity.html"/><!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="../common/css/ie.css"/>
+	<![endif]--><link rel="stylesheet" type="text/css" href="../common/jquery/theme-redmond/jquery-ui-1.8.2.custom.css"/><link rel="stylesheet" type="text/css" href="../common/jquery/treeview/jquery.treeview.css"/><script type="text/javascript" src="../common/jquery/jquery-1.4.3.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery-ui-1.8.2.custom.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery.cookie.js"><!----></script><script type="text/javascript" src="../common/jquery/treeview/jquery.treeview.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery.qtip-1.0.0-rc3/jquery.qtip-1.0.0-rc3.min.js"><!--jQuery plugin for glossary popups. --></script><script type="text/javascript" src="search/htmlFileList.js"><!----></script><script type="text/javascript" src="search/htmlFileInfoList.js"><!----></script><script type="text/javascript" src="search/nwSearchFnt.js"><!----></script><script type="text/javascript" src="search/stemmers/en_stemmer.js"><!--//make this scalable to other languages as well.--></script><script type="text/javascript" src="search/index-1.js"><!----></script><script type="text/javascript" src="search/index-2.js"><!----></script><script type="text/javascript" src="search/index-3.js"><!----></script><script type="text/javascript">
+	    var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-23102455-4']);
+	  </script><script type="text/javascript" src="../common/ga.js"><!----></script><script type="text/javascript" src="http://www.tabpress.com/_js/ga_social_tracking.js"><!----></script><script>
+	    (function(){var twitterWidgets = document.createElement('script');
+        twitterWidgets.type = 'text/javascript';
+        twitterWidgets.async = true;
+        twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+        // Setup a callback to track once the script loads.
+        twitterWidgets.onload = _ga.trackTwitter;
+        document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+        })();
+      </script></head><body><div id="header"><a onclick="_gaq.push(['_trackEvent', 'Header', 'logo', 'click', 1]);" target="_blank" href="http://www.rackspace.com"><img src="../common/images/rackspace-logo.png" alt="Rackspace Documentation" width="157" height="47"/></a><h1>2.1. Create an Entity</h1><div id="navheader" align="right"><!----><table class="navLinks"><tr><td><a id="showHideButton" onclick="showHideToc(); _gaq.push(['_trackEvent', 'Header', 'show/hide', 'click', 1]);" class="pointLeft" title="Hide TOC tree">Sidebar
+                            </a></td><td><a accesskey="p" class="navLinkPrevious" onclick="_gaq.push(['_trackEvent', 'Header', 'prevLink', 'click', 1]);" tabindex="5" href="tutorials.html">Prev</a>
+				      |
+                                        <a accesskey="u" class="navLinkUp" onclick="_gaq.push(['_trackEvent', 'Header', 'upLink', 'click', 1]);" tabindex="5" href="tutorials.html">Up</a>
+				  |
+                                    <a accesskey="n" class="navLinkNext" onclick="_gaq.push(['_trackEvent', 'Header', 'nextLink', 'click', 1]);" tabindex="5" href="concepts-tutorial-monitoring-zones.html">Next</a></td></tr></table></div></div><div id="toolbar" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all"><div id="toolbar-left"><p class="breadcrumbs"><a href="http://docs.rackspace.com/api/">Rackspace Manuals</a><a href="index.html">Rackspace Cloud Monitoring Getting Started Guide
+   - API v1.4</a></p><a onclick="_gaq.push(['_trackEvent', 'Header', 'pdfDownload', 'click', 1]);" alt="Download a pdf of this document" class="pdficon" href="../../../cm-getting-started-latest.pdf"><img src="../common/images/pdf.png"/></a>
+       
+      <a href="../atom.xml"><img alt="Atom feed of this document" src="../common/images/feed-icon.png"/></a></div></div><div id="content"><div class="statustext">INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL - </div><div class="section"><div xmlns="" class="titlepage"><div><div><h2 xmlns="http://www.w3.org/1999/xhtml" class="title" style="clear: both"><a id="concepts-tutorial-create-entity"> </a>2.1. Create an Entity</h2></div></div></div><p>The first thing you'll do to begin monitoring a resource is to create an entity that
+        represents the resource in the monitoring system. </p><p>You'll use the following attributes to create the entity: </p><div class="variablelist"><dl><dt><span class="term"><em class="parameter"><code>label</code></em></span></dt><dd><p>Assigns a meaningful name to the entity. In the examples below, we've named the
+                server "My Rackspace Server". You can choose a different name or use the same one,
+                but note that it's commonly a server name.</p></dd><dt><span class="term"><em class="parameter"><code>ip_address</code></em></span></dt><dd><p>Specifies the server's IP address(es). In the example below, we're specified the
+                IP address and named it "default."</p></dd></dl></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Remember to insert your authorization token and account number as previously
+            described in <a class="xref" href="Authentication.html#example-auth" title="1.4.3. Example Authentication">Section 1.4.3, “Example Authentication”</a>.</p></td></tr></table></div><div class="example"><a id="d6e283"> </a><p class="title"><strong>Example 2.1. Create Entity Request JSON</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X POST \
+--data-binary \
+'{ "ip_addresses" : { "default" : "192.0.2.15" },
+  "label" : "My Rackspace Server",
+  "metadata" : {  }
+}' \
+-H 'X-Auth-Token: auth_token' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/'</pre></div></div><br class="example-break"/><div class="example"><a id="d6e286"> </a><p class="title"><strong>Example 2.2. Create Entity Response JSON</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
+Content-Length: 0
+X-Response-Id: .rh-ZWac.h-lon3-maas-prod-api0.r-To4aIzNP.c-25577.ts-1326394448414.v-0c7bb08
+X-Powered-By: Express
+Location: https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc
+Date: Thu, 12 Jan 2012 18:54:08 GMT
+Content-Type: text/plain</pre></div></div><br class="example-break"/><p>If the entity is successfully created, the endpoint returns a response code of
+          <span class="returnvalue">201 Created</span> and a <code class="code">Location:</code> header with the URI of
+        the entity. Note that the entity ID is located at the end of the URL. In this example, the
+        entity ID is enn14Ch5mc. Every entity has a unique ID, so yours will be different.</p><div class="example"><a id="d6e292"> </a><p class="title"><strong>Example 2.3. Create Entity Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-entities-create --label="Monitor Test" --ip-address=default=192.0.2.15</pre></div></div><br class="example-break"/><div class="example"><a id="d6e295"> </a><p class="title"><strong>Example 2.4. Create Entity raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
+Content-Length: 0
+X-Response-Id: .rh-ZWac.h-lon3-maas-prod-api0.r-To4aIzNP.c-25577.ts-1326394448414.v-0c7bb08
+X-Powered-By: Express
+Location: https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc
+Date: Thu, 12 Jan 2012 18:54:08 GMT
+Content-Type: text/plain</pre></div></div><br class="example-break"/><p>If an error message is returned, the endpoint was unable to create the entity. See error
+        codes descriptions in the <a class="link" href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/general-api-info-api-faults.html" target="_top">Rackspace Cloud Monitoring Developers Guide</a>.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>For the remaining steps of this tutorial substitute the ID of the entity you created
+          for "enn14Ch5mc".</p></td></tr></table></div><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="../common/images/admon/tip.png"/></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>You can request a list of all entities for your account at any time. You can also list
+          checks, alarms, notifications, and so on. </p><p>
+          </p><div class="example"><a id="d6e305"> </a><p class="title"><strong>Example 2.5. List All Entities Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X GET \
+-H 'X-Auth-Token: auth_token' \
+-H 'Content-Type: application/json' \ 
+-H 'Accept: application/json' \
+'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities'</pre></div></div><p><br class="example-break"/>
+          </p><div class="example"><a id="d6e308"> </a><p class="title"><strong>Example 2.6. List All Entities using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-entities-list --details</pre></div></div><p><br class="example-break"/>
+        </p><p>For a complete list of GET commands, see the Quick Reference table in <a class="link" href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/maas-core-service-calls.html" target="_top">Rackspace Cloud Monitoring Developers Guide</a>
+        </p></td></tr></table></div><p><span class="bold"><strong><a class="link" href="concepts-tutorial-monitoring-zones.html" title="2.2. List Monitoring Zones">NEXT
+          UP:</a></strong></span> Check out the monitoring zones you can launch your check
+        from.</p></div><script type="text/javascript" src="../common/main.js"><!----></script><hr/><script language="JavaScript" src="/comments.php?email=monitoring@RACKSPACE.COM" type="text/javascript"><!----></script><noscript>You must have JavaScript enabled to view and post comments.</noscript><hr/><div class="legal"><a href="index.html">Legal notices</a></div></div><div><div id="leftnavigation" style="padding-top:3px; background-color:white;"><div id="tabs"><ul><li><a href="#treeDiv" tabindex="1"><span class="contentsTab">Contents</span></a></li><li><a href="#searchDiv" tabindex="1"><span class="searchTab">Search</span></a></li></ul><div id="treeDiv"><img src="../common/images/loading.gif" alt="loading table of contents..." id="tocLoading" style="display:block;"/><div id="ulTreeDiv" style="display:none" class="thisisthat"><ul id="tree" class="filetree"><li tabindex="2"><span class="file"><a href="Introduction.html">1. Introduction</a></span><ul><li tabindex="2"><span class="file"><a href="how-it-works.html">1.1. How Rackspace Cloud Monitoring Works</a></span></li><li tabindex="2"><span class="file"><a href="pre-reqs.html">1.2. Prerequisites</a></span></li><li tabindex="2"><span class="file"><a href="endpoint-access.html">1.3. Accessing the API</a></span></li><li tabindex="2"><span class="file"><a href="Authentication.html">1.4. Authentication</a></span><ul><li tabindex="2"><span class="file"><a href="Authentication.html#auth-endpoint">1.4.1. The Authentication Endpoint</a></span></li><li tabindex="2"><span class="file"><a href="Authentication.html#finding-key">1.4.2. The Authentication Process</a></span></li><li tabindex="2"><span class="file"><a href="Authentication.html#example-auth">1.4.3. Example Authentication</a></span></li><li tabindex="2"><span class="file"><a href="Authentication.html#auth-response-description">1.4.4. Authentication Response Description</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="working-with-tutorial.html">1.5. Working with the Exercises in this Guide</a></span><ul><li tabindex="2"><span class="file"><a href="curl.html">1.5.1. Using cURL</a></span><ul><li tabindex="2"><span class="file"><a href="curl-copying-examples.html">1.5.1.1. Copying Request Examples</a></span></li><li tabindex="2"><span class="file"><a href="curl-escaping-returns.html">1.5.1.2. Escaping Carriage Returns</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="using-raxmon.html">1.5.2. Using the raxmon Command Line Interface</a></span></li></ul></li></ul></li><li tabindex="2"><span class="file"><a href="tutorials.html">2. Create Your First Monitor</a></span><ul><li tabindex="2" id="webhelp-currentid"><span class="file"><a href="concepts-tutorial-create-entity.html">2.1. Create an Entity</a></span></li><li tabindex="2"><span class="file"><a href="concepts-tutorial-monitoring-zones.html">2.2. List Monitoring Zones</a></span></li><li tabindex="2"><span class="file"><a href="concepts-tutorial-create-checks.html">2.3. Create Checks</a></span><ul><li tabindex="2"><span class="file"><a href="concepts-tutorial-create-checks.html#tutorial-create-ping-check">2.3.1. Create a PING Check</a></span></li><li tabindex="2"><span class="file"><a href="concepts-tutorial-create-checks.html#tutorial-test-check">2.3.2. Test the Check</a></span></li><li tabindex="2"><span class="file"><a href="concepts-tutorial-create-checks.html#tutorial-create-http-check">2.3.3. Create HTTP Checks</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="tutorial-list-all-checks.html">2.4. List All Checks for the Entity</a></span></li><li tabindex="2"><span class="file"><a href="concepts-tutorial-setup-notifications.html">2.5. Set Up Notifications</a></span><ul><li tabindex="2"><span class="file"><a href="concepts-tutorial-setup-notifications.html#create-notification-plan">2.5.1. Create a Notification Plan</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="concepts-tutorial-create-alarm.html">2.6. Create an Alarm</a></span></li><li tabindex="2"><span class="file"><a href="concepts-tutorial-modify-entity.html">2.7. Modify an Entity</a></span></li><li tabindex="2"><span class="file"><a href="concepts-tutorial-delete-entity.html">2.8. Delete an Entity</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="additional-resources.html">3. Additional Resources</a></span><ul><li tabindex="2"><span class="file"><a href="additional-resources.html#resources-monitoring-docs">3.1. More on Monitoring </a></span></li><li tabindex="2"><span class="file"><a href="additional-resources.html#resources-talk">3.2. Talk to Us</a></span></li><li tabindex="2"><span class="file"><a href="additional-resources.html#resouces-talk">3.3. More From Rackspace</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="rs_glossary.html">Glossary</a></span></li></ul></div></div><div id="searchDiv"><div id="search"><form onsubmit="Verifie(ditaSearch_Form);return false" name="ditaSearch_Form" class="searchForm"><fieldset class="searchFieldSet"><legend>Search</legend><center><input id="textToSearch" name="textToSearch" type="text" class="searchText"/> &nbsp; <input onclick="Verifie(ditaSearch_Form)" type="button" class="searchButton" value="Go" id="doSearch"/></center></fieldset></form></div><div id="searchResults"><center/></div><p class="searchHighlight"><a href="#" onclick="toggleHighlight()">Search Highlighter (On/Off)</a></p></div></div></div></div><script type="text/javascript" src="../common/jquery/jquery.qtip-1.0.0-rc3/jquery.qtip-1.0.0-rc3.min.js"><!--jQuery plugin for glossary popups. -->
+                   $('a[title]').qtip({ style: { name: 'cream', tip: true } })
+                </script></body></html>

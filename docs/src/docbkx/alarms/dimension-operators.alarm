@@ -1,0 +1,5 @@
+if (metric['foo'] > 100 || dimension['disk'] ${operator} "bar") {
+  return WARNING
+}
+
+return OK

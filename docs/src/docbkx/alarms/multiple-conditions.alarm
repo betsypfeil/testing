@@ -1,0 +1,17 @@
+if (metric['foo'] == metric['bar']) {
+  return OK
+}
+
+if (rate(metric['a']) >= rate(metric['b'])) {
+  return OK
+}
+
+if ((metric['path'] regex "/test")) {
+  return WARNING
+}
+
+if (metric['a'] >= metric['b'] && metric['a'] == "test" || metric['c'] == "foo") {
+  return CRITICAL
+}
+
+return OK

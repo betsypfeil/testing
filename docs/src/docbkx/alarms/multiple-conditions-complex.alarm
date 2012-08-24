@@ -1,0 +1,24 @@
+:set consistencyLevel=QUORUM
+
+if (metric['a'] == metric['b']) {
+  return CRITICAL
+}
+
+if (rate(metric['c']) >= 100 || rate(metric['d']) < 200) {
+  return OK
+}
+
+if (rate(metric['e']) < rate(metric['f'])) {
+  return WARNING , "metric is e is less than metric f"
+}
+
+if (metric['body'] nregex ".*success.*") {
+  return CRITICAL
+  , "explosiooooooooooooooon"
+}
+
+if (metric['g'] == metric['h'] && metric['k'] != 20.23) {
+  return OK, "everything is ok."
+}
+
+return WARNING

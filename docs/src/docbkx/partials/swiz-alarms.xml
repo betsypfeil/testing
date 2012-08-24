@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="section-Alarms">
+<title>Attributes</title>
+<para><informaltable rules ="all">
+<thead>
+<tr><td>Name</td><td>Description</td><td>Validation</td></tr>
+</thead>
+<tbody><tr>
+<td><command>notification_plan_id</command></td>
+<td>The id of the notification plan to execute when the state changes.</td>
+<td><itemizedlist><listitem><para>Valid Notification Plan</para></listitem>
+<listitem><para>Non-empty string</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>check_id</command></td>
+<td>The ID of the check to alert on.  This paramater is mutually exclusive with check_type.</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>Immutable</para></listitem>
+<listitem><para>String</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>check_type</command></td>
+<td>The type of check to alert on.  This paramater is mutually exclusive with check_id.</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>Immutable</para></listitem>
+<listitem><para>String</para></listitem>
+<listitem><para>One of (remote.dns, remote.ssh, remote.smtp, remote.http, remote.tcp, remote.ping, remote.ftp-banner, remote.imap-banner, remote.pop3-banner, remote.smtp-banner, remote.postgresql-banner, remote.telnet-banner, remote.mysql-banner, remote.mssql-banner)</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>criteria</command></td>
+<td>The alarm DSL for describing alerting conditions and their output states.</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>String between 1 and 16384 characters long</para></listitem>
+<listitem><para>Valid Alarm</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>label</command></td>
+<td>A friendly label for an alarm.</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>String between 1 and 255 characters long</para></listitem>
+</itemizedlist></td>
+</tr>
+<tr>
+<td><command>metadata</command></td>
+<td>Arbitrary key/value pairs.</td>
+<td><itemizedlist><listitem><para>Optional</para></listitem>
+<listitem><para>Hash [String,String between 1 and 255 characters long:String,String between 1 and 255 characters long]</para></listitem>
+</itemizedlist></td>
+</tr>
+</tbody></informaltable>
+</para></section>

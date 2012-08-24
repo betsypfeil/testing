@@ -1,0 +1,11 @@
+if (metric['code1'] == metric['code2'] || metric['code3'] != metric['code4']) {
+  return OK
+}
+
+if (metric['code5'] > metric['code6']) {
+  return OK
+}
+
+if (metric['code7'] <= metric['code8']) {
+  return OK
+}

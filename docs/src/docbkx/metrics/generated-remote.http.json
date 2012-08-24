@@ -1,0 +1,56 @@
+{
+  "timestamp": 1320248989363,
+  "monitoring_zone_id": "mzxJ4L2IU",
+  "available": true,
+  "status": "code=200,rt=0.237s,bytes=10577,body=matched,sslerror",
+  "metrics": {
+    "body_match": {
+      "type": "s",
+      "data": "<!doctype html><html><head><meta http-equiv=\"content-type\" content=\"text/html; c"
+    },
+    "bytes": {
+      "type": "i",
+      "data": 10577
+    },
+    "cert_end": {
+      "type": "I",
+      "data": 1324252799
+    },
+    "cert_end_in": {
+      "type": "i",
+      "data": 4003810
+    },
+    "cert_error": {
+      "type": "s",
+      "data": "certificate not trusted"
+    },
+    "cert_issuer": {
+      "type": "s",
+      "data": "/C=ZA/O=Thawte Consulting (Pty) Ltd./CN=Thawte SGC CA"
+    },
+    "cert_start": {
+      "type": "I",
+      "data": 1261094400
+    },
+    "cert_subject": {
+      "type": "s",
+      "data": "/C=US/ST=California/L=Mountain View/O=Google Inc/CN=www.google.com"
+    },
+    "code": {
+      "type": "s",
+      "data": "200"
+    },
+    "duration": {
+      "type": "I",
+      "data": 237
+    },
+    "tt_connect": {
+      "type": "I",
+      "data": 50
+    },
+    "tt_firstbyte": {
+      "type": "I",
+      "data": 237
+    }
+  }
+}

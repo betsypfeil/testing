@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter [<!-- Some useful entities borrowed from HTML -->
+<!ENTITY ndash  "&#x2013;">
+<!ENTITY mdash  "&#x2014;">
+<!ENTITY hellip "&#x2026;">
+
+<!-- Useful for describing APIs -->
+<!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+<!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+<!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+<!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+
+
+<!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+<imageobject>
+<imagedata fileref="img/Check_mark_23x20_02.svg"
+format="SVG" scale="60"/>
+</imageobject>
+</inlinemediaobject>'>
+<!ENTITY CODES       'Normal Response Code(s):'>
+<!ENTITY ERROR_CODES 'Error Response Code(s):'>
+<!ENTITY NO_REQUEST '<para xmlns="http://docbook.org/ns/docbook">
+This operation does not require a request body.</para>'>
+<!ENTITY LONG_URI_REFHEAD '
+<thead xmlns="http://docbook.org/ns/docbook">
+<tr>
+<td colspan="1">Verb</td>
+<td colspan="4">URI</td>
+<td colspan="3">Description</td>
+</tr>
+</thead>'>
+<!ENTITY URI_REFHEAD '
+<thead xmlns="http://docbook.org/ns/docbook">
+<tr>
+<td colspan="1">Verb</td>
+<td colspan="1">URI</td>
+<td colspan="4">Description</td>
+</tr>
+</thead>'>
+<!ENTITY MAAS 'Rackspace Cloud Monitoring'>
+]>
+<chapter 
+    xmlns="http://docbook.org/ns/docbook" 
+    xmlns:xlink="http://www.w3.org/1999/xlink" 
+    xmlns:xi="http://www.w3.org/2001/XInclude" 
+    xmlns:svg="http://www.w3.org/2000/svg" 
+    version="5.0"  xml:id="overview">
+        <title>Overview</title>
+        <para>&MAAS; analyzes cloud services and dedicated infrastructure using a simple, yet
+        powerful API. The API currently includes monitoring for external services. The key benefits
+        you receive from using this API include the following:</para>
+        <variablelist>
+            <varlistentry>
+                <term><emphasis role="bold">Use of Domain Specific Language (DSL)</emphasis></term>
+                <listitem>
+                    <para>The &MAAS; API uses a DSL, which makes it a powerful tool for configuring
+                    advanced monitoring features. For example, typically complex tasks, such as
+                    defining triggers on thresholds for metrics or performing an inverse string
+                    match become much easier with a concise, special purpose language created for
+                    defining alarms. For more information, see <link linkend="concepts-alarms">Alarms</link>. 
+                    </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><emphasis role="bold">Monitoring from Multiple Datacenters</emphasis></term>
+                <listitem>
+                    <para>&MAAS; allows you to simultaneously monitor the performance of different
+                    resources from multiple datacenters and provides a clear picture of overall
+                    system health. It includes tunable parameters to interpret mixed results which
+                    help you to create deliberate and accurate alerting policies.  See <link
+                        linkend="concepts-alarms-alert-policies">Alert Policies</link> for more
+                    information.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><emphasis role="bold">Alarms and Notifications</emphasis></term>
+                <listitem>
+                    <para>When an alarm occurs on a monitored resource, &MAAS; sends you a
+                    notification so that you can take the appropriate action to either prevent an
+                    adverse situation from occurring or rectify a situation that has already
+                    occurred. These notifications are sent based on the severity of the alert as
+                    defined in the notification plan.</para>
+                </listitem>
+            </varlistentry> 
+            <varlistentry security="internal">
+                <term><emphasis role="bold">Collection of Data</emphasis></term>
+                <listitem>
+                    <para>&MAAS; collects a variety of data that you can use for other tasks, such as
+                        researching trends or measuring critical data.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+        <para>For more information about the basic foundations of this API, refer to
+            <xref linkend="Concepts"/>.</para>
+    <section xml:id="how-it-works">
+        <title>How Rackspace Cloud Monitoring Works</title>
+        <para> Rackspace Cloud Monitoring helps you to stay one step ahead of your customers by
+            keeping a keen eye on all of your resources; from web sites to web servers, routers, load
+            balancers, and more.</para>
+        <para>All you need to do is create an entity that represents the thing you want to monitor and
+            then attach a check to it using one our predefined checks. For example, you might want to
+            use the PING check to monitor your web site’s public IP address.</para>
+        <para>You can run your checks from multiple monitoring zones. Each check has an alarm
+            associated with it that serves as a threshold and processes the output of the check. When a
+            specific condition is met, the alarm is triggered and your notification plan is put into
+            action; sending you an email notification or a webhook to a URL.   </para>
+        <figure>
+            <title>Rackspace Cloud Monitoring Work Flow</title>
+            <mediaobject >
+                <imageobject role="html">
+                    <imagedata format="PNG" align="center" fileref="img/Rackspace_monitor_svc_image-2.png"/>
+                </imageobject>
+                <imageobject role="fo">
+                    <imagedata format="svg" align="center" contentwidth="6in" fileref="img/Rackspace_monitor_svc_image.svg"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
+    </section>
+        <section xml:id="intended-audience">
+            <title>Intended Audience</title>
+            <para security="">This document is intended for software developers interested in developing
+                applications that use the &MAAS; product. It describes each API call,
+                its associated options, and provides examples of successful and failed responses. </para>
+            <para>To use the information provided here, you should first have a general understanding of
+                the Rackspace Monitoring Server service and have access to an active Rackspace account. You
+                should also be familiar with:</para>
+            <itemizedlist>
+                <listitem>
+                    <para>RESTful web services</para>
+                </listitem>
+                <listitem>
+                    <para>HTTP/1.1</para>
+                </listitem>
+                <listitem>
+                    <para>JSON and/or XML serialization formats</para>
+                </listitem>
+            </itemizedlist>
+        </section>
+        <section xml:id="document-change-history">
+            <title>Document Change History</title>
+            <para>This version of the Developer Guide replaces and obsoletes all previous versions.
+            The most recent changes are described in the table below:  <?rax revhistory?></para>
+            
+        </section>
+        <section xml:id="additional-resources">
+            <title>Additional Resources</title>
+            <para>You can download the most current version of this document from the Rackspace Cloud
+                website at <link
+                    xlink:href="http://docs.rackspacecloud.com/api">
+                    http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/index.html</link>. </para>
+        <para>Try out the tutorial in the Rackspace Cloud Monitoring Getting Started Guide at: <link
+                xlink:href="http://docs.rackspacecloud.com/cm/api/v1.0/cm-getting-started/content/Introduction.html"
+                >http://docs.rackspace.com/cm/api/v1.0/cm-getting-started/content/Introduction.html</link>.</para>
+            <para>For information about Rackspace Cloud products, refer to <link
+                xlink:href="http://www.rackspace.com/cloud">http://www.rackspace.com/cloud</link>.
+            This site also offers links to official Rackspace support channels, including knowledge
+            base articles, forums, phone, chat, and email. </para>
+            <para>You can also follow updates and announcements via twitter at <link xlink:href="http://www.twitter.com/rackspace">http://www.twitter.com/rackspace</link>.</para>
+            <para>This API uses standard HTTP 1.1 response codes as documented at <link xlink:href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html</link>.</para>
+        </section>
+</chapter>

@@ -1,0 +1,3 @@
+if (metric['body_match'] regex ".*forbidden.*") {
+  return CRITICAL, "Forbidden found, returning CRITICAL."
+}

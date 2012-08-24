@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="section-remote.smtp-banner">
+<title>standard metrics</title>
+<para><informaltable rules ="all">
+<thead>
+<tr><td>Metric</td><td>Description</td><td>Type</td></tr>
+</thead>
+<tbody>
+<tr><td><command>tt_connect</command></td><td>The time to connect measured in milliseconds. (ex: <![CDATA[34]]>)</td><td>Uint32</td></tr>
+</tbody></informaltable>
+</para></section>

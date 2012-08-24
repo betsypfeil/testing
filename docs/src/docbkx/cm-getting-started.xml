@@ -1,0 +1,1689 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book[<!-- Some useful entities borrowed from HTML -->
+  <!ENTITY ndash  "&#x2013;">
+  <!ENTITY mdash  "&#x2014;">
+  <!ENTITY hellip "&#x2026;">
+
+  <!-- Useful for describing APIs -->
+  <!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+  <!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+  <!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+  <!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+
+
+  <!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+         <imageobject>
+          <imagedata fileref="img/Check_mark_23x20_02.svg"
+               format="SVG" scale="60"/>
+        </imageobject>
+        </inlinemediaobject>'>
+  <!ENTITY CODES       'Normal Response Code(s):'>
+  <!ENTITY ERROR_CODES 'Error Response Code(s):'>
+  <!ENTITY NO_REQUEST '<para xmlns="http://docbook.org/ns/docbook">
+              This operation does not require a request body.</para>'>
+  <!ENTITY LONG_URI_REFHEAD '
+      <thead xmlns="http://docbook.org/ns/docbook">
+      <tr>
+        <td colspan="1">Verb</td>
+        <td colspan="4">URI</td>
+        <td colspan="3">Description</td>
+      </tr>
+      </thead>'>
+  <!ENTITY URI_REFHEAD '
+      <thead xmlns="http://docbook.org/ns/docbook">
+      <tr>
+        <td colspan="1">Verb</td>
+        <td colspan="1">URI</td>
+        <td colspan="4">Description</td>
+      </tr>
+      </thead>'>
+<!ENTITY MAAS 'Rackspace Cloud Monitoring'>
+<!ENTITY HOST 'monitoring.api.rackspacecloud.com'>
+<!ENTITY URL 'https://&HOST;/v1.0/'>
+]>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:html="http://www.w3.org/1999/xhtml" version="5.0" xml:id="cm-getting-started">
+  <?rax  pdf.url="../../../cm-getting-started-latest.pdf" canonical.url.base="http://docs.rackspace.com/cm/api/v1.0/cm-getting-started/content"?> 
+  <title>Rackspace Cloud Monitoring Getting Started Guide</title>
+  <info>
+  <author>
+    <personname>
+    <firstname/>
+    <surname/>
+    </personname>
+    <affiliation>
+        <orgname>Rackspace Cloud</orgname>
+      </affiliation>
+  </author>
+  <copyright>
+    <year>2011</year>
+    <year>2012</year>
+    <holder>Rackspace</holder>
+  </copyright>
+  <releaseinfo>API v1.4</releaseinfo>
+  <productname>Rackspace Cloud Monitoring</productname>
+  <pubdate>2012-08-22</pubdate>
+    <revhistory>
+      <revision>
+        <date>2012-08-22</date>
+        <revdescription>
+          <para>Unlimited Availability</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2012-08-14</date>
+        <revdescription>
+          <para>Minor fixes.</para>
+        </revdescription>
+      </revision>
+      <revision>
+	<date>2012-06-17</date>
+	<revdescription>
+	  <para>Miscellaneous updates.</para>
+	</revdescription>
+      </revision>
+      <revision>
+        <date>2012-03-28</date>
+        <revdescription>
+          <para>EAP</para>
+        </revdescription>
+      </revision>
+    </revhistory>
+  <legalnotice role="rs-api">
+    <annotation>
+      <remark>Copyright details are filled in by the template.</remark>
+    </annotation>
+  </legalnotice>
+  <abstract>
+    <para>This document provides in introduction for software developers interested in developing
+        applications using the &MAAS; Application Programming Interface (<abbrev>API</abbrev>). </para>
+  </abstract>
+  </info>
+  <chapter xml:id="Introduction">
+    <title>Introduction</title>
+    <para>When your cloud resources are working as expected,
+      everything is running smoothly and it's business as usual.
+      However, things don't always work perfectly, and problems can
+      occur. When something unexpectedly breaks, it can impact
+      performance, or worse, it can take down your server or company
+      website and prevent you and your customers from accessing
+      critical data. If this happens, you'll want to know right away
+      and take the appropriate actions to keep your business
+      operational and your customers happy. But don't worry, &MAAS;
+      can help you by providing timely and accurate information on
+      just how your resources are performing. It supplies you with
+      four key pieces of information that can help you manage your business:<itemizedlist>
+        <listitem>
+          <para>Current system health</para>
+        </listitem>
+        <listitem>
+          <para>Alerts on failure conditions</para>
+        </listitem>
+        <listitem>
+          <para>Collection of historical data</para>
+        </listitem>
+        <listitem>
+          <para>Trending and capacity planning</para>
+        </listitem>
+      </itemizedlist></para>
+    <para>Using &MAAS;'s RESTful API you can quickly create multiple monitors using predefined
+      checks, such as PING, HTTPS, SMTP (and many more), to keep track of your cloud resources and
+      receive instant notification when a resource needs your attention. </para>
+    <para>This guide explains the basics of how to access and use the API so you can begin to
+      monitor your resources immediately. </para>
+    <section xml:id="how-it-works">
+      <title>How Rackspace Cloud Monitoring Works</title>
+      <para>Rackspace Cloud Monitoring helps you to stay one step ahead of your customers by keeping
+        a keen eye on all of your resources; from web sites to web servers, routers, load balancers,
+        and more.</para>
+      <para>All you need to do is create an entity that represents the
+        thing you want to monitor and then attach a check to it using
+        one our predefined checks. For example, you might want to use
+        the PING check to monitor your web site's public IP
+        address.</para>
+      <para>You can run your checks from multiple monitoring zones. Each check has an alarm
+        associated with it that serves as a threshold and processes the output of the check. When a
+        specific condition is met, the alarm is triggered and your notification plan is put into
+        action; sending you an email notification or a webhook to a URL.   </para>
+      <figure>
+        <title>Rackspace Cloud Monitoring Work Flow</title>
+        <mediaobject >
+          <imageobject role="html">
+            <imagedata format="PNG" align="center" fileref="img/Rackspace_monitor_svc_image-2.png"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata format="svg" align="center" contentwidth="6in" fileref="img/Rackspace_monitor_svc_image.svg"/>
+           </imageobject>
+        </mediaobject>
+      </figure>
+    </section>
+    <section xml:id="pre-reqs">
+      <title>Prerequisites</title>
+      <para>Before you attempt to use the &MAAS; API, make sure you have met the following prerequisites:<itemizedlist>
+          <listitem>
+            <para>You have a Rackspace account. </para>
+          </listitem>
+          <listitem>
+            <para>You are familiar with HTTP v1.1 and <glossterm xml:id="RESTfull.glossary"
+                >RESTful</glossterm> web services.</para>
+          </listitem>
+        </itemizedlist></para>
+    </section>
+    <section xml:id="endpoint-access">
+      <title>Accessing the API</title>
+      <para>To access the &MAAS; use the following URL:</para>
+      <para>&URL;<replaceable role="italic"
+        >1234</replaceable></para>
+      <note>
+        <para>1234 represents your account number and is used as a placeholder in the examples and
+          exercises in this guide. When you work through the examples you'll need to replace 1234
+          with your Rackspace account number. If you don't know your account number now, don't
+          worry. We'll explain how to find it later. To see find that information now, read
+            <code>publicURL</code> at <xref linkend="auth-response-description"/>.</para>
+      </note>
+    </section>
+    <section xml:id="Authentication">
+      <title>Authentication</title>
+      <?dbhtml stop-chunking?>
+      <para>Authentication validates your user credentials and provides access to Rackspace services
+        and products. You'll need to authenticate prior to each request you make to the API. This
+        section gives you a quick introduction to Rackspace authentication so that you can access
+        the &MAAS; API. For a complete discussion of authentication, see <link
+          xlink:href="http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide/content/index.html"
+          >Cloud Identity Client Developer Guide</link>.</para>
+      <section xml:id="auth-endpoint">
+        <title>The Authentication Endpoint</title>
+        <para>You'll send your authentication request to the Rackspace Cloud Authentication Service
+          using the following URL:</para>
+        <para>https://auth.api.rackspacecloud.com/v1.1/auth</para>
+      </section>
+      <section xml:id="finding-key">
+        <title>The Authentication Process</title>
+        <para>When sending an authentication request, you'll send your Rackspace account username
+          and API access key to the Rackspace Cloud Authentication Service. After receiving your
+          request, the Authentication Service validates your credentials and returns an
+          authorization token and a list of the services you can access along with your account
+          number. You'll need to include the authentication token and your account number with each
+          request you make to the API. We'll show you how in <xref linkend="example-auth"/>.</para>
+        <para>If you need help finding your API key, follow the steps below.</para>
+        <procedure>
+          <title>To find your API key</title>
+          <step>
+            <para>Log into the Control Panel at <link
+                xlink:href="https://manage.rackspacecloud.com"
+                >https://manage.rackspacecloud.com</link>.</para>
+          </step>
+          <step>
+            <para>When the console opens, click <guilabel>Your Account</guilabel>, and then
+                <emphasis role="bold">API Access</emphasis>.</para>
+          </step>
+          <step>
+            <para>From the API Access page you can generate a new key or
+                <guilabel>Show/Hide</guilabel> an existing key. </para>
+          </step>
+        </procedure>
+        <para>When you're ready to send your authentication request, you'll need to copy and paste
+          your key into the <code>key</code> attribute of the <code>credentials</code> parameter,
+          like this:</para>
+        <programlisting>&lt;credentials xmlns="http://docs.rackspacecloud.com/auth/api/v1.1" 
+              username="your_Rackspace_username" 
+              <emphasis role="bold">key="00000000-0000-0000-0000-000000000000"</emphasis>/>'</programlisting>
+      </section>
+      <section xml:id="example-auth">
+        <title>Example Authentication</title>
+        <para>The following example demonstrates how to authenticate. Remember to insert your
+          Rackspace user name and API key in the <code>username</code> and <code>key</code>
+          options.</para>
+        <example>
+          <title>Authentication Request: XML</title>
+          <programlisting>curl -i \
+-H "Content-Type: application/xml" \ 
+-H "Accept: application/xml" \ 
+-d \ 
+'&lt;?xml version="1.0" encoding="UTF-8"?>
+ &lt;credentials xmlns="http://docs.rackspacecloud.com/auth/api/v1.1" 
+              username="your_Rackspace_username" 
+              key="00000000-0000-0000-0000-000000000000"/>' \ 
+https://auth.api.rackspacecloud.com/v1.1/auth</programlisting>
+        </example>
+        <example>
+          <title>Authentication Request: JSON</title>
+          <programlisting>curl -i \
+-H "Content-Type: application/json" \
+-H "Accept: application/json" \ 
+-d \
+'{
+    "credentials": {
+    "username": "my_Rackspace_username",
+    "key": "00000000-0000-0000-0000-000000000000"}
+    }' \
+https://auth.api.rackspacecloud.com/v1.1/auth</programlisting>
+        </example>
+        <example>
+          <title>Authentication Response: XML</title>
+          <programlisting>HTTP/1.1 200 OK
+Server: Apache/2.2.3 (Red Hat)
+vary: Accept,Accept-Encoding
+Content-Type: application/xml
+Date: Wed, 22 Aug 2012 23:25:49 GMT
+Connection: Keep-Alive
+Content-Length: 1901
+
+&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+&lt;auth xmlns="http://docs.rackspacecloud.com/auth/api/v1.1">
+	&lt;token id="asdasdasd-adsasdads-asdasdasd-adsadsasd" expires="2012-08-22T20:09:05.000-05:00"/>
+
+		&lt;serviceCatalog>
+		  &lt;service name="cloudFilesCDN">&lt;endpoint region="DFW" v1Default="true" publicURL="https://cdn1.clouddrive.com/v1/MossoCloudFS_9c24e3db-52bf-4f26-8dc1-220871796e9f"/>&lt;/service>
+		  &lt;service name="cloudFiles">&lt;endpoint region="DFW" v1Default="true" publicURL="https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_9c24e3db-52bf-4f26-8dc1-220871796e9f" internalURL="https://snet-storage101.dfw1.clouddrive.com/v1/MossoCloudFS_9c24e3db-52bf-4f26-8dc1-220871796e9f"/>&lt;/service>
+		  &lt;service name="cloudServers">&lt;endpoint v1Default="true" publicURL="https://servers.api.rackspacecloud.com/v1.0/1234"/>&lt;/service>
+		  &lt;service name="cloudServersOpenStack">&lt;endpoint region="DFW" v1Default="false" publicURL="https://dfw.servers.api.rackspacecloud.com/v2/661145"/>&lt;endpoint region="ORD" v1Default="false" publicURL="https://ord.servers.api.rackspacecloud.com/v2/1234"/>&lt;/service>
+		  &lt;service name="cloudDNS">&lt;endpoint v1Default="false" publicURL="https://dns.api.rackspacecloud.com/v1.0/1234"/>&lt;/service>
+		  &lt;service name="cloudDatabases">&lt;endpoint region="DFW" v1Default="false" publicURL="https://dfw.databases.api.rackspacecloud.com/v1.0/661145"/>&lt;endpoint region="ORD" v1Default="false" publicURL="https://ord.databases.api.rackspacecloud.com/v1.0/1234"/>&lt;/service>
+		  &lt;service name="cloudLoadBalancers">&lt;endpoint region="DFW" v1Default="false" publicURL="https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/1234"/>&lt;endpoint region="ORD" v1Default="false" publicURL="https://ord.loadbalancers.api.rackspacecloud.com/v1.0/1234"/>&lt;/service>
+		  &lt;service name="cloudMonitoring">&lt;endpoint v1Default="false" publicURL="https://monitoring.api.rackspacecloud.com/v1.0/1234"/>&lt;/service>
+		&lt;/serviceCatalog>
+&lt;/auth>
+</programlisting>
+        </example>
+        <example>
+          <title>Authentication Response: JSON</title>
+          <programlisting>HTTP/1.1 200 OK
+Server: Apache/2.2.3 (Red Hat)
+vary: Accept,Accept-Encoding
+Content-Type: application/json
+Date: Thu, 23 Aug 2012 00:29:08 GMT
+Connection: Keep-Alive
+Content-Length: 1451
+
+{
+  "auth":{
+    "token"{
+	 "id":"asdasdasd-adsasdads-asdasdasd-adsadsasd",
+	    "expires":"2012-08-23T19:59:03.512-05:00"},
+    "serviceCatalog":{
+        "cloudServersOpenStack":[
+        {
+          "region":"DFW",
+          "publicURL":"https:\/\/dfw.servers.api.rackspacecloud.com\/v2\/1234"},
+        {
+          "region":"ORD",
+          "publicURL":"https:\/\/ord.servers.api.rackspacecloud.com\/v2\/1234"}],
+        "cloudDNS":[
+        {
+          "publicURL":"https:\/\/dns.api.rackspacecloud.com\/v1.0\/1234"}],
+        "cloudFilesCDN":[
+        {
+          "region":"DFW",
+          "publicURL":"https:\/\/cdn1.clouddrive.com\/v1\/MossoCloudFS_9c24e3db-52bf-4f26-8dc1-220871796e9f","v1Default":true}],
+        "cloudFiles":[
+        {
+        "region":"DFW","publicURL":"https:\/\/storage101.dfw1.clouddrive.com\/v1\/MossoCloudFS_9c24e3db-52bf-4f26-8dc1-220871796e9f","v1Default":true,"internalURL":"https:\/\/snet-storage101.dfw1.clouddrive.com\/v1\/MossoCloudFS_9c24e3db-52bf-4f26-8dc1-220871796e9f"}],
+        "cloudLoadBalancers":[
+        {
+          "region":"ORD","publicURL":"https:\/\/ord.loadbalancers.api.rackspacecloud.com\/v1.0\/1234"}, 
+        {
+          "region":"DFW","publicURL":"https:\/\/dfw.loadbalancers.api.rackspacecloud.com\/v1.0\/1234"}],
+        "cloudMonitoring":[
+        {
+         "publicURL":"https:\/\/monitoring.api.rackspacecloud.com\/v1.0\/1234"}],
+         "cloudDatabases":[
+         {
+         "region":"DFW","publicURL":"https:\/\/dfw.databases.api.rackspacecloud.com\/v1.0\/1234"}, 
+         {
+         "region":"ORD","publicURL":"https:\/\/ord.databases.api.rackspacecloud.com\/v1.0\/1234"}],
+         "cloudServers":[
+         {
+          "publicURL":"https:\/\/servers.api.rackspacecloud.com\/v1.0\/12345","v1Default":true}]
+         }
+       }
+}
+</programlisting>
+        </example>
+      </section>
+      <section xml:id="auth-response-description">
+        <title>Authentication Response Description</title>
+        <para>The authentication response contains the following information:<variablelist>
+            <varlistentry>
+              <term><code>token id</code>
+              </term>
+              <listitem>
+                <para>Specifies the authentication token. Tokens are valid for a finite duration; a
+                  token's default lifespan is twenty-four hours. </para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term><code>expires</code></term>
+              <listitem>
+                <para>Denotes the time after which the token will automatically become invalid. A
+                  token may be manually revoked before the time identified by the
+                    <code>expires</code> attribute; this attribute predicts a token's maximum
+                  possible lifespan but does not guarantee that it will reach that lifespan. Clients
+                  are encouraged to cache a token until it expires.</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term><code>serviceCatalog</code></term>
+              <listitem>
+                <para>Lists the regions and public and private URLs for each of the Rackspace
+                  products and services you have access to.</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term><code>publicURL</code></term>
+              <listitem>
+                <para>Lists the public URL for each product and service.<note>
+                    <para>You will find your account number after the final '/' in the
+                        <code>publicURL</code> field. In this example the account number is 1234.
+                    </para>
+                  </note></para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+        </para>
+      </section>
+    </section>
+    <section xml:id="working-with-tutorial">
+      <title>Working with the Exercises in this Guide</title>
+      <para>The main purpose of this guide is to get you up and running quickly with &MAAS;. To help
+        you accomplish this goal, we've included a tutorial that lets you try out the basic
+        operations for creating a monitor. To run through the exercises you can use the cURL command
+        line tool or <code>raxmon</code>, the &MAAS; command line interface. Read on for a brief
+        introduction to both of these tools.</para>
+      <section xml:id="curl">
+        <title>Using cURL</title>
+        <para>The cURL command line makes it easier to interact with RESTful APIs. It lets you
+          transmit and receive HTTP requests and responses from the command line or from within a
+          shell script. It is available on most UNIX®-like environments, on Mac OS X®, and Windows®.
+          For more information on cURL, visit <link xlink:href="http://curl.haxx.se"/>.</para>
+        <para>This guide uses the following cURL command line options: </para>
+        <itemizedlist>
+          <listitem>
+            <para><code>-i </code></para>
+            <para>Includes the HTTP header in the output.</para>
+          </listitem>
+          <listitem>
+            <para><code>--data-binary</code></para>
+            <para>Sends the specified data in a POST request to the HTTP server.</para>
+          </listitem>
+          <listitem>
+            <para><code>-H HEADER</code></para>
+            <para>Specifies an HTTP header in the request.</para>
+          </listitem>
+        </itemizedlist>
+        <section xml:id="curl-copying-examples">
+          <title>Copying Request Examples</title>
+          <para>To avoid a lot of typing, you can copy, edit, and paste the cURL request examples
+            from this guide into a terminal or command window.</para>
+          <procedure xml:id="curl-copy-examples">
+            <title>To copy and paste the cURL request examples</title>
+            <step>
+              <para>Copy and paste the example request into your favorite text editor. </para>
+            </step>
+            <step>
+              <para>Replace <code>auth_token</code> with your authorization token and <replaceable
+                  role="italic">1234</replaceable> with your account number. </para>
+            </step>
+            <step>
+              <para>Paste the revised example into a terminal or command window and press
+                  <guilabel>Enter</guilabel> to execute the command.</para>
+            </step>
+          </procedure>
+        </section>
+        <section xml:id="curl-escaping-returns">
+          <title>Escaping Carriage Returns</title>
+          <para security="internal">For cutting and pasting purposes, do CRs need to be escaped for
+            XML and JSON when using cURL?</para>
+          <para>To make the cURL commands easier to read, the examples have carriage returns at the
+            end of each line,  followed by a backslash ('\') to avoid prematurely terminating the
+            command when it's executed. Note that you shouldn't escape carriage returns inside the
+            message body.</para>
+          <para>In the following XML example, you can see that the lines that are part of the cURL
+            command syntax have all been escaped with a backslash ('\') to indicate that the command
+            continues on the next line:</para>
+          <example>
+            <title>Escaping Carriage Returns in cURL</title>
+            <?dbfo keep-together="always"?>
+            <screen><command>curl</command> <option>-i</option> <option>-d</option> \
+'&lt;?xml version="1.0" encoding="UTF-8"?>  
+&lt;credentials xmlns="http://docs.rackspacecloud.com/auth/api/v1.1" 
+             username="your_username" 
+             key="your_api_key"/>' \
+<option>-H "Content-Type: application/xml"</option> \
+<option>-H "Accept: application/xml"</option> \
+<uri>'https://auth.api.rackspacecloud.com/v1.1/auth'</uri></screen>
+          </example>
+          <para>However, the lines <emphasis>within</emphasis> the body of the message are
+              <emphasis>not</emphasis> escaped with a backslash ('\') to avoid issues with
+            processing the command:</para>
+          <screen>'&lt;?xml version="1.0" encoding="UTF-8"?>  
+&lt;credentials xmlns="http://docs.rackspacecloud.com/auth/api/v1.1" 
+             username="your_username" 
+             key="your_api_key"/>' \
+</screen>
+        </section>
+      </section>
+      <section xml:id="using-raxmon">
+        <title>Using the raxmon Command Line Interface</title>
+        <para>The <code>raxmon</code> command line interface lets you interact with the &MAAS; API
+          in a quick and efficient manner. If you're not a programmer by nature, we suggest using
+            <code>raxmon</code> to become familiar with the product and its capabilities. Even if
+          you're a programming guru, we think you'll like the speed at which you can set up monitors
+          using <code>raxmon</code>. To try out <code>raxmon</code>, go to <link
+            xlink:href="https://github.com/racker/rackspace-monitoring-cli"
+            >https://github.com/racker/rackspace-monitoring-cli</link> for the installation and
+          configuration information. </para>
+        <para>Once you have installed <code>raxmon</code>, type the following command in a terminal
+          or command window to see a list of the available <code>raxmon</code> commands:</para>
+        <para><code>raxmon --help</code> or <code>raxmon --h</code></para>
+        <para>To get help for a particular command, type:</para>
+        <para><code>raxmon-command-name --help</code> or <code>raxmon-command-name --h</code>
+        </para>
+        <para>For example, you can see a brief description of each option you would use to create an
+          entity in the monitoring system by typing the following command:</para>
+        <para><code>raxmon-entities-create --h</code></para>
+      </section>
+    </section>
+  </chapter>
+  <chapter xml:id="tutorials"><title>Create Your First Monitor</title>
+    <info>
+      <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">        
+	<raxm:type>tutorial</raxm:type>            
+	<raxm:product version="v1.0">cm</raxm:product>        
+        <raxm:priority>1</raxm:priority>
+      </raxm:metadata> 
+    </info>
+    <para>This chapter contains some simple exercises that will help you become familiar with basic
+      monitoring operations. Examples are provided in cURL with JSON formatting. You can also
+      complete this tutorial using the &MAAS; command line interface. If you would rather use the
+      command line interface, an example <command>raxmon</command> command is also given for each
+      operation. For information on installing and configuring <command>raxmon</command>
+      <link xlink:href="https://github.com/racker/rackspace-monitoring-cli"
+        >https://github.com/racker/rackspace-monitoring-cli</link>.</para>
+    <para>For the purpose of this tutorial assume that you have a new web server that you want to
+      make sure is running and responding to requests within a reasonable amount of time. Using this
+      example, you'll perform the following tasks:<orderedlist>
+        <listitem>
+          <para>Create an <glossterm baseform="Entity" linkend="entity.glossary">entity</glossterm> to
+            represent the server in the monitoring system.</para>
+        </listitem>
+        <listitem>
+          <para>Review the list of available <glossterm baseform="Monitoring Zone"
+              linkend="monitoring-zone.glossary">monitoring zones</glossterm>.</para>
+        </listitem>
+        <listitem>
+          <para>Define three <glossterm baseform="Check" linkend="check.glossary">checks</glossterm> for the new
+            entity.</para>
+        </listitem>
+        <listitem>
+          <para>Set up an email <glossterm baseform="Notification"
+              linkend="notification.glossary">notification</glossterm>
+            and a <glossterm baseform="Notification Plan"
+              linkend="notification-plan.glossary">notification
+              plan</glossterm> so you can receive information about
+            the entity.</para>
+        </listitem>
+        <listitem>
+          <para>Define two <glossterm baseform="Alarm" linkend="alarm.glossary">alarms</glossterm> and assign them to a check
+            to begin the monitoring process.</para>
+        </listitem>
+        <listitem>
+          <para>Make a simple modification to the original entity.</para>
+        </listitem>
+        <listitem>
+          <para>And finally, you'll delete the entity and it's child objects--the checks and alarms.
+          </para>
+        </listitem>
+      </orderedlist></para>
+    <note>
+      <para>When performing the following exercises, you'll need to include your authorization token
+        where you see "<code>auth_token</code>" and your account number where you see <emphasis
+          role="italic">1234</emphasis>. If you haven't requested an authentication token yet,
+        follow the instructions in <link linkend="example-auth"> Example Authentication</link> and
+        then go to Section 2.1, Create an Entity. </para>
+    </note>
+    <section xml:id="concepts-tutorial-create-entity">
+      <?dbhtml stop-chunking?>
+      <title>Create an Entity</title>
+      <para>The first thing you'll do to begin monitoring a resource is to create an entity that
+        represents the resource in the monitoring system. </para>
+      <para>You'll use the following attributes to create the entity: <variablelist>
+          <varlistentry>
+            <term><parameter>label</parameter></term>
+            <listitem>
+              <para>Assigns a meaningful name to the entity. In the examples below, we've named the
+                server "My Rackspace Server". You can choose a different name or use the same one,
+                but note that it's commonly a server name.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><parameter>ip_address</parameter></term>
+            <listitem>
+              <para>Specifies the server's IP address(es). In the example below, we're specified the
+                IP address and named it "default."</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><note>
+          <para>Remember to insert your authorization token and account number as previously
+            described in <xref linkend="example-auth"/>.</para>
+        </note></para>
+      <example>
+        <title>Create Entity Request JSON</title>
+        <programlisting>curl -i -X POST \
+--data-binary \
+'{ "ip_addresses" : { "default" : "192.0.2.15" },
+  "label" : "My Rackspace Server",
+  "metadata" : {  }
+}' \
+-H 'X-Auth-Token: auth_token' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+'&URL;1234/entities/'</programlisting>
+      </example>
+      <example>
+        <title>Create Entity Response JSON</title>
+        <programlisting>HTTP/1.1 201 Created
+Content-Length: 0
+X-Response-Id: .rh-ZWac.h-lon3-maas-prod-api0.r-To4aIzNP.c-25577.ts-1326394448414.v-0c7bb08
+X-Powered-By: Express
+Location: &URL;1234/entities/enn14Ch5mc
+Date: Thu, 12 Jan 2012 18:54:08 GMT
+Content-Type: text/plain</programlisting>
+      </example>
+      <para>If the entity is successfully created, the endpoint returns a response code of
+          <returnvalue>201 Created</returnvalue> and a <code>Location:</code> header with the URI of
+        the entity. Note that the entity ID is located at the end of the URL. In this example, the
+        entity ID is enn14Ch5mc. Every entity has a unique ID, so yours will be different.</para>
+      <example>
+        <title>Create Entity Request using raxmon</title>
+        <programlisting>raxmon-entities-create --label="Monitor Test" --ip-address=default=192.0.2.15</programlisting>
+      </example>
+      <example>
+        <title>Create Entity raxmon Response</title>
+        <programlisting>HTTP/1.1 201 Created
+Content-Length: 0
+X-Response-Id: .rh-ZWac.h-lon3-maas-prod-api0.r-To4aIzNP.c-25577.ts-1326394448414.v-0c7bb08
+X-Powered-By: Express
+Location: &URL;1234/entities/enn14Ch5mc
+Date: Thu, 12 Jan 2012 18:54:08 GMT
+Content-Type: text/plain</programlisting>
+      </example>
+      <para>If an error message is returned, the endpoint was unable to create the entity. See error
+        codes descriptions in the <link
+          xlink:href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/general-api-info-api-faults.html"
+          >&MAAS; Developers Guide</link>.</para>
+      <note>
+        <para>For the remaining steps of this tutorial substitute the ID of the entity you created
+          for "enn14Ch5mc".</para>
+      </note>
+      <tip>
+        <para>You can request a list of all entities for your account at any time. You can also list
+          checks, alarms, notifications, and so on. </para>
+        <para>
+          <example>
+            <title>List All Entities Request using cURL</title>
+            <programlisting>curl -i -X GET \
+-H 'X-Auth-Token: auth_token' \
+-H 'Content-Type: application/json' \ 
+-H 'Accept: application/json' \
+'&URL;1234/entities'</programlisting>
+          </example>
+          <example>
+            <title>List All Entities using raxmon</title>
+            <programlisting>raxmon-entities-list --details</programlisting>
+          </example>
+        </para>
+        <para>For a complete list of GET commands, see the Quick Reference table in <link
+            xlink:href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/maas-core-service-calls.html"
+            >&MAAS; Developers Guide</link>
+        </para>
+      </tip>
+      <para><emphasis role="bold"><link linkend="concepts-tutorial-monitoring-zones">NEXT
+          UP:</link></emphasis> Check out the monitoring zones you can launch your check
+        from.</para>
+    </section>
+    <section xml:id="concepts-tutorial-monitoring-zones">
+      <?dbhtml stop-chunking?>
+      <title>List Monitoring Zones</title>
+      <para>Before creating a check for the new entity, you'll want to choose which monitoring zones
+        to run the check from. &MAAS; is divided into different monitoring zones. You may want to
+        have a single server monitored from several monitoring zones to reduce the risk of false
+        alarms and check the response time from different locations around the world. </para>
+      <para>Examine the response and choose the monitoring zone(s) you want to launch your first
+        check from. </para>
+      <example>
+        <title>List Monitoring Zones using cURL</title>
+        <programlisting>curl -i -X GET \
+-H 'X-Auth-Token: auth_token' \
+-H 'Accept: application/json' \ 
+'&URL;1234/monitoring_zones'</programlisting>
+      </example>
+      <example>
+        <title>List Monitoring Zones cURL Response</title>
+        <programlisting>HTTP/1.1 200 OK
+X-Ratelimit-Remaining: 49982
+X-Response-Id: .rh-YQzc.h-lon3-maas-prod-api0.r-kCU9r8nq.c-27354.ts-1329332815801.v-3aec925
+Transfer-Encoding: chunked
+Vary: Accept-Encoding
+X-Lb: lon3-maas-prod-api1
+X-Ratelimit-Type: global
+X-Ratelimit-Limit: 50000
+Date: Wed, 15 Feb 2012 19:06:55 GMT
+X-Ratelimit-Window: 24 hours
+Content-Type: application/json; charset=UTF-8
+
+428
+{
+    "values": [
+        {
+            "id": "mzdfw",
+            "label": "dfw",
+            "country_code": "US",
+            "source_ips": [
+                "2001:4800:7902:0001::/64",
+                "50.56.142.128/26"
+            ]
+        },
+        {
+            "id": "mzhkg",
+            "label": "hkg",
+            "country_code": "HK",
+            "source_ips": [
+                "180.150.149.64/26",
+                "2401:1800:7902:1:0:0:0:0/64"
+            ]
+        },
+        {
+            "id": "mzlon",
+            "label": "lon",
+            "country_code": "GB",
+            "source_ips": [
+                "2a00:1a48:7902:0001::/64",
+                "78.136.44.0/26"
+            ]
+        },
+        {
+            "id": "mzord",
+            "label": "ord",
+            "country_code": "US",
+            "source_ips": [
+                "2001:4801:7902:0001::/64",
+                "50.57.61.0/26"
+            ]
+        }
+    ],
+    "metadata": {
+        "count": 4,
+        "limit": 100,
+        "marker": null,
+        "next_href": null
+    }
+}
+</programlisting>
+      </example>
+      <example>
+        <title>List Monitoring Zones using raxmon</title>
+        <programlisting>raxmon-monitoring-zones-list --details</programlisting>
+      </example>
+      <example>
+        <title>List Monitoring Zones raxmon Response</title>
+        <programlisting>{'country_code': u'US',
+ 'driver': &lt;rackspace_monitoring.drivers.rackspace.RackspaceMonitoringDriver object at 0x100562410>,
+ 'extra': {},
+ 'id': u'mzdfw',
+ 'label': u'dfw',
+ 'source_ips': [u'2001:4800:7902:0001::/64', u'50.56.142.128/26']}
+{'country_code': u'HK',
+ 'driver': &lt;rackspace_monitoring.drivers.rackspace.RackspaceMonitoringDriver object at 0x100562410>,
+ 'extra': {},
+ 'id': u'mzhkg',
+ 'label': u'hkg',
+ 'source_ips': [u'180.150.149.64/26', u'2401:1800:7902:1:0:0:0:0/64']}
+{'country_code': u'GB',
+ 'driver': &lt;rackspace_monitoring.drivers.rackspace.RackspaceMonitoringDriver object at 0x100562410>,
+ 'extra': {},
+ 'id': u'mzlon',
+ 'label': u'lon',
+ 'source_ips': [u'2a00:1a48:7902:0001::/64', u'78.136.44.0/26']}
+{'country_code': u'US',
+ 'driver': &lt;rackspace_monitoring.drivers.rackspace.RackspaceMonitoringDriver object at 0x100562410>,
+ 'extra': {},
+ 'id': u'mzord',
+ 'label': u'ord',
+ 'source_ips': [u'2001:4801:7902:0001::/64', u'50.57.61.0/26']}
+
+</programlisting>
+      </example>
+      <para><link linkend="concepts-tutorial-create-checks"><emphasis role="bold">NEXT
+            UP:</emphasis></link> Create several checks for the new entity. </para>
+    </section>
+    <section xml:id="concepts-tutorial-create-checks">
+      <?dbhtml stop-chunking?>
+      <title>Create Checks</title>
+      <section xml:id="tutorial-create-ping-check">
+        <title>Create a PING Check</title>
+        <para>Any entity that you create can have a multitude of checks, each monitoring a different
+          aspect of the entity. And since you can monitor many different aspects of a single entity,
+          you'll practice creating several new checks in this exercise. </para>
+        <para>First, you'll create a PING check to verify the web server is responding to the
+          following attributes to create the ping check: <variablelist>
+            <varlistentry>
+              <term><parameter>label</parameter></term>
+              <listitem>
+                <para>Assigns a meaningful name to the check. In the examples below, we've named the
+                  check "Website check 1". You can choose a different name or use the same
+                  one.</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term><parameter>type</parameter></term>
+              <listitem>
+                <para>Specifies the type of check you're creating.</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term><parameter>monitoring_zones_poll</parameter></term>
+              <listitem>
+                <para>Specifies the monitoring zones that will launch the check. In this example
+                  we'll use "mzdfw".</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term><parameter>timeout</parameter></term>
+              <listitem>
+                <para>Specifies the timeout in seconds for the check. This has to be less than the
+                  period. </para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term><parameter>period</parameter></term>
+              <listitem>
+                <para>Specifies the period in seconds for the check. This specifies how often &MAAS;
+                    <glossterm linkend="collector.glossary">collectors</glossterm> run this check. </para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term><parameter>target_alias</parameter></term>
+              <listitem>
+                <para> Resolves the check to an IP address. </para>
+              </listitem>
+            </varlistentry>
+          </variablelist></para>
+        <example>
+          <title>Create a PING Check using cURL</title>
+          <programlisting>curl -i \
+--data-binary \
+'{ "details" : {  },
+  "label" : "Website check 1",
+  "monitoring_zones_poll" : [ "mzdfw" ],
+  "period" : "60",
+  "target_alias" : "default",
+  "timeout" : 30,
+  "type" : "remote.ping"
+}' \
+-H "X-Auth-Token: auth_token" \
+-H "Content-Type: application/json" \
+-H "Accept: application/json" \
+'&URL;1234/entities/enn14Ch5mc/checks' </programlisting>
+        </example>
+        <example>
+          <title>Create Ping Check cURL Response</title>
+          <programlisting>HTTP/1.1 201 Created
+Date: Fri, 24 Feb 2012 06:28:51 GMT
+Location: &URL;1234/entities/enn14Ch5mc/checks/chyYWNw59I
+X-RateLimit-Limit: 50000
+X-RateLimit-Remaining: 49969
+X-RateLimit-Window: 24 hours
+X-RateLimit-Type: global
+X-Response-Id: .rh-9pAY.h-lon3-maas-prod-api1.r-2ruPuxLu.c-99739.ts-1330064931513.v-c576983
+X-LB: lon3-maas-prod-api1
+Content-Length: 0
+Content-Type: text/plain
+</programlisting>
+        </example>
+        <para>If the check is successfully created, the endpoint returns a response code of
+            <returnvalue>201</returnvalue> and a <code>Location:</code> Header containing the URL of
+          the check. In this example, the check id is chyYWNw59I, but yours will be
+          different.</para>
+        <para>If an error message is returned, the monitoring system was unable to create the check.
+          For information about errors, see the <link
+            xlink:href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/general-api-info-api-faults.html"
+            >&MAAS; Developers Guide</link>.</para>
+        <note>
+          <para>Checks <emphasis>always</emphasis> have a parent entity associated with them.
+            Therefore all URLs are contained underneath the check URL. For example, if the ID of the
+            entity we created earlier is enn14Ch5mc, then the URLs would be underneath
+            &URL;1234/entities/enn14Ch5mc/.</para>
+        </note>
+        <example>
+          <title>Create a PING Check using raxmon</title>
+          <programlisting>raxmon-checks-create --entity-id=enn14Ch5mc --type=remote.ping --label="Website check 1" --monitoring-zones=mzdfw --timeout=30 --period=60 --target-alias=default</programlisting>
+        </example>
+        <example>
+          <title>Create a PING Check raxmon Response</title>
+          <programlisting>Resource created. ID: chyYWNw59I
+</programlisting>
+        </example>
+        <para><link linkend="tutorial-test-check"><emphasis role="bold">NEXT UP:</emphasis></link>  Test the new check to make sure it works. </para>
+      </section>
+      <section xml:id="tutorial-test-check">
+        <title>Test the Check</title>
+        <para>Testing the check runs the check once and lists the check's metrics. This is an easy
+          way to verify and view your metrics. Later, you can use the test check output to help you
+          build alarms.</para>
+        <example>
+          <title>Create Test Check Request using cURL </title>
+          <programlisting>curl -i \
+--data-binary \
+'{ "details" : {  },
+  "label" : "Website check 1",
+  "monitoring_zones_poll" : [ "mzdfw" ],
+  "period" : "60",
+  "target_alias" : "default",
+  "timeout" : 30,
+  "type" : "remote.ping"
+}' \
+-H 'X-Auth-Token: auth_code' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+'&URL;1234/entities/enn14Ch5mc/test-check/' </programlisting>
+        </example>
+        <example>
+          <title>Create Test Check cURL Response</title>
+          <programlisting>HTTP/1.1 200 OK
+X-Ratelimit-Remaining: 497
+X-Response-Id: .rh-VE2m.h-lon3-maas-prod-api0.r-pm6oiwjm.c-37726.ts-1329263604920.v-3aec925
+Transfer-Encoding: chunked
+Vary: Accept-Encoding
+X-Lb: lon3-maas-prod-api1
+X-Ratelimit-Type: test_check
+X-Ratelimit-Limit: 500
+Date: Tue, 14 Feb 2012 23:53:24 GMT
+X-Ratelimit-Window: 24 hours
+Content-Type: application/json; charset=UTF-8
+
+[
+    {
+        "timestamp": 1329263613579,
+        "monitoring_zone_id": "mzdfw",
+        "available": true,
+        "status": "cnt=5,avail=100,min=0.0018,max=0.0020,avg=0.0019",
+        "metrics": {
+            "minimum": {
+                "type": "n",
+                "data": "1.808000029996e-03"
+            },
+            "available": {
+                "type": "n",
+                "data": "1.000000000000e+02"
+            },
+            "maximum": {
+                "type": "n",
+                "data": "1.990000018850e-03"
+            },
+            "count": {
+                "type": "i",
+                "data": "5"
+            },
+            "average": {
+                "type": "n",
+                "data": "1.866600010544e-03"
+            }
+        }
+    }
+]</programlisting>
+        </example>
+        <example>
+          <title>Test Check Request using raxmon</title>
+          <programlisting>raxmon-checks-test --entity-id=enn14Ch5mc --type=remote.ping --monitoring-zones=mzdfw --timeout=30 --period=60 --target-alias=default</programlisting>
+        </example>
+        <example>
+          <title>Test Check raxmon Response</title>
+          <programlisting>[{u'available': True, u'timestamp': 1329334696399, 
+u'monitoring_zone_id': u'mzdfw', 
+u'status': u'cnt=5,avail=100,min=0.0018,max=0.0020,avg=0.0019', 
+u'metrics': {u'count': {u'data': u'5', u'type': u'i'}, 
+u'available': {u'data': u'1.000000000000e+02', u'type': u'n'}, 
+u'average': {u'data': u'1.874800003134e-03', u'type': u'n'}, 
+u'minimum': {u'data': u'1.803999999538e-03', u'type': u'n'}, 
+u'maximum': {u'data': u'2.022000029683e-03', u'type': u'n'}}}]</programlisting>
+        </example>
+        <para><link linkend="concepts-tutorial-create-checks"><emphasis role="bold">NEXT
+              UP:</emphasis></link> A PING check doesn't tell you if your web server is running, it
+          only tells you that the server is up. So, let's create an HTTP check to monitor the
+          website directly. </para>
+      </section>
+      <section xml:id="tutorial-create-http-check">
+        <title>Create HTTP Checks</title>
+        <para>The HTTP check attempts to retrieve the given URL from the server's IP address. Since
+          an HTTP server might host pages for multiple, different domain names on a single IP
+          address, the check needs a full URL to know which server name and which URL to examine.
+          Likewise, a heavy traffic site might have multiple HTTP servers for the same domain name.
+          The HTTP check lets you monitor each individual web server.</para>
+        <example>
+          <title>Create HTTP Check Request using cURL</title>
+          <programlisting>curl -i -X POST \
+--data-binary \
+{ "details" : { "body" : "foo",
+      "method" : "GET",
+      "url" : "www.examples.org"
+    },
+  "label" : "Website check 1",
+  "monitoring_zones_poll" : [ "mzdfw" ],
+  "period" : "60",
+  "target_alias" : "default",
+  "type" : "remote.http"
+} \
+-H 'X-Auth-Token: auth_token' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+'&URL;1234/entities/enn14Ch5mc/checks'
+
+</programlisting>
+        </example>
+        <example>
+          <title>Create HTTP Check cURL Response</title>
+          <programlisting>HTTP/1.1 201 Created
+X-Ratelimit-Remaining: 49960
+X-Response-Id: .rh-vgB4.h-ord1-maas-prod-api1.r-W0REfAoy.c-2650.ts-1329337042872.v-b9d7626
+Content-Length: 0
+X-Lb: ord1-maas-prod-api0
+X-Ratelimit-Type: global
+X-Ratelimit-Limit: 50000
+Location: &URL;1234/entities/enn14Ch5mc/checks/chTTslRf7v
+Date: Wed, 15 Feb 2012 20:17:22 GMT
+X-Ratelimit-Window: 24 hours
+Content-Type: text/plain
+
+</programlisting>
+        </example>
+        <example>
+          <title>Create HTTP Check Request using raxmon</title>
+          <programlisting>raxmon-checks-create --entity-id=enn14Ch5mc --type=remote.http --label="Website check 1" --monitoring-zones=mzdfw --details=url=www.examples.org,body=foo,method=GET timeout=30 --period=60 --target-alias=default</programlisting>
+        </example>
+        <example>
+          <title>Create HTTP Check raxmon Response</title>
+          <programlisting>Resource created. ID: chTTslRf7v
+</programlisting>
+        </example>
+        <para><emphasis role="bold">NEXT UP:</emphasis> Now let's configure a second HTTP check to
+          monitor a <emphasis role="italic">different</emphasis> page on the web server. </para>
+        <example>
+          <title>Create a Second HTTP Check Request using cURL</title>
+          <programlisting>curl -i -X POST \
+--data-binary \
+'{ "details" : { "body" : "foo",
+      "method" : "GET",
+      "url" : "www.examples.org/test/"
+    },
+  "label" : "RemoteHTTP for Test page",
+  "monitoring_zones_poll" : [ "mzdfw" ],
+  "period" : "60",
+  "target_alias" : "default",
+  "timeout" : "30",
+  "type" : "remote.http"
+}' \
+-H 'X-Auth-Token: auth_token' \
+-H "Content-Type: application/json" \
+-H 'Accept: application/json' \
+'&URL;1234/entities/enn14Ch5mc/checks</programlisting>
+        </example>
+        <example>
+          <title>Create a Second HTTP Check cURL Response</title>
+          <programlisting>HTTP/1.1 201 Created
+X-Ratelimit-Remaining: 49957
+X-Response-Id: .rh-pBYi.h-lon3-maas-prod-api0.r-5VLDWtbw.c-4363.ts-1329346442692.v-b9d7626
+Content-Length: 0
+X-Lb: lon3-maas-prod-api0
+X-Ratelimit-Type: global
+X-Ratelimit-Limit: 50000
+Location: &URL;1234/entities/enn14Ch5mc/checks/ch4ccHWyyI
+Date: Wed, 15 Feb 2012 22:54:02 GMT
+X-Ratelimit-Window: 24 hours
+Content-Type: text/plain
+</programlisting>
+        </example>
+        <example>
+          <title>Create a Second HTTP Check Request using raxmon</title>
+          <programlisting>raxmon-checks-create --entity-id=enn14Ch5mc --type=remote.http --label="RemoteHTTP for Test page" --monitoring-zones=mzdfw --details=url=www.examples.org/test/,body=foo,method=GET --timeout=30 --period=60 --target-alias=default</programlisting>
+        </example>
+        <example>
+          <title>Create a Second HTTP Check raxmon Response</title>
+          <programlisting>Resource created. ID: ch4ccHWyyI</programlisting>
+        </example>
+        <para><link linkend="tutorial-list-all-checks"><emphasis role="bold">NEXT UP:
+            </emphasis></link>Get a list of the checks you've created for your entity.</para>
+      </section>
+    </section>
+    <section xml:id="tutorial-list-all-checks">
+      <?dbhtml stop-chunking?>
+      <title>List All Checks for the Entity</title>
+      <para>You can list the checks for a specific entity at any time by doing <code>GET</code> for
+        a specific entity id. </para>
+      <example>
+        <title>List All Checks for an Entity using cURL</title>
+        <programlisting>curl -i -X GET \
+-H 'X-Auth-Token: auth_token' \
+-H 'Accept: application/json' \
+'&URL;1234/entities/enn14Ch5mc/checks'</programlisting>
+      </example>
+      <example>
+        <title>List all Checks cURL Response</title>
+        <programlisting>HTTP/1.1 200 OK
+X-Ratelimit-Remaining: 49967
+X-Response-Id: .rh-NGRc.h-dfw1-maas-prod-api0.r-fKxxaymj.c-34581.ts-1329407832952.v-b9d7626
+Transfer-Encoding: chunked
+Vary: Accept-Encoding
+X-Lb: dfw1-maas-prod-api1
+X-Ratelimit-Type: global
+X-Ratelimit-Limit: 50000
+Date: Thu, 16 Feb 2012 15:57:12 GMT
+X-Ratelimit-Window: 24 hours
+Content-Type: application/json; charset=UTF-8
+
+f37
+{
+    "values": [
+        {
+            "id": "ch4ccHWyyI",
+            "label": "RemoteHTTP for Test page",
+            "type": "remote.http",
+            "details": {
+                "url": "www.foo.com/test/",
+                "body": "foo",
+                "method": "GET"
+            },
+            "monitoring_zones_poll": [
+                "mzord"
+            ],
+            "timeout": 30,
+            "period": "60",
+            "target_alias": "default",
+            "target_hostname": null,
+            "target_resolver": null,
+            "disabled": false,
+            "collectors": [
+                "coviYlq3jx"
+            ],
+            "created_at": 1329346442715,
+            "updated_at": 1329346442715
+        },
+        {
+            "id": "chyYWNw59I",
+            "label": "Website Ping Check",
+            "type": "remote.ping",
+            "details": {},
+            "monitoring_zones_poll": [
+                "mzord"
+            ],
+            "timeout": 30,
+            "period": "60",
+            "target_alias": "default",
+            "target_hostname": null,
+            "target_resolver": null,
+            "disabled": false,
+            "collectors": [
+                "co1LKEam0X"
+            ],
+            "created_at": 1328285429554,
+            "updated_at": 1328285429554
+        },
+        {
+            "id": "chTTslRf7v",
+            "label": "RemoteHTTP",
+            "type": "remote.http",
+            "details": {
+                "url": "www.examples.org",
+                "body": "foo",
+                "method": "GET"
+            },
+            "monitoring_zones_poll": [
+                "mzord"
+            ],
+            "timeout": 30,
+            "period": "60",
+            "target_alias": "default",
+            "target_hostname": null,
+            "target_resolver": null,
+            "disabled": false,
+            "collectors": [
+                "coKaALv9Ml"
+            ],
+            "created_at": 1329337042992,
+            "updated_at": 1329337042992
+        },
+}
+</programlisting>
+      </example>
+      <example>
+        <title>List All Checks using raxmon</title>
+        <programlisting>raxmon-checks-list --entity-id=enn14Ch5mc</programlisting>
+      </example>
+      <example>
+        <title>List All Checks raxmon response</title>
+        <programlisting>&lt;Check: id=ch4ccHWyyI label=RemoteHTTP for Test page...>
+&lt;Check: id=chyYWNw59I label=Website Ping Check...>
+&lt;Check: id=chTTs1RF7v label=RemoteHTTP...></programlisting>
+      </example>
+      <para><link linkend="concepts-tutorial-setup-notifications"><emphasis role="bold">NEXT UP:</emphasis></link> With three new checks created, it's now time
+        to set up notifications.</para>
+    </section>
+    <section xml:id="concepts-tutorial-setup-notifications">
+      <?dbhtml stop-chunking?>
+      <title>Set Up Notifications</title>
+      <para>In most cases you, and perhaps several people on your team, will be interested in
+        multiple alerts. &MAAS; lets you set up notification plans that can be shared between
+        multiple alerts. In this exercise, you'll create the notification first, then the
+        notification plan, and then finally the alarms. Note that you can create alarms and
+        notifications in any order you choose, or simply modify an existing record to create a new
+        one. However, to create an a notification plan, you do need to create a notification
+        first.</para>
+      <para>First step is we will create an email notification, which
+        will be an attribute to the notification plan.</para>
+      <para>
+        <example>
+          <title>Create Notification Request using cURL</title>
+          <programlisting>curl -i -X POST \
+--data-binary \
+   '{ "details" : { "address" : "joe@example.org" },
+  "label" : "Alert email 1",
+  "type" : "email"
+}' \
+-H 'X-Auth-Token: auth_token' \
+-H 'Content-Type: application/json' \
+'&URL;1234/notifications'
+
+</programlisting>
+        </example>
+        <example>
+          <title>Create Notification cURL Response</title>
+          <programlisting>HTTP/1.1 201 Created
+X-Ratelimit-Remaining: 49964
+X-Response-Id: .rh-00oi.h-ord1-maas-prod-api1.r-WZWtj0Vc.c-5711.ts-1329408343356.v-b9d7626
+Content-Length: 0
+X-Lb: ord1-maas-prod-api1
+X-Ratelimit-Type: global
+X-Ratelimit-Limit: 50000
+Location: &URL;1234/notifications/nt2T8WtWte
+Date: Thu, 16 Feb 2012 16:05:43 GMT
+X-Ratelimit-Window: 24 hours
+Content-Type: text/plain
+</programlisting>
+        </example>
+        <example>
+          <title>Create Notification Request using raxmon</title>
+          <programlisting>raxmon-notifications-create --label="Alert email 1" --type=email --details=address=joe@example.org </programlisting>
+        </example>
+        <example>
+          <title>Create Notification raxmon Response</title>
+          <programlisting>Resource created. ID: nt2T8WtWte
+</programlisting>
+        </example>
+      </para>
+      <para>If the notification is successfully created, the endpoint returns a response code of
+          <returnvalue>201</returnvalue> and a <code>Location:</code> Header containing the URL of
+        the notification. If an error message is returned, the endpoint was unable to create the
+        notification.</para>
+      <para><link linkend="create-notification-plan"><emphasis role="bold">NEXT
+          UP:</emphasis></link> Create a notification plan so you can receive a message when your
+        entity is in different states. </para>
+      <section xml:id="create-notification-plan">
+        <title>Create a Notification Plan</title>
+        <para>A notification represents a single action, whereas a notification plan represents a
+          set of actions. Assuming the ID of the notification you created is nt2T8WtWte, here's an
+          example of how you might specify the attributes for a notification plan: </para>
+        <variablelist>
+          <varlistentry>
+            <term><parameter>label</parameter></term>
+            <listitem>
+              <para>Specifies a descriptive name for the notification plan.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><parameter>warning_state</parameter></term>
+            <listitem>
+              <para>Specifies a list of notification ids to send when the state is WARNING.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><parameter>critical_state</parameter></term>
+            <listitem>
+              <para>Specifies a list of notification ids to send when the state is CRITICAL.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><parameter>ok_state</parameter></term>
+            <listitem>
+              <para>Specifies a list of notification ids to send when the state is OK.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+        <para>In this case, you're configuring the system to send an
+          email when a state changes.</para>
+        <example>
+          <title>Create Notification Plan Request using cURL</title>
+          <programlisting>curl -i -X POST \
+--data-binary \
+'{
+      "label": "Notification Plan 1",
+      "warning_state": [
+          "nt2T8WtWte"
+      ], 
+      "critical_state": [
+          "nt2T8WtWte"
+      ], 
+      "ok_state": [
+         "nt2T8WtWte"
+      ]
+}' \
+-H 'X-Auth-Token: 6auth_token' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+'&URL;1234/notification_plans'
+</programlisting>
+        </example>
+        <example>
+          <title>Create Notification Plan cURL Response</title>
+          <programlisting>HTTP/1.1 201 Created
+X-Ratelimit-Remaining: 49958
+X-Response-Id: .rh-ew99.h-dfw1-maas-prod-api1.r-dRuk75SF.c-35593.ts-1329410023443.v-b9d7626
+Content-Length: 0
+X-Lb: dfw1-maas-prod-api0
+X-Ratelimit-Type: global
+X-Ratelimit-Limit: 50000
+Location: &URL;1234/notification_plans/npkmLh5vVk
+Date: Thu, 16 Feb 2012 16:33:43 GMT
+X-Ratelimit-Window: 24 hours
+Content-Type: text/plain
+</programlisting>
+        </example>
+        <example>
+          <title>Create Notification Plan Request using raxmon</title>
+          <programlisting>raxmon-notification-plans-create --label="Notification Plan 1" --critical-state=nt2T8WtWte --warning-state=nt2T8WtWte --ok-state=nt2T8WtWte </programlisting>
+        </example>
+        <example>
+          <title>Create Notification Plan raxmon Response</title>
+          <programlisting>Resource created. ID: npkmLh5vVk</programlisting>
+        </example>
+        <para>If the endpoint responds with a <returnvalue>201</returnvalue> and a
+            <code>Location:</code> Header containing the URL of the new notification plan, the
+          notification plan was created. If the notification plan was not created, an error is
+          returned. </para>
+        <para><link linkend="concepts-tutorial-create-alarm"><emphasis role="bold">NEXT
+              UP:</emphasis>
+          </link>Create an alarm for the entity and associate it with your notification plan.</para>
+      </section>
+    </section>
+    <section xml:id="concepts-tutorial-create-alarm">
+      <?dbhtml stop-chunking?>
+      <title>Create an Alarm</title>
+      <para>In this exercise, you'll set an alarm for the entity. Here's an example alarm that will
+        send you a warning alert if the average PING response time is over 50ms. Remember that
+        alarms always have a parent entity associated with them, so all URLs are contained
+        underneath the alarm URL. In this example, the entity ID is enn14Ch5mc, so we issue the
+        following request to create the alarm and associate it to the entity:</para>
+      <example>
+        <title>Create Alarm Request using cURL</title>
+        <programlisting>curl -i -X POST \
+--data-binary \
+'{
+  "check_type": "remote.ping", 
+  "notification_plan_id": "npkmLh5vVk", 
+  "criteria": "if (metric[\"duration\"] &lt; 50) { return OK } return WARNING"
+}' \
+-H 'X-Auth-Token: auth_token' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+'&URL;1234/entities/enn14Ch5mc/alarms'</programlisting>
+      </example>
+      <example>
+        <title>Create Alarm cURL Response</title>
+        <programlisting>HTTP/1.1 201 Created
+X-Ratelimit-Remaining: 49947
+X-Response-Id: .rh-ew99.h-dfw1-maas-prod-api1.r-Kti7H0py.c-39599.ts-1329418764114.v-b9d7626
+Content-Length: 0
+X-Lb: dfw1-maas-prod-api0
+X-Ratelimit-Type: global
+X-Ratelimit-Limit: 50000
+Location: &URL;1234/entities/enn14Ch5mc/alarms/alIxnPKcZp
+Date: Thu, 16 Feb 2012 18:59:24 GMT
+X-Ratelimit-Window: 24 hours
+Content-Type: text/plain</programlisting>
+      </example>
+      <example>
+        <title>Create Alarm Request using raxmon</title>
+        <programlisting>raxmon-alarms-create --check-type=remote.ping --criteria="if (metric[\"average\"] &lt; 50) { return OK } return WARNING" --notification-plan=npkmLh5vVk --entity-id=enn14Ch5mc</programlisting>
+      </example>
+      <example>
+        <title>Create Alarm raxmon Response</title>
+        <programlisting>Resource created. ID: alIxnPKcZp</programlisting>
+      </example>
+      <para>If the endpoint returns a response code is <returnvalue>201</returnvalue> and a
+          <code>Location:</code> header containing the URL of the new alarm, the alarm was
+        successfully created, otherwise the endpoint returns an error. </para>
+      <para>Since we're monitoring two items, both PING times and the HTTP response time, let's add
+        a second alarm to go off when the web response time takes longer than 100ms. Here's an
+        example of how you might specify the attributes for this alarm:</para>
+      <example>
+        <title>Create an Alarm HTTP Request using cURL</title>
+        <programlisting>curl -i -X POST \
+--data-binary \
+'{ "check_type" : "remote.http",
+  "criteria" : "if (metric[\"code\"] regex \"^[23]..$\") { return OK } return WARNING",
+  "notification_plan_id" : "npkmLh5vVk"
+}' \
+-H 'X-Auth-Token: your_auth_key' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+'&URL;1234/entities/enn14Ch5mc/alarms'
+</programlisting>
+      </example>
+      <example>
+        <title>Create an Alarm cURL Response</title>
+        <programlisting>HTTP/1.1 201 Created
+X-Ratelimit-Remaining: 49946
+X-Response-Id: .rh-E79I.h-ord1-maas-prod-api1.r-HDDENoUp.c-106.ts-1329419675047.v-a037e7a
+Content-Length: 0
+X-Lb: ord1-maas-prod-api0
+X-Ratelimit-Type: global
+X-Ratelimit-Limit: 50000
+Location: &URL;1234/entities/enn14Ch5mc/alarms/alVwP6z00k
+Date: Thu, 16 Feb 2012 19:14:34 GMT
+X-Ratelimit-Window: 24 hours
+Content-Type: text/plain
+</programlisting>
+      </example>
+      <example>
+        <title>Create an Alarm Request using raxmon</title>
+        <programlisting>raxmon-alarms-create --check-type=remote.http --criteria="if (metric[\"duration\"] &lt; 100) { return OK } return WARNING" --notification-plan=npkmLh5vVk --entity-id=enn14Ch5mc</programlisting>
+      </example>
+      <example>
+        <title>Create an Alarm raxmon Response</title>
+        <programlisting>Resource created. ID: alVwP6z00k</programlisting>
+      </example>
+      <para>Note that because alarms are shared between all of the checks on an entity, if you have
+        multiple HTTP URLs, you will receive alerts if any of the checks are lagging.</para>
+      <para>You can always list the available alarms by retrieving:</para>
+      <example>
+        <title>List Alarms Request using cURL</title>
+        <programlisting>curl -i -X GET \
+-H 'X-Auth-Token: auth_token' \
+-H 'Accept: application/json' \
+'&URL;1234/entities/enn14Ch5mc/alarms'
+</programlisting>
+      </example>
+      <example>
+        <title>List Alarms cURL Response</title>
+        <programlisting>HTTP/1.1 200 OK
+X-Ratelimit-Remaining: 49941
+X-Response-Id: .rh-qRGT.h-ord1-maas-prod-api0.r-UH0HesoS.c-404.ts-1329420284585.v-a037e7a
+Transfer-Encoding: chunked
+Vary: Accept-Encoding
+X-Lb: ord1-maas-prod-api0
+X-Ratelimit-Type: global
+X-Ratelimit-Limit: 50000
+Date: Thu, 16 Feb 2012 19:24:44 GMT
+X-Ratelimit-Window: 24 hours
+Content-Type: application/json; charset=UTF-8
+
+36e
+{
+    "values": [
+        {
+            "id": "alIxnPKcZp",
+            "label": null,
+            "check_type": "remote.ping",
+            "check_id": null,
+            "criteria": "if (metric[\"average\"] &lt; 50) { return OK } return WARNING",
+            "notification_plan_id": "npkmLh5vVk",
+            "created_at": 1329418764882,
+            "updated_at": 1329418764882
+        },
+        {
+            "id": "alVwP6z00k",
+            "label": null,
+            "check_type": "remote.http",
+            "check_id": null,
+            "criteria": "if (metric[\"average\"] &lt; 100) { return OK } return WARNING",
+            "notification_plan_id": "npkmLh5vVk",
+            "created_at": 1329419675727,
+            "updated_at": 1329419675727
+        }
+    ],
+    "metadata": {
+        "count": 2,
+        "limit": 100,
+        "marker": null,
+        "next_href": null
+    }
+}
+</programlisting>
+      </example>
+      <example>
+        <title>List Alarms Request using raxmon</title>
+        <programlisting>raxmon-alarms-list --entity-id=enn14Ch5mc --details</programlisting>
+      </example>
+      <example>
+        <title>List Alarms raxmon Response</title>
+        <programlisting>{'criteria': u'if (metric["average"] &lt; 50) { return OK } return WARNING',
+ 'driver': &lt;rackspace_monitoring.drivers.rackspace.RackspaceMonitoringDriver object at 0x100649ad0>,
+ 'entity_id': u'enn14Ch5mc',
+ 'id': u'alIxnPKcZp',
+ 'notification_plan_id': u'npkmLh5vVk',
+ 'type': u'remote.ping'}
+{'criteria': u'if (metric["average"] &lt; 100) { return OK } return WARNING',
+ 'driver': &lt;rackspace_monitoring.drivers.rackspace.RackspaceMonitoringDriver object at 0x100649ad0>,
+ 'entity_id': u'enn14Ch5mc',
+ 'id': u'alVwP6z00k',
+ 'notification_plan_id': u'npkmLh5vVk',
+ 'type': u'remote.http'}
+
+Total: 2
+</programlisting>
+      </example>
+      <para>The results show there are now two alarms for the entity. </para>
+      <para><link linkend="concepts-tutorial-modify-entity"><emphasis role="bold">NEXT
+            UP:</emphasis>
+        </link>Make a modification to the entity.</para>
+    </section>
+    <section xml:id="concepts-tutorial-modify-entity">
+      <?dbhtml stop-chunking?>
+      <title>Modify an Entity</title>
+      <para>Let's assume that the IP address for the web server has changed. You can issue a &PUT;
+        request for only those fields that have changed and the change is reflected in all
+        downstream checks.</para>
+      <example>
+        <title>Modify an Entity Request using cURL</title>
+        <programlisting>curl -i -X PUT \
+--data-binary \
+'{
+   "ip_addresses": {
+      "default": "192.168.0.1"
+          }
+}' \
+-H 'X-Auth-Token: auth_token' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+'&URL;1234/entities/enn14Ch5mc'</programlisting>
+      </example>
+      <example>
+        <title>Modify an Entity cURL Response</title>
+        <programlisting>HTTP/1.1 204 No Content
+X-Ratelimit-Remaining: 49953
+X-Response-Id: .rh-NGRc.h-dfw1-maas-prod-api0.r-AudSFsQj.c-36911.ts-1329412867712.v-b9d7626
+Content-Length: 0
+X-Lb: dfw1-maas-prod-api1
+X-Ratelimit-Type: global
+X-Ratelimit-Limit: 50000
+Location: &URL;1234/entities/enn14Ch5mc
+Date: Thu, 16 Feb 2012 17:21:07 GMT
+X-Ratelimit-Window: 24 hours
+Content-Type: text/plain
+</programlisting>
+      </example>
+      <example>
+        <title>Modify an Entity Request using raxmon</title>
+        <programlisting>raxmon-entities-update --id=enn14Ch5mc --ip-addresses=default=192.168.0.1</programlisting>
+      </example>
+      <example>
+        <title>Modify an Entity raxmon Response</title>
+        <programlisting>Resource has been successfully updated
+</programlisting>
+      </example>
+      <para>Note that a PUT updates all top level fields. If a top level field contains a hash, the
+        PUT overwrites the entire field. To avoid this, you must specify the complete hash.</para>
+      <para><link linkend="concepts-tutorial-delete-entity"><emphasis role="bold">NEXT
+            UP:</emphasis>
+        </link>Deleting an entity.</para>
+    </section>
+    <section xml:id="concepts-tutorial-delete-entity">
+      <?dbhtml stop-chunking?>
+      <title>Delete an Entity</title>
+      <para>Now that you have completed the exercises in this tutorial, let's remove the entity we
+        created. Entities may not be removed until all of their checks and alarms have been removed.
+        In this exercise, you'll practise removing one of the checks you created, one of the alarms,
+        and then entity.<note>
+          <para>To quickly delete an entity and its children, use <link
+              xlink:href="#raxmon-entities-delete"><code>raxmon--entities-delete</code></link>. This
+            command lets you delete the entity and all of its children in a single command.</para>
+        </note></para>
+      <example>
+        <title>Delete Checks Request using cURL</title>
+        <programlisting>curl -i -X \
+DELETE \
+-H 'X-Auth-Token: auth_token' \
+-H 'Accept: application/json' \ 
+'&URL;1234/entities/enn14Ch5mc/checks/chyYWNw59I</programlisting>
+      </example>
+      <example>
+        <title>Delete Checks cURL Response</title>
+        <programlisting>HTTP/1.1 204 No Content
+X-Ratelimit-Remaining: 49993
+X-Response-Id: .rh-Fxp3.h-ord1-maas-prod-api0.r-4Fb5IwLs.c-455.ts-1330554327071.v-50c8c2d
+Content-Length: 0
+X-Lb: ord1-maas-prod-api1
+X-Ratelimit-Type: global
+X-Ratelimit-Limit: 50000
+Date: Wed, 29 Feb 2012 22:25:27 GMT
+X-Ratelimit-Window: 24 hours
+Content-Type: text/plain</programlisting>
+      </example>
+      <example>
+        <title>Delete Alarms Requests using cURL</title>
+        <programlisting>curl -i -X \
+DELETE \
+-H 'X-Auth-Token: auth_key' \
+'&URL;1234/entities/enn14CH5mc/alarms/alIxnPKczp</programlisting>
+      </example>
+      <example>
+        <title>Delete Alarms cURL Response</title>
+        <programlisting>HTTP/1.1 204 No Content
+X-Ratelimit-Remaining: 49987
+X-Response-Id: .rh-GLyy.h-dfw1-maas-prod-api0.r-2Ulro75y.c-32883.ts-1330554811888.v-6fee2d2
+Content-Length: 0
+X-Lb: dfw1-maas-prod-api1
+X-Ratelimit-Type: global
+X-Ratelimit-Limit: 50000
+Date: Wed, 29 Feb 2012 22:33:31 GMT
+X-Ratelimit-Window: 24 hours
+Content-Type: text/plain
+</programlisting>
+      </example>
+      <example>
+        <title>Delete Entity Request using cURL</title>
+        <programlisting>H 'X-Auth-Token: auth_token' \
+-H 'Accept: application/json' \
+'&URL;1234/entities/enn14CH5mc'</programlisting>
+      </example>
+      <example>
+        <title>Delete Entity cURL Response</title>
+        <programlisting>HTTP/1.1 204 No Content
+X-Ratelimit-Remaining: 49984
+X-Response-Id: .rh-zyPa.h-dfw1-maas-prod-api0.r-6RuOWE2V.c-236.ts-1330555655887.v-50c8c2d
+Content-Length: 0
+X-Lb: dfw1-maas-prod-api0
+X-Ratelimit-Type: global
+X-Ratelimit-Limit: 50000
+Date: Wed, 29 Feb 2012 22:47:35 GMT
+X-Ratelimit-Window: 24 hours
+Content-Type: text/plain
+</programlisting>
+      </example>
+      <example xml:id="raxmon-entities-delete">
+        <title>Delete Entity Request using raxmon</title>
+        <programlisting>raxmon-entities-delete --id=ennCH15mc</programlisting>
+      </example>
+      <example>
+        <title>Delete Entity raxmon Response</title>
+        <programlisting>Resource deleted</programlisting>
+      </example>
+      <para>This completes the tutorial on creating, modifying, and deleting a monitor using the
+        &MAAS; API. </para>
+      <para><emphasis role="bold"><link linkend="additional-resources">GET MORE INFO</link></emphasis></para>
+    </section>
+  </chapter>
+  
+  
+  <chapter xml:id="additional-resources">
+    <?dbhtml stop-chunking?>
+    <title>Additional Resources</title>
+    <info>
+      <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">        
+	<raxm:type>concept</raxm:type>
+	<raxm:product version="v1.0">cm</raxm:product>
+        <raxm:priority>10</raxm:priority>
+      </raxm:metadata> 
+    </info>
+    <section xml:id="resources-monitoring-docs">
+      <title>More on Monitoring </title>
+      <para>Find out more about &MAAS; in these documents:</para>
+      <itemizedlist>
+        <listitem>
+          <para><link
+              xlink:href="http://docs.rackspace.com/cm/api/v1.0/cm-releasenotes/content/index.html"
+              >&MAAS; API Release Notes</link></para>
+        </listitem>
+        <listitem>
+          <para><link
+            xlink:href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/index.html"
+              >&MAAS; Developers Guide</link></para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section xml:id="resources-talk">
+      <title>Talk to Us</title>
+      <para>Do you have questions about &MAAS;? Join us in our chat room at:</para>
+      <itemizedlist>
+        <listitem>
+          <para>Freenode IRC at #cloudmonitoring</para>
+        </listitem>
+        <listitem>
+          <para>Or just click the following link:</para>
+          <para><link xlink:href="http://webchat.freenode.net?channels=cloudmonitoring&amp;uio=d4"
+            /></para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section xml:id="resouces-talk">
+      <title>More From Rackspace</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>Find API documentation for additional Rackspace products at:</para>
+            <para><link xlink:href="http://docs.rackspacecloud.com/api">
+                http://www.docs.rackspacecloud.com/api/</link></para>
+          </listitem>
+        </itemizedlist>
+        <itemizedlist>
+          <listitem>
+            <para>For technical articles, videos, and more check out the Rackspace Knowledge Center
+              at:</para>
+            <para><link xlink:href="http://www.rackspace.com/knowledge_center/"
+                >http://www.rackspace.com/knowledge_center/</link></para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </section>
+  </chapter>
+  <xi:include href="glossary.xml"/>
+  
+</book>

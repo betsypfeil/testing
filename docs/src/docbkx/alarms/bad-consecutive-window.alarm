@@ -1,0 +1,7 @@
+:set consecutiveCount=6
+
+if (metric['foo'] > 1) {
+  return CRITICAL
+}
+
+return OK

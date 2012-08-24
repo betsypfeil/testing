@@ -1,0 +1,88 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, /*p, */ blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, /*ol, ul, li, */
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  padding-left:40px;
+}
+em {
+  font-style:italic;
+}
+
+.floatR {
+  float: right;
+}
+strong {
+  font-weight: bold;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border: 1px solid #eee;
+  border-collapse: collapse;
+}
+table td {
+  border: 1px solid #eee;
+  padding: 3px;
+}
+table th {
+  font-weight: bold;
+
+}
+
+html { background-color:#eee; }
+body { font:14px/20px "Helvetica Neue",Arial,sans-serif; background-color:#fff;
+  width:1000px; margin:20px auto 40px; padding:20px; font-weight:300;
+  -webkit-box-shadow:#aaa 0 0 10px;-moz-box-shadow:#aaa 0 0 10px; }
+h1,h2,h3,h4,h5,h6 { font-weight:600; margin:1em 0 .5em; }
+h1 { font-size:36px; border-bottom:1px solid #eee; padding-bottom:.5em; }
+h2 { font-size:24px; border-bottom:1px solid #eee; padding-bottom:.5em; }
+h3 { font-size:20px; }
+h4 { font-size:18px; }
+h5 { font-size:16px; }
+h6 { font-size:14px; }
+pre {
+        border:1px dashed #E1E1E1;
+        color:#333344;
+        background:#FAFAFA;
+        font-family:monospace;
+        overflow:auto;
+        font-size:11px;
+        padding:0.5em;
+        line-height: 1.2em;
+}

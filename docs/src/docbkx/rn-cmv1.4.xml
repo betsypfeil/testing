@@ -1,0 +1,249 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:svg="http://www.w3.org/2000/svg" version="5.0"
+	xml:id="cmv1.4">
+	<?dbhtml stop-chunking?>
+	<title>v1.4, August 22, 2012</title>
+	<para>These release notes correspond to the "Unlimited
+		Availability" release of Cloud Monitoring.</para>
+	<itemizedlist>
+		<title>New Features</title>
+		<listitem>
+			<para><emphasis>More HTTP Options:</emphasis> Pass in custom
+				headers for a <code>remote.http</code> check.
+				Depending on the site you're testing, this can be
+				crucial in determining if your site is up.</para>
+			<para><link
+					xlink:href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/service-check-types.html#section-check-types-remote.http"
+					>remote.http Docs</link></para>
+		</listitem>
+		<listitem>
+			<para><emphasis>Add a previous operator to the Alarm
+					Language:</emphasis> This allows you to look at a
+				metric value in the previous time period. It is very
+				useful for detecting changes. For example, to detect
+				an SSH fingerprint change, you'd construct an Alarm
+				snippet like this:
+				<programlisting language="javascript">if (metrics['fingerprint'] != previous(metrics['fingerprint'])) {
+  return CRITICAL, "SSH fingerprint changed to #{fingerprint}"
+}</programlisting></para>
+			<para><link
+					xlink:href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/alerts-language.html#concepts-alarms-alarm-language"
+					>Alarm DSL Docs</link></para>
+		</listitem>
+		<listitem>
+			<para><emphasis>Improved email alerts:</emphasis> Included in
+				emails are the observations of the particular check
+				from each monitoring zone. This allows you to get
+				visibility on the status from any of the included
+				monitoring zones of a check. We've also reformatted
+				the message to look more user friendly.</para>
+			<para>
+				Subject:
+				<programlisting>** CRITICAL: host server check on web1.domain.com **</programlisting>
+				Body:
+				<programlisting>================== Rackspace Cloud Monitoring Notification ===================
+Entity: web1.domain.com (50.56.179.42)
+Check: host server check (remote.ping)
+Alarm: Ping packet loss
+Status: CRITICAL
+Date: Mon Aug 13 2012 15:18:59 GMT+0000 (UTC)
+
+--------------------------- Observations -------------------------------------
+
+CRITICAL - Packet loss is 20%
+London (LON), 25 sec ago
+
+OK - Packet loss is normal
+London (LON), 10 sec ago
+
+OK - Packet loss is normal
+London (LON), 56 sec ago
+
+------------------------------------------------------------------------------
+
+This is an automated Cloud Monitoring notification. You received this email
+because you are listed as a notification recipient.
+				</programlisting>
+			</para>
+		</listitem>
+		<listitem>
+			<para><emphasis>Retrieve overview by entityId or uri:</emphasis>
+				Include query strings <replaceable>uri</replaceable>
+				or <replaceable>entityId</replaceable> to retrieve
+				specific mapped Rackspace Cloud Servers (for now). You
+				can also pull down a set of entities by referencing
+				their id's. Keep in mind you cannot combine pulling
+				both <replaceable>uri</replaceable>'s and
+					<replaceable>entityId</replaceable>'s in the same
+				request, but you can have up to 100 of them in a
+				single request.</para>
+			<para><link xlink:href="http://docs.rackspacecloud.com/cm/api/v1.0/cm-devguide/content/service-views.html#service-views-overview">Overview list by <replaceable>entityId</replaceable></link> and
+				<link xlink:href="http://docs.rackspacecloud.com/cm/api/v1.0/cm-devguide/content/service-views.html#service-views-overview">Overview list by <replaceable>uri</replaceable></link>.
+			</para>
+		</listitem>
+	</itemizedlist>
+	<itemizedlist>
+		<title>Enhancements</title>
+		<listitem>
+			<para>Added friendly names for the <link
+					xlink:href="http://docs.rackspacecloud.com/cm/api/v1.0/cm-devguide/content/service-alarm-examples.html#service-alarm-examples-post"
+					>alarm_examples</link> API.</para>
+		</listitem>
+		<listitem>
+			<para>Add a "<code>metadata</code>" attribute to the <link
+					xlink:href="http://docs.rackspacecloud.com/cm/api/v1.0/cm-devguide/content/service-alarms.html"
+					>alarm</link> API.</para>
+		</listitem>
+		<listitem>
+			<para>Allow including no conditionals in the <link
+					xlink:href="http://docs.rackspacecloud.com/cm/api/v1.0/cm-devguide/content/alerts-language.html"
+					>alarm language</link>, allowing you to set global
+				filters, and rely on the check availability to
+				determine the returned state.</para>
+		</listitem>
+	</itemizedlist>
+	<itemizedlist>
+		<title>Resolved Issues</title>
+		<listitem>
+			<para>Fix un-setting optional attributes on an update (PUT).</para>
+		</listitem>
+		<listitem>
+			<para>Fix the <code>check_type</code> ->
+					<code>alarm</code> mapping for delivering
+				inconsistent and non-deterministic updates.</para>
+		</listitem>
+		<listitem>
+			<para>Fixed how we handle zlib streams when inflating a
+				gzip http stream.</para>
+		</listitem>
+		<listitem>
+			<para>When we combined two services we had briefly did not
+				insert the initial <code>OK</code> state for the
+					<code>alarm change log</code>, this is fixed
+				now.</para>
+		</listitem>
+		<listitem>
+			<para>Fixed updating the <code>target_alias</code> after
+				setting the <code>target_hostname</code> on the
+				initial creation, and vice-versa.</para>
+		</listitem>
+	</itemizedlist>
+	<section security="internal" xml:id="cmv1.4-internal">
+		<title>Internal Changes</title>
+		<itemizedlist>
+			<title>New Features</title>
+			<listitem>
+				<para>Deployed a staging Graylog2 cluster on the gold
+					config.</para>
+			</listitem>
+			<listitem>
+				<para>Consecutive count is now working in production,
+					it is not highlighted due to it's lack of
+					stability across restarts.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Enhancements</title>
+			<listitem>
+				<para>Open many connections to the Cassandra server to up
+					performance.</para>
+			</listitem>
+			<listitem>
+				<para>Added 3 extra monitoring zones to
+					staging.</para>
+			</listitem>
+			<listitem>
+				<para>Added 99.9% percentile calculation to our
+					internal metrics system.</para>
+			</listitem>
+			<listitem>
+				<para>Deployed data warehouser analytics for the EBI
+					team.</para>
+			</listitem>
+			<listitem>
+				<para>Changed subject on Dead Letter emails so we can
+					eventually add them to their ticket queue.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resolved Issues</title>
+			<listitem>
+				<para>Alarm/Check syncing issue discovered after
+					better understanding the update process,
+					fixed.</para>
+			</listitem>
+			<listitem>
+				<para>Added code to log when the job runner
+					fails.</para>
+			</listitem>
+			<listitem>
+				<para>Use customer service API cache when it fails to
+					retrieve on outbound message.</para>
+			</listitem>
+			<listitem>
+				<para>Added the 3 extra monitoring zones to
+					staging.</para>
+			</listitem>
+		</itemizedlist>
+	</section>
+	<itemizedlist>
+		<title>Documentation</title>
+		<listitem>
+			<para>Try some simple monitoring exercises in the
+					<emphasis role="italic">Rackspace Cloud Monitoring
+					Getting Started Guide</emphasis> at:</para>
+			<para><link linked=""
+					xlink:href="http://docs.rackspace.com/cm/api/v1.0/cm-getting-started/content/Introduction.html"
+					>http://docs.rackspace.com/cm/api/v1.0/cm-getting-started/content/Introduction.html</link>.</para>
+			<para/>
+		</listitem>
+		<listitem>
+			<para>Get reference information and examples for all
+				endpoints in the <emphasis role="italic">Rackspace
+					Cloud Monitoring Developers Guide</emphasis>
+				at:</para>
+			<para><link
+					xlink:href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/index.html"
+					>http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/index.html</link>.</para>
+		</listitem>
+	</itemizedlist>
+	<itemizedlist>
+		<title>Talk to Us</title>
+		<para xmlns:svg="http://www.w3.org/2000/svg"
+			xmlns:m="http://www.w3.org/1998/Math/MathML"
+			xmlns:html="http://www.w3.org/1999/xhtml">Do you have
+			questions about Rackspace Cloud Monitoring? Would you like
+			to give us feedback on how we're doing? </para>
+		<listitem xmlns:svg="http://www.w3.org/2000/svg"
+			xmlns:m="http://www.w3.org/1998/Math/MathML"
+			xmlns:html="http://www.w3.org/1999/xhtml">
+			<para>Join us in our chat room at: Freenode IRC at
+				#cloudmonitoring</para>
+			<para>Or just click the following link:</para>
+			<para><link
+					xlink:href="http://webchat.freenode.net?channels=cloudmonitoring&amp;uio=d4"
+					>Webchat</link></para>
+		</listitem>
+		<listitem xmlns:svg="http://www.w3.org/2000/svg"
+			xmlns:m="http://www.w3.org/1998/Math/MathML"
+			xmlns:html="http://www.w3.org/1999/xhtml">
+			<para>You can also provide feedback using our feedback
+				form:</para>
+			<para><link
+					xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/41927-cloud-monitoring"
+					>Product Feedback Forum</link></para>
+		</listitem>
+		<listitem xmlns:svg="http://www.w3.org/2000/svg"
+			xmlns:m="http://www.w3.org/1998/Math/MathML"
+			xmlns:html="http://www.w3.org/1999/xhtml">
+			<para>Get support here:</para>
+			<para>
+				<link
+					xlink:href="https://manage.rackspacecloud.com/Tickets/YourTickets.do"
+					>File a ticket here</link></para>
+		</listitem>
+	</itemizedlist>
+</chapter>

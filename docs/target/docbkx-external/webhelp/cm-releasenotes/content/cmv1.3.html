@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:exsl="http://exslt.org/common" xmlns:ng="http://docbook.org/docbook-ng" xmlns:fb="http://ogp.me/ns/fb#"><head>
+<meta http-equiv="X-UA-Compatible" content="IE=7"/><link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/><script type="text/javascript" src="scripts/shCore.js"><!----></script><script type="text/javascript">
+               SyntaxHighlighter.config.space = ' ';
+               SyntaxHighlighter.all();
+    </script>
+<title>v1.3, June 14, 2012 - Cloud Monitoring Release Notes
+   - API v1.4</title><meta name="generator" content="DocBook XSL-NS Stylesheets V1.76.1"/><link rel="home" href="index.html" title="Cloud Monitoring Release Notes"/><link rel="up" href="index.html" title="Cloud Monitoring Release Notes"/><link rel="prev" href="cmv1.4.html" title="v1.4, August 22, 2012"/><link rel="next" href="cmv1.2.html" title="v1.2, May 10, 2012"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script type="text/javascript">
+            //The id for tree cookie
+            var treeCookieId = "treeview-844";
+            var language = "en";
+            var w = new Object();
+            //Localization
+            txt_filesfound = 'Results';
+            txt_enter_at_least_1_char = "You must enter at least one character.";
+            txt_browser_not_supported = "Your browser is not supported. Use of Mozilla Firefox is recommended.";
+            txt_please_wait = "Please wait. Search in progress...";
+            txt_results_for = "Results for: ";
+        </script><style type="text/css">
+            input {
+            margin-bottom: 5px;
+            margin-top: 2px;
+            }
+
+            .folder {
+            display: block;
+            height: 22px;
+            padding-left: 20px;
+            background: transparent url(../common/jquery/treeview/images/folder.gif) 0 0px no-repeat;
+            }
+            
+        </style><link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/><link rel="stylesheet" type="text/css" href="../common/css/positioning.css"/><link rel="stylesheet" type="text/css" href="../common/css/custom.css"/><link href="../atom.xml" type="application/atom+xml" rel="alternate" title="Document ATOM Feed"/><link rel="canonical" href="http://docs.rackspace.com/cm/api/v1.0/cm-releasenotes/content/cmv1.3.html"/><!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="../common/css/ie.css"/>
+	<![endif]--><link rel="stylesheet" type="text/css" href="../common/jquery/theme-redmond/jquery-ui-1.8.2.custom.css"/><link rel="stylesheet" type="text/css" href="../common/jquery/treeview/jquery.treeview.css"/><script type="text/javascript" src="../common/jquery/jquery-1.4.3.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery-ui-1.8.2.custom.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery.cookie.js"><!----></script><script type="text/javascript" src="../common/jquery/treeview/jquery.treeview.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery.qtip-1.0.0-rc3/jquery.qtip-1.0.0-rc3.min.js"><!--jQuery plugin for glossary popups. --></script><script type="text/javascript" src="search/htmlFileList.js"><!----></script><script type="text/javascript" src="search/htmlFileInfoList.js"><!----></script><script type="text/javascript" src="search/nwSearchFnt.js"><!----></script><script type="text/javascript" src="search/stemmers/en_stemmer.js"><!--//make this scalable to other languages as well.--></script><script type="text/javascript" src="search/index-1.js"><!----></script><script type="text/javascript" src="search/index-2.js"><!----></script><script type="text/javascript" src="search/index-3.js"><!----></script><script type="text/javascript">
+	    var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-23102455-4']);
+	  </script><script type="text/javascript" src="../common/ga.js"><!----></script><script type="text/javascript" src="http://www.tabpress.com/_js/ga_social_tracking.js"><!----></script><script>
+	    (function(){var twitterWidgets = document.createElement('script');
+        twitterWidgets.type = 'text/javascript';
+        twitterWidgets.async = true;
+        twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+        // Setup a callback to track once the script loads.
+        twitterWidgets.onload = _ga.trackTwitter;
+        document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+        })();
+      </script></head><body><div id="header"><a onclick="_gaq.push(['_trackEvent', 'Header', 'logo', 'click', 1]);" target="_blank" href="http://www.rackspace.com"><img src="../common/images/rackspace-logo.png" alt="Rackspace Documentation" width="157" height="47"/></a><h1>v1.3, June 14, 2012</h1><div id="navheader" align="right"><!----><table class="navLinks"><tr><td><a id="showHideButton" onclick="showHideToc(); _gaq.push(['_trackEvent', 'Header', 'show/hide', 'click', 1]);" class="pointLeft" title="Hide TOC tree">Sidebar
+                            </a></td><td><a accesskey="p" class="navLinkPrevious" onclick="_gaq.push(['_trackEvent', 'Header', 'prevLink', 'click', 1]);" tabindex="5" href="cmv1.4.html">Prev</a> 
+				  |
+                                    <a accesskey="n" class="navLinkNext" onclick="_gaq.push(['_trackEvent', 'Header', 'nextLink', 'click', 1]);" tabindex="5" href="cmv1.2.html">Next</a></td></tr></table></div></div><div id="toolbar" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all"><div id="toolbar-left"><p class="breadcrumbs"><a href="http://docs.rackspace.com/api/">Rackspace Manuals</a><a href="index.html">Cloud Monitoring Release Notes
+   - API v1.4</a></p><a onclick="_gaq.push(['_trackEvent', 'Header', 'pdfDownload', 'click', 1]);" alt="Download a pdf of this document" class="pdficon" href="../../../cm-releasenotes-latest.pdf"><img src="../common/images/pdf.png"/></a>
+       
+      <a href="../atom.xml"><img alt="Atom feed of this document" src="../common/images/feed-icon.png"/></a><div id="fb-root"> </div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"><!----></script><script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script><script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script><style>
+.fb_edge_comment_widget {
+    margin-left: -280px;
+}
+.fb-like{vertical-align:text-top;position:absolute;top:.5em;right:311px}
+#gplusone{display:inline;position:absolute;right:410px;top:.5em}
+#rstwitter{vertical-align:text-top;display:inline;position:absolute;right:450px;top:.5em}
+</style><!--[if IE]>
+	<style>
+#gplusone{top:0em}
+#rstwitter{top:-.15em}
+.fb-like{top:-.5em}
+</style><![endif]--><script type="text/javascript">_ga.trackFacebook();</script><div class="fb-like" data-send="false" data-width="50" data-show-faces="false" data-layout="button_count" data-font="arial">   </div><div id="gplusone"><g:plusone xmlns:g="http://www.google.com" size="medium" annotation="none"/></div><div id="rstwitter"><a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out this Rackspace documentation page:" data-lang="en" data-count="none">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div></div></div><div id="content"><div class="statustext"> </div><div class="chapter"><div xmlns="" class="titlepage"><div><div><h2 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="cmv1.3"> </a>v1.3, June 14, 2012</h2></div></div></div><p>These release notes correspond to the pre "Unlimited Availability" release of Cloud Monitoring.</p><div class="itemizedlist"><p class="title"><strong>New Features</strong></p><ul class="itemizedlist" type="disc"><li class="listitem"><p><span class="emphasis"><em>Traceroute API:</em></span> This API lets you run
+				a Traceroute from a Monitoring Zone to a Hostname or IP address.
+				Like all Cloud Monitoring features, the Traceroute API is fully dual
+				stack, supporting both IPv4 and IPv6.  The Traceroute API can be used to debug
+				networking issues between the Cloud Monitoring collectors and your infrastructure.
+			</p><p><a class="link" href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/service-monitoring-zones.html#service-monitoring-zones-traceroute" target="_top">Traceroute Docs</a></p></li><li class="listitem"><p><span class="emphasis"><em>Metric interpolation on the Alarm status
+					string:</em></span> This allows you to include
+				metrics from a Check in the status string returned by
+				an Alarm. For example, to include the HTTP status code
+				from a <code class="code">remote.http</code> Check, your Alarm
+				could look like this:
+				</p><pre class="programlisting brush: javascript; ">
+				if (metrics['code'] != "200") {
+					return CRITICAL, "Bad HTTP Status: #{code}"
+				}</pre><p>
+			</p><p><a class="link" href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/alerts-language.html#concepts-alarms-alarm-language" target="_top">Alarm DSL Docs</a></p></li><li class="listitem"><p><span class="emphasis"><em>Add payload to the remote.http check:</em></span> This allows you
+				send a request body during a HTTP/HTTPS
+				request.</p><p><a class="link" href="http://docs.rackspacecloud.com/cm/api/v1.0/cm-devguide/content/service-check-types.html#section-check-types-remote.http" target="_top">remote.http attributes</a></p></li></ul></div><div class="itemizedlist"><p class="title"><strong>Enhancements</strong></p><ul class="itemizedlist" type="disc"><li class="listitem"><p>Allow a user to specify the number of ICMP packets to send out on the
+				<code class="code">remote.ping</code> check.</p></li><li class="listitem"><p>Updated Certificate Authority chain used to
+				validate SSL certificates, resulting in less false
+				positives.</p></li><li class="listitem"><p><code class="code">remote.tcp</code> check now features the <code class="code">body_match_metric</code> when
+				specifying the send_body command.</p></li><li class="listitem"><p>Add the remote IP address of the collector that alerted you to the
+				Webhook notification payload.</p></li></ul></div><div class="itemizedlist"><p class="title"><strong>Resolved Issues</strong></p><ul class="itemizedlist" type="disc"><li class="listitem"><p>Fixed writable date and time fields that were supposed
+				to be immutable.</p></li><li class="listitem"><p>Fixed the DSL string escaping to allow you to
+				specify special characters, example below:</p><pre class="programlisting brush: javascript; ">
+			if (metric['code'] nregex '2\\d\\d') {
+			  return CRITICAL, 'Invalid status code #{code}'
+			}</pre></li></ul></div><div class="itemizedlist"><p class="title"><strong>Documentation</strong></p><ul class="itemizedlist" type="disc"><li class="listitem"><p>Try some simple monitoring exercises in the <span class="italic">Rackspace
+				Cloud Monitoring Getting Started Guide</span> at:</p><p><a class="link" href="http://docs.rackspace.com/cm/api/v1.0/cm-getting-started/content/Introduction.html" target="_top">http://docs.rackspace.com/cm/api/v1.0/cm-getting-started/content/Introduction.html</a>.</p><p/></li><li class="listitem"><p>Get reference information and examples for all endpoints in the <span class="italic">Rackspace Cloud Monitoring Developers Guide</span>
+				at:</p><p><a class="link" href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/index.html" target="_top">http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/index.html</a>.</p></li></ul></div><div class="itemizedlist"><p class="title"><strong>Talk to Us</strong></p><p>Do you have questions about Rackspace
+			Cloud Monitoring? Would you like to give us feedback on how we're doing? </p><ul class="itemizedlist" type="disc"><li class="listitem"><p>Join us in our chat room at: Freenode IRC at #cloudmonitoring</p><p>Or just click the following link:</p><p><a class="link" href="http://webchat.freenode.net?channels=cloudmonitoring&amp;uio=d4" target="_top">Webchat</a></p></li><li class="listitem"><p>You can also provide feedback using our feedback form:</p><p><a class="link" href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/41927-cloud-monitoring" target="_top">Product Feedback Forum</a></p></li><li class="listitem"><p>Get support here:</p><p>
+				<a class="link" href="https://manage.rackspacecloud.com/Tickets/YourTickets.do" target="_top">File a ticket here</a></p></li></ul></div></div><script type="text/javascript" src="../common/main.js"><!----></script><hr/><div id="disqus_thread"><script type="text/javascript">
+	      var disqus_shortname = 'rc-api-docs';
+	      
+	      var disqus_identifier = 'cm-releasenotescmv1.3';
+	      </script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><script type="text/javascript" src="../common/comments.js"><!----></script></div><hr/><div class="legal"><a href="index.html">Legal notices</a></div></div><div><div id="leftnavigation" style="padding-top:3px; background-color:white;"><div id="tabs"><ul><li><a href="#treeDiv" tabindex="1"><span class="contentsTab">Contents</span></a></li><li><a href="#searchDiv" tabindex="1"><span class="searchTab">Search</span></a></li></ul><div id="treeDiv"><img src="../common/images/loading.gif" alt="loading table of contents..." id="tocLoading" style="display:block;"/><div id="ulTreeDiv" style="display:none" class="thisisthat"><ul id="tree" class="filetree"><li tabindex="2"><span class="file"><a href="cmv1.4.html">v1.4, August 22, 2012</a></span></li><li tabindex="2" id="webhelp-currentid"><span class="file"><a href="cmv1.3.html">v1.3, June 14, 2012</a></span></li><li tabindex="2"><span class="file"><a href="cmv1.2.html">v1.2, May 10, 2012</a></span></li><li tabindex="2"><span class="file"><a href="cmv1.1.html">v1.1, March 28, 2012</a></span></li><li tabindex="2"><span class="file"><a href="cmv1.0.html">v1.0, December 15, 2011</a></span></li></ul></div></div><div id="searchDiv"><div id="search"><form onsubmit="Verifie(ditaSearch_Form);return false" name="ditaSearch_Form" class="searchForm"><fieldset class="searchFieldSet"><legend>Search</legend><center><input id="textToSearch" name="textToSearch" type="text" class="searchText"/> &nbsp; <input onclick="Verifie(ditaSearch_Form)" type="button" class="searchButton" value="Go" id="doSearch"/></center></fieldset></form></div><div id="searchResults"><center/></div><p class="searchHighlight"><a href="#" onclick="toggleHighlight()">Search Highlighter (On/Off)</a></p></div></div></div></div><script type="text/javascript" src="../common/jquery/jquery.qtip-1.0.0-rc3/jquery.qtip-1.0.0-rc3.min.js"><!--jQuery plugin for glossary popups. -->
+                   $('a[title]').qtip({ style: { name: 'cream', tip: true } })
+                </script></body></html>

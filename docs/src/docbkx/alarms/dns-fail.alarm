@@ -1,0 +1,7 @@
+# Match if the 127... address was in the resolution
+# if it wasn't than default to CRITICAL
+
+if (metric["answer"] regex ".*127.8.2.1.*") {
+  return OK, "Resolved the correct address!"
+}
+return CRITICAL

@@ -1,0 +1,587 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter [<!-- Some useful entities borrowed from HTML -->
+<!ENTITY ndash  "&#x2013;">
+<!ENTITY mdash  "&#x2014;">
+<!ENTITY hellip "&#x2026;">
+
+<!-- Useful for describing APIs -->
+<!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+<!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+<!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+<!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+
+<!ENTITY MAAS 'Rackspace Cloud Monitoring'>
+
+<!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+<imageobject>
+<imagedata fileref="img/Check_mark_23x20_02.svg"
+format="SVG" scale="60"/>
+</imageobject>
+</inlinemediaobject>'>
+<!ENTITY CODES       'Normal Response Code(s):'>
+<!ENTITY ERROR_CODES 'Error Response Code(s):'>
+<!ENTITY NO_REQUEST '<para xmlns="http://docbook.org/ns/docbook">
+This operation does not require a request body.</para>'>
+<!ENTITY LONG_URI_REFHEAD '
+<thead xmlns="http://docbook.org/ns/docbook">
+<tr>
+<td colspan="1">Verb</td>
+<td colspan="4">URI</td>
+<td colspan="3">Description</td>
+</tr>
+</thead>'>
+<!ENTITY URI_REFHEAD '
+<thead xmlns="http://docbook.org/ns/docbook">
+<tr>
+<td colspan="1">Verb</td>
+<td colspan="1">URI</td>
+<td colspan="4">Description</td>
+</tr>
+</thead>'>
+<!ENTITY HOST 'monitoring.api.rackspacecloud.com'>
+<!ENTITY URL 'https://&HOST;/v1.0/'>
+]>
+<chapter xmlns="http://docbook.org/ns/docbook"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:svg="http://www.w3.org/2000/svg" version="5.0"
+  xml:id="general-api-information">
+  <title>General API Information</title>
+  <info>
+    <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">      
+      <raxm:type>concept</raxm:type>
+      <raxm:product version="v1.0">cm</raxm:product>
+      <raxm:priority>1</raxm:priority>
+    </raxm:metadata> 
+  </info>
+  <para>The &MAAS; API provides a RESTful web service interface. All requests to authenticate and
+    operate against the Rackspace Cloud Monitoring API are performed using SSL over HTTPS on TCP
+    port 443.</para>
+  <section xml:id="general-api-info-authentication">
+    <title>Authentication</title>
+    <?dbhtml stop-chunking?>
+    <para>Every REST request against the &MAAS; API requires the inclusion of a specific authorization
+      token, supplied by the <code>X-Auth-Token</code> HTTP header. You obtain this token by first
+      using the Rackspace Cloud Authentication Service and supplying a valid username and API access
+      key. </para>
+    <para>The Rackspace Cloud Authentication Service serves as the entry point to all Rackspace
+      Cloud APIs and is itself a RESTful web service. </para>
+    <para> To access the Authentication Service, authenticate through:</para>
+    <para><link xlink:href="https://auth.api.rackspacecloud.com/v1.1"
+        >https://auth.api.rackspacecloud.com/v1.1</link></para>
+    <section xml:id="Authenticate-d1e171">
+      <title>Retrieving the Authentication Token</title>
+      <informaltable rules="all">
+        <thead>
+          <tr>
+            <td colspan="1">Verb</td>
+            <td colspan="1">URI</td>
+            <td colspan="4">Description</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="1">&POST; </td>
+            <td colspan="1">/auth</td>
+            <td colspan="4"> Authenticate to receive a token and a
+              service catalog. </td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <simpara> Normal Response Code(s):
+          <returnvalue>200</returnvalue>,
+          <returnvalue>203</returnvalue>
+      </simpara>
+      <simpara> Error Response Code(s): unauthorized
+          (<errorcode>401</errorcode>), userDisabled
+          (<errorcode>403</errorcode>), badRequest
+          (<errorcode>400</errorcode>), authFault
+          (<errorcode>500</errorcode>), serviceUnavailable
+          (<errorcode>503</errorcode>) </simpara>
+      <para> The authenticate operation provides clients with an
+        authentication token and a list of regional cloud endpoints. </para>
+      <example>
+        <title>Auth Request: XML</title>
+        <programlistingco>
+          <areaspec>
+            <area xml:id="credentials.xml.user" units="linecolumn"
+              coords="5 23"/>
+            <area xml:id="credentials.xml.key" units="linecolumn"
+              coords="6 18"/>
+          </areaspec>
+          <programlisting language="xml">
+<xi:include href="samples/credentials.xml" parse="text">
+  <xi:fallback>
+    No example found.
+  </xi:fallback>
+</xi:include>
+                        </programlisting>
+        </programlistingco>
+      </example>
+      <example>
+        <title>Auth Request: JSON</title>
+        <programlistingco>
+          <areaspec>
+            <area xml:id="credentials.json.user" units="linecolumn"
+              coords="4 20"/>
+            <area xml:id="credentials.json.key" units="linecolumn"
+              coords="5 15"/>
+          </areaspec>
+          <programlisting language="javascript">
+<xi:include href="samples/credentials.json" parse="text">
+  <xi:fallback>
+    No example found. 
+  </xi:fallback>
+</xi:include>
+                        </programlisting>
+        </programlistingco>
+      </example>
+      <calloutlist>
+        <callout arearefs="credentials.xml.user">
+          <para> The username supplied here is your common Rackspace
+            Cloud username. </para>
+        </callout>
+        <callout arearefs="credentials.xml.key">
+          <para> The key is your API access key. The key can be
+            obtained from the Rackspace Cloud Control Panel in the
+              <guimenu>Your Account</guimenu> / <guimenuitem>API
+              Access</guimenuitem> section. </para>
+        </callout>
+      </calloutlist>
+      <example>
+        <title>Auth Response: XML</title>
+        <programlistingco>
+          <areaspec>
+            <area xml:id="auth.xml.token.expires" units="linecolumn"
+              coords="6 18"/>
+            <area xml:id="auth.xml.sc.s.e.region" units="linecolumn"
+              coords="10 18"/>
+            <area xml:id="auth.xml.sc.s.e.v1d" units="linecolumn"
+              coords="11 21"/>
+            <area xml:id="auth.xml.sc.s.e.pu" units="linecolumn"
+              coords="12 21"/>
+            <area xml:id="auth.xml.sc.s.e.iu" units="linecolumn"
+              coords="13 23"/>
+            <area xml:id="auth.xml.sc.s.e.nr" units="linecolumn"
+              coords="29 17"/>
+          </areaspec>
+          <programlisting language="xml">
+<xi:include href="samples/auth.xml" parse="text"/>
+                        </programlisting>
+        </programlistingco>
+      </example>
+      <example>
+        <title>Auth Response: JSON</title>
+        <programlistingco>
+          <areaspec>
+            <area xml:id="auth.json.token.expires" units="linecolumn"
+              coords="6 23"/>
+            <area xml:id="auth.json.sc.s.e.region" units="linecolumn"
+              coords="11 30"/>
+            <area xml:id="auth.json.sc.s.e.v1d" units="linecolumn"
+              coords="12 33"/>
+            <area xml:id="auth.json.sc.s.e.pu" units="linecolumn"
+              coords="13 33"/>
+            <area xml:id="auth.json.sc.s.e.iu" units="linecolumn"
+              coords="14 35"/>
+            <area xml:id="auth.json.sc.s.e.nr" units="linecolumn"
+              coords="33 30"/>
+          </areaspec>
+          <programlisting language="javascript">
+<xi:include href="samples/auth.json" parse="text"/>
+                        </programlisting>
+        </programlistingco>
+      </example>
+      <calloutlist>
+        <callout arearefs="auth.xml.token.expires">
+          <para> Tokens are valid for a finite duration. The
+              <code>expires</code> attribute denotes the time after
+            which the token will automatically become invalid. A token
+            may be manually revoked before the time identified by the
+              <code>expires</code> attribute; <code>expires</code>
+            predicts a token's maximum possible lifespan but does not
+            guarantee that it will reach that lifespan. Clients are
+            encouraged to cache a token until it expires. </para>
+        </callout>
+        <callout arearefs="auth.xml.sc.s.e.region">
+          <para> A service may expose endpoints in different regions.
+            Regional endpoints allow clients to provision resources in
+            a manner that provides high availability. </para>
+        </callout>
+        <callout arearefs="auth.xml.sc.s.e.v1d">
+          <para> The <code>v1Default</code> attribute denotes that an
+            endpoint is being returned in version 1.0 of the Cloud
+            Authentication Service. The default value of
+              <code>v1Default</code> is <code>false</code>; clients
+            should assume the value is <code>false</code> when the
+            attribute is missing. Auth 1.0 does not offer support for
+            regional endpoints and therefore only returns one endpoint
+            per service. Resources stored in endpoints where
+              <code>v1Default</code> is <code>false</code> will not be
+            seen by Auth 1.0 clients. </para>
+        </callout>
+        <callout arearefs="auth.xml.sc.s.e.pu auth.xml.sc.s.e.iu">
+          <para> An endpoint can be assigned public and internal URLs.
+            A public URL is accessible from anywhere. Access to a
+            public URL usually incurs traffic charges. Internal URLs
+            are only accessible to services within the same region.
+            Access to an internal URL is free of charge. </para>
+        </callout>
+        <callout arearefs="auth.xml.sc.s.e.nr">
+          <para> Some services are not region-specific. These services
+            supply a single non-regional endpoint and do not provide
+            access to internal URLs. </para>
+        </callout>
+      </calloutlist>
+    </section>
+    <section xml:id="token-expiration">
+      <title>Token Expiration</title>
+      <para>While an authentication token lasts, you can continue to perform requests, but once a
+        token expires it returns an HTTP error code 401 Unauthorized. Given that an X-Auth-Token is
+        good for 24 hours, long running or high request rate jobs should not try to authenticate at
+        api.auth.rackspace.com on every request. You don't need to request another X-Auth-Token
+        again until your existing X-Auth-Token expires. At that point you must obtain another
+        authorization token. As a best practice example, here is some pseudo-code for
+        re-authenticating. The best scalable process flow would be:</para>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>Begin requests by going to auth.api.rackspace.com for an X-Auth-Token.</para>
+          </listitem>
+          <listitem>
+            <para>Send request X-Storage-URL using the X-Auth-Token obtained in Step 1</para>
+          </listitem>
+          <listitem>
+            <para>Repeat step 2 using the same X-Auth-Token retrieved in Step 1 until either the job
+              finishes or you get a result code of 401 (Unauthorized).</para>
+            <itemizedlist>
+              <listitem>
+                <para>If the job finishes, you can allow the token to expire with no further
+                  action.</para>
+              </listitem>
+              <listitem>
+                <para>If result code is 401 then send a request to auth.api.rackspacecloud.com for a
+                  new X-Auth-Token.</para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>A Python-based example of how to check for errors and re-authenticate upon receiving an
+        error can be found in the OpenStack Swift project in client.py, which is freely
+        available.</para>
+    </section>
+  </section>
+  <section xml:id="general-api-info-endpoint-access">
+    <title>Endpoint Access</title>
+    <para>For &MAAS;, use the endpoint below to access the API:</para>
+    <para>&URL;<emphasis role="italic">1234</emphasis></para>
+    <para>Replace the sample account ID number, <emphasis role="italic">1234</emphasis>, with your
+      actual account number. Your account number is returned as part of the authentication service
+      response, after the final '/' in the X-Server-Management-Url header. See 
+      <link linkend="general-api-info-authentication">Authentication</link> for more information.</para>
+  </section>
+  <section xml:id="api-request-response-types">
+    <title>Request/Response Types</title>
+    <para>The &MAAS; API supports both the JSON and XML data serialization formats. The request
+      format is specified using the <code>Content-Type</code> header and is required for operations
+      that have a request body. The response format can be specified in requests using the
+        <code>Accept</code> header. Note that it is possible for a response to be serialized using a
+      format different from the request (see example below). If no response format is specified,
+      JSON is the default.</para>
+    <table rules="all">
+      <caption>Response Types</caption>
+      <thead>
+        <tr>
+          <td>Format</td>
+          <td>Accept Header</td>
+          <td>Default</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>JSON</td>
+          <td>application/json</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>JSONP*</td>
+          <td>application/json</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>XML</td>
+          <td>application/xml</td>
+          <td>No</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- I'd include an example here, but the requests demonstrated below are not MaaS requests. -->
+    <para>*JSONP is the same as JSON except that the x-auth-token header is replaced with an HTTP query parameter with the same name.  An additional HTTP query parameter JSONP indicates the method name to wrap the JSON response in.</para>
+    <para> In the request example below, notice that <emphasis role="italic"
+      >Content-Type</emphasis> is set to <emphasis role="italic">application/json</emphasis>,
+        but <emphasis role="italic">application/xml</emphasis> is requested via the <emphasis
+        role="italic">Accept</emphasis> header: </para>
+    <example>
+      <title>JSON Request with Headers</title>
+      <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="samples/samplerequestheader.json" parse="text">
+  <xi:fallback>
+    Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+    </example>
+    <para>Therefore an XML response format is returned:</para>
+    <example>
+      <title>XML Response with Headers</title>
+      <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="samples/sampleresponseheader.json" parse="text">
+  <xi:fallback>
+    Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+    </example>
+  </section>
+  <section xml:id="api-versions">
+    <title>Versions</title>
+    <para>The &MAAS; API uses a URI versioning scheme. In the URI scheme, the first element of the
+      path contains the target version identifier (e.g. &URL;&hellip;)</para>
+    <example>
+      <title>Request with URI Versioning</title>
+      <literallayout class="monospaced">
+GET /v1.0/entities HTTP/1.1
+Host: &HOST;/v1.0/12345/entities
+Accept: application/xml
+X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+      </literallayout>
+    </example>
+    <para>New features and functionality that do not break
+      API-compatibility will be introduced in the current version of
+      the API as extensions (see below) and the URI will remain
+      unchanged. Features or functionality changes that would
+      necessitate a break in API-compatibility will require a new
+      version, which will result in URI version being updated
+      accordingly. When new API versions are released, older versions
+      will be marked as <code>DEPRECATED</code>. Providers should work
+      with developers and partners to ensure there is adequate time to
+      migrate to the new version before deprecated versions are
+      discontinued. </para>
+  </section>
+  <section xml:id="api-paginated-collections">
+    <title>Paginated Collections</title>
+    <para>To reduce load on the service, list operations will return a maximum number of items at a
+      time. To navigate the collection, the parameters limit and marker can be set in the URI (e.g.
+        <parameter>?limit=200&amp;marker=enCCCCCC</parameter>). The marker parameter is the ID of a
+      first item in the next page. This item can be found in the metadata object under the
+        <parameter>next_key</parameter> tag. Items are sorted by the ID name in a lexicographic
+      order. The limit parameter sets the page size. It defaults to <parameter>100</parameter> items
+      per page and the maximum value is <parameter>1000</parameter>. Both parameters are optional.
+      If the client requests a limit beyond that which is not supported an
+        <returnvalue>invalidLimit</returnvalue>
+      <errorcode>(400)</errorcode> fault may be thrown.</para>
+    <para>For convenience, collections contain a link to the next page (the
+        <parameter>next_href</parameter> attribute in the metadata object). If there are no more
+      objects, the <parameter>next_key</parameter> and <parameter>next_href</parameter> attributes
+      will be empty. The following examples illustrate two pages in a collection of entities. The
+      first page was retrieved via a <command>GET</command> to
+      &URL;entities?limit=1. In these examples, the limit parameter
+      sets the page size to a single item. Subsequent <parameter>next_href</parameter> link will
+      honor the initial page size. Thus, a client may follow this link to traverse a paginated
+      collection without having to input the limit parameter.</para>
+    <example>
+      <title>List Entities, First Page: XML</title>
+      <programlisting language="xml">
+<xi:include href="partials/list_entities_page_1.xml" parse="text">
+            <xi:fallback>Missing example! </xi:fallback>
+            </xi:include>
+          </programlisting>
+    </example>
+    <example>
+      <title>List Entities, First Page: JSON</title>
+      <programlisting language="xml">
+<xi:include href="partials/list_entities_page_1.json" parse="text">
+            <xi:fallback>Missing example! </xi:fallback>
+            </xi:include>
+          </programlisting>
+    </example>
+    <example>
+      <title>List Entities, Second Page: XML</title>
+      <programlisting language="xml">
+<xi:include href="partials/list_entities_page_2.xml" parse="text">
+            <xi:fallback>Missing example! </xi:fallback>
+            </xi:include>
+          </programlisting>
+    </example>
+    <example>
+      <title>List Entities, Second Page: JSON</title>
+      <programlisting language="xml">
+<xi:include href="partials/list_entities_page_2.json" parse="text">
+            <xi:fallback>Missing example! </xi:fallback>
+            </xi:include>
+          </programlisting>
+    </example>
+    <para>In the JSON representation, paginated collections contain a
+      values property that contains the items in the collection. The
+      link to the next page is located in the metadata object
+        (<parameter>metadata.next_href</parameter> attribute). Clients
+      must follow the <parameter>next_href</parameter> link to
+      continue to retrieve additional entities belonging to an
+      account.</para>
+  </section>
+  <section xml:id="api-time-series-collections">
+    <title>Time Series Collections</title>
+    <para>&MAAS; tracks various time-indexed data sets, such as audits and alarm histories. When
+      accessing a time series collection, two parameters beyond the base paginated collection API
+      are available: <parameter>from</parameter> and <parameter>to</parameter>. These parameters
+      take integer values, which are interpreted as timestamps expressed in milliseconds since
+      00:00:00 UTC on January 1, 1970. If the <parameter>to</parameter> value is not specified it
+      defaults to the current time. Each time series collection specifies a default offset from the
+      current time, which is used when the <parameter>from</parameter> value is not supplied. For
+      example, if no <parameter>to</parameter> or <parameter>from</parameter> values are specified
+      when retrieving an alarm history, then it will be treated as a query for the last 7 days of
+      data.</para>
+
+    <para>The standard paginated collection API is available on top of the time series collection
+      API. For example, performing a <command>GET</command> on
+      &URL;audits?from=1320044400000&amp;to=1320652800000 should
+      retrieve audits from the first 7 days of November, 2011. However, since no
+      <parameter>limit</parameter> is supplied  a default of 100 is used. Thus, if more than 100
+      audits exist during that time period only the first 100 will be returned. Further audits
+      within the same period can be retrieved using the <parameter>next_href</parameter> URL, or by
+      constructing a URL by using the <parameter>next_marker</parameter> value to append a
+      <parameter>marker</parameter> to your previous query. For example, to retrieve the next 100
+      objects beyond the previous query, you might use
+      &URL;audits?from=1320044400000&amp;to=1320652800000&amp;marker=16c3de00-038e-11e1-b056-d3a1a3710f94.</para>
+    <para>To convert a particular time to UTC, you can use the <command>date +%s000 </command>
+      command or a website such as <uri>http://www.epochconverter.com/</uri>.</para>
+  </section>
+  <section xml:id="general-api-info-audits">
+    <title>Audits</title>
+    <para>Every write operation performed against the API (<command>PUT</command>,
+        <command>POST</command> or <command>DELETE</command>) generates an audit record that is
+      stored for 30 days. Audits record a variety of information about the request including the
+      method, URL, headers, query string, transaction ID, the request body and the response code.
+      They also store information about the action performed including a JSON list of the previous
+      state of any modified objects. For example, if you perform an update on an entity, this will
+      record the state of the entity before modification.</para>
+    <para>You can also use <parameter>_who</parameter> and <parameter>_why</parameter> parameters in
+      the query string which will be included in the transaction object.</para>
+    <para>Audits can be retrieved using the <link linkend="service-account-list-audits">List Audits</link> endpoint.</para>
+  </section>
+  <section xml:id="api-rsource-limits">
+    <title>Resource Limits</title>
+    <para>The table below contains default limits for different resources. If you want to create a
+      new resource and your account limit for this resource has been reached the monitoring server
+      will return <errorcode>400</errorcode> "Limit has been reached".</para>
+    <para>
+      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="partials/default_limits.xml" parse="xml">
+        <xi:fallback> Missing table! 
+        </xi:fallback>
+      </xi:include>
+    </para>
+    <para>To view the limits that apply to your account, use the <link
+      linkend="service-account-get-limits">Get Limits</link> endpoint.</para>
+  </section>
+  <section xml:id="api-rate-limits">
+    <title>Rate Limits</title>
+    <para>The following table specifies the default rate limits for different API operations.</para>
+    <para>
+    <informaltable rules="all">
+      <thead>
+        <tr>
+          <td>URI</td>
+          <td>Limit</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>/*</td>
+          <td>50000 requests / 24 hours</td>
+        </tr>
+        <tr>
+          <td>/entities/*/test-check</td>
+          <td>500 requests / 24 hours</td>
+        </tr>
+        <tr>
+          <td>/entities/*/test-alarm</td>
+          <td>500 requests / 24 hours</td>
+        </tr>
+        <tr>
+          <td>/notifications/*/test, /test-notifications</td>
+          <td>200 requests / 24 hours</td>
+        </tr>
+    </tbody>
+    </informaltable>
+    </para>
+    <para>Each API response also contains the following headers:</para>
+    <informaltable rules="all">
+      <thead>
+        <tr>
+          <td>Header name</td>
+          <td>Description</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>X-RateLimit-Limit</td>
+          <td>Limit in affect for the current request.</td>
+        </tr>
+        <tr>
+          <td>X-RateLimit-Used</td>
+          <td>How close you are to being rate limited.</td>
+        </tr>
+        <tr>
+          <td>X-RateLimit-Window</td>
+          <td>Rate limit window.</td>
+        </tr>
+        <tr>
+          <td>X-RateLimit-Type</td>
+          <td>Type of the rate limit which applies to the current request.</td>
+        </tr>
+    </tbody>
+  </informaltable>
+  <para>If you exceed the thresholds established for your account, you'll receive a
+        <errorcode>400</errorcode>, <returnvalue>Limit has been reached</returnvalue> response. HTTP
+      responses are returned with a <parameter>Reply-After</parameter> header (number of seconds) to
+      notify the client when it can attempt to try again.</para>
+    <para>To view the limits that apply to your account, use the <link
+      linkend="service-account-get-limits">Get Limits</link> endpoint.</para>
+  </section>
+  <section xml:id="general-api-info-api-faults">
+    <title>Faults</title>
+    <para>When an error occurs the system returns an HTTP error response code denoting the type
+      of error and additional information in the fault response body. </para>
+    <para>The following examples show the XML and JSON response body for a <code>404</code>
+      <returnvalue>notFoundError</returnvalue>:</para>
+    <example>
+      <title>XML Not Found Fault</title>
+      <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="samples/item_not_found.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+    </example>
+    <example>
+      <title>JSON Not Found Fault</title>
+      <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="samples/item_not_found.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+    </example>
+    <?dbhtml stop-chunking?>
+    <para> The following table contains the possible fault types along with their associated error
+      code and description. </para>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/faults.xml" parse="xml">
+      <xi:fallback> Missing table! 
+      </xi:fallback>
+    </xi:include>
+  </section>
+</chapter>

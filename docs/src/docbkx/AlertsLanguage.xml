@@ -1,0 +1,545 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter [<!-- Some useful entities borrowed from HTML -->
+<!ENTITY ndash  "&#x2013;">
+<!ENTITY mdash  "&#x2014;">
+<!ENTITY hellip "&#x2026;">
+
+<!-- Useful for describing APIs -->
+<!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+<!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+<!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+<!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+
+
+<!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+<imageobject>
+<imagedata fileref="img/Check_mark_23x20_02.svg"
+format="SVG" scale="60"/>
+</imageobject>
+</inlinemediaobject>'>
+<!ENTITY CODES       'Normal Response Code(s):'>
+<!ENTITY ERROR_CODES 'Error Response Code(s):'>
+<!ENTITY NO_REQUEST '<para xmlns="http://docbook.org/ns/docbook">
+This operation does not require a request body.</para>'>
+<!ENTITY LONG_URI_REFHEAD '
+<thead xmlns="http://docbook.org/ns/docbook">
+<tr>
+<td colspan="1">Verb</td>
+<td colspan="4">URI</td>
+<td colspan="3">Description</td>
+</tr>
+</thead>'>
+<!ENTITY URI_REFHEAD '
+<thead xmlns="http://docbook.org/ns/docbook">
+<tr>
+<td colspan="1">Verb</td>
+<td colspan="1">URI</td>
+<td colspan="4">Description</td>
+</tr>
+</thead>'>
+<!ENTITY MAAS 'Rackspace Cloud Monitoring'>
+<!ENTITY HOST 'monitoring.api.rackspacecloud.com'>
+<!ENTITY URL 'https://&HOST;/v1.0/'>
+]>
+<appendix xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg" version="5.0"
+    xml:id="alerts-language">
+    <?dbhtml stop-chunking?>
+    <title>Alert Triggering and Alarms</title>
+    <info>
+        <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+	  <raxm:type>concept</raxm:type>
+	  <raxm:product version="v1.0">cm</raxm:product>
+	  <raxm:priority>1</raxm:priority>
+        </raxm:metadata> 
+    </info>
+    <para>This section describes alerting including an explanation of the alert flow, the alarm
+        language, the policies that you can create using alarms and example best practices. In
+        short, Rackspace Cloud Monitoring uses alarms to evaluate the metrics of a check and decide
+        if a notification plan should be executed. It is the primary way to describe exactly what
+        you want to be alerted on.</para>
+    <section xml:id="alert-flow">
+        <title>Alert Flow</title>
+        <para>Let's take an example user work flow of creating a monitor for a particular resource
+            and follow it through the system to understand how the alerting system works: </para>
+        <para>
+            <orderedlist>
+                <listitem>
+                    <para>Using the <link linkend="service-checks-create">Create Check call</link>,
+                        create a check with one or more monitoring zones (per the
+                            <code>monitoring_zone_poll</code> attribute). </para>
+                </listitem>
+                <listitem>
+                    <para>Using the <link linkend="service-alarms-create">Create Alarm call</link>,
+                        create a new alarm on the entity that matches this particular check.</para>
+                    <para>Note that alarms are created to match when a specific condition occurs. On
+                        this alarm let's assume you've specified the alarm policy as
+                            <code>QUORUM</code>. This parameter describes a deterministic way to
+                        represent mixed results in a "multi-datacenter" monitoring environment. To
+                        learn more about this concept, see <link
+                            linkend="concepts-alarms-alert-policies">Alert Policies</link>. You can
+                        also read <link linkend="concepts-alarms-best-practices">Best Practices on
+                            Alerting</link> for more pattern applications of the alarm language.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>When you apply the check, events provision the collectors. If the check is
+                        successfully applied (as indicated by the HTTP response code) the monitor
+                        starts executing its checks.</para>
+                </listitem>
+                <listitem>
+                    <para>If the monitored resource fails, a state change event is generated (since
+                        all the collectors agree on the status per the <code>QUORUM</code> alert
+                        policy) and an alert is triggered. Based on the logic you created in the
+                        associated notification plan an error notification is sent (the call itself
+                        is a webhook).</para>
+                </listitem>
+            </orderedlist>
+        </para>
+    </section>
+    <section xml:id="concepts-alarms-alarm-language">
+        <title>Alarm Language</title>
+        <para>The alarm language is one of the most powerful parts of &MAAS;. It describes the
+            mechanism to trigger an event. Upon triggering an event a notification plan is executed
+            that describes how to send different notifications. </para>
+        <para role="bold">
+            <note>
+                <para>If a check fails to execute, by default alarm associated with check returns a
+                        <code>CRITICAL</code> state.</para>
+            </note>
+        </para>
+        <para role="bold">This may change in future versions of the product, however this is
+            currently the only behavior allowed. This represents a subclass of failures similar to
+                <emphasis>"Connection Timeout"</emphasis>'s or other errors where the result wasn't
+            simply a failure result, but a result where the user was unable to run the check at
+            all.</para>
+        <section xml:id="concepts-alarms-availability">
+            <title>Check Availability</title>
+            <para>As mentioned above the default evaluation of a check depends upon whether the
+                check is able to run successfully. We can illustrate this concept using the HTTP
+                check as an example. If the alarm checks the status of a 404 response, but the check
+                is actually getting a Connection Refused message, the result of that check is
+                    <code>ERROR</code>. The availability of the check is determined by the ability
+                to run the check.</para>
+            <para><note><para> This is <emphasis role="bold">very important</emphasis> to
+                        understand this concept.  All checks that go
+                        into a <code>CRITICAL</code> state will always
+                force an <glossterm baseform="Alarm" linkend="alarm.glossary">alarm</glossterm> on an <glossterm baseform="Entity" linkend="entity.glossary">entity</glossterm>,
+                            <code>CRITICAL</code>.</para>
+                
+            </note></para>
+        </section>
+        <section xml:id="concepts-alarms-alarm-language-anatomy">
+            <title>Anatomy of a Query</title>
+            <para>An alarm query is broken down into the following main parts:</para>
+            <variablelist>
+                <varlistentry>
+                    <term><emphasis role="bold">Comments</emphasis></term>
+                    <listitem>
+                        <para> Comments are either line by line comments that begin with a # or
+                            c-style comments /*
+                            */.<programlisting># This is a comment
+/* This is a comment */
+<emphasis role="bold">// This is <emphasis role="underline">NOT</emphasis> a comment</emphasis></programlisting></para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">String Literals</emphasis></term>
+                    <listitem>
+                        <para>String literals are surrounded with either ' or ". String literals
+                            support the following escape sequences:</para>
+                        <informaltable rules="all">
+                          <tbody>
+                            <tr>
+                              <th>Sequence</th>
+                              <th>Value</th>
+                            </tr>
+                            <tr>
+                              <td><code>\"</code></td>
+                              <td>Double quote</td>
+                            </tr>
+                            <tr>
+                              <td><code>\'</code></td>
+                              <td>Single quote</td>
+                            </tr>
+                            <tr>
+                              <td><code>\\</code></td>
+                              <td>Backslash</td>
+                            </tr>
+                            <tr>
+                              <td><code>\b</code></td>
+                              <td>Backspace</td>
+                            </tr>
+                            <tr>
+                              <td><code>\f</code></td>
+                              <td>Formfeed</td>
+                            </tr>
+                            <tr>
+                              <td><code>\n</code></td>
+                              <td>Newline</td>
+                            </tr>
+                            <tr>
+                              <td><code>\r</code></td>
+                              <td>Carriage return</td>
+                            </tr>
+                            <tr>
+                              <td><code>\t</code></td>
+                              <td>Tab</td>
+                            </tr>
+                            <tr>
+                              <td><code>\uXXXX</code></td>
+                              <td>Unicode character where XXXX is the hex unicode character code</td>
+                            </tr>
+                          </tbody>
+                        </informaltable>
+                        <para>Some example string literals:<programlisting>"Foo"           /* A double quoted string */
+'Foo'           /* A single quoted string */
+'"Foo\'s bar\"' /* Single quoted strings may contain unescaped double quotes */
+                /* as well as escaped single or double quotes */
+"'Bar's foo\'"  /* Double quoted strings may contain unescaped single quotes */
+                /* as well as escaped single or double quotes */
+'\u0027abc'     /* A string containing an escaped unicode character */</programlisting>
+                        </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">Numeric Literals</emphasis></term>
+                    <listitem>
+                        <para>Numeric literals are written without quotation marks. Below are some
+                            examples:<programlisting>2773.2                 /* Numeric literal */
+200                    /* Numeric literal */
+-200                   /* Numeric literal */
+1.2e-7                 /* Numeric literal with exponential notation */</programlisting></para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">Declarations</emphasis></term>
+                    <listitem>
+                        <para>This part of the alarm language is the setting declarations, which
+                            globally control the evaluation of the query. The syntax is shown
+                            below:<programlisting>:set &lt;name>=&lt;value></programlisting></para>
+                        <para>The current version of the product supports two settings. The first
+                            setting specifies the <link linkend="concepts-alarms-alert-policies"
+                                >consistency
+                            level</link>.<programlisting>:set consistencyLevel=&lt;value></programlisting></para>
+                        <para>This is an important setting that is typically left as
+                                <code>QUORUM</code> (the default) unless there is a specific need to
+                            change it. For more information about alerting policies and consistency
+                            levels, see <link linkend="concepts-alarms-alert-policies">Alert
+                                Policies</link>. </para>
+                        <para>The second setting is the consecutive alert count. It determines how
+                            many consecutive evaluations of a state occur before issuing a state
+                            change. The default for this setting is <emphasis role="bold"
+                                >1</emphasis>.<programlisting>:set consecutiveCount=&lt;value></programlisting></para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">Conditionals</emphasis></term>
+                    <listitem>
+                        <para>The second part of the query is the conditional statement. The
+                            conditional statements determine what criterion constitute sending an
+                            alert on behalf of the user. This is by far the most configurable part
+                            of the alarm language. There are two types of comparisons: numeric
+                            comparisons and text comparisons.</para>
+                        <para>Numeric comparisons have a number of different operators, which are
+                            listed
+                            below:<programlisting>== /* Equality when compared with a literal numeric */
+!= /* Inequality */
+>= /* Greater than or equal to */
+&lt;= /* Less than or equal to */
+&lt;  /* Less than */
+>  /* Greater than */</programlisting></para>
+                        <para>If the left hand side of the conditional is a metric statement and the
+                            right hand side of the equality is another metric statement, then
+                            equality and inequality is evaluated based on lexicographical
+                            comparison. </para>
+                        <para>Or if the left or right hand side is a literal than the following
+                            operators are available for use.</para>
+                        <programlisting>==     /* String comparison */
+!=     /* String comparison */
+regex  /* Regular expression match */
+nregex /* Regular expression inverse match */</programlisting>
+                        <para>On top of the single conditional operators, you can also use boolean
+                            logic to evaluate multiple conditionals in a single alarm. When trying
+                            to determine if a resource is functioning correctly, this built-in
+                            flexibility provides you with a powerful tool that lets you examine
+                            multiple aspects of a single resource. </para>
+                        <para>The operators available
+                            are:<programlisting>&amp;&amp; /* And */
+|| /* Or */</programlisting>
+                        </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">Return Statements</emphasis></term>
+                    <listitem>
+                        <para>The third part of the query is the return statements. The return
+                            statements determine the notification or notifications to execute on the
+                            notification plan as well as the state of the alarm. There are two
+                            separate methods to represent a return query:</para>
+                        <para>Returning the status:</para>
+                        <programlisting>return &lt;OK|WARNING|CRITICAL></programlisting>
+                        <para>Returning the status and message:</para>
+                        <programlisting>return &lt;OK|WARNING|CRITICAL>, &lt;String Status Message></programlisting>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </section>
+        <section xml:id="concepts-alarms-alarm-language-limits">
+            <title>Limits and Defaults</title>
+            <para>Alarms have limits in their constructs. For instance, there are a limited set of
+                conditionals you can use in a single alarm query. </para>
+            <para>The following list describes the limits and defaults for alarms:<itemizedlist>
+                    <listitem>
+                        <para>Minimum conditionals in a single query: <emphasis role="bold"
+                                >0</emphasis>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>Maximum limit of conditionals in a single query:<emphasis role="bold"
+                                >10</emphasis></para>
+                    </listitem>
+                    <listitem>
+                        <para>Criteria: <emphasis role="bold">Optional</emphasis></para>
+                        <para>Not that if criteria is not specified the availability of the check
+                            determines the alarm state.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Default consistency level of the alert policy: <emphasis role="bold"
+                                >QUORUM</emphasis></para>
+                    </listitem>
+                    <listitem>
+                        <para>Default consecutive alert count: <emphasis role="bold"
+                            >1</emphasis></para>
+                    </listitem>
+                </itemizedlist></para>
+        </section>
+        <section xml:id="concepts-alarms-status-strings">
+            <title>Status Messages</title>
+            <para>Checks and Alarms have status strings and there is a
+                resolution policy for final message that get displayed
+                to a user in an email or <link
+                    linkend="service-changelogs">alarm change
+                    log</link> or webhook.  This message represents a
+                human readable string for the status of the
+                alarm.</para>
+            <para>The resolution policy is as follows:</para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>If no status is specified, then use the
+                            value from the most recent run <glossterm
+                                linkend="check.glossary"
+                                baseform="Check"
+                            >check</glossterm>.</para>
+                    </listitem>
+                    <listitem>
+                        <para>If it's specified then use the specified
+                            string from the <glossterm
+                                baseform="Alarm"
+                            >alarm</glossterm>.</para>
+                    </listitem>
+                    <listitem>
+                        <para>String interpolate the message if metric
+                            is present.</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>Status string interpolation will substitute metrics
+                in a special format to the point in time metric. It
+                looks like this:</para>
+            <programlisting>return WARNING, "The check took #{duration}s to execute"</programlisting>
+            <note><para>String Interpolation will substitute a
+                        <code>#{metric-name}</code> for its
+                    corresponding point in time value, it is a very
+                    powerful feature.</para></note>
+        </section>
+    </section>
+    <section xml:id="concepts-alarms-alert-policies">
+        <title>Alert Policies (Consistency Level)</title>
+        <para>Alert policies define a system for interpreting mixed results from a check. Mixed
+            results can occur during failure scenarios if you are monitoring a resource in multiple
+            monitoring zones. For instance, if you're monitoring a website from three different
+            monitoring zones and the website goes down, a <code>QUORUM</code> calculation consisting
+            of two monitoring zones would need to agree before sending an alert.</para>
+        <para>There three different interpretations and alert policies for handling mixed results.
+            Each interpretation has trade-offs that should be considered when determining which
+            policy to use. The interpretation policy and their trade-offs are described below</para>
+        <section xml:id="concepts-alarms-alert-policies-one">
+            <title>One</title>
+            <para>A single monitoring zone failure. For example, an alert is triggered if one of
+                three, or say one of five, monitoring zones report the failure. </para>
+            <para>The <code>ONE</code> policy optimizes speed of alerting at the expense of
+                correctness. For instance, any network blip from the &MAAS; to the monitored
+                resource would potentially generate an alert. This is mitigated in the
+                    <code>QUORUM</code> policy.</para>
+        </section>
+        <section xml:id="concepts-alarms-alert-policies-quorum">
+            <title>Quorum</title>
+            <para>A failure is detected in a majority of the monitoring zones. For example, two of
+                three, or three of five monitoring zones report the failure. The calculation is
+                    <symbol>TOTAL / 2 + 1</symbol></para>
+            <para>The <code>QUORUM</code> policy is the recommended solution. It offers the best
+                speed to correctness trade-off. Only a majority of the infrastructure monitoring
+                your resource has to agree that the resource is in fact down before sending an
+                alert. This is the best approach to maintain speed and low time-to-alert.</para>
+        </section>
+        <section xml:id="concepts-alarms-alert-policies-all">
+            <title>All</title>
+            <para>All monitoring zone's agree the resource is down. For example, three of out of
+                three monitoring zones report the failure.</para>
+            <para>The <code>ALL</code> policy is the most accurate, but is also prone to failure in
+                significant failure scenarios. If a network partition between our internal
+                datacenters happens the alert could be delayed due to the election process. In this
+                case a machine has to be marked down, then the checks will be re-evaluated as a
+                group. If they come to a consensus (with the downed collector) then an alert is
+                generated.</para>
+        </section>
+    </section>
+    <section xml:id="concepts-alarms-constructs">
+        <title>Constructs and Functions</title>
+        <para>Function modifiers serve to alter the interpretation of a metric. There is currently a
+            single modifier. The format of a modifier is as follows:</para>
+        <para>
+            <programlisting>ex: &lt;funcname>(metric['response_time'])</programlisting>
+        </para>
+        <section xml:id="concepts-alarms-constructs-previous">
+            <title>Previous</title>
+            <para>Function name: <emphasis role="bold"
+                    >previous</emphasis></para>
+            <para>This is used to look back at the same metric in the
+                previous time period from the same datacenter.  This
+                is useful to make sure a value is always incrementing.
+                Or another use is detecting string changes and sending
+                an alert on that.</para>
+            <para><programlisting>
+if (previous(metric['fingerprint']) != metric['fingerprint']) {
+    return new AlarmStatus(CRITICAL, 'Fingerprint has changed to: #{fingerprint}');
+}
+            </programlisting></para>
+        </section>
+        <section xml:id="concepts-alarms-constructs-rate">
+            <title>Rate</title>
+            <para>Function name: <emphasis role="bold"
+                >rate</emphasis></para>
+            <para>This is best used for counters. For instance if you are tracking a
+                gauge such as bytes_in on an network interface, this will give you the
+                <emphasis role="italic">rate</emphasis> as defined by this formula
+                where V=value, and T=time.</para>
+            <para>
+                <code>(V<subscript>1</subscript> - V<subscript>0</subscript>) /
+                    (T<subscript>1</subscript> - T<subscript>0</subscript>)</code>
+            </para>
+        </section>
+    </section>
+    <section xml:id="concepts-alarms-best-practices">
+        <title>Best Practices on Alerting</title>
+        <para>This section covers common solution patterns for creating useful alerts. It focuses on
+            alarms and how you can use the alarm language to best achieve these patterns.</para>
+        <section xml:id="concepts-alarms-best-practices-http">
+            <title>Best Practices for HTTP/S Check</title>
+            <section xml:id="concepts-alarms-best-practices-http-check-404">
+                <title>Check for HTTP 404</title>
+                <para><emphasis role="bold">Critical on 404 or Connection Refused</emphasis></para>
+                <para>This example assumes a provisioned <link
+                        linkend="section-check-types-remote.http">Remote HTTP</link> with standard
+                    settings. It checks that the return code (which is a metric of type string) is
+                    the string equivalent of a 404. HTTP response codes are numeric, but since they
+                    hold no numeric value, we interpret them as strings.</para>
+                <programlisting><xi:include parse="text" href="alarms/404-status.alarm"/></programlisting>
+            </section>
+            <section xml:id="concepts-alarms-best-practices-reverse-body-match">
+                <title>Critical on a specific body match</title>
+                <para><emphasis role="bold">Check for the existence of a body match and error out if
+                        present</emphasis></para>
+                <para>This example assumes a provisioned <link
+                        linkend="section-check-types-remote.http">Remote HTTP</link> with an metric
+                    called <code>body_match</code> added to the response. You can use this string
+                    metric to check the existence of the text, and error out if found.</para>
+                <para>Using the <code>HTTPS</code> prefix automatically defaults the port to the
+                    standard <code>443</code> instead of port <code>80</code>. This particular
+                    example looks for the word "forbidden" in the body match, and if found returns
+                        <code>CRITICAL</code> with the error message: <code>"Forbidden found,
+                        returning CRITICAL."</code></para>
+                <para security="reviewer">TODO: Add information referring to metrics here.</para>
+                <programlisting><xi:include parse="text" href="alarms/body-match-reverse.alarm"/></programlisting>
+            </section>
+            <section xml:id="concepts-alarms-best-practices-error-certificate">
+                <title>Critical on certificate expiration</title>
+                <para><emphasis role="bold">Check the <code>cert_end_in</code> metric; critical if
+                        less than a week away</emphasis></para>
+                <para>This example assumes a provisioned <link
+                        linkend="section-check-types-remote.http">Remote HTTP</link> against an
+                    HTTPS server and adds a set of metrics that are specific to SSL in the hash of
+                    metrics.</para>
+                <para>This example checks the certificate expiration in seconds, abbreviated as the
+                        <code>cert_end_in</code>:</para>
+                <programlisting><xi:include parse="text" href="alarms/cert-end-in.alarm"/></programlisting>
+            </section>
+        </section>
+        <section xml:id="concepts-alarms-best-practices-port">
+            <title>Best Practices for Port/Banner Checks</title>
+            <section xml:id="concepts-alarms-best-practices-port-failure-match">
+                <title>Failure on banner match</title>
+                <para>This example assumes a provisioned <link
+                        linkend="section-check-types-remote.tcp"
+                        >Remote TCP</link> check. It also specifies a
+                        <code>banner_match</code>
+                    <replaceable>'OpenSSH.*'</replaceable>, which
+                    matches content based on the text sent from the
+                    server upon connection. For a complete
+                    description, see <link
+                        linkend="section-check-types-remote.tcp"
+                        >Remote TCP</link>. However if a banner
+                    matches, then a metric is added to the result,
+                    called <code>banner_match</code>. One common
+                    solution is to check for the existence of that
+                    metric and return <code>CRITICAL</code>
+                    otherwise.<programlisting><xi:include parse="text" href="alarms/failure-banner.alarm"/></programlisting></para>
+            </section>
+        </section>
+        <section xml:id="concepts-alarms-best-practices-dns">
+            <title>Best Practices for DNS Checks</title>
+            <section xml:id="concepts-alarms-best-practices-dns-1">
+                <title>Check for an IP in a DNS query, fail otherwise.</title>
+                <para>This example assumes a provisioned <link
+                        linkend="section-check-types-remote.dns">Remote DNS</link> check against a
+                    working nameserver. In this example, the alarm matches against the
+                        <code>answer</code> metric. As with all alarms, if the check is marked
+                    available=false (which in this case means the nameserver fails to respond) than
+                    the alarm is
+                    <code>CRITICAL</code>.<programlisting><xi:include parse="text" href="alarms/dns-fail.alarm"/></programlisting></para>
+            </section>
+        </section>
+        <section xml:id="concepts-alarms-best-practices-ssh">
+            <title>Best Practices for SSH Checks</title>
+            <para>The following example uses the &MAAS; command line interface (CLI). For
+                information on downloading and installing the CLI, see <link
+                    xlink:href="https://github.com/racker/rackspace-monitoring-cli"
+                    >https://github.com/racker/rackspace-monitoring-cli</link>.</para>
+            <para>One of the most widely used remote checks is the SSH check. This check not only
+                verifies that something is listening on the expected port, but establishes an SSH
+                session and returns the host key fingerprint as a metric, further verifying that the
+                SSH server is operating as expected. </para>
+            <para>The following example assumes the existence of an entity with the IP address eth0
+                and ID enk8YUv0Cd,  and a notification plan with ID nplU9hLUgc. This check connects
+                to an SSH server using port 22 by default:</para>
+            <programlisting>raxmon-checks-create \ 
+--entity-id=enk8YUv0Cd \
+--label=ssh \ 
+--type=remote.ssh \ 
+--target-alias=eth0 \ 
+--monitoring-zones=mzord,mzdfw,mzlon</programlisting>
+            <para><emphasis role="bold">Alarm for this check:</emphasis></para>
+            <para>If the monitoring service is unable to connect to the SSH server for the check,
+                any alarms using the check will automatically fail. However, we can additionally
+                verify that the server returns the expected host key fingerprint, which could reveal
+                an unexpected change on the server or a man in the middle attack.</para>
+            <programlisting>raxmon-alarms-create \ 
+--entity-id=enk8YUv0Cd \ 
+--notification-plan-id=nplU9hLUgc \ 
+--check-id=chTFHxHn0p \ 
+--criteria="if (metric['fingerprint'] != '13dd6c5df600f9a15c67ea5db491ac9a') { return CRITICAL, 'Incorrect SSH Host Fingerprint' }"</programlisting>
+        </section>
+    </section>
+</appendix>

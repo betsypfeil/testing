@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
+   <title>Rackspace Cloud Monitoring Developer Guide API v1.4 revision history</title>
+   <link href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/atom.xml" rel="self"/>
+   <link href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/index.html"/>
+   <id>monitoring-developer-guide</id>
+   <updated>2012-08-24T10:57:34-05:00</updated>
+   <entry>
+      <title>2012-08-22</title>
+      <link href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/index.html" type="text/html"/>
+      <id>monitoring-developer-guide-2012-08-22</id>
+      <updated>2012-08-22</updated>
+      <content type="xhtml">
+         <div xmlns="http://www.w3.org/1999/xhtml">
+          
+            <p>Unlimited Availability</p>
+        
+         </div>
+      </content>
+   </entry>
+   <entry>
+      <title>2012-08-08</title>
+      <link href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/index.html" type="text/html"/>
+      <id>monitoring-developer-guide-2012-08-08</id>
+      <updated>2012-08-08</updated>
+      <content type="xhtml">
+         <div xmlns="http://www.w3.org/1999/xhtml">
+          
+            <p>Fixed broken link.</p>
+        
+         </div>
+      </content>
+   </entry>
+   <entry>
+      <title>2012-06-17</title>
+      <link href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/index.html" type="text/html"/>
+      <id>monitoring-developer-guide-2012-06-17</id>
+      <updated>2012-06-17</updated>
+      <content type="xhtml">
+         <div xmlns="http://www.w3.org/1999/xhtml">
+          
+            <p>Miscellaneous updates.</p>
+        
+         </div>
+      </content>
+   </entry>
+   <entry>
+      <title>2012-03-28</title>
+      <link href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/index.html" type="text/html"/>
+      <id>monitoring-developer-guide-2012-03-28</id>
+      <updated>2012-03-28</updated>
+      <content type="xhtml">
+         <div xmlns="http://www.w3.org/1999/xhtml">
+          
+            <p>EAP</p>
+        
+         </div>
+      </content>
+   </entry>
+</feed>

@@ -1,0 +1,3602 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter [<!-- Some useful entities borrowed from HTML -->
+<!ENTITY ndash  "&#x2013;">
+<!ENTITY mdash  "&#x2014;">
+<!ENTITY hellip "&#x2026;">
+
+<!-- Useful for describing APIs -->
+<!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+<!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+<!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+<!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+
+
+<!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+<imageobject>
+<imagedata fileref="img/Check_mark_23x20_02.svg"
+format="SVG" scale="60"/>
+</imageobject>
+</inlinemediaobject>'>
+<!ENTITY CODES       'Normal Response Code(s):'>
+<!ENTITY ERROR_CODES 'Error Response Code(s):'>
+<!ENTITY NO_REQUEST '<para xmlns="http://docbook.org/ns/docbook">
+This operation does not require a request body.</para>'>
+<!ENTITY LONG_URI_REFHEAD '
+<thead xmlns="http://docbook.org/ns/docbook">
+<tr>
+<td colspan="1">Verb</td>
+<td colspan="4">URI</td>
+<td colspan="3">Description</td>
+</tr>
+</thead>'>
+<!ENTITY URI_REFHEAD '
+<thead xmlns="http://docbook.org/ns/docbook">
+<tr>
+<td colspan="1">Verb</td>
+<td colspan="1">URI</td>
+<td colspan="4">Description</td>
+</tr>
+</thead>'>
+<!ENTITY MAAS 'Rackspace Cloud Monitoring'>
+<!ENTITY HOST 'monitoring.api.rackspacecloud.com'>
+<!ENTITY URL 'https://&HOST;/v1.0/'>
+]>
+<chapter xmlns="http://docbook.org/ns/docbook"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:svg="http://www.w3.org/2000/svg" version="5.0"
+  xml:id="service-api-operations">
+  <title>Service API Operations</title>
+  <info>
+    <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">      
+      <raxm:type>apiref</raxm:type>
+      <raxm:product version="v1.0">cm</raxm:product>
+      <raxm:priority>1</raxm:priority>
+    </raxm:metadata> 
+  </info>
+  <section xml:id="maas-core-service-calls">
+    <title>Core Quick Reference</title>
+    <para>The following table lists the core service calls
+      for the &MAAS; API:</para>
+    <informaltable rules="all">
+      &URI_REFHEAD;
+      <tbody>
+        <tr>
+          <th align="center" colspan="6"> Account </th>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/limits</td>
+          <td colspan="4">View an account resource and rate limits.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/account</td>
+          <td>Retrieve account attributes.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &PUT; </td>
+          <td colspan="1">/account</td>
+          <td colspan="4">Update specific account attributes.</td>
+        </tr>
+        <tr>
+          <th align="center" colspan="6"> Audit </th>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/audits</td>
+          <td colspan="4">Retrieve API operation history for a given
+            period of time (defaults to last seven days). </td>
+        </tr>
+        <tr>
+          <th align="center" colspan="6"> Usage </th>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/usage</td>
+          <td colspan="4">Retrieves usage information for a given
+            period of time (defaults to last seven days).</td>
+        </tr>
+        <tr>
+          <th align="center" colspan="6"> Entities </th>
+        </tr>
+        <tr>
+          <td colspan="1"> &POST; </td>
+          <td colspan="1">/entities</td>
+          <td colspan="4">Create an entity in the system.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/entities</td>
+          <td colspan="4">List all entities associated with your
+            account.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1"
+              >/entities/<replaceable>entityId</replaceable></td>
+          <td colspan="4">Examine the entity.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &PUT; </td>
+          <td colspan="1"
+              >/entities/<replaceable>entityId</replaceable></td>
+          <td colspan="4">Update specific characteristics of an
+            entity.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &DELETE; </td>
+          <td colspan="1"
+              >/entities/<replaceable>entityId</replaceable></td>
+          <td colspan="4">Delete an entity.</td>
+        </tr>
+        <tr>
+          <th align="center" colspan="6">Checks </th>
+        </tr>
+        <tr>
+          <td colspan="1"> &POST; </td>
+          <td colspan="1"
+              >/entities/<replaceable>entityId</replaceable>/checks</td>
+          <td colspan="4">Create a check.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &POST; </td>
+          <td colspan="1"
+              >/entities/<replaceable>entityId</replaceable>/test-check</td>
+          <td colspan="4">Test a check.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &POST; </td>
+          <td colspan="1"
+              >/entities/<replaceable>entityId</replaceable>/test-check?debug=true</td>
+          <td colspan="4">Test a check and include extra check type
+            specific debugging information if available.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &POST; </td>
+          <td colspan="1"
+              >/entities/<replaceable>entityId</replaceable>/checks/<replaceable>checkId</replaceable>/test</td>
+          <td colspan="4">Test an existing check.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &POST; </td>
+          <td colspan="1"
+              >/entities/<replaceable>entityId</replaceable>/checks/<replaceable>checkId</replaceable>/test?debug=true</td>
+          <td colspan="4">Test an existing check and include extra check type
+            specific debugging information if available.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1"
+              >/entities/<replaceable>entityId</replaceable>/checks</td>
+          <td colspan="4">List all checks associated with your
+            account.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1"
+            >/entities/<replaceable>entityId</replaceable>/checks/<replaceable>checkId</replaceable></td>
+          <td colspan="4">Get information for a single check.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &PUT; </td>
+          <td colspan="1"
+              >/entities/<replaceable>entityId</replaceable>/checks/<replaceable>checkId</replaceable></td>
+          <td colspan="4">Update specific characteristics of a
+            check.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &DELETE; </td>
+          <td colspan="1"
+              >/entities/<replaceable>entityId</replaceable>/checks/<replaceable>checkId</replaceable></td>
+          <td colspan="4">Delete a check for a specific entity.</td>
+        </tr>
+        <tr>
+          <th align="center" colspan="6">Check Types</th>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/check_types</td>
+          <td colspan="4">List all check types associated with your
+            account.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/check_types/<replaceable>checkTypeId</replaceable></td>
+          <td colspan="4">Get information for a single check type.</td>
+        </tr>
+        <tr>
+          <th align="center" colspan="6">Monitoring Zones</th>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/monitoring_zones</td>
+          <td colspan="4">List all monitoring zones for your
+            account.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/monitoring_zones/<replaceable>monitoringZoneId</replaceable></td>
+          <td colspan="4">Get information for a single monitoring zone.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &POST; </td>
+          <td colspan="1">/monitoring_zones/<replaceable>monitoringZoneId</replaceable>/traceroute</td>
+          <td colspan="4">Perform a traceroute from a collector in the specified monitoring zones.</td>
+        </tr>
+        <tr>
+          <th align="center" colspan="6">Alarms</th>
+        </tr>
+        <tr>
+          <td colspan="1"> &POST; </td>
+          <td colspan="1"
+              >/entities/<replaceable>entityId</replaceable>/alarms</td>
+          <td colspan="4">Create an alarm for a specific entity.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &POST; </td>
+          <td colspan="1"
+              >/entities/<replaceable>entityId</replaceable>/test-alarm</td>
+          <td colspan="4">Test an alarm.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1"
+              >/entities/<replaceable>entityId</replaceable>/alarms</td>
+          <td colspan="4">List all alarms for your account.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1"
+            >/entities/<replaceable>entityId</replaceable>/alarms/<replaceable>alarmId</replaceable></td>
+          <td colspan="4">Get information for a single alarm.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &PUT; </td>
+          <td colspan="1"
+              >/entities/<replaceable>entityId</replaceable>/alarms/<replaceable>alarmId</replaceable></td>
+          <td colspan="4">Update a specific alarm.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &DELETE; </td>
+          <td colspan="1"
+              >/entities/<replaceable>entityId</replaceable>/alarms/<replaceable>alarmId</replaceable></td>
+          <td colspan="4">Delete an alarm from the specified
+            entity.</td>
+        </tr>
+        <tr>
+          <th align="center" colspan="6">Alarm Notification History</th>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1"
+              >/entities/<replaceable>entityId</replaceable>/alarms/<replaceable>alarmId</replaceable>/notification_history</td>
+          <td colspan="4">Discover which checks this alarm has a notification history for.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1"
+              >/entities/<replaceable>entityId</replaceable>/alarms/<replaceable>alarmId</replaceable>/notification_history/<replaceable>checkId</replaceable></td>
+          <td colspan="4">List the notification history for a specific alarm and check.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1"
+              >/entities/<replaceable>entityId</replaceable>/alarms/<replaceable>alarmId</replaceable>/notification_history/<replaceable>checkId</replaceable>/<replaceable>uuid</replaceable></td>
+          <td colspan="4">Retrieve a specific notification history event for this alarm and check.</td>
+        </tr>
+        <tr>
+          <th align="center" colspan="6">Notification Plans</th>
+        </tr>
+        <tr>
+          <td colspan="1"> &POST; </td>
+          <td colspan="1">/notification_plans</td>
+          <td colspan="4">Create a notification plan.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/notification_plans</td>
+          <td colspan="4">List all notifications plans for your
+            account.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/notification_plans/<replaceable>notificationPlanId</replaceable></td>
+          <td colspan="4">Get information for a single notification plan.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &PUT; </td>
+          <td colspan="1"
+              >/notification_plans/<replaceable>notificationPlanId</replaceable></td>
+          <td colspan="4">Update a specific notification plan.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &DELETE; </td>
+          <td colspan="1"
+              >/notification_plans/<replaceable>notificationPlanId</replaceable></td>
+          <td colspan="4">Delete a notification plan from the
+            specified entity.</td>
+        </tr>
+        <tr>
+          <th align="center" colspan="6">Notifications</th>
+        </tr>
+        <tr>
+          <td colspan="1"> &POST; </td>
+          <td colspan="1">/notifications</td>
+          <td colspan="4">Create a notification.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/notifications</td>
+          <td colspan="4">List all notifications for your
+            account.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/notifications/<replaceable>notificationId</replaceable></td>
+          <td colspan="4">Get information for a single notification.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &PUT; </td>
+          <td colspan="1"
+              >/notifications/<replaceable>notificationId</replaceable></td>
+          <td colspan="4">Update a specific notification.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &POST; </td>
+          <td colspan="1">/notifications/<replaceable>notificationId</replaceable>/test</td>
+          <td colspan="4">Test an existing notification.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &POST; </td>
+          <td colspan="1">/test-notification</td>
+          <td colspan="4">Test a notification.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &DELETE; </td>
+          <td colspan="1"
+              >/notifications/<replaceable>notificationId</replaceable></td>
+          <td colspan="4">Delete a notification from the specified
+            notification plan.</td>
+        </tr>
+        <tr>
+          <th align="center" colspan="6">Notification Types</th>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/notification_types</td>
+          <td colspan="4">List all notifications for your
+            account.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/notification_types/<replaceable>notificationTypeId</replaceable></td>
+          <td colspan="4">Get information for a single notification type.</td>
+        </tr>
+        <tr>
+          <th align="center" colspan="6">Changelogs</th>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/changelogs/alarms</td>
+          <td colspan="4">Lists alarm changelogs for this account.</td>
+        </tr>
+        <tr>
+          <th align="center" colspan="6">Views</th>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/views/overview</td>
+          <td colspan="4">Return the overview view for this account.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1"
+              >/views/overview?id=<replaceable>entityId</replaceable>&amp;id=<replaceable>entityId</replaceable></td>
+          <td colspan="4">Return the overview view for this account,
+            filtering returned entities by a list of entity IDs.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1"
+              >/views/overview?uri=<replaceable>URI</replaceable>&amp;uri=<replaceable>URI</replaceable></td>
+          <td colspan="4">Return the overview view for this account,
+            filtering returned entities by a list of entity URIs.</td>
+        </tr>
+        <tr>
+          <th align="center" colspan="6">Changelogs</th>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/changelogs/alarms</td>
+          <td colspan="4">Lists alarm changelogs for this account.</td>
+        </tr>
+        <tr>
+          <th align="center" colspan="6">Alarm Examples</th>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/alarm_examples</td>
+          <td colspan="4">Lists examples for alarms.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/alarm_examples/<replaceable>alarmExampleId</replaceable></td>
+          <td colspan="4">Get a specific alarm example.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &POST; </td>
+          <td colspan="1">/alarm_examples/<replaceable>alarmExampleId</replaceable></td>
+          <td colspan="4">Use template parameters to evaluate alarm examples and return the bound criteria.</td>
+        </tr>
+      </tbody>
+      
+    </informaltable>
+  </section>
+  <section xml:id="maas-core-agents-service-calls" security="internal">
+    <title>Agent Quick Reference</title>
+    <para>The following table lists the core agent services calls
+      for the &MAAS; API:</para>
+    <informaltable rules="all">
+      &URI_REFHEAD;
+      <tbody>
+        <tr>
+          <th align="center" colspan="6">Agents</th>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/agents</td>
+          <td colspan="4">List the connected agents.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/agents/<replaceable>agentId</replaceable></td>
+          <td colspan="4">Get a specific connected agent.</td>
+        </tr>
+        <tr>
+          <th align="center" colspan="6"> Agent Connections </th>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/agents/<replaceable>agentId</replaceable>/connections</td>
+          <td colspan="4">List the active connections for a particular agent.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/agents/<replaceable>agentId</replaceable>/connections/<replaceable>connectionId</replaceable></td>
+          <td colspan="4">Get a specific connection on an agent.</td>
+        </tr>
+        <tr>
+          <th align="center" colspan="6"> Agent Tokens </th>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/agent_tokens</td>
+          <td colspan="4">Retrieve a list of agent tokens.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &POST; </td>
+          <td colspan="1">/agent_tokens</td>
+          <td colspan="4">Generate a new agent_token.</td>
+        </tr>
+        <tr>
+          <td colspan="1"> &GET; </td>
+          <td colspan="1">/agent_tokens/<replaceable>agentTokenId</replaceable></td>
+          <td colspan="4">Get a specific agent token.</td>
+        </tr>
+        
+      </tbody>
+    </informaltable>
+  </section>
+  <section xml:id="service-account">
+    <title>Account</title>
+    <?dbhtml stop-chunking?>
+    <section xml:id="service-account-summary">
+      <title>Summary</title>
+      <para>An account contains attributes describing a customer's
+        account. This description contains mostly read only data;
+        however, a few properties can be modified with the API.</para>
+    </section>
+    <section xml:id="service-account-root">
+      <title>Get Account</title>
+      <para>This endpoint returns information about your
+        account.</para>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/account</td>
+            <td colspan="3">Returns account information.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Get Account Response: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/get_accounts.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Get Account Response: JSON</title>
+        <programlisting language="json">
+<xi:include href="partials/get_accounts.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-account-put-account">
+      <title>Update Account</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &PUT; </td>
+            <td colspan="4">/account</td>
+            <td>Update properties on an account.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>The following table contains the list of attributes that
+        are allowed to be modified with an Account object.</para>
+      <xi:include href="partials/swiz-public_accounts.xml" parse="xml">
+        <xi:fallback> Missing example! 
+        </xi:fallback>
+      </xi:include>
+      <para>Normal Response Code: (<returnvalue>204</returnvalue>)
+        This code contains no content with an empty response
+        body.</para>
+      <para>Error Response Codes: <errorcode>400</errorcode>,
+          <errorcode>401</errorcode>, <errorcode>403</errorcode>,
+          <errorcode>404</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Update Account Request: XML</title>
+        <para>Normal Response Code: (<returnvalue>204</returnvalue>)
+          This operation does not contain a response body.</para>
+        <para security="">Error Response Code:
+            <errorcode>500</errorcode></para>
+        <programlisting language="xml">
+<xi:include href="partials/update_account.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Update Account Request: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/update_account.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-account-get-limits">
+      <title>Get Limits</title>
+      <para>This endpoint returns resource and rate limits that apply to your
+        account.</para>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/limits</td>
+            <td colspan="3">Returns account resource limits.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Get Limits Response: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/get_limits.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Get Limits Response: JSON</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/get_limits.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-account-list-audits">
+      <title>List Audits</title>
+      <para>&MAAS; records every write operation in an audit. See
+          <link linkend="general-api-info-audits">Audits</link> for
+        more information on how audits are recorded.</para>
+      <para>Audits are accessible as a <link
+          linkend="api-time-series-collections">Time Series
+          Collection</link>. By default the API queries the last 7
+        days of audit information.</para>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/audits</td>
+            <td colspan="3">Lists audits for this account.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Audit List Response: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/list_audits.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Audit List Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/list_audits.json" parse="text">
+  <xi:fallback>
+    Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+  </section>
+  <section xml:id="service-entities">
+    <title>Entities</title>
+    <?dbhtml stop-chunking?>
+    <section xml:id="service-entities-summary">
+      <title>Summary</title>
+      <para>An entity is the target of what you are monitoring. For
+        example, you can create an entity to monitor your website, a
+        particular web service, or your Rackspace server or server
+        instance. Note that an entity represents only one item in the
+        monitoring system. For example, if you wanted to monitor each
+        server in a cluster, you would create an entity for each of
+        the servers. You would not create a single entity to represent
+        the entire cluster. </para>
+      <para>An entity can have multiple checks associated with it.
+        This allows you to check multiple services on the same host by
+        creating multiple checks on the same entity, instead of
+        multiple entities each with a single check.</para>
+      <para>When you create a new entity in the monitoring system, you
+        specify the follow parameters:<itemizedlist>
+          <listitem>
+            <para>A meaningful name for the entity</para>
+          </listitem>
+          <listitem>
+            <para>The IP address(es) for the entity (optional)</para>
+          </listitem>
+          <listitem>
+            <para>The meta-data that the monitoring system uses if an
+              alarm is triggered (optional)</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>These parameters are further described in <link
+        linkend="section-Entities">Attributes</link>. See
+          <link linkend="service-entities-create">Create
+          Entities</link> for an example of how to create an
+        entity.</para>
+    </section>
+    <section security="internal" xml:id="service-entities-prefix">
+      <title>Hash Prefix</title>
+      <para>en</para>
+      <para><emphasis>en732wj27</emphasis></para>
+    </section>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="partials/swiz-entities.xml" parse="xml">
+      <xi:fallback> Missing example! 
+      </xi:fallback>
+    </xi:include>
+    <section xml:id="service-entities-create">
+      <title>Create Entity</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &POST; </td>
+            <td colspan="4">/entities</td>
+            <td colspan="3">Creates a new entity. Specify the entity's
+              characteristics using a valid set of parameters from the
+              table shown in the Attributes section above.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code: (<returnvalue>201</returnvalue>)
+        'Location' header contains a link to the newly created
+        entity.</para>
+      <para>Error Response Codes: <errorcode>400</errorcode>,
+          <errorcode>401</errorcode>, <errorcode>403</errorcode>,
+          <errorcode>500</errorcode>,
+        <errorcode>503</errorcode></para>
+      <para>Once you have created an entity, you will typically create
+        a check for it. See <link linkend="service-checks-create"
+          >Create Check.</link></para>
+      <example>
+        <title>Entity Create Request: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/create_entities.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Entity Create Request: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/create_entities.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-entities-list">
+      <title>List Entities</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/entities</td>
+            <td colspan="3">Lists the entities for this particular
+              account.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>List Entities Response: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/list_entities.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>List Entities Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/list_entities.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-entities-get">
+      <title>Get Entity</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4"
+              >/entities/<parameter>entityId</parameter></td>
+            <td colspan="3">Retrieves the current state of an
+              entity.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>This operation allows you to retrieve the current state of
+        an entity.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>404</errorcode>,
+          <errorcode>500</errorcode>,
+        <errorcode>503</errorcode></para>
+      <example>
+        <title>Get Entity Response: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/get_entities.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Get Entity Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/get_entities.json" parse="text">
+   <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-entities-update">
+      <title>Update Entity</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &PUT; </td>
+            <td colspan="4"
+              >/entities/<parameter>entityId</parameter></td>
+            <td colspan="3">Updates an entity specified by the
+              entityId. Since partial updates to an entity are
+              acceptable, you may specify only the parameters you
+              would like to update.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code: (<returnvalue>204</returnvalue>)
+        This code contains no content with an empty response
+        body.</para>
+      <para>Error Response Codes: <errorcode>400</errorcode>,
+          <errorcode>401</errorcode>, <errorcode>403</errorcode>,
+          <errorcode>404</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Entity Update Request: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/update_entities.xml" parse="text"/>
+</programlisting>
+      </example>
+      <example>
+        <title>Entity Update Request: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/update_entities.json" parse="text"/>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-entities-delete">
+      <title>Delete Entity</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &DELETE; </td>
+            <td colspan="4"
+              >/entities/<parameter>entityId</parameter></td>
+            <td colspan="3">Deletes an entity from your account. Also deletes any checks and alarms
+              defined for that entity.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code: (<returnvalue>204</returnvalue>)
+        This code contains no content with an empty response
+        body.</para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>404</errorcode>,
+          <errorcode>500</errorcode>,
+        <errorcode>503</errorcode></para>
+    </section>
+  </section>
+  <section xml:id="service-checks">
+    <title>Checks</title>
+    <section xml:id="service-checks-summary">
+      <title>Summary</title>
+      <para>A check is one of the foundational building blocks of the
+        monitoring system. The check determines the parts or pieces of
+        the entity that you want to monitor, the monitoring frequency,
+        how many monitoring zones are originating the check, and so
+        on. When you create a new check in the monitoring system, you
+        specify the following information:<itemizedlist>
+          <listitem>
+            <para>A name for the check</para>
+          </listitem>
+          <listitem>
+            <para>The check's parent entity</para>
+          </listitem>
+          <listitem>
+            <para>The type of check you're creating</para>
+          </listitem>
+          <listitem>
+            <para>Details of the check</para>
+          </listitem>
+          <listitem>
+            <para>The monitoring zones that will launch the
+              check</para>
+          </listitem>
+        </itemizedlist>The attributes you use for creating checks,
+        including optional parameters, are described in the following
+          <link linkend="section-Checks">Attributes</link> section.
+          <xref xlink:href="#service-checks-create"/> provides an
+        example of how to create a new check.</para>
+        <para>The check, as created, will not trigger alert messages until you <link linkend="service-alarms">create an alarm</link> to generate notifications, to enable the creation of a single alarm that acts upon multiple checks (e.g. alert if any of ten different servers stops responding) or multiple alarms off of a single check. (e.g. ensure both that a HTTPS server is responding and that it has a valid certificate).</para>
+      <note>
+        <para>Checks are strictly associated with a parent entity,
+          therefore the REST URLs for checks are underneath the entity
+          that they are associated with.</para>
+      </note>
+    </section>
+    <?dbhtml stop-chunking?>
+    <section xml:id="service-checks-prefix" security="internal">
+      <title>Hash Prefix</title>
+      <para><code>ch</code></para>
+      <para><emphasis>example: ch722az21</emphasis>
+      </para>
+    </section>
+    <xi:include xml:id="service-checks-attributes"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="partials/swiz-checks.xml" parse="xml">
+      <xi:fallback> Missing example! 
+      </xi:fallback>
+    </xi:include>
+      <note>
+        <para>target_alias and target_hostname are mutually exclusive; one, but not both, must be provided.</para>
+      </note>
+    <section xml:id="service-cupdatehecks-internal-structure"
+      security="internal">
+      <title>Internal Structure</title>
+      <para> The internal structure represented in the diagram
+        describes the way the system is laid out and the internal
+        constraints. </para>
+      <itemizedlist>
+        <listitem>
+          <para> Many boundchecks belong to a check </para>
+        </listitem>
+        <listitem>
+          <para> A single Boundcheck is the application of a single
+              <emphasis role="strong">Check</emphasis> to a specific
+              <link xlink:href="Endpoint.html">Endpoint</link>
+          </para>
+        </listitem>
+        <listitem>
+          <para> The endpoint system takes care of picking the
+            endpoint and that is handled using an algorithm like
+            Ketama to reduce reshuffling during expanding. </para>
+        </listitem>
+        <listitem>
+          <para> Checks from an API perspective are applied directly
+            to a <link xlink:href="MonitoringZone.html">Monitoring
+              Zone</link>. </para>
+        </listitem>
+      </itemizedlist>
+      <formalpara xml:id="service-checks-internal-structure-fields">
+        <title>Internal Concepts</title>
+        <para> This section talks about specific fields that are more
+          complex. <variablelist>
+            <varlistentry>
+              <term>Check Details</term>
+              <listitem>
+                <para>Details field is a strongly validated Key/Value
+                  pair of values that are specific to the <link
+                    xlink:href="checktypes">Check Type</link> (e.g. in
+                  the HTTP check you need to capture the path and
+                  hostname, port and other
+                    <emphasis>details</emphasis>)</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term>Check Types</term>
+              <listitem>
+                <para> Check types is an enum of the various supported
+                  check types in the system, e.g. HTTP, HTTPS, DNS...
+                  More details <link xlink:href="CheckTypes.html">here
+                    (check types</link>
+                </para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term>BoundCheck</term>
+              <listitem>
+                <para> This is the normalized view of the check as
+                  applied to an endpoint and entity. This concept
+                  carries over from Cloudkick.com. Track each
+                  boundcheck and the state in the check application
+                  process as an individual building block of the
+                  system. </para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term>Check</term>
+              <listitem>
+                <para> A check is the raw atom in the monitoring
+                  system. Fundamentally the check is an object which
+                  keeps track of what is monitored (via the entity)
+                  and what are the details that outline how to monitor
+                  and what type of monitor. There will be a lot of
+                  check objects in the system, but there will always
+                  be more boundcheck objects, as there is a 1..*
+                  relationship between the two. </para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term>Structure vs Result</term>
+              <listitem>
+                <para>Errors in the system can result in a few
+                  different ways, the most natural way is check in the
+                  system goes into a non-ok state. This is built in to
+                  the monitoring system by design. However, the second
+                  class of problems occur from the operational side,
+                  which are categorized as the structural
+                  defects.</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term>Structural Defects</term>
+              <listitem>
+                <para> This represents any error that is unknown at
+                  the creation of the check, but during some process
+                  either online or offline, an error is identified
+                  that is serious enough to warrant user contact. An
+                  example might be if someone creates an HTTP check
+                  that starts streaming back 100 mb file to the system
+                  which causes a poller failure. Under the policy of
+                  the account we have the right to disable this check
+                  and issue a callback on structural errors. </para>
+                <para> Another point of this could also be an
+                  operational one. For instance if a poller has gone
+                  down in a region and we are unable to contact it
+                  within the time <link
+                    xlink:href="../Design/Constraints.html"
+                    >constraints</link>, then the user needs to be
+                  notified with the callback mechanism. Defining the
+                  constraints depends on global tolerances set in
+                    <link xlink:href="../Design/Constraints.html"
+                    >constraints</link>. </para>
+                <para> Ideally in building the system these values are
+                  presented as evidence of our commitment to building
+                  a transparent system. </para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+        </para>
+      </formalpara>
+    </section>
+    <section security="internal"
+      xml:id="service-checks-application-of-checks">
+      <title>Application of Checks</title>
+      <para> On application of the monitor, the system will return OK
+        if the state is saved correctly in the data store. This is the
+        general pattern of all API calls in the system. Upon
+        successful state transition to final running state, the system
+        will proceed normally and function as desired. Upon failure to
+        apply the check structure, the system will call back the policy URL in
+        the application to alert of failure to hit desired state.
+        During the process from initial save the system will try to
+        apply the work to the external monitoring zones, if the zone
+        cannot be contacted or the work failed to run within a
+        specified window the callback will be executed per the account
+        policy </para>
+    </section>
+    <section xml:id="service-checks-create" xreflabel="Create Check">
+      <title>Create Check</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &POST; </td>
+            <td colspan="4"
+                >/entities/<replaceable>entityId</replaceable>/checks</td>
+            <td colspan="3">Create a new check and associate it with
+              an entity using the parameters listed in <link
+                linkend="section-Checks"
+              >Attributes.</link></td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code: (<returnvalue>201</returnvalue>)
+        'Location' header contains a link to the newly created
+        check.</para>
+      <para>Error Response Codes: <errorcode>400</errorcode>,
+          <errorcode>401</errorcode>, <errorcode>403</errorcode>,
+          <errorcode>500</errorcode>,
+        <errorcode>503</errorcode></para>
+      <example>
+        <title>Check Create Request: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/create_checks.xml" parse="text"/>
+</programlisting>
+      </example>
+      <example>
+        <title>Check Create Request: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/create_checks.json" parse="text">
+  <xi:fallback>
+    Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-checks-test">
+      <title>Test Check</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &POST; </td>
+            <td colspan="4"
+                >/entities/<replaceable>entityId</replaceable>/test-check/</td>
+            <td colspan="3">Test a check before creating it.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>400</errorcode>,
+          <errorcode>401</errorcode>, <errorcode>403</errorcode>,
+          <errorcode>404</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <para>This operation causes &MAAS; to attempt to run the check on the specified monitoring
+        zones and return the results. This allows you to test the check parameters in a single step
+        before the check is actually created in the system.<note>
+          <para>You can copy the results of a test check response and paste it directly into a test
+            alarm.</para>
+        </note></para>
+      <example>
+        <title>Test Check Request: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/test_checks.xml" parse="text"/>
+</programlisting>
+      </example>
+      <example>
+        <title>Test Check Request: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/test_checks.json" parse="text">
+  <xi:fallback>
+    Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Test Check Response: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/test_checks_response.xml" parse="text"/>
+</programlisting>
+      </example>
+      <example>
+        <title>Test Check Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/test_checks_response.json" parse="text">
+  <xi:fallback>
+    Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <section xml:id="service-checks-test-debug">
+        <title>Test Check And Include Debug Information</title>
+        <informaltable rules="all">
+          &LONG_URI_REFHEAD;
+          <tbody>
+            <tr>
+              <td colspan="1"> &POST; </td>
+              <td colspan="4"
+                  >/entities/<replaceable>entityId</replaceable>/test-check?debug=true</td>
+              <td colspan="3">Test a check and include extra check
+                type-specific debugging information, if
+                available.</td>
+            </tr>
+          </tbody>
+        </informaltable>
+        <para>Normal Response Code:
+          <returnvalue>200</returnvalue></para>
+        <para>Error Response Codes: <errorcode>400</errorcode>,
+            <errorcode>401</errorcode>, <errorcode>403</errorcode>,
+            <errorcode>404</errorcode>, <errorcode>500</errorcode>,
+            <errorcode>503</errorcode></para>
+        <para>This operation causes &MAAS; to attempt to run the check
+          on the specified monitoring zones and return the results.
+          This allows you to test the check parameters in a single
+          step before the check is actually created in the system.
+          This call also includes debug information. Currently debug
+          information is only available for the remote.http check and
+          includes the response body.</para>
+        <note>
+          <para>Only first 512 KB of the response body is read. If the
+            response body is longer, it is truncated to 512KB.</para>
+        </note>
+        <example>
+          <title>Test Check Request: XML</title>
+          <programlisting language="xml">
+<xi:include href="partials/test_checks.xml" parse="text"/>
+</programlisting>
+        </example>
+        <example>
+          <title>Test Check Request: JSON</title>
+          <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/test_checks.json" parse="text">
+  <xi:fallback>
+    Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+        </example>
+        <example>
+          <title>Test Check With Debug Response: XML</title>
+          <programlisting language="xml">
+<xi:include href="partials/test_debug_checks_response.xml" parse="text"/>
+</programlisting>
+        </example>
+        <example>
+          <title>Test Check With Debug Response: JSON</title>
+          <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/test_debug_checks_response.json" parse="text">
+  <xi:fallback>
+    Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+        </example>
+      </section>
+    </section>
+    <section xml:id="service-checks-test-existing">
+      <title>Test Existing Check</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &POST; </td>
+            <td colspan="4"
+              >/entities/<replaceable>entityId</replaceable>/checks/<replaceable>checkId</replaceable>/test</td>
+            <td colspan="3">Test a check inline.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>400</errorcode>,
+        <errorcode>401</errorcode>, <errorcode>403</errorcode>,
+        <errorcode>404</errorcode>, <errorcode>500</errorcode>,
+        <errorcode>503</errorcode></para>
+      <para>This operation causes &MAAS; to attempt to run the check on the specified monitoring
+        zones and return the results. This allows you to test the check parameters.<note>
+          <para>You can copy the results of a test check response and paste it directly into a test
+            alarm.  </para>
+        </note>
+        <note><para>There is no request body, just posting to the url executes the request.</para></note></para>
+      <example>
+        <title>Test Existing Check Response: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/test_checks_response.xml" parse="text"/>
+</programlisting>
+      </example>
+      <example>
+        <title>Test Existing Check Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/test_checks_response.json" parse="text">
+  <xi:fallback>
+    Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+     
+    </section>
+    <section xml:id="service-checks-list">
+      <title>List Checks</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4"
+                >/entities/<replaceable>entityId</replaceable>/checks/</td>
+            <td colspan="3">Lists the checks associated with a given
+              entityId.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>List Checks Response: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/list_checks.xml" parse="text">
+<xi:fallback>
+Missing example! 
+</xi:fallback>
+</xi:include>
+          </programlisting>
+      </example>
+      <example>
+        <title>List Checks Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/list_checks.json" parse="text">
+<xi:fallback>
+Missing example! 
+</xi:fallback>
+</xi:include>
+          </programlisting>
+      </example>
+    </section>
+    <section xml:id="service-checks-get">
+      <title>Get Check</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4"
+                >/entities/<replaceable>entityId</replaceable>/checks/<replaceable>checkId</replaceable></td>
+            <td colspan="3">Returns the specified check.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>404</errorcode>,
+          <errorcode>413</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Get Check Response: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/get_checks.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+          </programlisting>
+      </example>
+      <example>
+        <title>Get Check Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/get_checks.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+          </programlisting>
+      </example>
+    </section>
+
+    <section xml:id="service-checks-update">
+      <title>Update Checks</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &PUT; </td>
+            <td colspan="4"
+                >/entities/<replaceable>entityId</replaceable>/checks/<replaceable>checkId</replaceable></td>
+            <td colspan="3">Updates a check with the specified
+              checkId.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code: (<returnvalue>204</returnvalue>)
+        This code contains no content with an empty response
+        body.</para>
+      <para>Error Response Codes: <errorcode>400</errorcode>,
+          <errorcode>401</errorcode>, <errorcode>403</errorcode>,
+          <errorcode>404</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <para><note><para>Updating monitoring zones can effect the billing of the product.</para></note></para>
+      <example>
+        <title>Check Update Request: XML</title>
+<programlisting language="xml">
+<xi:include href="partials/update_checks.xml" parse="text">
+  <xi:fallback>
+  Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Check Update Request: JSON</title>
+<programlisting language="javascript">
+<xi:include href="partials/update_checks.json" parse="text">
+  <xi:fallback>
+    Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-checks-delete">
+      <title>Delete Checks</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &DELETE; </td>
+            <td colspan="4"
+                >/entities/<parameter>entityId</parameter>/checks/<replaceable>checkId</replaceable></td>
+            <td colspan="3">Deletes a check from your account.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code: (<returnvalue>204</returnvalue>)
+        This code contains no content with an empty response
+        body.</para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>404</errorcode>,
+          <errorcode>500</errorcode>,
+        <errorcode>503</errorcode></para>
+    </section>
+  </section>
+  <section xml:id="service-check-types">
+    <title>Check Types</title>
+    <?dbhtml stop-chunking?>
+    <section xml:id="service-check-types-summary">
+      <title>Summary</title>
+      <para>Each check within the &MAAS; has a designated check type.
+        The check type instructs the monitoring system how to check
+        the monitored resource. </para>
+      <para>
+        <note>
+          <para>Users cannot create, update or delete check
+            types.</para>
+        </note>
+      </para>
+      
+      <para>Check types for commonly encountered web protocols, such
+        as HTTP (remote.http), IMAP (remote.imap-banner) , SMTP
+        (remote.stmp), and DNS (remote.dns) are provided. Monitoring
+        commonly encountered infrastructure servers like MySQL
+        (remote.mysql-banner) and PostgreSQL
+        (remote.postgresql-banner) are also available. Monitoring
+        custom server uptime can be accomplished with the remote.tcp
+        banner check to check for a protocol-defined banner at the
+        beginning of a connection. Gathering metrics from server
+        software to create alerts against can be accomplished using
+        the remote.http check type and the 'extract' attribute to
+        define the format.</para>
+      
+      <para>Checks generate metrics that alarms will alert based upon.
+        The metrics generated often times depend on the check's
+        parameters.. for example, using the 'extract' attribute on the
+        remote.http check, however the default metrics will always be
+        present. To determine the exact metrics available, the <link
+          linkend="service-checks-test">Test Check</link> API is
+        provided</para>
+    </section>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+href="partials/swiz-check_types.xml" parse="xml">
+<xi:fallback> Missing example! 
+</xi:fallback>
+</xi:include>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+href="partials/swiz-available-check_types.xml" parse="xml">
+<xi:fallback> Missing example! 
+</xi:fallback>
+</xi:include>
+    <section xml:id="service-check-types-create">
+      <title>Create Check Type</title>
+      <para>
+        <emphasis>Users cannot create check types.</emphasis>
+      </para>
+    </section>
+    <section xml:id="service-check-types-list">
+      <title>List Check Types</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/check_types</td>
+            <td colspan="3">List all the available check types.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>List Check Types: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/list_check_types.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>List Check Types: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/list_check_types.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-check-types-get">
+      <title>Get Check Type</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/check_types/<parameter>checkTypeId</parameter></td>
+            <td colspan="3">Retrieve information for a single check type.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Get Check Type: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/get_check_types.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Get Check Type: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/get_check_types.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-check-types-update">
+      <title>Update Check Type</title>
+      <para>
+        <emphasis>Users cannot update check types.</emphasis>
+      </para>
+    </section>
+    <section xml:id="service-check-types-delete">
+      <title>Delete Check Types</title>
+      <para>
+        <emphasis>Users cannot delete check types.</emphasis>
+      </para>
+    </section>
+  </section>
+  <section xml:id="service-alarms">
+    <title>Alarms</title>
+    <?dbhtml stop-chunking?>
+    <section xml:id="service-alarms-summary">
+      <title>Summary</title>
+      <para>Alarms bind alerting rules, entities, and notification
+        plans into a logical unit. Alarms are responsible for
+        examining the state of one or more checks and executing a
+        notification plan. You create alerting rules by using the
+        alarm DSL. For information about using the alarm language, refer to the
+        <link linkend="alerts-language">reference documentation</link>.</para>
+      <note>
+        <para>Criteria is optional.  This means you rely on the check
+          successfully running or failing to set the state of the
+          alarm.  It is a convenient shortcut for setting a simple
+          alarm with a notification plan.  For example, if you set a ping check 
+          on a server, it won't alert until the pings actually fail to be returned, whereas
+          adding criteria would enable the alert to trigger if the ping round trip time went past
+          a certain threshold.</para>
+      </note>
+    </section>
+    <section security="internal" xml:id="service-alarms-prefix">
+      <title>Hash Prefix</title>
+      <para>al - (e.g. <emphasis>alBcEG40kd</emphasis>) </para>
+    </section>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="partials/swiz-alarms.xml" parse="xml">
+      <xi:fallback> Missing example! 
+      </xi:fallback>
+    </xi:include>
+      <note>
+        <para>check_id and check_type are mutually exclusive.  Either check_id or check_type must be set but not both.</para>
+      </note>
+    <section xml:id="service-alarms-create">
+      <title>Create Alarm</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &POST; </td>
+            <td colspan="4"
+              >/entities/<parameter>entityId</parameter>/alarms</td>
+            <td colspan="3">Creates a new alarm for the specified
+              entity. Specify the alarm's characteristics using a
+              valid set of parameters from the table shown in the
+                <link linkend="section-Alarms"
+                >Attributes</link> section above.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code: (<returnvalue>201</returnvalue>)
+        'Location' header contains a link to the newly created
+        alarm.</para>
+      <para>Error Response Codes: <errorcode>400</errorcode>,
+          <errorcode>401</errorcode>, <errorcode>403</errorcode>,
+          <errorcode>500</errorcode>,
+        <errorcode>503</errorcode></para>
+      <example>
+        <title>Alarm Create Request: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/create_alarms.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Alarm Create Request: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/create_alarms.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-alarms-test">
+      <title>Test Alarm</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &POST; </td>
+            <td colspan="4"
+              >/entities/<parameter>entityId</parameter>/test-alarm</td>
+            <td colspan="3">Test run an alarm.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>400</errorcode>,
+          <errorcode>401</errorcode>, <errorcode>403</errorcode>,
+          <errorcode>413</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <para security="reviewer">TODO: Finish test run alarm
+        description.</para>
+      <example>
+        <title>Test Alarm Request: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/test_alarms.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Test Alarm Request: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/test_alarms.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <para security="reviewer">TODO: Finish test run alarm response
+        description.</para>
+      <example>
+        <title>Test Alarm Response: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/test_alarms_response.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Test Alarm Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/test_alarms_response.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-alarms-list">
+      <title>List Alarms</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4"
+              >/entities/<parameter>entityId</parameter>/alarms</td>
+            <td colspan="3">List the alarms on the specified
+              entity.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>List Alarms Response: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/list_alarms.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>List Alarms Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/list_alarms.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-alarms-get">
+      <title>Get Alarm</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4"
+              >/entities/<parameter>entityId</parameter>/alarms/<parameter>alarmId</parameter></td>
+            <td colspan="3">Get information for a single alarm.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Get Alarm Response: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/get_alarms.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Get Alarm Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/get_alarms.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+
+    <section xml:id="service-alarms-update">
+      <title>Update Alarm</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &PUT; </td>
+            <td colspan="4"
+                >/entities/<parameter>entityId</parameter>/alarms/<parameter>alarmId</parameter></td>
+            <td colspan="3">Update an alarm with the specified
+              alarmId. Partial updates to an alarm are acceptable. You
+              may specify only the parameters you would like to
+              update.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code: (<returnvalue>204</returnvalue>)
+        This code contains no content with an empty response
+        body.</para>
+      <para>Error Response Codes: <errorcode>400</errorcode>,
+          <errorcode>401</errorcode>, <errorcode>403</errorcode>,
+          <errorcode>404</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Update Alarm Request: XML</title>
+        <para>Normal Response Code: (<returnvalue>204</returnvalue>)
+          This operation does not contain a response body.</para>
+        <para security="">Error Response Code:
+            <errorcode>500</errorcode></para>
+        <programlisting language="xml">
+<xi:include href="partials/update_alarms.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Alarm Update Request: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/update_alarms.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-alarms-delete">
+      <title>Delete Alarm</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &DELETE; </td>
+            <td colspan="4"
+                >/entities/<parameter>entityId</parameter>/alarms/<parameter>alarmId</parameter></td>
+            <td colspan="3">Delete an alarm from your account.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code: (<returnvalue>204</returnvalue>)
+        This code contains no content with an empty response
+        body.</para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <returnvalue>403</returnvalue>, <errorcode>404</errorcode>,
+          <errorcode>500</errorcode>,
+        <errorcode>503</errorcode></para>
+    </section>
+  </section>
+  <section xml:id="service-notification-plans">
+    <title>Notification Plans</title>
+    <?dbhtml stop-chunking?>
+    <section xml:id="service-notification-plans-summary">
+      <title>Summary</title>
+      <para>A notification plan contains a set of notification actions
+        that &MAAS; executes when triggered by an alarm. &MAAS;
+        currently supports webhook and email notifications.</para>
+      <para>Each notification state can contain multiple notification
+        actions. For example, you can create a notification plan that
+        hits a webhook/email to notify your operations team if a warning
+        occurs. However, if the warning escalates to an Error, the
+        notification plan could be configured to hit a different
+        webhook/email that triggers both email and SMS messages to the
+        operations team. The notification plan supports the following states:<itemizedlist>
+          <listitem>
+            <para>Critical</para>
+          </listitem>
+          <listitem>
+            <para>Warning</para>
+          </listitem>
+          <listitem>
+            <para>OK</para>
+          </listitem>
+        </itemizedlist></para>
+      <para>A notification plan, npTechnicalContactsEmail, is provided by default which will email all of the
+      technical contacts on file for an account whenever there is a state change.</para>
+    </section>
+    <section security="internal"
+      xml:id="service-notification-plans-prefix">
+      <title>Hash Prefix</title>
+      <para> np - (e.g. <emphasis>npAkDF39kd</emphasis>) </para>
+    </section>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="partials/swiz-notification_plans.xml" parse="xml">
+      <xi:fallback> Missing example! 
+      </xi:fallback>
+    </xi:include>
+    <section xml:id="service-notification-plans-create">
+      <title>Create Notification Plan</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &POST; </td>
+            <td colspan="4">/notification_plans</td>
+            <td colspan="3">Create a notification plan.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code: (<returnvalue>201</returnvalue>)
+        'Location' header contains a link to the newly created
+        notification plan.</para>
+      <para>Error Response Codes: <errorcode>400</errorcode>,
+          <errorcode>401</errorcode>, <errorcode>403</errorcode>,
+          <errorcode>500</errorcode>,
+        <errorcode>503</errorcode></para>
+      <example>
+        <title>Notification Plan Create Request: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/create_notification_plans.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Notification Plan Create Request: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/create_notification_plans.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-notification-plans-list">
+      <title>List Notification Plans</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/notification_plans</td>
+            <td colspan="3">Lists the notification plans for this
+              particular account.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>List Notification Plans Response: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/list_notification_plans.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>List List Notification Plans Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/list_notification_plans.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-notification-plans-get">
+      <title>Get Notification Plan</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/notification_plans/<parameter>notificationPlanId</parameter></td>
+            <td colspan="3">Get information for a single notification plan.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Get Notification Plan Response: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/get_notification_plans.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Get List Notification Plan Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/get_notification_plans.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-notification-plans-update">
+      <title>Update Notification Plans</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &PUT; </td>
+            <td colspan="4"
+                >/notification_plans/<parameter>notificationPlanId</parameter></td>
+            <td colspan="3">Update a notification plan with the
+              specified notificationPlanId. Partial updates to a
+              notification plan are acceptable. You may specify only
+              the parameters you would like to update.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code: (<returnvalue>204</returnvalue>)
+        This code contains no content with an empty response
+        body.</para>
+      <para>Error Response Codes: <errorcode>400</errorcode>,
+          <errorcode>401</errorcode>, <errorcode>403</errorcode>,
+          <errorcode>404</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Notification Plan Update Request: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/update_notification_plans.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Notification Plan Update Request: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/update_notification_plans.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-notification-plans-delete">
+      <title>Delete Notification Plans</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &DELETE; </td>
+            <td colspan="4"
+                >/notification_plans/<parameter>notificationPlanId</parameter></td>
+            <td colspan="3">Deletes a notification plan.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code: (<returnvalue>204</returnvalue>)
+        This code contains no content with an empty response
+        body.</para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>404</errorcode>,
+          <errorcode>500</errorcode>,
+        <errorcode>503</errorcode></para>
+    </section>
+  </section>
+  <section xml:id="service-monitoring-zones">
+    <title>Monitoring Zones</title>
+    <?dbhtml stop-chunking?>
+    <section xml:id="service-monitoring-zones-summary">
+      <title>Summary</title>
+      <para>A monitoring zone is a location that &MAAS; collects data
+        from. Examples of monitoring zones are &quot;US West&quot;,
+        &quot;DFW1&quot; or &quot;ORD1&quot;. It is an abstraction for
+        a general location from which data is collected. </para>
+      <para>An &quot;endpoint,&quot; also known as a "collector,"
+        collects data from the monitoring zone. The endpoint is mapped
+        directly to an individual machine or a virtual machine. A
+        monitoring zone contains many endpoints, all of which will be
+        within the IP address range listed in the response. The
+        opposite is not true, however, as there may be unallocated IP
+        addresses or unrelated machines within that IP address range. </para>
+      <para>A check references a list of monitoring zones it should be
+        run from. </para>
+      <para>
+        <note>
+          <para>Users cannot create, update or delete monitoring
+            zones.</para>
+        </note>
+      </para>
+    </section>
+    <section security="internal"
+      xml:id="service-monitoring-zones-prefix">
+      <title>Hash Prefix</title>
+      <para> mz - (e.g. <emphasis>mz7ma1320n</emphasis>) </para>
+    </section>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="partials/swiz-monitoring_zones.xml" parse="xml">
+      <xi:fallback> Missing example! 
+      </xi:fallback>
+    </xi:include>
+    <section xml:id="service-monitoring-zones-create">
+      <title>Create Monitoring Zone</title>
+      <para>
+        <emphasis>Users cannot create monitoring zones.</emphasis>
+      </para>
+    </section>
+    <section xml:id="service-monitoring-zones-list">
+      <title>List Monitoring Zones</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/monitoring_zones</td>
+            <td colspan="3">List the monitoring zones.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>List Monitoring Zones Response: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/list_monitoring_zones.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>List Monitoring Zones Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/list_monitoring_zones.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-monitoring-zones-get">
+      <title>Get Monitoring Zone</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/monitoring_zones/<parameter>monitoringZoneId</parameter></td>
+            <td colspan="3">Get information for a single monitoring zone.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Get Monitoring Zone Response: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/get_monitoring_zones.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Get Monitoring Zone Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/get_monitoring_zones.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-monitoring-zones-update">
+      <title>Update Monitoring Zone</title>
+      <para>
+        <emphasis>Users cannot update monitoring zones.</emphasis>
+      </para>
+    </section>
+    <section xml:id="service-monitoring-zones-delete">
+      <title>Delete Monitoring Zone</title>
+      <para>
+        <emphasis>Users cannot delete monitoring zones.</emphasis>
+      </para>
+    </section>
+  <section xml:id="service-monitoring-zones-traceroute">
+      <title>Perform a "traceroute" from a Monitoring Zone</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &POST; </td>
+            <td colspan="4">/monitoring_zones/<parameter>monitoringZoneId</parameter>/traceroute</td>
+            <td colspan="4">Perform a traceroute from a collector in the specified monitoring zones.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <para>This API lets you run a Traceroute from a Monitoring Zone
+        to a Hostname or IP address. Like all Cloud Monitoring
+        features, the Traceroute API is fully dual stack, supporting
+        both IPv4 and IPv6. The Traceroute API can be used to debug
+        networking issues between the Cloud Monitoring collectors and
+        your infrastructure. </para>
+    
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="partials/swiz-traceroute.xml" parse="xml">
+      <xi:fallback> Missing example! 
+      </xi:fallback>
+    </xi:include>
+      <example>
+        <title>Traceroute Request: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/run_traceroute.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Traceroute Request: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/run_traceroute.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+  <example>
+        <title>Traceroute Response: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/response_traceroute.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Traceroute Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/response_traceroute.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+   </section>
+
+  </section>
+  <section xml:id="service-alarm-notification-history">
+    <title>Alarm Notification History</title>
+    <?dbhtml stop-chunking?>
+    <section xml:id="service-alarm-notification-history-summary">
+      <title>Summary</title>
+      <para>The monitoring service keeps a record of notifications
+        sent for each alarm. This history is further subdivided by the
+        check on which the notification occurred. Every attempt to
+        send a notification is recorded, making this history a
+        valuable tool in diagnosing issues with unreceived
+        notifications, in addition to offering a means of viewing the
+        history of an alarm's statuses.</para>
+      <para>Alarm notification history is accessible as a <link
+          linkend="api-time-series-collections">Time Series
+          Collection</link>. By default alarm notification history is stored for 30
+        days and the the API queries the last 7 days of
+        information.</para>
+    </section>
+    <section xml:id="service-alarm-notification-history-discover">
+      <title>Discover Alarm Notification History</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4"
+                >/entities/<parameter>entityId</parameter>/alarms/<parameter>alarmId</parameter>/notification_history</td>
+            <td colspan="3">List checks for which alarm notification history is available.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Alarm Notification History Discovery Response: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/discover_alarm_notification_history.xml" parse="text">
+  <xi:fallback>
+     Missing example! <?rax fail?>
+  </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Alarm Notification History Discovery Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/discover_alarm_notification_history.json" parse="text">
+  <xi:fallback>
+    Missing example! <?rax fail?>
+  </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-alarm-notification-history-list">
+      <title>List Alarm Notification History</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4"
+                >/entities/<parameter>entityId</parameter>/alarms/<parameter>alarmId</parameter>/notification_history/<parameter>checkId</parameter></td>
+            <td colspan="3">Lists alarm notification history for a given entity,
+              alarm and check.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Alarm Notification History List Response: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/list_alarm_notification_history.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Alarm Notification History List Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/list_alarm_notification_history.json" parse="text">
+  <xi:fallback>
+    Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+  <section xml:id="service-alarm-notification-history-get">
+      <title>Get Alarm Notification History</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4"
+              >/entities/<parameter>entityId</parameter>/alarms/<parameter>alarmId</parameter>/notification_history/<parameter>checkId</parameter>/<parameter>uuid</parameter></td>
+            <td colspan="3">Retrieve a single alarm notification history item.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Get Alarm Notification History Response: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/get_alarm_notification_history.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Get Alarm Notification History Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/get_alarm_notification_history.json" parse="text">
+  <xi:fallback>
+    Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+  </section>
+  <section xml:id="service-notifications" security="">
+    <title>Notifications</title>
+    <?dbhtml stop-chunking?>
+    <section xml:id="service-notifications-summary">
+      <title>Summary</title>
+      <para security="internal">A notification is a destination to
+        send an alarm, it can be a variety of different types, and
+        will evolve over time.</para>
+      <para>For instance, with a webhook type notification &MAAS; posts JSON
+        formatted data to a user-specified URL on an alert condition
+        (Check goes from <code>OK</code> -> <code>CRITICAL</code> and
+        so on).</para>
+    </section>
+    <section security="internal" xml:id="service-notifications-prefix">
+      <title>Hash Prefix</title>
+      <para> nt - (e.g. <emphasis>nt2nb5673n</emphasis>) </para>
+    </section>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="partials/swiz-notifications.xml" parse="xml">
+      <xi:fallback> Missing example! 
+      </xi:fallback>
+    </xi:include>
+    <section xml:id="service-notifications-create">
+      <title>Create Notification</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &POST; </td>
+            <td colspan="4">/notifications</td>
+            <td colspan="3">Check that a token is valid and that it
+              belongs to a particular user and return the permissions
+              relevant to a particular client.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code: (<returnvalue>201</returnvalue>)
+        'Location' header contains a link to the newly created
+        notification.</para>
+      <para>Error Response Codes: <errorcode>400</errorcode>,
+          <errorcode>401</errorcode>, <errorcode>403</errorcode>,
+          <errorcode>500</errorcode>,
+        <errorcode>503</errorcode></para>
+      <example>
+        <title>Create Notification Request: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/create_notifications.xml" parse="text">
+  <xi:fallback>
+    Missing example! 
+  </xi:fallback>
+</xi:include>
+          </programlisting>
+      </example>
+      <example>
+        <title>Create Notification Request: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/create_notifications.json" parse="text">
+  <xi:fallback>
+    Missing example! 
+  </xi:fallback>
+</xi:include>
+          </programlisting>
+      </example>
+    </section>
+    <section xml:id="service-notifications-test-new">
+      <title>Test Notification</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &POST; </td>
+            <td colspan="4">/test-notification</td>
+            <td colspan="3">Test a notification.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code: <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>400</errorcode>,
+          <errorcode>401</errorcode>, <errorcode>403</errorcode>,
+          <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+
+        <para>This operation allows you to test a notification before creating it.
+        The actual notification comes from the same server where the actual alert
+        messages come from. This allow you to, among other things, verify that your
+        firewall is configured properly.</para>
+      <example>
+        <title>Test Notification Request: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/test_new_notifications.xml" parse="text">
+  <xi:fallback>
+    Missing example! 
+  </xi:fallback>
+</xi:include>
+          </programlisting>
+      </example>
+      <example>
+        <title>Test Notification Request: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/test_new_notifications.json" parse="text">
+  <xi:fallback>
+    Missing example! 
+  </xi:fallback>
+</xi:include>
+          </programlisting>
+        </example>
+  <example>
+        <title>Test Notification Response: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/test_new_notifications_response.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Test Notification Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/test_new_notifications_response.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-notifications-test-existing">
+      <title>Test Existing Notification</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &POST; </td>
+            <td colspan="4">/notifications/<replaceable>notificationId</replaceable>/test</td>
+            <td colspan="3">Test an existing notification.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code: <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>400</errorcode>,
+          <errorcode>401</errorcode>, <errorcode>403</errorcode>,
+          <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+        <para>This operation allows you to test an existing notification.
+        The actual notification comes from the same server where the actual alert
+        messages come from. This allow you to, among other things, verify that your
+        firewall is configured properly.</para>
+  <example>
+        <title>Test Existing Notification Response: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/test_new_notifications_response.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Test Existing Notification Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/test_new_notifications_response.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-notifications-list">
+      <title> List Notifications</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/notifications</td>
+            <td colspan="3">Lists the notifications for this
+              particular account.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>List Notifications Response: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/list_notifications.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>List Notifications Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/list_notifications.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-notifications-get">
+      <title>Get Notifications</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/notifications/<parameter>notificationId</parameter></td>
+            <td colspan="3">Get information for a single notification.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Get Notification Response: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/get_notifications.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Get Notification Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/get_notifications.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-notifications-update">
+      <title>Update Notifications</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &PUT; </td>
+            <td colspan="4"
+                >/notifications/<replaceable>notificationId</replaceable></td>
+            <td colspan="3">Updates a notification with the specified
+              notificationId.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code: (<returnvalue>204</returnvalue>)
+        This code contains no content with an empty response
+        body.</para>
+      <para>Error Response Codes: <errorcode>400</errorcode>,
+          <errorcode>401</errorcode>, <errorcode>403</errorcode>,
+          <errorcode>404</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Notification Update Request: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/update_notifications.xml" parse="text">
+  <xi:fallback>
+    Missing example! 
+  </xi:fallback>
+</xi:include></programlisting>
+      </example>
+      <example>
+        <title>Notification Update Request: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/update_notifications.json" parse="text">
+  <xi:fallback>
+    Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-notifications-delete">
+      <title>Delete Notifications</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &DELETE; </td>
+            <td colspan="4"
+                >/notifications/<replaceable>notificationId</replaceable></td>
+            <td colspan="3">Deletes a notification from your
+              account.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code: (<returnvalue>204</returnvalue>)
+        This code contains no content with an empty response
+        body.</para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>404</errorcode>,
+          <errorcode>500</errorcode>,
+        <errorcode>503</errorcode></para>
+    </section>
+  </section>
+  <section xml:id="service-notification-types-crud">
+    <title>Notification Types</title>
+    <?dbhtml stop-chunking?>
+    <para>The notification type represents the type of notification.
+      When you create a notification in &MAAS;, you must specify the
+      notification type. &MAAS; currently supports the following
+      notification types: <variablelist>
+        <varlistentry security="internal">
+          <term><emphasis role="bold"
+            >Rackspace_Managed</emphasis></term>
+          <listitem>
+            <para>A proprietary notification type for Rackspace
+              Hosting.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">Webhook</emphasis></term>
+          <listitem>
+            <para>Industry-standard web hooks, where JSON is posted to
+              a configurable URL.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">Email</emphasis></term>
+          <listitem><para>Email alerts where the message is delivered to a specified address.</para></listitem>
+        </varlistentry>
+      </variablelist>
+    </para>
+    <section xml:id="service-notification-type-rackspace_managed" security="internal">
+      <title>Rackspace Managed Notifications</title>
+      <para>A notification for leveraging the Rackspace Managed
+        Service Level. This notification type allows customers with a
+        managed service level to have alerts go directly to their
+        account team. </para>
+      <xi:include href="partials/swiz-mes-rackspace_managed.xml"
+        parse="xml">
+        <xi:fallback> Missing example! 
+        </xi:fallback>
+      </xi:include>
+    </section>
+    <section xml:id="service-notification-type-email">
+      <title>Email Notifications</title>
+      <para>A notification sent by email.</para>
+      <xi:include href="partials/swiz-mes-email.xml"
+        parse="xml">
+        <xi:fallback> Missing example! 
+        </xi:fallback>
+      </xi:include>
+    </section>
+    <section xml:id="service-notification-types-webhook">
+      <title>Webhook Notifications</title>
+      <para>The webhook notification takes the following
+        parameters:</para>
+      <xi:include xml:id="service-checks-attributes"
+        xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="partials/swiz-mes-webhook.xml" parse="xml">
+        <xi:fallback> Missing example! 
+        </xi:fallback>
+      </xi:include>
+      <example>
+        <title>Webhook Notification POST to a Specified URL with JSON
+          Payload</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="samples/webhook.json" parse="text">
+  <xi:fallback>
+   Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    
+    
+    <section xml:id="service-notification-payload">
+      <title>Notification Payload</title>
+      <para>The following fields are contained within a single
+        payload: <informaltable rules="all">
+          <thead>
+            <tr>
+              <td>Field</td>
+              <td>Description</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>eventId</td>
+              <td>The ID for the event in the system.</td>
+            </tr>
+            <tr>
+              <td>logEntryId</td>
+              <td>The ID for the log entry.</td>
+            </tr>
+            <tr>
+              <td>entity</td>
+              <td>The entity record that triggered the alert.</td>
+            </tr>
+            <tr>
+              <td>check</td>
+              <td>The check record that triggered the alert.</td>
+            </tr>
+            <tr>
+              <td>alarm</td>
+              <td>The alarm record that triggered the alert.</td>
+            </tr>
+          </tbody>
+        </informaltable>
+      </para>
+    </section>
+    <section xml:id="service-notification-headers">
+    	<title>Notification Header Contents</title>
+        <para> The following fields will be populated in the request
+        header when your webhook is called.</para>
+        <informaltable rules="all">
+			<thead>
+	            <tr>
+	              <td>Header Field</td>
+	              <td>Description</td>
+	            </tr>
+	        </thead>
+			<tbody>
+				<tr>
+					<td>x-rackspace-webhook-token</td>
+					<td>The webhook token defined in an <link
+                linkend="service-account">account</link>.  This is
+              used in your web application to verify that your webhook
+              is called by an authorized Rackspace service.</td>
+				</tr>
+			</tbody>
+  		</informaltable>
+    </section>
+    </section>
+    <section xml:id="Service-Notification-Types-create">
+      <title>Create Notification Type</title>
+      <para>
+        <emphasis>Users cannot create notification types.</emphasis>
+      </para>
+    </section>
+    <section xml:id="Service-Notification-Types-List">
+      <title>List Notification Types</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/notification_types</td>
+            <td colspan="3">Lists available notification types.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>List Notification Types Response: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/list_notification_types.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>List Notification Types Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/list_notification_types.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="Service-Notification-Types-get">
+      <title>Get Notification Type</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/notification_types/<parameter>notificationTypeId</parameter></td>
+            <td colspan="3">Get information for a single notification type.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Get Notification Type Response: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/get_notification_types.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Get Notification Type Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/get_notification_types.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="Service-Notification-Type-update">
+      <title>Update Notification Type</title>
+      <para>
+        <emphasis>Users cannot update notification types.</emphasis>
+      </para>
+    </section>
+    <section xml:id="Service-Notification-Auth-Delete">
+      <title>Delete Notification Type</title>
+      <para>
+        <emphasis>Users cannot delete notification types.</emphasis>
+      </para>
+    </section>
+  </section>
+  <section xml:id="service-changelogs">
+    <title>Changelogs</title>
+    <?dbhtml stop-chunking?>
+    <section xml:id="service-changelogs-summary">
+      <title>Summary</title>
+      <para>The monitoring service records changelogs for alarm
+        statuses. Changelogs are accessible as a <link
+          linkend="api-time-series-collections">Time Series
+          Collection</link>. By default the API queries the last 7
+        days of changelog information.</para>
+    </section>
+    <section xml:id="service-changelogs-alarms-list">
+      <title>List Alarm Changelogs</title>
+      <para>Alarm changelogs store the last 30 days of alarm state
+        changes for all alarms on an account.</para>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/changelogs/alarms</td>
+            <td colspan="3">Lists alarm changelogs for this
+              account.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Alarm Changelog List Response: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/list_alarm_changelogs.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Alarm Changelog List Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/list_alarm_changelogs.json" parse="text">
+  <xi:fallback>
+    Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    </section>
+  <section xml:id="service-views">
+    <title>Views</title>
+    <?dbhtml stop-chunking?>
+    <para>Views contain a combination of data that usually includes multiple, different objects. The
+      primary purpose of a view is to save API calls and make data retrieval more efficient. Instead
+      of doing multiple API calls and then combining the result yourself, you can perform a single
+      API call against the view endpoint. </para>
+
+    <section xml:id="service-views-overview">
+      <title>Get Overview</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/views/overview</td>
+            <td colspan="3">Return the overview view for this account.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no required parameters for this call. You may
+        filter returned entities by ID or URI with the optional query
+        parameters URI and ID. Up to 100 entities may be selected
+        individually per request.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes:
+          <errorcode>400</errorcode>,<errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>404</errorcode>,
+          <errorcode>500</errorcode>,
+        <errorcode>503</errorcode></para>
+
+        <para>This view includes a list of entities on your account
+        and each entity's child check and alarm objects. Along with
+        the child check and alarm objects it also includes the latest
+        computed state for each check and alarm pair. If there is no
+        latest state available for a check and alarm pair, it means
+        the alarm hasn't been evaluated yet and the current state for
+        this pair is 'UNKNOWN'.</para>
+      <example security='internal'>
+        <title>Get Overview Response: XML</title>
+        Note: Fixture generation for nested objects with custom serializers is broken ATM.
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/views_overview.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Get Overview Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/views_overview.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <note>
+        <para>You may filter returned entities by URI or ID, but not
+          both in the same request. When filtering by Entity ID, if
+          any supplied Entity IDs are unknown or incorrect, the
+          response will be a HTTP 404. When filtering by Entity URI,
+          unknown URIs will be ignored, and entities will be returned
+          for any correct URIs. A request filtering by Entity URI will
+          only receive a HTTP 404 if no known URIs are
+          supplied.</para>
+      </note>
+    </section>
+  </section>
+  <section xml:id="service-alarm-examples">
+    <title>Alarm Examples</title>
+    <?dbhtml stop-chunking?>
+    <para>View provides examples alarms for the various checks in the
+      system. They are presented as a template with parameters. Each
+      of the parameters is documented with a type, name and
+      description.  There are quite a few different examples in the
+      system.</para>
+    
+    <section xml:id="service-alarm-examples-list">
+      <title>List Alarm Examples</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/alarm_examples</td>
+            <td colspan="3">Return a list of alarm examples.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+        <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+        <errorcode>503</errorcode></para>
+      
+      <para>This list contains a complete picture of all the example
+        alarms.  There is extra information provided in the api such
+        as the list of fields. Within the field is also a small
+        description and type.</para>
+      <example>
+        <title>List Alarm Examples Response: JSON</title>
+        <programlisting language="json">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/list_alarm_examples.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>List Alarm Examples Response: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/list_alarm_examples.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-alarm-examples-get">
+      <title>Get Alarm Example</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/alarm_examples/<replaceable>alarmExampleId</replaceable></td>
+            <td colspan="3">Get a specific alarm example.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+        <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+        <errorcode>503</errorcode></para>
+      
+      <para>This call returns a single alarm example.</para>
+      <example>
+        <title>Get Alarm Examples Response: JSON</title>
+        <programlisting language="json">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/get_alarm_examples.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Get Alarm Examples Response: XML</title>
+        <programlisting language="xml">
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/get_alarm_examples.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-alarm-examples-post">
+      <title>Evaluate Alarm Example</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &POST; </td>
+            <td colspan="4"
+                >/alarm_examples/<replaceable>alarmExampleId</replaceable></td>
+            <td colspan="3">Evaluate a specific alarm example.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>The parameters are specific to the alarm example.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+        <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+        <errorcode>503</errorcode></para>
+      
+      <para>This call evaluates the template of a single alarm
+        example.  It takes arbitrary key/value pairs as specified by
+        the fields section of the list call of the API.  You then can
+        evaluate the alarm example with a POST to the specific
+        endpoint.</para>
+      <!--
+        TODO: Put more examples in here.
+      -->
+      <example>
+        <title>Evaluate Alarm Examples Request: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/evaluate_alarm_examples_request.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+        </programlisting>
+      </example>
+      <para>
+        Example evaluating of a remote.http body match against '12345'. &POST; to &URL;<replaceable>tenantId</replaceable>/alarm_examples/remote.http_body_match_1
+      </para>
+      <example>
+        <title>Evaluate Alarm Example Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/evaluate_alarm_examples_response.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+        </programlisting>
+      </example>
+    </section>
+  </section>
+  <section security="internal" xml:id="service-agent">
+    <title>Agents</title>
+    <?dbhtml stop-chunking?>
+    <section xml:id="service-agent.agents">
+      <title>Summary</title>
+      <para>Agents are the facility for host-based checks
+      </para>
+    </section>
+    <section security="internal" xml:id="service-agent.hp">
+      <title>Hash Prefix</title>
+      <para>at - (e.g. <emphasis>at793kjdf9</emphasis>) </para>
+    </section>
+    <section xml:id="service-agent-list-agents">
+      <title>List Agents</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/agents</td>
+            <td colspan="3">List the agents.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Get Agents Response: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/get_agents.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Get Agents Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/get_agents.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+
+    </section>
+    <section xml:id="service-agent-list-agent">
+      <title>List Agent</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/agents/<parameter>agentId</parameter></td>
+            <td colspan="3">List a single agent.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>          
+    </section>
+    <section xml:id="service-agent-list-agent-connections">
+      <title>List Agent Connections</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/agents/<parameter>agentId</parameter>/connections</td>
+            <td colspan="3">List the connections for a single agent.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Get Agent Connections Response: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/get_agent_connections.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Get Agent Connections Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/get_agent_connections.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+ 
+    </section>
+    <section xml:id="service-agent-list-agent-connection">
+      <title>List Agent Connection</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/agents/<parameter>agentId</parameter>/connections/<parameter>connId</parameter></td>
+            <td colspan="3">List a single connection.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+    </section>
+  </section>
+  
+  <section security="internal" xml:id="service-agent-tokens">
+    <title>Agent Token</title>
+    <?dbhtml stop-chunking?>
+    <section  xml:id="service-agent-token-summary">
+      <title>Summary</title>
+      <para>Agent Tokens are used to authenticate Agents to the
+        Monitoring Service.</para>
+    </section>
+    <section xml:id="service-agent-token-hp" security="internal" >
+      <title>Hash Prefix</title>
+      <para>at - (e.g. <emphasis>at793kjdf9</emphasis>) </para>
+    </section>
+    <xi:include href="partials/swiz-agent_tokens.xml" parse="xml">
+      <xi:fallback> Missing example! </xi:fallback>
+    </xi:include>
+    <section xml:id="service-agent-token-create-token">
+      <title>Create Agent Token</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &POST; </td>
+            <td colspan="4">/agent_tokens</td>
+            <td colspan="3">Creates a new a new token.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code: (<returnvalue>201</returnvalue>)
+        'Location' header contains a link to the newly created
+        alarm.</para>
+      <para>Error Response Codes: <errorcode>400</errorcode>,
+          <errorcode>401</errorcode>, <errorcode>403</errorcode>,
+          <errorcode>500</errorcode>,
+        <errorcode>503</errorcode></para>
+      <example>
+        <title>Agent Token Request: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/create_agent_tokens.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Agent Token Request: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/create_agent_tokens.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-agent-token-list">
+      <title>List Agent Tokens</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4">/agent_tokens</td>
+            <td colspan="3">List the tokens.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>List Agent Tokens Response: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/list_agent_tokens.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>List Agent Tokens Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/list_agent_tokens.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-agent-token-get">
+      <title>Get Agent Token</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &GET; </td>
+            <td colspan="4"
+                >/agent_tokens/<parameter>tokenId</parameter></td>
+            <td colspan="3">Get information for a single token.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>There are no parameters for this call.</para>
+      <para>Normal Response Code:
+        <returnvalue>200</returnvalue></para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <errorcode>403</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Get Agent Token Response: XML</title>
+        <programlisting language="xml">
+<xi:include href="partials/get_agent_tokens.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Get Agent Token Response: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/get_agent_tokens.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-agent-token-update">
+      <title>Update Agent Token</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &PUT; </td>
+            <td colspan="4"
+                >/agent_tokens/<parameter>tokenId</parameter></td>
+            <td colspan="3">Update an token with the specified
+              tokenId. Partial updates to an Agent Token are
+              acceptable. You may specify only the parameters you
+              would like to update.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code: (<returnvalue>204</returnvalue>)
+        This code contains no content with an empty response
+        body.</para>
+      <para>Error Response Codes: <errorcode>400</errorcode>,
+          <errorcode>401</errorcode>, <errorcode>403</errorcode>,
+          <errorcode>404</errorcode>, <errorcode>500</errorcode>,
+          <errorcode>503</errorcode></para>
+      <example>
+        <title>Update Alarm Request: XML</title>
+        <para>Normal Response Code: (<returnvalue>204</returnvalue>)
+          This operation does not contain a response body.</para>
+        <para security="">Error Response Code:
+            <errorcode>500</errorcode></para>
+        <programlisting language="xml">
+<xi:include href="partials/update_agent_tokens.xml" parse="text">
+  <xi:fallback>
+     Missing example! 
+   </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+      <example>
+        <title>Alarm Update Request: JSON</title>
+        <programlisting language="javascript">
+<xi:include href="partials/update_agent_tokens.json" parse="text">
+  <xi:fallback>
+     Missing example! 
+  </xi:fallback>
+</xi:include>
+</programlisting>
+      </example>
+    </section>
+    <section xml:id="service-agent-token-delete">
+      <title>Delete Agent Token</title>
+      <informaltable rules="all">
+        &LONG_URI_REFHEAD;
+        <tbody>
+          <tr>
+            <td colspan="1"> &DELETE; </td>
+            <td colspan="4"
+                >/agent_tokens/<parameter>tokenId</parameter></td>
+            <td colspan="3">Delete an token from your account.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>Normal Response Code: (<returnvalue>204</returnvalue>)
+        This code contains no content with an empty response
+        body.</para>
+      <para>Error Response Codes: <errorcode>401</errorcode>,
+          <returnvalue>403</returnvalue>, <errorcode>404</errorcode>,
+          <errorcode>500</errorcode>,
+        <errorcode>503</errorcode></para>
+    </section>
+  </section>
+</chapter>

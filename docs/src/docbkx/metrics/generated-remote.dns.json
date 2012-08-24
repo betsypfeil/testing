@@ -1,0 +1,20 @@
+{
+  "timestamp": 1320248989463,
+  "monitoring_zone_id": "mzxJ4L2IU",
+  "available": true,
+  "status": "5 records",
+  "metrics": {
+    "answer": {
+      "type": "s",
+      "data": "74.125.225.80, 74.125.225.81, 74.125.225.82, 74.125.225.83, 74.125.225.84"
+    },
+    "rtt": {
+      "type": "n",
+      "data": 17.814
+    },
+    "ttl": {
+      "type": "I",
+      "data": 300
+    }
+  }
+}

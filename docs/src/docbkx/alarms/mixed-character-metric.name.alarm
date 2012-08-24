@@ -1,0 +1,3 @@
+if (metric['testABC_-a'] == "test") {
+  return CRITICAL, "Page not found!"
+}

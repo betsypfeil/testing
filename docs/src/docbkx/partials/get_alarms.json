@@ -1,0 +1,5 @@
+{
+    "id": "alAAAA",
+    "check_type": "remote.http",
+    "criteria": "if (metric[\"t\"] >= 2.1) { return OK } return CRITICAL"
+}

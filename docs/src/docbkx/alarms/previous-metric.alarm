@@ -1,0 +1,58 @@
+if (previous(metric['a']) != metric['a']) {
+  return CRITICAL
+}
+
+if (metric['a'] != previous(metric['a'])) {
+  return CRITICAL
+}
+
+if (previous(metric['b']) == previous(metric['c'])) {
+  return CRITICAL
+}
+
+if (previous(metric['foo']) == metric['bar']) {
+  return OK
+}
+
+if (metric['d'] != previous(metric['e'])) {
+  return CRITICAL
+}
+
+if (previous(metric['f']) == 1) {
+  return WARNING
+}
+
+if (previous(metric['g']) != 'baz') {
+  return OK
+}
+
+if (metric['h'] == rate(metric['i'])) {
+  return CRITICAL
+}
+
+if (metric['j'] <= previous(metric['k'])) {
+  return OK
+}
+
+if (previous(metric['l']) > metric['m']) {
+  return OK
+}
+
+if (previous(metric['n']) >= previous(metric['o'])) {
+  return OK
+}
+
+if (previous(metric['p']) < rate(metric['q'])) {
+  return WARNING
+}
+
+if (previous(metric['r']) != rate(metric['s'])) {
+  return CRITICAL
+}
+
+if (rate(metric['t']) == previous(metric['u'])) {
+  return OK
+}
+
+return OK
+

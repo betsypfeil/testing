@@ -1,0 +1,11 @@
+{
+    "v": "1",
+    "id": 0,
+    "target": "X",
+    "source": "endpoint",
+    "error": null,
+    "result": {
+        "heartbeat_interval": 1000,
+        "entity_id": "enAAAA"
+    }
+}

@@ -1,0 +1,8 @@
+/* 1 week = 604 800 seconds */
+if (metric['cert_end_in'] < 604800) {
+  return WARNING, "Cert expiring in less than 1 week."
+}
+/* 2 days = 172 800 seconds */
+if (metric['cert_end_in'] < 172800) {
+  return CRITICAL, "Cert expiring in less than 2 days."
+}

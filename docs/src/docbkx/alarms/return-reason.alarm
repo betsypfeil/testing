@@ -1,0 +1,9 @@
+if (metric['foo'] > 100 || metric['disk'] nregex "bar") {
+  return WARNING, "OMG PONIES!!"
+}
+
+if (metric['foo'] > 140) {
+  return WARNING
+}
+
+return CRITICAL, "default state reason"

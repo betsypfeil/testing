@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:exsl="http://exslt.org/common" xmlns:ng="http://docbook.org/docbook-ng" xmlns:fb="http://ogp.me/ns/fb#"><head>
+<meta http-equiv="X-UA-Compatible" content="IE=7"/>
+<title>2.6. Create an Alarm - Rackspace Cloud Monitoring Getting Started Guide
+   - API v1.4</title><meta name="generator" content="DocBook XSL-NS Stylesheets V1.76.1"/><link rel="home" href="index.html" title="Rackspace Cloud Monitoring Getting Started Guide"/><link rel="up" href="tutorials.html" title="Chapter 2. Create Your First Monitor"/><link rel="prev" href="concepts-tutorial-setup-notifications.html" title="2.5. Set Up Notifications"/><link rel="next" href="concepts-tutorial-modify-entity.html" title="2.7. Modify an Entity"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script type="text/javascript">
+            //The id for tree cookie
+            var treeCookieId = "treeview-1518";
+            var language = "en";
+            var w = new Object();
+            //Localization
+            txt_filesfound = 'Results';
+            txt_enter_at_least_1_char = "You must enter at least one character.";
+            txt_browser_not_supported = "Your browser is not supported. Use of Mozilla Firefox is recommended.";
+            txt_please_wait = "Please wait. Search in progress...";
+            txt_results_for = "Results for: ";
+        </script><style type="text/css">
+            input {
+            margin-bottom: 5px;
+            margin-top: 2px;
+            }
+
+            .folder {
+            display: block;
+            height: 22px;
+            padding-left: 20px;
+            background: transparent url(../common/jquery/treeview/images/folder.gif) 0 0px no-repeat;
+            }
+            
+        </style><link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/><link rel="stylesheet" type="text/css" href="../common/css/positioning.css"/><link rel="stylesheet" type="text/css" href="../common/css/custom.css"/><link href="../atom.xml" type="application/atom+xml" rel="alternate" title="Document ATOM Feed"/><link rel="canonical" href="http://docs.rackspace.com/cm/api/v1.0/cm-getting-started/content/concepts-tutorial-create-alarm.html"/><!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="../common/css/ie.css"/>
+	<![endif]--><link rel="stylesheet" type="text/css" href="../common/jquery/theme-redmond/jquery-ui-1.8.2.custom.css"/><link rel="stylesheet" type="text/css" href="../common/jquery/treeview/jquery.treeview.css"/><script type="text/javascript" src="../common/jquery/jquery-1.4.3.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery-ui-1.8.2.custom.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery.cookie.js"><!----></script><script type="text/javascript" src="../common/jquery/treeview/jquery.treeview.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery.qtip-1.0.0-rc3/jquery.qtip-1.0.0-rc3.min.js"><!--jQuery plugin for glossary popups. --></script><script type="text/javascript" src="search/htmlFileList.js"><!----></script><script type="text/javascript" src="search/htmlFileInfoList.js"><!----></script><script type="text/javascript" src="search/nwSearchFnt.js"><!----></script><script type="text/javascript" src="search/stemmers/en_stemmer.js"><!--//make this scalable to other languages as well.--></script><script type="text/javascript" src="search/index-1.js"><!----></script><script type="text/javascript" src="search/index-2.js"><!----></script><script type="text/javascript" src="search/index-3.js"><!----></script><script type="text/javascript">
+	    var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-23102455-4']);
+	  </script><script type="text/javascript" src="../common/ga.js"><!----></script><script type="text/javascript" src="http://www.tabpress.com/_js/ga_social_tracking.js"><!----></script><script>
+	    (function(){var twitterWidgets = document.createElement('script');
+        twitterWidgets.type = 'text/javascript';
+        twitterWidgets.async = true;
+        twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+        // Setup a callback to track once the script loads.
+        twitterWidgets.onload = _ga.trackTwitter;
+        document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+        })();
+      </script></head><body><div id="header"><a onclick="_gaq.push(['_trackEvent', 'Header', 'logo', 'click', 1]);" target="_blank" href="http://www.rackspace.com"><img src="../common/images/rackspace-logo.png" alt="Rackspace Documentation" width="157" height="47"/></a><h1>2.6. Create an Alarm</h1><div id="navheader" align="right"><!----><table class="navLinks"><tr><td><a id="showHideButton" onclick="showHideToc(); _gaq.push(['_trackEvent', 'Header', 'show/hide', 'click', 1]);" class="pointLeft" title="Hide TOC tree">Sidebar
+                            </a></td><td><a accesskey="p" class="navLinkPrevious" onclick="_gaq.push(['_trackEvent', 'Header', 'prevLink', 'click', 1]);" tabindex="5" href="concepts-tutorial-setup-notifications.html">Prev</a>
+				      |
+                                        <a accesskey="u" class="navLinkUp" onclick="_gaq.push(['_trackEvent', 'Header', 'upLink', 'click', 1]);" tabindex="5" href="tutorials.html">Up</a>
+				  |
+                                    <a accesskey="n" class="navLinkNext" onclick="_gaq.push(['_trackEvent', 'Header', 'nextLink', 'click', 1]);" tabindex="5" href="concepts-tutorial-modify-entity.html">Next</a></td></tr></table></div></div><div id="toolbar" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all"><div id="toolbar-left"><p class="breadcrumbs"><a href="http://docs.rackspace.com/api/">Rackspace Manuals</a><a href="index.html">Rackspace Cloud Monitoring Getting Started Guide
+   - API v1.4</a></p><a onclick="_gaq.push(['_trackEvent', 'Header', 'pdfDownload', 'click', 1]);" alt="Download a pdf of this document" class="pdficon" href="../../../cm-getting-started-latest.pdf"><img src="../common/images/pdf.png"/></a>
+       
+      <a href="../atom.xml"><img alt="Atom feed of this document" src="../common/images/feed-icon.png"/></a><div id="fb-root"> </div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"><!----></script><script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script><script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script><style>
+.fb_edge_comment_widget {
+    margin-left: -280px;
+}
+.fb-like{vertical-align:text-top;position:absolute;top:.5em;right:311px}
+#gplusone{display:inline;position:absolute;right:410px;top:.5em}
+#rstwitter{vertical-align:text-top;display:inline;position:absolute;right:450px;top:.5em}
+</style><!--[if IE]>
+	<style>
+#gplusone{top:0em}
+#rstwitter{top:-.15em}
+.fb-like{top:-.5em}
+</style><![endif]--><script type="text/javascript">_ga.trackFacebook();</script><div class="fb-like" data-send="false" data-width="50" data-show-faces="false" data-layout="button_count" data-font="arial">   </div><div id="gplusone"><g:plusone xmlns:g="http://www.google.com" size="medium" annotation="none"/></div><div id="rstwitter"><a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out this Rackspace documentation page:" data-lang="en" data-count="none">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div></div></div><div id="content"><div class="statustext"> </div><div class="section"><div xmlns="" class="titlepage"><div><div><h2 xmlns="http://www.w3.org/1999/xhtml" class="title" style="clear: both"><a id="concepts-tutorial-create-alarm"> </a>2.6. Create an Alarm</h2></div></div></div><p>In this exercise, you'll set an alarm for the entity. Here's an example alarm that will
+        send you a warning alert if the average PING response time is over 50ms. Remember that
+        alarms always have a parent entity associated with them, so all URLs are contained
+        underneath the alarm URL. In this example, the entity ID is enn14Ch5mc, so we issue the
+        following request to create the alarm and associate it to the entity:</p><div class="example"><a id="d6e534"> </a><p class="title"><strong>Example 2.39. Create Alarm Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X POST \
+--data-binary \
+'{
+  "check_type": "remote.ping", 
+  "notification_plan_id": "npkmLh5vVk", 
+  "criteria": "if (metric[\"duration\"] &lt; 50) { return OK } return WARNING"
+}' \
+-H 'X-Auth-Token: auth_token' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/alarms'</pre></div></div><br class="example-break"/><div class="example"><a id="d6e537"> </a><p class="title"><strong>Example 2.40. Create Alarm cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
+X-Ratelimit-Remaining: 49947
+X-Response-Id: .rh-ew99.h-dfw1-maas-prod-api1.r-Kti7H0py.c-39599.ts-1329418764114.v-b9d7626
+Content-Length: 0
+X-Lb: dfw1-maas-prod-api0
+X-Ratelimit-Type: global
+X-Ratelimit-Limit: 50000
+Location: https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/alarms/alIxnPKcZp
+Date: Thu, 16 Feb 2012 18:59:24 GMT
+X-Ratelimit-Window: 24 hours
+Content-Type: text/plain</pre></div></div><br class="example-break"/><div class="example"><a id="d6e540"> </a><p class="title"><strong>Example 2.41. Create Alarm Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-alarms-create --check-type=remote.ping --criteria="if (metric[\"average\"] &lt; 50) { return OK } return WARNING" --notification-plan=npkmLh5vVk --entity-id=enn14Ch5mc</pre></div></div><br class="example-break"/><div class="example"><a id="d6e543"> </a><p class="title"><strong>Example 2.42. Create Alarm raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource created. ID: alIxnPKcZp</pre></div></div><br class="example-break"/><p>If the endpoint returns a response code is <span class="returnvalue">201</span> and a
+          <code class="code">Location:</code> header containing the URL of the new alarm, the alarm was
+        successfully created, otherwise the endpoint returns an error. </p><p>Since we're monitoring two items, both PING times and the HTTP response time, let's add
+        a second alarm to go off when the web response time takes longer than 100ms. Here's an
+        example of how you might specify the attributes for this alarm:</p><div class="example"><a id="d6e550"> </a><p class="title"><strong>Example 2.43. Create an Alarm HTTP Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X POST \
+--data-binary \
+'{ "check_type" : "remote.http",
+  "criteria" : "if (metric[\"code\"] regex \"^[23]..$\") { return OK } return WARNING",
+  "notification_plan_id" : "npkmLh5vVk"
+}' \
+-H 'X-Auth-Token: your_auth_key' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/alarms'
+</pre></div></div><br class="example-break"/><div class="example"><a id="d6e553"> </a><p class="title"><strong>Example 2.44. Create an Alarm cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
+X-Ratelimit-Remaining: 49946
+X-Response-Id: .rh-E79I.h-ord1-maas-prod-api1.r-HDDENoUp.c-106.ts-1329419675047.v-a037e7a
+Content-Length: 0
+X-Lb: ord1-maas-prod-api0
+X-Ratelimit-Type: global
+X-Ratelimit-Limit: 50000
+Location: https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/alarms/alVwP6z00k
+Date: Thu, 16 Feb 2012 19:14:34 GMT
+X-Ratelimit-Window: 24 hours
+Content-Type: text/plain
+</pre></div></div><br class="example-break"/><div class="example"><a id="d6e556"> </a><p class="title"><strong>Example 2.45. Create an Alarm Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-alarms-create --check-type=remote.http --criteria="if (metric[\"duration\"] &lt; 100) { return OK } return WARNING" --notification-plan=npkmLh5vVk --entity-id=enn14Ch5mc</pre></div></div><br class="example-break"/><div class="example"><a id="d6e559"> </a><p class="title"><strong>Example 2.46. Create an Alarm raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource created. ID: alVwP6z00k</pre></div></div><br class="example-break"/><p>Note that because alarms are shared between all of the checks on an entity, if you have
+        multiple HTTP URLs, you will receive alerts if any of the checks are lagging.</p><p>You can always list the available alarms by retrieving:</p><div class="example"><a id="d6e564"> </a><p class="title"><strong>Example 2.47. List Alarms Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X GET \
+-H 'X-Auth-Token: auth_token' \
+-H 'Accept: application/json' \
+'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/alarms'
+</pre></div></div><br class="example-break"/><div class="example"><a id="d6e567"> </a><p class="title"><strong>Example 2.48. List Alarms cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 200 OK
+X-Ratelimit-Remaining: 49941
+X-Response-Id: .rh-qRGT.h-ord1-maas-prod-api0.r-UH0HesoS.c-404.ts-1329420284585.v-a037e7a
+Transfer-Encoding: chunked
+Vary: Accept-Encoding
+X-Lb: ord1-maas-prod-api0
+X-Ratelimit-Type: global
+X-Ratelimit-Limit: 50000
+Date: Thu, 16 Feb 2012 19:24:44 GMT
+X-Ratelimit-Window: 24 hours
+Content-Type: application/json; charset=UTF-8
+
+36e
+{
+    "values": [
+        {
+            "id": "alIxnPKcZp",
+            "label": null,
+            "check_type": "remote.ping",
+            "check_id": null,
+            "criteria": "if (metric[\"average\"] &lt; 50) { return OK } return WARNING",
+            "notification_plan_id": "npkmLh5vVk",
+            "created_at": 1329418764882,
+            "updated_at": 1329418764882
+        },
+        {
+            "id": "alVwP6z00k",
+            "label": null,
+            "check_type": "remote.http",
+            "check_id": null,
+            "criteria": "if (metric[\"average\"] &lt; 100) { return OK } return WARNING",
+            "notification_plan_id": "npkmLh5vVk",
+            "created_at": 1329419675727,
+            "updated_at": 1329419675727
+        }
+    ],
+    "metadata": {
+        "count": 2,
+        "limit": 100,
+        "marker": null,
+        "next_href": null
+    }
+}
+</pre></div></div><br class="example-break"/><div class="example"><a id="d6e570"> </a><p class="title"><strong>Example 2.49. List Alarms Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-alarms-list --entity-id=enn14Ch5mc --details</pre></div></div><br class="example-break"/><div class="example"><a id="d6e573"> </a><p class="title"><strong>Example 2.50. List Alarms raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">{'criteria': u'if (metric["average"] &lt; 50) { return OK } return WARNING',
+ 'driver': &lt;rackspace_monitoring.drivers.rackspace.RackspaceMonitoringDriver object at 0x100649ad0&gt;,
+ 'entity_id': u'enn14Ch5mc',
+ 'id': u'alIxnPKcZp',
+ 'notification_plan_id': u'npkmLh5vVk',
+ 'type': u'remote.ping'}
+{'criteria': u'if (metric["average"] &lt; 100) { return OK } return WARNING',
+ 'driver': &lt;rackspace_monitoring.drivers.rackspace.RackspaceMonitoringDriver object at 0x100649ad0&gt;,
+ 'entity_id': u'enn14Ch5mc',
+ 'id': u'alVwP6z00k',
+ 'notification_plan_id': u'npkmLh5vVk',
+ 'type': u'remote.http'}
+
+Total: 2
+</pre></div></div><br class="example-break"/><p>The results show there are now two alarms for the entity. </p><p><a class="link" href="concepts-tutorial-modify-entity.html" title="2.7. Modify an Entity"><span class="bold"><strong>NEXT
+            UP:</strong></span>
+        </a>Make a modification to the entity.</p></div><script type="text/javascript" src="../common/main.js"><!----></script><hr/><div id="disqus_thread"><script type="text/javascript">
+	      var disqus_shortname = 'rc-api-docs';
+	      
+	      var disqus_identifier = 'cm-getting-startedconcepts-tutorial-create-alarm';
+	      </script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><script type="text/javascript" src="../common/comments.js"><!----></script></div><hr/><div class="legal"><a href="index.html">Legal notices</a></div></div><div><div id="leftnavigation" style="padding-top:3px; background-color:white;"><div id="tabs"><ul><li><a href="#treeDiv" tabindex="1"><span class="contentsTab">Contents</span></a></li><li><a href="#searchDiv" tabindex="1"><span class="searchTab">Search</span></a></li></ul><div id="treeDiv"><img src="../common/images/loading.gif" alt="loading table of contents..." id="tocLoading" style="display:block;"/><div id="ulTreeDiv" style="display:none" class="thisisthat"><ul id="tree" class="filetree"><li tabindex="2"><span class="file"><a href="Introduction.html">1. Introduction</a></span><ul><li tabindex="2"><span class="file"><a href="how-it-works.html">1.1. How Rackspace Cloud Monitoring Works</a></span></li><li tabindex="2"><span class="file"><a href="pre-reqs.html">1.2. Prerequisites</a></span></li><li tabindex="2"><span class="file"><a href="endpoint-access.html">1.3. Accessing the API</a></span></li><li tabindex="2"><span class="file"><a href="Authentication.html">1.4. Authentication</a></span><ul><li tabindex="2"><span class="file"><a href="Authentication.html#auth-endpoint">1.4.1. The Authentication Endpoint</a></span></li><li tabindex="2"><span class="file"><a href="Authentication.html#finding-key">1.4.2. The Authentication Process</a></span></li><li tabindex="2"><span class="file"><a href="Authentication.html#example-auth">1.4.3. Example Authentication</a></span></li><li tabindex="2"><span class="file"><a href="Authentication.html#auth-response-description">1.4.4. Authentication Response Description</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="working-with-tutorial.html">1.5. Working with the Exercises in this Guide</a></span><ul><li tabindex="2"><span class="file"><a href="curl.html">1.5.1. Using cURL</a></span><ul><li tabindex="2"><span class="file"><a href="curl-copying-examples.html">1.5.1.1. Copying Request Examples</a></span></li><li tabindex="2"><span class="file"><a href="curl-escaping-returns.html">1.5.1.2. Escaping Carriage Returns</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="using-raxmon.html">1.5.2. Using the raxmon Command Line Interface</a></span></li></ul></li></ul></li><li tabindex="2"><span class="file"><a href="tutorials.html">2. Create Your First Monitor</a></span><ul><li tabindex="2"><span class="file"><a href="concepts-tutorial-create-entity.html">2.1. Create an Entity</a></span></li><li tabindex="2"><span class="file"><a href="concepts-tutorial-monitoring-zones.html">2.2. List Monitoring Zones</a></span></li><li tabindex="2"><span class="file"><a href="concepts-tutorial-create-checks.html">2.3. Create Checks</a></span><ul><li tabindex="2"><span class="file"><a href="concepts-tutorial-create-checks.html#tutorial-create-ping-check">2.3.1. Create a PING Check</a></span></li><li tabindex="2"><span class="file"><a href="concepts-tutorial-create-checks.html#tutorial-test-check">2.3.2. Test the Check</a></span></li><li tabindex="2"><span class="file"><a href="concepts-tutorial-create-checks.html#tutorial-create-http-check">2.3.3. Create HTTP Checks</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="tutorial-list-all-checks.html">2.4. List All Checks for the Entity</a></span></li><li tabindex="2"><span class="file"><a href="concepts-tutorial-setup-notifications.html">2.5. Set Up Notifications</a></span><ul><li tabindex="2"><span class="file"><a href="concepts-tutorial-setup-notifications.html#create-notification-plan">2.5.1. Create a Notification Plan</a></span></li></ul></li><li tabindex="2" id="webhelp-currentid"><span class="file"><a href="concepts-tutorial-create-alarm.html">2.6. Create an Alarm</a></span></li><li tabindex="2"><span class="file"><a href="concepts-tutorial-modify-entity.html">2.7. Modify an Entity</a></span></li><li tabindex="2"><span class="file"><a href="concepts-tutorial-delete-entity.html">2.8. Delete an Entity</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="additional-resources.html">3. Additional Resources</a></span><ul><li tabindex="2"><span class="file"><a href="additional-resources.html#resources-monitoring-docs">3.1. More on Monitoring </a></span></li><li tabindex="2"><span class="file"><a href="additional-resources.html#resources-talk">3.2. Talk to Us</a></span></li><li tabindex="2"><span class="file"><a href="additional-resources.html#resouces-talk">3.3. More From Rackspace</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="rs_glossary.html">Glossary</a></span></li></ul></div></div><div id="searchDiv"><div id="search"><form onsubmit="Verifie(ditaSearch_Form);return false" name="ditaSearch_Form" class="searchForm"><fieldset class="searchFieldSet"><legend>Search</legend><center><input id="textToSearch" name="textToSearch" type="text" class="searchText"/> &nbsp; <input onclick="Verifie(ditaSearch_Form)" type="button" class="searchButton" value="Go" id="doSearch"/></center></fieldset></form></div><div id="searchResults"><center/></div><p class="searchHighlight"><a href="#" onclick="toggleHighlight()">Search Highlighter (On/Off)</a></p></div></div></div></div><script type="text/javascript" src="../common/jquery/jquery.qtip-1.0.0-rc3/jquery.qtip-1.0.0-rc3.min.js"><!--jQuery plugin for glossary popups. -->
+                   $('a[title]').qtip({ style: { name: 'cream', tip: true } })
+                </script></body></html>

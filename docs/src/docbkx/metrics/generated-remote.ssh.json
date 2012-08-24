@@ -1,0 +1,16 @@
+{
+  "timestamp": 1320248988855,
+  "monitoring_zone_id": "mzxJ4L2IU",
+  "available": true,
+  "status": "4ea6a02e7e52469c3274d59f61bf2f14",
+  "metrics": {
+    "duration": {
+      "type": "I",
+      "data": 59
+    },
+    "fingerprint": {
+      "type": "s",
+      "data": "4ea6a02e7e52469c3274d59f61bf2f14"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+//List of files which are indexed.
+fl = new Array();
+fl["0"]= "additional-resources.html";
+fl["1"]= "Authentication.html";
+fl["2"]= "concepts-tutorial-create-alarm.html";
+fl["3"]= "concepts-tutorial-create-checks.html";
+fl["4"]= "concepts-tutorial-create-entity.html";
+fl["5"]= "concepts-tutorial-delete-entity.html";
+fl["6"]= "concepts-tutorial-modify-entity.html";
+fl["7"]= "concepts-tutorial-monitoring-zones.html";
+fl["8"]= "concepts-tutorial-setup-notifications.html";
+fl["9"]= "curl-copying-examples.html";
+fl["10"]= "curl-escaping-returns.html";
+fl["11"]= "curl.html";
+fl["12"]= "endpoint-access.html";
+fl["13"]= "how-it-works.html";
+fl["14"]= "Introduction.html";
+fl["15"]= "pre-reqs.html";
+fl["16"]= "rs_glossary.html";
+fl["17"]= "tutorial-list-all-checks.html";
+fl["18"]= "tutorials.html";
+fl["19"]= "using-raxmon.html";
+fl["20"]= "working-with-tutorial.html";

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE chapter [<!-- Some useful entities borrowed from HTML -->]>
+<appendix
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    version="5.0"  xml:id="appendix-alarm-dsl-specification"
+    security="internal"
+  >
+    <title>Alarm DSL Specification</title>
+  <?dbhtml stop-chunking?>
+  <para>The following program listing provides the formal alarm DSL specification written in <link
+      xlink:href="http://waxeye.org/manual.html#_waxeye_grammars">Waxeye grammar</link>. 
+    <programlisting>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="partials/alarm.waxeye" parse="text">
+<xi:fallback> Missing example!</xi:fallback>
+</xi:include>
+    </programlisting>
+  </para>
+</appendix>

@@ -1,0 +1,41 @@
+# Double quotes
+
+if (metric["banner_matched"] != "''") {
+  return OK
+}
+
+if (metric["banner_matched"] != "foo") {
+  return OK
+}
+
+if (metric["banner_matched"] != "foo \"bar ponies\"") {
+  return OK
+}
+
+if (metric["banner"] == "foo 'bar ponies'") {
+  return OK
+}
+
+if (metric["banner"] == "\\u000a") {
+  return OK
+}
+
+# Single quotes
+
+if (metric["banner_matched"] != '""') {
+  return OK
+}
+
+if (metric['banner_matched'] != 'foo') {
+  return OK
+}
+
+if (metric["banner_matched"] != 'foo \'bar ponies\'') {
+  return OK
+}
+
+if (metric["banner"] == 'foo "bar ponies"') {
+  return OK
+}
+
+return CRITICAL

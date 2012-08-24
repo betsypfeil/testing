@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xml:id="cm-releasenotes"
+    version="5.0">
+  <?rax  pdf.url="../../../cm-releasenotes-latest.pdf" canonical.url.base="http://docs.rackspace.com/cm/api/v1.0/cm-releasenotes/content"?> 
+    <title>Cloud Monitoring Release Notes</title>
+
+    <info>
+		<author>
+			<personname>
+				<firstname/>
+				<surname/>
+			</personname>
+			<affiliation>
+				<orgname>Rackspace Cloud</orgname>
+			</affiliation>
+		</author>
+		<copyright>
+			<year>2011</year>
+			<year>2012</year>
+			<holder>Rackspace</holder>
+		</copyright>
+		<releaseinfo>API v1.4</releaseinfo>
+		<productname>Rackspace Cloud Monitoring</productname>
+		<pubdate>2012-08-22</pubdate>
+		<legalnotice role="rs-api">
+			<annotation>
+				<remark>Copyright details are filled in by the
+					template.</remark>
+			</annotation>
+		</legalnotice>
+		<abstract>
+			<para>This document is intended for software developers
+				interested in developing applications using the
+				Rackspace Cloud Monitoring API. </para>
+		</abstract>
+		<revhistory>
+			<revision>
+				<date>2012-08-22</date>
+				<revdescription>
+					<para>Unlimited Availability</para>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2012-08-14</date>
+				<revdescription>
+					<para>Miscellaneous updates.</para>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2012-06-17</date>
+				<revdescription>
+					<para>Miscellaneous updates.</para>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2012-05-10</date>
+				<revdescription>
+					<para>Pre-UA</para>
+				</revdescription>
+			</revision>
+		</revhistory>
+    </info>
+  <include xmlns="http://www.w3.org/2001/XInclude" href="rn-cmv1.4.xml"/>
+  <include xmlns="http://www.w3.org/2001/XInclude" href="rn-cmv1.3.xml"/>
+	<chapter xml:id="cmv1.2">
+		<?dbhtml stop-chunking?>
+		<title>v1.2, May 10, 2012</title>
+		<para>These release notes correspond to the post-EAP release of Cloud Monitoring.</para>
+		<itemizedlist>
+			<title>New Features</title>
+			<listitem>
+				<para><emphasis role="bold">Test an Existing Check</emphasis></para>
+				<para>Test execute an existing check.  This allows you to execute a check
+				like the traditional test check, but on a check that is already running.  This will not
+				actually execute the new check in the same check context, it executes in a 
+				new context.</para>
+			</listitem>
+			<listitem>
+				<para><emphasis role="bold">Alarm Templates</emphasis></para>
+				<para>Get a list of alarm recipes with templating capabilities. This helps kick-start your
+					thinking on all the possible ways to leverage this incredibly powerful part of
+					the monitoring system. The link to the API documentation is here:</para>
+				<para><link
+					xlink:href="/cm/api/v1.0/cm-devguide/content/service-alarm-examples.html"
+					>Alarm Examples API Documentation</link></para>
+			</listitem>
+			<listitem>
+				<para><emphasis role="bold">Cascading Entity Deletion</emphasis></para>
+				<para>Delete entities and now have it cascade to all of the associated checks and alarms in the
+					system. This allows you to de-provision monitors quickly and easily without
+					having to manually make the individual calls yourself. This saves you time and
+					effort.</para>
+			</listitem>
+			<listitem>
+				<para><emphasis role="bold">Type Checking on Alarms</emphasis></para>
+				<para>Type check alarms so you receive alerts if you set up an incorrect alarm, or it isn't as
+					expected. As a bonus the alarm also validates all the metrics you are checking
+					are present, if they are not present, it automatically changes the alarm state
+					to CRITICAL.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Enhancements</title>
+			<listitem>
+				<para>Fixed a defect in the networking partitioning logic that leads to more consistent operation.</para>
+			</listitem>
+			<listitem>
+				<para>Added more collector infrastructure in IAD.</para>
+			</listitem>
+			<listitem>
+				<para>Added a meta-data field on the check type.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resolved Issues</title>
+			<listitem>
+				<para>Alarm states have a race condition. During replay it's possible to
+					unintentionally store duplicates.</para>
+			</listitem>
+			<listitem>
+				<para>Fix missing version parameter in next href.</para>
+			</listitem>
+			<listitem>
+				<para>Fix banner match to be more consistent, be present but empty
+					if it didn't match.</para>
+			</listitem>
+			<listitem>
+				<para>Removed the ability to use duplicate monitoring zones.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Documentation</title>
+			<listitem>
+				<para>Try some simple monitoring exercises in the <emphasis role="italic">Rackspace
+					Cloud Monitoring Getting Started Guide</emphasis> at:</para>
+				<para><link
+					xlink:href="http://docs.rackspace.com/cm/api/v1.0/cm-getting-started/content/Introduction.html"
+					>http://docs.rackspace.com/cm/api/v1.0/cm-getting-started/content/Introduction.html</link>.</para>
+				<para/>
+			</listitem>
+			<listitem>
+				<para>Get reference information and examples for all endpoints in the <emphasis
+					role="italic">Rackspace Cloud Monitoring Developers Guide</emphasis>
+					at:</para>
+				<para><link
+					xlink:href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/index.html"
+					>http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/index.html</link>.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Talk to Us</title>
+			<para xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml">Do you have questions about Rackspace
+				Cloud Monitoring? Would you like to give us feedback on how we're doing? </para>
+			<listitem xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml">
+				<para>Join us in our chat room at: Freenode IRC at #cloudmonitoring</para>
+				<para>Or just click the following link:</para>
+				<para><link
+					xlink:href="http://webchat.freenode.net?channels=cloudmonitoring&amp;uio=d4"
+					>Webchat</link></para>
+			</listitem>
+			<listitem xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml">
+				<para>You can also provide feedback using our feedback form:</para>
+				<para><link
+					xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/41927-cloud-monitoring"
+					>Product Feedback Forum</link></para>
+			</listitem>
+			<listitem xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml">
+				<para>Get support here:</para>
+				<para>
+					<link xlink:href="https://manage.rackspacecloud.com/Tickets/YourTickets.do">File a ticket here</link></para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+	<chapter xml:id="cmv1.1">
+		<?dbhtml stop-chunking?>
+		<title>v1.1, March 28, 2012</title>
+		<para>These release notes correspond to the EAP for Rackspace Cloud Monitoring.</para>
+		<itemizedlist>
+			<title>New Features</title>
+			<listitem>
+				<para><emphasis role="bold">Test Notifications</emphasis></para>
+				<para>Test execute a notification. This makes it easy to execute test checks and
+					verify that you'll receive the payload. We also added the ability to test
+					existing notifications as well.</para>
+			</listitem>
+			<listitem>
+				<para><emphasis role="bold">JSONP Support</emphasis></para>
+				<para>Support for JSONP for retrieval in the API. This gives you the tools to access
+					the API from the browser directly.</para>
+			</listitem>
+			<listitem>
+				<para><emphasis role="bold">Rate Limiting Exposed</emphasis></para>
+				<para>We now expose rate limiting and the time window of the rate limiting to you
+					through headers. This helps us with transparency and lets you know when you're
+					getting close to reaching your account rate limits. </para>
+			</listitem>
+			<listitem>
+				<para><emphasis role="bold">Email Notifications</emphasis></para>
+				<para>We added email as a notification type so you can receive email on your
+					alerts.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Enhancements</title>
+			<listitem>
+				<para>Renamed "Alarm History" to "Alarm Notification History."</para>
+			</listitem>
+			<listitem>
+				<para>Now support a key-value hash to facilitate multiple body matches.</para>
+			</listitem>
+			<listitem>
+				<para>Added previous state to webhook payload.</para>
+			</listitem>
+			<listitem>
+				<para>Audits now expose the tenantId.</para>
+			</listitem>
+			<listitem>
+				<para>Added HTTP CORS headers so you can now do cross domain requests.</para>
+			</listitem>
+			<listitem>
+				<para>Unified the notification history log and the alarm change log.</para>
+			</listitem>
+			<listitem>
+				<para>Improved support dealing with time ordered mixed results.</para>
+			</listitem>
+			<listitem>
+				<para>Improved type checking for the alarm subsystem.</para>
+			</listitem>
+			<listitem>
+				<para>Added detection for missing metrics and automatically output a failed state
+					when detected.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resolved Issues</title>
+			<listitem>
+				<para>Fixed hashing method to prevent a collector affinity.</para>
+			</listitem>
+			<listitem>
+				<para>Improved the location header returned so it works in non-standard port
+					setups.</para>
+			</listitem>
+			<listitem>
+				<para>Added previous state to the webhook field.</para>
+			</listitem>
+			<listitem>
+				<para>Added a label to the alarm object.</para>
+			</listitem>
+			<listitem>
+				<para>Unified the language around the different states in the system.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Documentation</title>
+			<listitem>
+				<para>Try some simple monitoring exercises in the <emphasis role="italic">Rackspace
+						Cloud Monitoring Getting Started Guide</emphasis> at:</para>
+				<para><link
+						xlink:href="http://docs.rackspace.com/cm/api/v1.0/cm-getting-started/content/Introduction.html"
+						>http://docs.rackspace.com/cm/api/v1.0/cm-getting-started/content/Introduction.html</link>.</para>
+				<para/>
+			</listitem>
+			<listitem>
+				<para>Get reference information and examples for all endpoints in the <emphasis
+						role="italic">Rackspace Cloud Monitoring Developers Guide</emphasis>
+					at:</para>
+				<para><link
+						xlink:href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/index.html"
+						>http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/index.html</link>.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Talk to Us</title>
+			<para xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml">Do you have questions about Rackspace
+				Cloud Monitoring? Would you like to give us feedback on how we're doing? </para>
+			<listitem xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml">
+				<para>Join us in our chat room at: Freenode IRC at #cloudmonitoring</para>
+				<para>Or just click the following link:</para>
+				<para><link
+						xlink:href="http://webchat.freenode.net?channels=cloudmonitoring&amp;uio=d4"
+						>Webchat</link></para>
+			</listitem>
+			<listitem xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml">
+				<para>You can also provide feedback using our feedback form:</para>
+				<para><link
+						xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/41927-cloud-monitoring"
+						>Product Feedback Forum</link></para>
+			</listitem>
+			<listitem xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml">
+				<para>Get support here:</para>
+				<para>
+					<link xlink:href="https://manage.rackspacecloud.com/Tickets/YourTickets.do">File a ticket here</link></para>
+			</listitem>
+		</itemizedlist>
+	
+	</chapter>
+	<chapter xml:id="cmv1.0">
+		<?dbhtml stop-chunking?>
+		<title>v1.0, December 15, 2011</title>
+		<para>These release notes correspond to the Private Beta for Rackspace Cloud Monitoring.</para>
+		<itemizedlist>
+			<title>Product Features</title>
+			<listitem>
+				<para><emphasis role="bold">Multiple Monitoring Zones Perspective</emphasis></para>
+				<para>Monitor a single resource from many different monitoring zones.</para>
+			</listitem>
+			<listitem>
+				<para><emphasis role="bold">Alarm History</emphasis></para>
+				<para>Use an API to retrieve time series data from the system. Use this to go back
+					in time and verify which notifications went out and why.</para>
+			</listitem>
+			<listitem>
+				<para><emphasis role="bold">Remote IPv4/v6 Checks</emphasis></para>
+				<para>Monitor IPv4/IPv6 services via IP addresses or using DNS resolution. Using DNS
+					resolution, specify which type of address to resolve, A or AAAA.</para>
+			</listitem>
+			<listitem>
+				<para><emphasis role="bold">Data Model</emphasis></para>
+				<para>We’ve disconnected the concept of alerting and data collection so you can
+					create robust and rich monitors. Check many aspects of a single resource; for
+					instance, make sure a site is responding with a 201-status code, and features
+					the copyright as a body match on the bottom of the page.  Ensure all these
+					conditions are met before the status of an alarm is “OK.”</para>
+			</listitem>
+			<listitem>
+				<para><emphasis role="bold">Alarm Language</emphasis></para>
+				<para>Create a unique query with our language purposefully built to express
+					thresholds and alert conditions. String compare metrics, use a regular
+					expression operator, check the rate of change, and much more. With each of these
+					primitives you can chain together multiple conditionals to set the state of an
+					alarm. Our documentation highlights best practices for building robust monitors
+					and alarms.</para>
+			</listitem>
+			<listitem>
+				<para><emphasis role="bold">On-demand Simulation</emphasis></para>
+				<para>Run a check on-demand, to verify its status before adding it. This allows you
+					to get a feel for a monitor before being alerted by it.  On top of that, you can
+					take the results and pass it another endpoint to simulate your alarm language
+					criteria match!  This is extremely powerful as it takes some of the complexity
+					out of guessing and allows you to simulate responses as they happen in normal
+					operation.</para>
+			</listitem>
+			<listitem>
+				<para><emphasis role="bold">Audit Log</emphasis></para>
+				<para>Track all changes to an entity, check and alarm.  Get the before and after of
+					every changed object in the system. You can even add a “who” and “why” parameter
+					to each POST/PUT request to keep a log of why the changes were made.</para>
+			</listitem>
+			<listitem>
+				<para><emphasis role="bold">Change Alert Destination</emphasis></para>
+				<para>Depending upon which event is generated, you can execute different
+					notifications; for instance on a warning alert, fire a webhook, but on an error
+					alert, send sysadmin@yourcompany.com an urgent email.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Documentation</title>
+			<listitem>
+				<para>Try some simple monitoring exercises in the <emphasis role="italic">Rackspace
+						Cloud Monitoring Getting Started Guide</emphasis> at:</para>
+				<para><link
+						xlink:href="http://docs.rackspace.com/cm/api/v1.0/cm-getting-started/content/Introduction.html"
+						>http://docs.rackspace.com/cm/api/v1.0/cm-getting-started/content/Introduction.html</link>.</para>
+				<para/>
+			</listitem>
+			<listitem>
+				<para>Get reference information and examples for all endpoints in the <emphasis
+						role="italic">Rackspace Cloud Monitoring Developers Guide</emphasis>
+					at:</para>
+				<para><link
+						xlink:href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/index.html"
+						>http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/index.html</link>.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Talk to Us</title>
+			<para xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml">Do you have questions about Rackspace
+				Cloud Monitoring? Would you like to give us feedback on how we're doing? </para>
+			<listitem xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml">
+				<para>Join us in our chat room at: Freenode IRC at #cloudmonitoring</para>
+				<para>Or just click the following link:</para>
+				<para><link
+						xlink:href="http://webchat.freenode.net?channels=cloudmonitoring&amp;uio=d4"
+						>Webchat</link></para>
+			</listitem>
+			<listitem xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml">
+				<para>You can also provide feedback using our feedback form:</para>
+				<para><link
+						xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/41927-cloud-monitoring"
+						>Product Feedback Forum</link></para>
+			</listitem>
+			<listitem xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml">
+				<para>Get email support here:</para>
+				<para>
+					<link xlink:href="mailto:cmbeta@rackspace.com">Email Support List</link></para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+</book>

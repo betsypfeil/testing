@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE appendix
+[<!-- Some useful entities borrowed from HTML -->
+<!ENTITY ndash  "&#x2013;">
+<!ENTITY mdash  "&#x2014;">
+<!ENTITY hellip "&#x2026;">
+
+<!-- Useful for describing APIs -->
+<!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+<!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+<!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+<!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+
+
+<!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+<imageobject>
+<imagedata fileref="img/Check_mark_23x20_02.svg"
+format="SVG" scale="60"/>
+</imageobject>
+</inlinemediaobject>'>
+<!ENTITY CODES       'Normal Response Code(s):'>
+<!ENTITY ERROR_CODES 'Error Response Code(s):'>
+<!ENTITY NO_REQUEST '<para xmlns="http://docbook.org/ns/docbook">
+This operation does not require a request body.</para>'>
+<!ENTITY LONG_URI_REFHEAD '
+<thead xmlns="http://docbook.org/ns/docbook">
+<tr>
+<td colspan="1">Verb</td>
+<td colspan="4">URI</td>
+<td colspan="3">Description</td>
+</tr>
+</thead>'>
+<!ENTITY URI_REFHEAD '
+<thead xmlns="http://docbook.org/ns/docbook">
+<tr>
+<td colspan="1">Verb</td>
+<td colspan="1">URI</td>
+<td colspan="4">Description</td>
+</tr>
+</thead>'>
+<!ENTITY MAAS 'Rackspace Cloud Monitoring'>
+]>
+<appendix xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg" version="5.0"
+  xml:id="appendix-client-libraries-tools">
+  
+    <title>Client Libraries and Tools</title>
+  <info>
+    <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">      
+      <raxm:type>concept</raxm:type>
+      <raxm:product version="v1.0">cm</raxm:product>
+      <raxm:priority>50</raxm:priority>
+    </raxm:metadata> 
+  </info>
+  <?dbhtml stop-chunking?>
+  <para>This section describes client libraries and tools that you can use to interact with the API. </para>
+
+  <section xml:id="client-libraries">
+    <title>Client Libraries</title>
+    <section xml:id="client-libraries-rackspace-monitoring">
+      <title>Python - <emphasis>"rackspace-monitoring"</emphasis> Library</title>
+      <para>The official client library for interacting with the API is written in Python and based on
+        the open-source <link xlink:href="http://libcloud.apache.org"
+          >http://libcloud.apache.org</link> Apache Libcloud framework.</para>
+      <para>Access the library from the following website:</para>
+      <para><link xlink:href="https://github.com/racker/rackspace-monitoring"
+          >https://github.com/racker/rackspace-monitoring</link></para>
+      <para>Use the following command to install the library:</para>
+      <programlisting>$ pip install rackspace-monitoring</programlisting>
+    </section>
+    <section xml:id="client-libraries-rackspace-monitoring-rb">
+      <title>Ruby - <emphasis>"rackspace-monitoring"</emphasis> Library</title>
+      <para>The official client library for interacting with the API is written in Ruby and based on
+        the open-source <link xlink:href="http://fog.io/"
+          >http://fog.io/</link> Fog library.</para>
+      <para>Access the library from the following website:</para>
+      <para><link xlink:href="https://github.com/racker/rackspace-monitoring-rb"
+        >https://github.com/racker/rackspace-monitoring-rb</link></para>
+      <para>Use the following command to install the library:</para>
+      <programlisting>$ gem install rackspace-monitoring</programlisting>
+    </section>
+  </section>
+  <section xml:id="client-tools">
+    <title>Tools (CLI, etc...)</title>
+    <section xml:id="client-tools-rackspace-monitoring-cli">
+     <title>Command Line Interface - <emphasis>"Raxmon"</emphasis> Tool</title>
+     <para>&MAAS; provides a command line utility for performing API actions.</para>
+     <para>Access the library from the following website:</para>
+     <para><link xlink:href="https://github.com/racker/rackspace-monitoring-cli"
+         >https://github.com/racker/rackspace-monitoring-cli</link></para>
+     <para>Use the following command to install the command line utility:</para>
+     <programlisting>$ pip install --upgrade rackspace-monitoring-cli</programlisting>
+    </section>
+    <section xml:id="client-tools-rackspace-monitoring-chef">
+      <title>Integration - <emphasis>"Cloud Monitoring Cookbook"</emphasis></title>
+      <para>&MAAS; provides a cookbook for integrating with
+        <link xlink:href="http://www.opscode.com/chef/">Opscode Chef</link>.</para>
+      <para>Access the code and read some of the ways to use the
+        integration here:</para>
+      <para><link xlink:href="https://github.com/racker/cookbook-cloudmonitoring"
+        >https://github.com/racker/cookbook-cloudmonitoring</link></para>
+      <para>And here:</para>
+      <para><link
+          xlink:href="http://www.rackspace.com/knowledge_center/article/cloud-monitoring-automation-integrate-monitoring-with-chef"
+          >http://www.rackspace.com/knowledge_center/article/cloud-monitoring-automation-integrate-monitoring-with-chef</link>
+      </para>
+      <para>Follow the instructions to install the Chef integration.</para>
+    </section>
+  </section>
+</appendix>

@@ -1,0 +1,5 @@
+if (metric['foo'] ${operator} 1 && metric['barr'] ${operator} 2.5) {
+  return WARNING
+}
+
+return OK

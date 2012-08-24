@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:svg="http://www.w3.org/2000/svg" version="5.0" xml:id="cmv1.3">
+	<?dbhtml stop-chunking?>
+	<title>v1.3, June 14, 2012</title>
+		<para>These release notes correspond to the pre "Unlimited Availability" release of Cloud Monitoring.</para>
+	<itemizedlist>
+		<title>New Features</title>
+		<listitem>
+			<para><emphasis>Traceroute API:</emphasis> This API lets you run
+				a Traceroute from a Monitoring Zone to a Hostname or IP address.
+				Like all Cloud Monitoring features, the Traceroute API is fully dual
+				stack, supporting both IPv4 and IPv6.  The Traceroute API can be used to debug
+				networking issues between the Cloud Monitoring collectors and your infrastructure.
+			</para>
+			<para><link xlink:href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/service-monitoring-zones.html#service-monitoring-zones-traceroute">Traceroute Docs</link></para>
+		</listitem>
+		<listitem>
+			<para><emphasis>Metric interpolation on the Alarm status
+					string:</emphasis> This allows you to include
+				metrics from a Check in the status string returned by
+				an Alarm. For example, to include the HTTP status code
+				from a <code>remote.http</code> Check, your Alarm
+				could look like this:
+				<programlisting language="javascript">
+				if (metrics['code'] != "200") {
+					return CRITICAL, "Bad HTTP Status: #{code}"
+				}</programlisting>
+			</para>
+			<para><link xlink:href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/alerts-language.html#concepts-alarms-alarm-language">Alarm DSL Docs</link></para>
+		</listitem>
+		<listitem>
+			<para><emphasis>Add payload to the remote.http check:</emphasis> This allows you
+				send a request body during a HTTP/HTTPS
+				request.</para>
+			<para><link
+				xlink:href="http://docs.rackspacecloud.com/cm/api/v1.0/cm-devguide/content/service-check-types.html#section-check-types-remote.http"
+					>remote.http attributes</link></para>
+		</listitem>
+	</itemizedlist>
+	<itemizedlist>
+		<title>Enhancements</title>
+		<listitem><para>Allow a user to specify the number of ICMP packets to send out on the
+				<code>remote.ping</code> check.</para></listitem>
+		<listitem>
+			<para>Updated Certificate Authority chain used to
+				validate SSL certificates, resulting in less false
+				positives.</para>
+		</listitem>
+		<listitem>
+			<para><code>remote.tcp</code> check now features the <code>body_match_metric</code> when
+				specifying the send_body command.</para>
+		</listitem>
+		<listitem>
+			<para>Add the remote IP address of the collector that alerted you to the
+				Webhook notification payload.</para>
+		</listitem>
+	</itemizedlist>
+	<itemizedlist>
+		<title>Resolved Issues</title>
+		<listitem>
+			<para>Fixed writable date and time fields that were supposed
+				to be immutable.</para>
+		</listitem>
+		<listitem>
+			<para>Fixed the DSL string escaping to allow you to
+				specify special characters, example below:</para>
+			<programlisting language="javascript">
+			if (metric['code'] nregex '2\\d\\d') {
+			  return CRITICAL, 'Invalid status code #{code}'
+			}</programlisting>
+		</listitem>
+	</itemizedlist>
+	<section security="internal" xml:id="cmv1.3-internal">
+		<title>Internal Changes</title>
+		<itemizedlist>
+			<title>New Features</title>
+			<listitem>
+				<para>Added account level feature flags, to enable
+					easier dark launching of new features.</para>
+			</listitem>
+			<listitem>
+				<para>Usage is being emitted to Atom Hoppper and is in a done/done
+					state.</para>
+			</listitem>
+			<listitem>
+				<para>Publishing internal docs to the docs-internal
+					site.</para>
+			</listitem>
+			<listitem>
+				<para>Validate Alarm DSL regexes before storing them.
+					This will allow us to make sure that we are
+					storing completely valid regexes.</para>
+			</listitem>
+			<listitem>
+				<para>Add an internal account dump tool that will dump
+					everything about your account.</para>
+			</listitem>
+			<listitem>
+				<para>Deployed the Host Agent into production.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Enhancements</title>
+			<listitem>
+				<para>Allow an Agent to be connected and idle, this
+					will allow you to run commands on agents not
+					associated with an entity.</para>
+			</listitem>
+			<listitem>
+				<para>Factored out a shared utilities library for
+					internal Rackspace consumption.</para>
+			</listitem>
+			<listitem>
+				<para>Deployed the "Agent Endpoint" (agent
+					infrastructure for talking to the agent) in
+					production and staging.</para>
+			</listitem>
+			<listitem>
+				<para>Allow Hybrid Tenant Ids.</para>
+			</listitem>
+			<listitem>
+				<para>Publishing agent protocol docs on the
+					docs-internal website.  This will allow people to
+					get an early look at the flexibility and
+					extensibility of the agent.</para>
+			</listitem>
+			<listitem>
+				<para>Added profiling to the dashboard. Click a button
+					on the operational dashboard and get access to
+					hierarchical stack information and timing.</para>
+			</listitem>
+			<listitem>
+				<para>Deployed a new Graylog2/Elasticsearch cluster
+					with 5 TB of usable space.</para>
+				<para>View here: <link xlink:href="https://iad2-maas-prod-glog0.cm.k1k.me">https://iad2-maas-prod-glog0.cm.k1k.me</link></para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resolved Issues</title>
+			<listitem>
+				<para>Limit the number of body matches.</para>
+			</listitem>
+			<listitem>
+				<para>Fixed critical ZooKeeper bug that prevented
+					reconnects in rare network partitions.</para>
+			</listitem>
+			<listitem>
+				<para>Switch to reading and writing with <code>QUORUM</code>
+					majority. Most writes will get an added benefit
+					of speed.</para>
+			</listitem>
+			<listitem>
+				<para>Implemented Proper XML escaping from API server
+					to the Collector (noitd).</para>
+			</listitem>
+		</itemizedlist>
+	</section>
+		<itemizedlist>
+			<title>Documentation</title>
+			<listitem>
+			<para>Try some simple monitoring exercises in the <emphasis role="italic">Rackspace
+				Cloud Monitoring Getting Started Guide</emphasis> at:</para>
+			<para><link linked=""
+				xlink:href="http://docs.rackspace.com/cm/api/v1.0/cm-getting-started/content/Introduction.html"
+				>http://docs.rackspace.com/cm/api/v1.0/cm-getting-started/content/Introduction.html</link>.</para>
+			<para/>
+			</listitem>
+			<listitem>
+			<para>Get reference information and examples for all endpoints in the <emphasis
+				role="italic">Rackspace Cloud Monitoring Developers Guide</emphasis>
+				at:</para>
+			<para><link
+				xlink:href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/index.html"
+				>http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/index.html</link>.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Talk to Us</title>
+			<para xmlns:svg="http://www.w3.org/2000/svg"
+			xmlns:m="http://www.w3.org/1998/Math/MathML"
+			xmlns:html="http://www.w3.org/1999/xhtml">Do you have questions about Rackspace
+			Cloud Monitoring? Would you like to give us feedback on how we're doing? </para>
+		<listitem xmlns:svg="http://www.w3.org/2000/svg"
+			xmlns:m="http://www.w3.org/1998/Math/MathML"
+			xmlns:html="http://www.w3.org/1999/xhtml">
+			<para>Join us in our chat room at: Freenode IRC at #cloudmonitoring</para>
+			<para>Or just click the following link:</para>
+			<para><link
+				xlink:href="http://webchat.freenode.net?channels=cloudmonitoring&amp;uio=d4"
+				>Webchat</link></para>
+		</listitem>
+		<listitem xmlns:svg="http://www.w3.org/2000/svg"
+			xmlns:m="http://www.w3.org/1998/Math/MathML"
+			xmlns:html="http://www.w3.org/1999/xhtml">
+			<para>You can also provide feedback using our feedback form:</para>
+			<para><link
+				xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/41927-cloud-monitoring"
+				>Product Feedback Forum</link></para>
+		</listitem>
+		<listitem xmlns:svg="http://www.w3.org/2000/svg"
+			xmlns:m="http://www.w3.org/1998/Math/MathML"
+			xmlns:html="http://www.w3.org/1999/xhtml">
+			<para>Get support here:</para>
+			<para>
+				<link xlink:href="https://manage.rackspacecloud.com/Tickets/YourTickets.do">File a ticket here</link></para>
+		</listitem>
+		</itemizedlist>
+</chapter>

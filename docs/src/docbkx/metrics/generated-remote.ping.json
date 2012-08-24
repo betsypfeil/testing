@@ -1,0 +1,28 @@
+{
+  "timestamp": 1320248995395,
+  "monitoring_zone_id": "mzxJ4L2IU",
+  "available": true,
+  "status": "cnt=5,avail=60,min=0.0002,max=0.0003,avg=0.0003",
+  "metrics": {
+    "available": {
+      "type": "n",
+      "data": 60
+    },
+    "average": {
+      "type": "n",
+      "data": 0.0002513333359578
+    },
+    "count": {
+      "type": "i",
+      "data": 5
+    },
+    "maximum": {
+      "type": "n",
+      "data": 0.0002770000137389
+    },
+    "minimum": {
+      "type": "n",
+      "data": 0.0002329999988433
+    }
+  }
+}
