@@ -54,7 +54,7 @@
    - API v1.4</a></p><a onclick="_gaq.push(['_trackEvent', 'Header', 'pdfDownload', 'click', 1]);" alt="Download a pdf of this document" class="pdficon" href="../../../cm-devguide-latest.pdf"><img src="../common/images/pdf.png"/></a>
        
       <a href="../atom.xml"><img alt="Atom feed of this document" src="../common/images/feed-icon.png"/></a></div></div><div id="content"><div class="statustext">INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL - </div><div class="section"><div xmlns="" class="titlepage"><div><div><h2 xmlns="http://www.w3.org/1999/xhtml" class="title" style="clear: both"><a id="service-agent"> </a>4.16. <span class="internal">Agents</span></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="service-agent.html#service-agent.agents">4.16.1. Summary</a></span></dt><dt><span class="section"><a href="service-agent.html#service-agent.hp">4.16.2. Hash Prefix</a></span></dt><dt><span class="section"><a href="service-agent.html#service-agent-list-agents">4.16.3. List Agents</a></span></dt><dt><span class="section"><a href="service-agent.html#service-agent-list-agent">4.16.4. List Agent</a></span></dt><dt><span class="section"><a href="service-agent.html#service-agent-list-agent-connections">4.16.5. List Agent Connections</a></span></dt><dt><span class="section"><a href="service-agent.html#service-agent-list-agent-connection">4.16.6. List Agent Connection</a></span></dt></dl></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent.agents"> </a>4.16.1. <span class="internal">Summary</span></h3></div></div></div><p><span class="internal">Agents are the facility for host-based checks
-      </span></p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent.hp"> </a>4.16.2. <span class="internal">Hash Prefix</span></h3></div></div></div><p><span class="internal">at - (e.g. </span><span class="emphasis"><em><span class="internal">at793kjdf9</span></em></span><span class="internal">) </span></p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent-list-agents"> </a>4.16.3. <span class="internal">List Agents</span></h3></div></div></div><table rules="all" id="d255e4204"><thead><tr>
+      </span></p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent.hp"> </a>4.16.2. <span class="internal">Hash Prefix</span></h3></div></div></div><p><span class="internal">at - (e.g. </span><span class="emphasis"><em><span class="internal">at793kjdf9</span></em></span><span class="internal">) </span></p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent-list-agents"> </a>4.16.3. <span class="internal">List Agents</span></h3></div></div></div><table rules="all" id="d256e4204"><thead><tr>
 <td><span class="internal">Verb</span></td>
 <td colspan="4"><span class="internal">URI</span></td>
 <td colspan="3"><span class="internal">Description</span></td>
@@ -65,18 +65,18 @@
           </tr></tbody></table><p><span class="internal">There are no parameters for this call.</span></p><p><span class="internal">Normal Response Code:
         </span><span class="returnvalue"><span class="internal">200</span></span></p><p><span class="internal">Error Response Codes: </span><span class="errorcode"><span class="internal">401</span></span><span class="internal">,
           </span><span class="errorcode"><span class="internal">403</span></span><span class="internal">, </span><span class="errorcode"><span class="internal">500</span></span><span class="internal">,
-          </span><span class="errorcode"><span class="internal">503</span></span></p><div class="example"><a id="d255e4224"> </a><p class="title"><strong>Example 4.102. <span class="internal">Get Agents Response: XML</span></strong></p><div class="example-contents"><pre class="programlisting brush: xml; "><span class="internal">
+          </span><span class="errorcode"><span class="internal">503</span></span></p><div class="example"><a id="d256e4224"> </a><p class="title"><strong>Example 4.102. <span class="internal">Get Agents Response: XML</span></strong></p><div class="example-contents"><pre class="programlisting brush: xml; "><span class="internal">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;agent&gt;
   &lt;last_connected&gt;1334685407&lt;/last_connected&gt;
 &lt;/agent&gt;
 
-</span></pre></div></div><br class="example-break"/><div class="example"><a id="d255e4227"> </a><p class="title"><strong>Example 4.103. <span class="internal">Get Agents Response: JSON</span></strong></p><div class="example-contents"><pre class="programlisting brush: javascript; "><span class="internal">
+</span></pre></div></div><br class="example-break"/><div class="example"><a id="d256e4227"> </a><p class="title"><strong>Example 4.103. <span class="internal">Get Agents Response: JSON</span></strong></p><div class="example-contents"><pre class="programlisting brush: javascript; "><span class="internal">
 {
     "last_connected": 1334685407
 }
 
-</span></pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent-list-agent"> </a>4.16.4. <span class="internal">List Agent</span></h3></div></div></div><table rules="all" id="d255e4232"><thead><tr>
+</span></pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent-list-agent"> </a>4.16.4. <span class="internal">List Agent</span></h3></div></div></div><table rules="all" id="d256e4232"><thead><tr>
 <td><span class="internal">Verb</span></td>
 <td colspan="4"><span class="internal">URI</span></td>
 <td colspan="3"><span class="internal">Description</span></td>
@@ -87,7 +87,7 @@
           </tr></tbody></table><p><span class="internal">There are no parameters for this call.</span></p><p><span class="internal">Normal Response Code:
         </span><span class="returnvalue"><span class="internal">200</span></span></p><p><span class="internal">Error Response Codes: </span><span class="errorcode"><span class="internal">401</span></span><span class="internal">,
           </span><span class="errorcode"><span class="internal">403</span></span><span class="internal">, </span><span class="errorcode"><span class="internal">500</span></span><span class="internal">,
-          </span><span class="errorcode"><span class="internal">503</span></span></p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent-list-agent-connections"> </a>4.16.5. <span class="internal">List Agent Connections</span></h3></div></div></div><table rules="all" id="d255e4255"><thead><tr>
+          </span><span class="errorcode"><span class="internal">503</span></span></p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent-list-agent-connections"> </a>4.16.5. <span class="internal">List Agent Connections</span></h3></div></div></div><table rules="all" id="d256e4255"><thead><tr>
 <td><span class="internal">Verb</span></td>
 <td colspan="4"><span class="internal">URI</span></td>
 <td colspan="3"><span class="internal">Description</span></td>
@@ -98,7 +98,7 @@
           </tr></tbody></table><p><span class="internal">There are no parameters for this call.</span></p><p><span class="internal">Normal Response Code:
         </span><span class="returnvalue"><span class="internal">200</span></span></p><p><span class="internal">Error Response Codes: </span><span class="errorcode"><span class="internal">401</span></span><span class="internal">,
           </span><span class="errorcode"><span class="internal">403</span></span><span class="internal">, </span><span class="errorcode"><span class="internal">500</span></span><span class="internal">,
-          </span><span class="errorcode"><span class="internal">503</span></span></p><div class="example"><a id="d255e4276"> </a><p class="title"><strong>Example 4.104. <span class="internal">Get Agent Connections Response: XML</span></strong></p><div class="example-contents"><pre class="programlisting brush: xml; "><span class="internal">
+          </span><span class="errorcode"><span class="internal">503</span></span></p><div class="example"><a id="d256e4276"> </a><p class="title"><strong>Example 4.104. <span class="internal">Get Agent Connections Response: XML</span></strong></p><div class="example-contents"><pre class="programlisting brush: xml; "><span class="internal">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;agent_connections&gt;
   &lt;agent_connection&gt;
@@ -111,7 +111,7 @@
   &lt;/agent_connection&gt;
 &lt;/agent_connections&gt;
 
-</span></pre></div></div><br class="example-break"/><div class="example"><a id="d255e4279"> </a><p class="title"><strong>Example 4.105. <span class="internal">Get Agent Connections Response: JSON</span></strong></p><div class="example-contents"><pre class="programlisting brush: javascript; "><span class="internal">
+</span></pre></div></div><br class="example-break"/><div class="example"><a id="d256e4279"> </a><p class="title"><strong>Example 4.105. <span class="internal">Get Agent Connections Response: JSON</span></strong></p><div class="example-contents"><pre class="programlisting brush: javascript; "><span class="internal">
 [
     {
         "agent_id": "2090dcec-6452-49f3-be53-cb95a712108b",
@@ -123,7 +123,7 @@
     }
 ]
 
-</span></pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent-list-agent-connection"> </a>4.16.6. <span class="internal">List Agent Connection</span></h3></div></div></div><table rules="all" id="d255e4284"><thead><tr>
+</span></pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent-list-agent-connection"> </a>4.16.6. <span class="internal">List Agent Connection</span></h3></div></div></div><table rules="all" id="d256e4284"><thead><tr>
 <td><span class="internal">Verb</span></td>
 <td colspan="4"><span class="internal">URI</span></td>
 <td colspan="3"><span class="internal">Description</span></td>

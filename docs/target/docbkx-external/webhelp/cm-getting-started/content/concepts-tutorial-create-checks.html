@@ -6,7 +6,7 @@
 <title>2.3. Create Checks - Rackspace Cloud Monitoring Getting Started Guide
    - API v1.4</title><meta name="generator" content="DocBook XSL-NS Stylesheets V1.76.1"/><link rel="home" href="index.html" title="Rackspace Cloud Monitoring Getting Started Guide"/><link rel="up" href="tutorials.html" title="Chapter 2. Create Your First Monitor"/><link rel="prev" href="concepts-tutorial-monitoring-zones.html" title="2.2. List Monitoring Zones"/><link rel="next" href="tutorial-list-all-checks.html" title="2.4. List All Checks for the Entity"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script type="text/javascript">
             //The id for tree cookie
-            var treeCookieId = "treeview-1518";
+            var treeCookieId = "treeview-1521";
             var language = "en";
             var w = new Object();
             //Localization
@@ -110,7 +110,7 @@
                 }
                });
              });
-             </script><a class="gloss" href="#" id="collectors">collectors</a> run this check. </p></dd><dt><span class="term"><em class="parameter"><code>target_alias</code></em></span></dt><dd><p> Resolves the check to an IP address. </p></dd></dl></div><div class="example"><a id="d6e372"> </a><p class="title"><strong>Example 2.11. Create a PING Check using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i \
+             </script><a class="gloss" href="#" id="collectors">collectors</a> run this check. </p></dd><dt><span class="term"><em class="parameter"><code>target_alias</code></em></span></dt><dd><p> Resolves the check to an IP address. </p></dd></dl></div><div class="example"><a id="d6e374"> </a><p class="title"><strong>Example 2.11. Create a PING Check using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i \
 --data-binary \
 '{ "details" : {  },
   "label" : "Website check 1",
@@ -123,7 +123,7 @@
 -H "X-Auth-Token: auth_token" \
 -H "Content-Type: application/json" \
 -H "Accept: application/json" \
-'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/checks' </pre></div></div><br class="example-break"/><div class="example"><a id="d6e375"> </a><p class="title"><strong>Example 2.12. Create Ping Check cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
+'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/checks' </pre></div></div><br class="example-break"/><div class="example"><a id="d6e377"> </a><p class="title"><strong>Example 2.12. Create Ping Check cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
 Date: Fri, 24 Feb 2012 06:28:51 GMT
 Location: https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/checks/chyYWNw59I
 X-RateLimit-Limit: 50000
@@ -141,10 +141,10 @@ Content-Type: text/plain
           For information about errors, see the <a class="link" href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/general-api-info-api-faults.html" target="_top">Rackspace Cloud Monitoring Developers Guide</a>.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Checks <span class="emphasis"><em>always</em></span> have a parent entity associated with them.
             Therefore all URLs are contained underneath the check URL. For example, if the ID of the
             entity we created earlier is enn14Ch5mc, then the URLs would be underneath
-            https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/.</p></td></tr></table></div><div class="example"><a id="d6e386"> </a><p class="title"><strong>Example 2.13. Create a PING Check using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-checks-create --entity-id=enn14Ch5mc --type=remote.ping --label="Website check 1" --monitoring-zones=mzdfw --timeout=30 --period=60 --target-alias=default</pre></div></div><br class="example-break"/><div class="example"><a id="d6e389"> </a><p class="title"><strong>Example 2.14. Create a PING Check raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource created. ID: chyYWNw59I
+            https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/.</p></td></tr></table></div><div class="example"><a id="d6e388"> </a><p class="title"><strong>Example 2.13. Create a PING Check using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-checks-create --entity-id=enn14Ch5mc --type=remote.ping --label="Website check 1" --monitoring-zones=mzdfw --timeout=30 --period=60 --target-alias=default</pre></div></div><br class="example-break"/><div class="example"><a id="d6e391"> </a><p class="title"><strong>Example 2.14. Create a PING Check raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource created. ID: chyYWNw59I
 </pre></div></div><br class="example-break"/><p><a class="link" href="concepts-tutorial-create-checks.html#tutorial-test-check" title="2.3.2. Test the Check"><span class="bold"><strong>NEXT UP:</strong></span></a>  Test the new check to make sure it works. </p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="tutorial-test-check"> </a>2.3.2. Test the Check</h3></div></div></div><p>Testing the check runs the check once and lists the check's metrics. This is an easy
           way to verify and view your metrics. Later, you can use the test check output to help you
-          build alarms.</p><div class="example"><a id="d6e398"> </a><p class="title"><strong>Example 2.15. Create Test Check Request using cURL </strong></p><div class="example-contents"><pre class="programlisting">curl -i \
+          build alarms.</p><div class="example"><a id="d6e400"> </a><p class="title"><strong>Example 2.15. Create Test Check Request using cURL </strong></p><div class="example-contents"><pre class="programlisting">curl -i \
 --data-binary \
 '{ "details" : {  },
   "label" : "Website check 1",
@@ -157,7 +157,7 @@ Content-Type: text/plain
 -H 'X-Auth-Token: auth_code' \
 -H 'Content-Type: application/json' \
 -H 'Accept: application/json' \
-'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/test-check/' </pre></div></div><br class="example-break"/><div class="example"><a id="d6e401"> </a><p class="title"><strong>Example 2.16. Create Test Check cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 200 OK
+'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/test-check/' </pre></div></div><br class="example-break"/><div class="example"><a id="d6e403"> </a><p class="title"><strong>Example 2.16. Create Test Check cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 200 OK
 X-Ratelimit-Remaining: 497
 X-Response-Id: .rh-VE2m.h-lon3-maas-prod-api0.r-pm6oiwjm.c-37726.ts-1329263604920.v-3aec925
 Transfer-Encoding: chunked
@@ -198,7 +198,7 @@ Content-Type: application/json; charset=UTF-8
             }
         }
     }
-]</pre></div></div><br class="example-break"/><div class="example"><a id="d6e404"> </a><p class="title"><strong>Example 2.17. Test Check Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-checks-test --entity-id=enn14Ch5mc --type=remote.ping --monitoring-zones=mzdfw --timeout=30 --period=60 --target-alias=default</pre></div></div><br class="example-break"/><div class="example"><a id="d6e407"> </a><p class="title"><strong>Example 2.18. Test Check raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">[{u'available': True, u'timestamp': 1329334696399, 
+]</pre></div></div><br class="example-break"/><div class="example"><a id="d6e406"> </a><p class="title"><strong>Example 2.17. Test Check Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-checks-test --entity-id=enn14Ch5mc --type=remote.ping --monitoring-zones=mzdfw --timeout=30 --period=60 --target-alias=default</pre></div></div><br class="example-break"/><div class="example"><a id="d6e409"> </a><p class="title"><strong>Example 2.18. Test Check raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">[{u'available': True, u'timestamp': 1329334696399, 
 u'monitoring_zone_id': u'mzdfw', 
 u'status': u'cnt=5,avail=100,min=0.0018,max=0.0020,avg=0.0019', 
 u'metrics': {u'count': {u'data': u'5', u'type': u'i'}, 
@@ -212,7 +212,7 @@ u'maximum': {u'data': u'2.022000029683e-03', u'type': u'n'}}}]</pre></div></div>
           an HTTP server might host pages for multiple, different domain names on a single IP
           address, the check needs a full URL to know which server name and which URL to examine.
           Likewise, a heavy traffic site might have multiple HTTP servers for the same domain name.
-          The HTTP check lets you monitor each individual web server.</p><div class="example"><a id="d6e416"> </a><p class="title"><strong>Example 2.19. Create HTTP Check Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X POST \
+          The HTTP check lets you monitor each individual web server.</p><div class="example"><a id="d6e418"> </a><p class="title"><strong>Example 2.19. Create HTTP Check Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X POST \
 --data-binary \
 { "details" : { "body" : "foo",
       "method" : "GET",
@@ -229,7 +229,7 @@ u'maximum': {u'data': u'2.022000029683e-03', u'type': u'n'}}}]</pre></div></div>
 -H 'Accept: application/json' \
 'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/checks'
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d6e419"> </a><p class="title"><strong>Example 2.20. Create HTTP Check cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
+</pre></div></div><br class="example-break"/><div class="example"><a id="d6e421"> </a><p class="title"><strong>Example 2.20. Create HTTP Check cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
 X-Ratelimit-Remaining: 49960
 X-Response-Id: .rh-vgB4.h-ord1-maas-prod-api1.r-W0REfAoy.c-2650.ts-1329337042872.v-b9d7626
 Content-Length: 0
@@ -241,9 +241,9 @@ Date: Wed, 15 Feb 2012 20:17:22 GMT
 X-Ratelimit-Window: 24 hours
 Content-Type: text/plain
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d6e422"> </a><p class="title"><strong>Example 2.21. Create HTTP Check Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-checks-create --entity-id=enn14Ch5mc --type=remote.http --label="Website check 1" --monitoring-zones=mzdfw --details=url=www.examples.org,body=foo,method=GET timeout=30 --period=60 --target-alias=default</pre></div></div><br class="example-break"/><div class="example"><a id="d6e425"> </a><p class="title"><strong>Example 2.22. Create HTTP Check raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource created. ID: chTTslRf7v
+</pre></div></div><br class="example-break"/><div class="example"><a id="d6e424"> </a><p class="title"><strong>Example 2.21. Create HTTP Check Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-checks-create --entity-id=enn14Ch5mc --type=remote.http --label="Website check 1" --monitoring-zones=mzdfw --details=url=www.examples.org,body=foo,method=GET timeout=30 --period=60 --target-alias=default</pre></div></div><br class="example-break"/><div class="example"><a id="d6e427"> </a><p class="title"><strong>Example 2.22. Create HTTP Check raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource created. ID: chTTslRf7v
 </pre></div></div><br class="example-break"/><p><span class="bold"><strong>NEXT UP:</strong></span> Now let's configure a second HTTP check to
-          monitor a <span class="italic">different</span> page on the web server. </p><div class="example"><a id="d6e431"> </a><p class="title"><strong>Example 2.23. Create a Second HTTP Check Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X POST \
+          monitor a <span class="italic">different</span> page on the web server. </p><div class="example"><a id="d6e433"> </a><p class="title"><strong>Example 2.23. Create a Second HTTP Check Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X POST \
 --data-binary \
 '{ "details" : { "body" : "foo",
       "method" : "GET",
@@ -259,7 +259,7 @@ Content-Type: text/plain
 -H 'X-Auth-Token: auth_token' \
 -H "Content-Type: application/json" \
 -H 'Accept: application/json' \
-'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/checks</pre></div></div><br class="example-break"/><div class="example"><a id="d6e434"> </a><p class="title"><strong>Example 2.24. Create a Second HTTP Check cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
+'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/checks</pre></div></div><br class="example-break"/><div class="example"><a id="d6e436"> </a><p class="title"><strong>Example 2.24. Create a Second HTTP Check cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
 X-Ratelimit-Remaining: 49957
 X-Response-Id: .rh-pBYi.h-lon3-maas-prod-api0.r-5VLDWtbw.c-4363.ts-1329346442692.v-b9d7626
 Content-Length: 0
@@ -270,7 +270,7 @@ Location: https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5m
 Date: Wed, 15 Feb 2012 22:54:02 GMT
 X-Ratelimit-Window: 24 hours
 Content-Type: text/plain
-</pre></div></div><br class="example-break"/><div class="example"><a id="d6e437"> </a><p class="title"><strong>Example 2.25. Create a Second HTTP Check Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-checks-create --entity-id=enn14Ch5mc --type=remote.http --label="RemoteHTTP for Test page" --monitoring-zones=mzdfw --details=url=www.examples.org/test/,body=foo,method=GET --timeout=30 --period=60 --target-alias=default</pre></div></div><br class="example-break"/><div class="example"><a id="d6e440"> </a><p class="title"><strong>Example 2.26. Create a Second HTTP Check raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource created. ID: ch4ccHWyyI</pre></div></div><br class="example-break"/><p><a class="link" href="tutorial-list-all-checks.html" title="2.4. List All Checks for the Entity"><span class="bold"><strong>NEXT UP:
+</pre></div></div><br class="example-break"/><div class="example"><a id="d6e439"> </a><p class="title"><strong>Example 2.25. Create a Second HTTP Check Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-checks-create --entity-id=enn14Ch5mc --type=remote.http --label="RemoteHTTP for Test page" --monitoring-zones=mzdfw --details=url=www.examples.org/test/,body=foo,method=GET --timeout=30 --period=60 --target-alias=default</pre></div></div><br class="example-break"/><div class="example"><a id="d6e442"> </a><p class="title"><strong>Example 2.26. Create a Second HTTP Check raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource created. ID: ch4ccHWyyI</pre></div></div><br class="example-break"/><p><a class="link" href="tutorial-list-all-checks.html" title="2.4. List All Checks for the Entity"><span class="bold"><strong>NEXT UP:
             </strong></span></a>Get a list of the checks you've created for your entity.</p></div></div><script type="text/javascript" src="../common/main.js"><!----></script><hr/><div id="disqus_thread"><script type="text/javascript">
 	      var disqus_shortname = 'rc-api-docs';
 	      

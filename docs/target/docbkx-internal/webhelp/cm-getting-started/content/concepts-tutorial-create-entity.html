@@ -6,7 +6,7 @@
 <title>2.1. Create an Entity - Rackspace Cloud Monitoring Getting Started Guide
    - API v1.4</title><meta name="generator" content="DocBook XSL-NS Stylesheets V1.76.1"/><link rel="home" href="index.html" title="Rackspace Cloud Monitoring Getting Started Guide"/><link rel="up" href="tutorials.html" title="Chapter 2. Create Your First Monitor"/><link rel="prev" href="tutorials.html" title="Chapter 2. Create Your First Monitor"/><link rel="next" href="concepts-tutorial-monitoring-zones.html" title="2.2. List Monitoring Zones"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script type="text/javascript">
             //The id for tree cookie
-            var treeCookieId = "treeview-1518";
+            var treeCookieId = "treeview-1521";
             var language = "en";
             var w = new Object();
             //Localization
@@ -55,7 +55,7 @@
                 server "My Rackspace Server". You can choose a different name or use the same one,
                 but note that it's commonly a server name.</p></dd><dt><span class="term"><em class="parameter"><code>ip_address</code></em></span></dt><dd><p>Specifies the server's IP address(es). In the example below, we're specified the
                 IP address and named it "default."</p></dd></dl></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Remember to insert your authorization token and account number as previously
-            described in <a class="xref" href="Authentication.html#example-auth" title="1.4.3. Example Authentication">Section 1.4.3, “Example Authentication”</a>.</p></td></tr></table></div><div class="example"><a id="d6e283"> </a><p class="title"><strong>Example 2.1. Create Entity Request JSON</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X POST \
+            described in <a class="xref" href="Authentication.html#example-auth" title="1.4.3. Example Authentication">Section 1.4.3, “Example Authentication”</a>.</p></td></tr></table></div><div class="example"><a id="d6e285"> </a><p class="title"><strong>Example 2.1. Create Entity Request JSON</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X POST \
 --data-binary \
 '{ "ip_addresses" : { "default" : "192.0.2.15" },
   "label" : "My Rackspace Server",
@@ -64,7 +64,7 @@
 -H 'X-Auth-Token: auth_token' \
 -H 'Content-Type: application/json' \
 -H 'Accept: application/json' \
-'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/'</pre></div></div><br class="example-break"/><div class="example"><a id="d6e286"> </a><p class="title"><strong>Example 2.2. Create Entity Response JSON</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
+'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/'</pre></div></div><br class="example-break"/><div class="example"><a id="d6e288"> </a><p class="title"><strong>Example 2.2. Create Entity Response JSON</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
 Content-Length: 0
 X-Response-Id: .rh-ZWac.h-lon3-maas-prod-api0.r-To4aIzNP.c-25577.ts-1326394448414.v-0c7bb08
 X-Powered-By: Express
@@ -73,7 +73,7 @@ Date: Thu, 12 Jan 2012 18:54:08 GMT
 Content-Type: text/plain</pre></div></div><br class="example-break"/><p>If the entity is successfully created, the endpoint returns a response code of
           <span class="returnvalue">201 Created</span> and a <code class="code">Location:</code> header with the URI of
         the entity. Note that the entity ID is located at the end of the URL. In this example, the
-        entity ID is enn14Ch5mc. Every entity has a unique ID, so yours will be different.</p><div class="example"><a id="d6e292"> </a><p class="title"><strong>Example 2.3. Create Entity Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-entities-create --label="Monitor Test" --ip-address=default=192.0.2.15</pre></div></div><br class="example-break"/><div class="example"><a id="d6e295"> </a><p class="title"><strong>Example 2.4. Create Entity raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
+        entity ID is enn14Ch5mc. Every entity has a unique ID, so yours will be different.</p><div class="example"><a id="d6e294"> </a><p class="title"><strong>Example 2.3. Create Entity Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-entities-create --label="Monitor Test" --ip-address=default=192.0.2.15</pre></div></div><br class="example-break"/><div class="example"><a id="d6e297"> </a><p class="title"><strong>Example 2.4. Create Entity raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
 Content-Length: 0
 X-Response-Id: .rh-ZWac.h-lon3-maas-prod-api0.r-To4aIzNP.c-25577.ts-1326394448414.v-0c7bb08
 X-Powered-By: Express
@@ -83,12 +83,12 @@ Content-Type: text/plain</pre></div></div><br class="example-break"/><p>If an er
         codes descriptions in the <a class="link" href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/general-api-info-api-faults.html" target="_top">Rackspace Cloud Monitoring Developers Guide</a>.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>For the remaining steps of this tutorial substitute the ID of the entity you created
           for "enn14Ch5mc".</p></td></tr></table></div><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="../common/images/admon/tip.png"/></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>You can request a list of all entities for your account at any time. You can also list
           checks, alarms, notifications, and so on. </p><p>
-          </p><div class="example"><a id="d6e305"> </a><p class="title"><strong>Example 2.5. List All Entities Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X GET \
+          </p><div class="example"><a id="d6e307"> </a><p class="title"><strong>Example 2.5. List All Entities Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X GET \
 -H 'X-Auth-Token: auth_token' \
 -H 'Content-Type: application/json' \ 
 -H 'Accept: application/json' \
 'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities'</pre></div></div><p><br class="example-break"/>
-          </p><div class="example"><a id="d6e308"> </a><p class="title"><strong>Example 2.6. List All Entities using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-entities-list --details</pre></div></div><p><br class="example-break"/>
+          </p><div class="example"><a id="d6e310"> </a><p class="title"><strong>Example 2.6. List All Entities using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-entities-list --details</pre></div></div><p><br class="example-break"/>
         </p><p>For a complete list of GET commands, see the Quick Reference table in <a class="link" href="http://docs.rackspace.com/cm/api/v1.0/cm-devguide/content/maas-core-service-calls.html" target="_top">Rackspace Cloud Monitoring Developers Guide</a>
         </p></td></tr></table></div><p><span class="bold"><strong><a class="link" href="concepts-tutorial-monitoring-zones.html" title="2.2. List Monitoring Zones">NEXT
           UP:</a></strong></span> Check out the monitoring zones you can launch your check

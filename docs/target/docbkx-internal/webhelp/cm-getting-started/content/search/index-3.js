@@ -1,5 +1,4 @@
 //Auto generated index for searching.
-w["practis"]="5";
 w["predefin"]="13,14";
 w["predict"]="1";
 w["prematur"]="10";

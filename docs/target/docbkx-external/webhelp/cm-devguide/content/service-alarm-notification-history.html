@@ -86,7 +86,7 @@
         history of an alarm's statuses.</p><p>Alarm notification history is accessible as a <a class="link" href="api-time-series-collections.html" title="3.6. Time Series Collections">Time Series
           Collection</a>. By default alarm notification history is stored for 30
         days and the the API queries the last 7 days of
-        information.</p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-alarm-notification-history-discover"> </a>4.9.2. Discover Alarm Notification History</h3></div></div></div><table rules="all" id="d254e3376"><thead><tr>
+        information.</p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-alarm-notification-history-discover"> </a>4.9.2. Discover Alarm Notification History</h3></div></div></div><table rules="all" id="d255e3376"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -97,7 +97,7 @@
           </tr></tbody></table><p>Normal Response Code:
         <span class="returnvalue">200</span></p><p>Error Response Codes: <span class="errorcode">401</span>,
           <span class="errorcode">403</span>, <span class="errorcode">500</span>,
-          <span class="errorcode">503</span></p><div class="example"><a id="d254e3397"> </a><p class="title"><strong>Example 4.67. Alarm Notification History Discovery Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+          <span class="errorcode">503</span></p><div class="example"><a id="d255e3397"> </a><p class="title"><strong>Example 4.67. Alarm Notification History Discovery Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version='1.0' encoding='utf-8'?&gt;
 &lt;alarm_checks_map&gt;
   &lt;check_ids&gt;
@@ -106,7 +106,7 @@
   &lt;/check_ids&gt;
 &lt;/alarm_checks_map&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d254e3400"> </a><p class="title"><strong>Example 4.68. Alarm Notification History Discovery Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d255e3400"> </a><p class="title"><strong>Example 4.68. Alarm Notification History Discovery Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "check_ids": [
         "chOne",
@@ -114,7 +114,7 @@
     ]
 }
 
-</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-alarm-notification-history-list"> </a>4.9.3. List Alarm Notification History</h3></div></div></div><table rules="all" id="d254e3405"><thead><tr>
+</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-alarm-notification-history-list"> </a>4.9.3. List Alarm Notification History</h3></div></div></div><table rules="all" id="d255e3405"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -126,7 +126,7 @@
           </tr></tbody></table><p>Normal Response Code:
         <span class="returnvalue">200</span></p><p>Error Response Codes: <span class="errorcode">401</span>,
           <span class="errorcode">403</span>, <span class="errorcode">500</span>,
-          <span class="errorcode">503</span></p><div class="example"><a id="d254e3427"> </a><p class="title"><strong>Example 4.69. Alarm Notification History List Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+          <span class="errorcode">503</span></p><div class="example"><a id="d255e3427"> </a><p class="title"><strong>Example 4.69. Alarm Notification History List Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;container&gt;
   &lt;values&gt;
@@ -222,7 +222,7 @@
   &lt;/metadata&gt;
 &lt;/container&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d254e3430"> </a><p class="title"><strong>Example 4.70. Alarm Notification History List Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d255e3430"> </a><p class="title"><strong>Example 4.70. Alarm Notification History List Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "values": [
         {
@@ -321,7 +321,7 @@
     }
 }
 
-</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-alarm-notification-history-get"> </a>4.9.4. Get Alarm Notification History</h3></div></div></div><table rules="all" id="d254e3435"><thead><tr>
+</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-alarm-notification-history-get"> </a>4.9.4. Get Alarm Notification History</h3></div></div></div><table rules="all" id="d255e3435"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -332,7 +332,7 @@
           </tr></tbody></table><p>Normal Response Code:
         <span class="returnvalue">200</span></p><p>Error Response Codes: <span class="errorcode">401</span>,
           <span class="errorcode">403</span>, <span class="errorcode">500</span>,
-          <span class="errorcode">503</span></p><div class="example"><a id="d254e3458"> </a><p class="title"><strong>Example 4.71. Get Alarm Notification History Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+          <span class="errorcode">503</span></p><div class="example"><a id="d255e3458"> </a><p class="title"><strong>Example 4.71. Get Alarm Notification History Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;alarm_notification_history_item&gt;
   &lt;timestamp&gt;1320885544875&lt;/timestamp&gt;
@@ -417,7 +417,7 @@
   &lt;/notification_results&gt;
 &lt;/alarm_notification_history_item&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d254e3461"> </a><p class="title"><strong>Example 4.72. Get Alarm Notification History Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d255e3461"> </a><p class="title"><strong>Example 4.72. Get Alarm Notification History Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "timestamp": 1320885544875,
     "notification_plan_id": "npOne",

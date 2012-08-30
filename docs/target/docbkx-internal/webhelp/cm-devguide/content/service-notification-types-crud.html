@@ -62,18 +62,18 @@
     </p><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-notification-type-rackspace_managed"> </a>4.12.1. <span class="internal">Rackspace Managed Notifications</span></h3></div></div></div><div class="toc"><dl><dt><span class="section"><a href="service-notification-types-crud.html#section-rackspace_managed">4.12.1.1. No Attributes</a></span></dt></dl></div><p><span class="internal">A notification for leveraging the Rackspace Managed
         Service Level. This notification type allows customers with a
         managed service level to have alerts go directly to their
-        account team. </span></p><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-rackspace_managed"> </a>4.12.1.1. <span class="internal">No Attributes</span></h4></div></div></div><p><span class="internal">There are no particular attributes about this element</span></p></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-notification-type-email"> </a>4.12.2. Email Notifications</h3></div></div></div><div class="toc"><dl><dt><span class="section"><a href="service-notification-types-crud.html#section-Email">4.12.2.1. Attributes</a></span></dt></dl></div><p>A notification sent by email.</p><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-Email"> </a>4.12.2.1. Attributes</h4></div></div></div><table rules="all" id="d255e3883"><thead><tr><td>Name</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
+        account team. </span></p><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-rackspace_managed"> </a>4.12.1.1. <span class="internal">No Attributes</span></h4></div></div></div><p><span class="internal">There are no particular attributes about this element</span></p></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-notification-type-email"> </a>4.12.2. Email Notifications</h3></div></div></div><div class="toc"><dl><dt><span class="section"><a href="service-notification-types-crud.html#section-Email">4.12.2.1. Attributes</a></span></dt></dl></div><p>A notification sent by email.</p><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-Email"> </a>4.12.2.1. Attributes</h4></div></div></div><table rules="all" id="d256e3883"><thead><tr><td>Name</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
 <td><span class="command"><strong>address</strong></span></td>
 <td>Email address to send notifications to</td>
 <td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Email address</p></li></ul></div></td>
 </tr></tbody></table><p>
 </p></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-notification-types-webhook"> </a>4.12.3. Webhook Notifications</h3></div></div></div><div class="toc"><dl><dt><span class="section"><a href="service-notification-types-crud.html#section-Webhook">4.12.3.1. Attributes</a></span></dt><dt><span class="section"><a href="service-notification-types-crud.html#service-notification-payload">4.12.3.2. Notification Payload</a></span></dt><dt><span class="section"><a href="service-notification-types-crud.html#service-notification-headers">4.12.3.3. Notification Header Contents</a></span></dt></dl></div><p>The webhook notification takes the following
-        parameters:</p><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-Webhook"> </a>4.12.3.1. Attributes</h4></div></div></div><table rules="all" id="d255e3904"><thead><tr><td>Name</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
+        parameters:</p><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-Webhook"> </a>4.12.3.1. Attributes</h4></div></div></div><table rules="all" id="d256e3904"><thead><tr><td>Name</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
 <td><span class="command"><strong>url</strong></span></td>
 <td>An HTTP or HTTPS URL to POST to</td>
 <td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>URL</p></li></ul></div></td>
 </tr></tbody></table><p>
-</p></div><div class="example"><a id="d255e3919"> </a><p class="title"><strong>Example 4.87. Webhook Notification POST to a Specified URL with JSON
+</p></div><div class="example"><a id="d256e3919"> </a><p class="title"><strong>Example 4.87. Webhook Notification POST to a Specified URL with JSON
           Payload</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "event_id": "acOne:enOne:alOne:chOne:1326910500000:WARNING",
@@ -159,7 +159,7 @@
 }
 
 </pre></div></div><br class="example-break"/><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-notification-payload"> </a>4.12.3.2. Notification Payload</h4></div></div></div><p>The following fields are contained within a single
-        payload: </p><table rules="all" id="d255e3925"><thead><tr>
+        payload: </p><table rules="all" id="d256e3925"><thead><tr>
               <td>Field</td>
               <td>Description</td>
             </tr></thead><tbody><tr>
@@ -179,7 +179,7 @@
               <td>The alarm record that triggered the alert.</td>
             </tr></tbody></table><p>
       </p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-notification-headers"> </a>4.12.3.3. Notification Header Contents</h4></div></div></div><p> The following fields will be populated in the request
-        header when your webhook is called.</p><table rules="all" id="d255e3949"><thead><tr>
+        header when your webhook is called.</p><table rules="all" id="d256e3949"><thead><tr>
 	              <td>Header Field</td>
 	              <td>Description</td>
 	            </tr></thead><tbody><tr>
@@ -189,7 +189,7 @@
               is called by an authorized Rackspace service.</td>
 				</tr></tbody></table></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="Service-Notification-Types-create"> </a>4.12.4. Create Notification Type</h3></div></div></div><p>
         <span class="emphasis"><em>Users cannot create notification types.</em></span>
-      </p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="Service-Notification-Types-List"> </a>4.12.5. List Notification Types</h3></div></div></div><table rules="all" id="d255e3965"><thead><tr>
+      </p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="Service-Notification-Types-List"> </a>4.12.5. List Notification Types</h3></div></div></div><table rules="all" id="d256e3965"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -200,7 +200,7 @@
           </tr></tbody></table><p>There are no parameters for this call.</p><p>Normal Response Code:
         <span class="returnvalue">200</span></p><p>Error Response Codes: <span class="errorcode">401</span>,
           <span class="errorcode">403</span>, <span class="errorcode">500</span>,
-          <span class="errorcode">503</span></p><div class="example"><a id="d255e3985"> </a><p class="title"><strong>Example 4.88. List Notification Types Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+          <span class="errorcode">503</span></p><div class="example"><a id="d256e3985"> </a><p class="title"><strong>Example 4.88. List Notification Types Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;container&gt;
   &lt;values&gt;
@@ -232,7 +232,7 @@
   &lt;/metadata&gt;
 &lt;/container&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d255e3988"> </a><p class="title"><strong>Example 4.89. List Notification Types Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d256e3988"> </a><p class="title"><strong>Example 4.89. List Notification Types Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "values": [
         {
@@ -265,7 +265,7 @@
     }
 }
 
-</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="Service-Notification-Types-get"> </a>4.12.6. Get Notification Type</h3></div></div></div><table rules="all" id="d255e3993"><thead><tr>
+</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="Service-Notification-Types-get"> </a>4.12.6. Get Notification Type</h3></div></div></div><table rules="all" id="d256e3993"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -276,7 +276,7 @@
           </tr></tbody></table><p>There are no parameters for this call.</p><p>Normal Response Code:
         <span class="returnvalue">200</span></p><p>Error Response Codes: <span class="errorcode">401</span>,
           <span class="errorcode">403</span>, <span class="errorcode">500</span>,
-          <span class="errorcode">503</span></p><div class="example"><a id="d255e4014"> </a><p class="title"><strong>Example 4.90. Get Notification Type Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+          <span class="errorcode">503</span></p><div class="example"><a id="d256e4014"> </a><p class="title"><strong>Example 4.90. Get Notification Type Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;notification_type id="webhook"&gt;
   &lt;fields&gt;
@@ -288,7 +288,7 @@
   &lt;/fields&gt;
 &lt;/notification_type&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d255e4017"> </a><p class="title"><strong>Example 4.91. Get Notification Type Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d256e4017"> </a><p class="title"><strong>Example 4.91. Get Notification Type Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "id": "webhook",
     "fields": [

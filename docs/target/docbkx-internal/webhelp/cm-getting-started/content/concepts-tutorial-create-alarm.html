@@ -6,7 +6,7 @@
 <title>2.6. Create an Alarm - Rackspace Cloud Monitoring Getting Started Guide
    - API v1.4</title><meta name="generator" content="DocBook XSL-NS Stylesheets V1.76.1"/><link rel="home" href="index.html" title="Rackspace Cloud Monitoring Getting Started Guide"/><link rel="up" href="tutorials.html" title="Chapter 2. Create Your First Monitor"/><link rel="prev" href="concepts-tutorial-setup-notifications.html" title="2.5. Set Up Notifications"/><link rel="next" href="concepts-tutorial-modify-entity.html" title="2.7. Modify an Entity"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script type="text/javascript">
             //The id for tree cookie
-            var treeCookieId = "treeview-1518";
+            var treeCookieId = "treeview-1521";
             var language = "en";
             var w = new Object();
             //Localization
@@ -54,7 +54,7 @@
         send you a warning alert if the average PING response time is over 50ms. Remember that
         alarms always have a parent entity associated with them, so all URLs are contained
         underneath the alarm URL. In this example, the entity ID is enn14Ch5mc, so we issue the
-        following request to create the alarm and associate it to the entity:</p><div class="example"><a id="d6e535"> </a><p class="title"><strong>Example 2.39. Create Alarm Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X POST \
+        following request to create the alarm and associate it to the entity:</p><div class="example"><a id="d6e537"> </a><p class="title"><strong>Example 2.39. Create Alarm Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X POST \
 --data-binary \
 '{
   "check_type": "remote.ping", 
@@ -64,7 +64,7 @@
 -H 'X-Auth-Token: auth_token' \
 -H 'Content-Type: application/json' \
 -H 'Accept: application/json' \
-'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/alarms'</pre></div></div><br class="example-break"/><div class="example"><a id="d6e538"> </a><p class="title"><strong>Example 2.40. Create Alarm cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
+'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/alarms'</pre></div></div><br class="example-break"/><div class="example"><a id="d6e540"> </a><p class="title"><strong>Example 2.40. Create Alarm cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
 X-Ratelimit-Remaining: 49947
 X-Response-Id: .rh-ew99.h-dfw1-maas-prod-api1.r-Kti7H0py.c-39599.ts-1329418764114.v-b9d7626
 Content-Length: 0
@@ -74,11 +74,11 @@ X-Ratelimit-Limit: 50000
 Location: https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/alarms/alIxnPKcZp
 Date: Thu, 16 Feb 2012 18:59:24 GMT
 X-Ratelimit-Window: 24 hours
-Content-Type: text/plain</pre></div></div><br class="example-break"/><div class="example"><a id="d6e541"> </a><p class="title"><strong>Example 2.41. Create Alarm Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-alarms-create --check-type=remote.ping --criteria="if (metric[\"average\"] &lt; 50) { return OK } return WARNING" --notification-plan=npkmLh5vVk --entity-id=enn14Ch5mc</pre></div></div><br class="example-break"/><div class="example"><a id="d6e544"> </a><p class="title"><strong>Example 2.42. Create Alarm raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource created. ID: alIxnPKcZp</pre></div></div><br class="example-break"/><p>If the endpoint returns a response code is <span class="returnvalue">201</span> and a
+Content-Type: text/plain</pre></div></div><br class="example-break"/><div class="example"><a id="d6e543"> </a><p class="title"><strong>Example 2.41. Create Alarm Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-alarms-create --check-type=remote.ping --criteria="if (metric[\"average\"] &lt; 50) { return OK } return WARNING" --notification-plan=npkmLh5vVk --entity-id=enn14Ch5mc</pre></div></div><br class="example-break"/><div class="example"><a id="d6e546"> </a><p class="title"><strong>Example 2.42. Create Alarm raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource created. ID: alIxnPKcZp</pre></div></div><br class="example-break"/><p>If the endpoint returns a response code is <span class="returnvalue">201</span> and a
           <code class="code">Location:</code> header containing the URL of the new alarm, the alarm was
         successfully created, otherwise the endpoint returns an error. </p><p>Since we're monitoring two items, both PING times and the HTTP response time, let's add
         a second alarm to go off when the web response time takes longer than 100ms. Here's an
-        example of how you might specify the attributes for this alarm:</p><div class="example"><a id="d6e551"> </a><p class="title"><strong>Example 2.43. Create an Alarm HTTP Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X POST \
+        example of how you might specify the attributes for this alarm:</p><div class="example"><a id="d6e553"> </a><p class="title"><strong>Example 2.43. Create an Alarm HTTP Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X POST \
 --data-binary \
 '{ "check_type" : "remote.http",
   "criteria" : "if (metric[\"code\"] regex \"^[23]..$\") { return OK } return WARNING",
@@ -88,7 +88,7 @@ Content-Type: text/plain</pre></div></div><br class="example-break"/><div class=
 -H 'Content-Type: application/json' \
 -H 'Accept: application/json' \
 'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/alarms'
-</pre></div></div><br class="example-break"/><div class="example"><a id="d6e554"> </a><p class="title"><strong>Example 2.44. Create an Alarm cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
+</pre></div></div><br class="example-break"/><div class="example"><a id="d6e556"> </a><p class="title"><strong>Example 2.44. Create an Alarm cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
 X-Ratelimit-Remaining: 49946
 X-Response-Id: .rh-E79I.h-ord1-maas-prod-api1.r-HDDENoUp.c-106.ts-1329419675047.v-a037e7a
 Content-Length: 0
@@ -99,12 +99,12 @@ Location: https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5m
 Date: Thu, 16 Feb 2012 19:14:34 GMT
 X-Ratelimit-Window: 24 hours
 Content-Type: text/plain
-</pre></div></div><br class="example-break"/><div class="example"><a id="d6e557"> </a><p class="title"><strong>Example 2.45. Create an Alarm Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-alarms-create --check-type=remote.http --criteria="if (metric[\"duration\"] &lt; 100) { return OK } return WARNING" --notification-plan=npkmLh5vVk --entity-id=enn14Ch5mc</pre></div></div><br class="example-break"/><div class="example"><a id="d6e560"> </a><p class="title"><strong>Example 2.46. Create an Alarm raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource created. ID: alVwP6z00k</pre></div></div><br class="example-break"/><p>Note that because alarms are shared between all of the checks on an entity, if you have
-        multiple HTTP URLs, you will receive alerts if any of the checks are lagging.</p><p>You can always list the available alarms by retrieving:</p><div class="example"><a id="d6e565"> </a><p class="title"><strong>Example 2.47. List Alarms Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X GET \
+</pre></div></div><br class="example-break"/><div class="example"><a id="d6e559"> </a><p class="title"><strong>Example 2.45. Create an Alarm Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-alarms-create --check-type=remote.http --criteria="if (metric[\"duration\"] &lt; 100) { return OK } return WARNING" --notification-plan=npkmLh5vVk --entity-id=enn14Ch5mc</pre></div></div><br class="example-break"/><div class="example"><a id="d6e562"> </a><p class="title"><strong>Example 2.46. Create an Alarm raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource created. ID: alVwP6z00k</pre></div></div><br class="example-break"/><p>Note that because alarms are shared between all of the checks on an entity, if you have
+        multiple HTTP URLs, you will receive alerts if any of the checks are lagging.</p><p>You can always list the available alarms by retrieving:</p><div class="example"><a id="d6e567"> </a><p class="title"><strong>Example 2.47. List Alarms Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X GET \
 -H 'X-Auth-Token: auth_token' \
 -H 'Accept: application/json' \
 'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/alarms'
-</pre></div></div><br class="example-break"/><div class="example"><a id="d6e568"> </a><p class="title"><strong>Example 2.48. List Alarms cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 200 OK
+</pre></div></div><br class="example-break"/><div class="example"><a id="d6e570"> </a><p class="title"><strong>Example 2.48. List Alarms cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 200 OK
 X-Ratelimit-Remaining: 49941
 X-Response-Id: .rh-qRGT.h-ord1-maas-prod-api0.r-UH0HesoS.c-404.ts-1329420284585.v-a037e7a
 Transfer-Encoding: chunked
@@ -147,7 +147,7 @@ Content-Type: application/json; charset=UTF-8
         "next_href": null
     }
 }
-</pre></div></div><br class="example-break"/><div class="example"><a id="d6e571"> </a><p class="title"><strong>Example 2.49. List Alarms Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-alarms-list --entity-id=enn14Ch5mc --details</pre></div></div><br class="example-break"/><div class="example"><a id="d6e574"> </a><p class="title"><strong>Example 2.50. List Alarms raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">{'criteria': u'if (metric["average"] &lt; 50) { return OK } return WARNING',
+</pre></div></div><br class="example-break"/><div class="example"><a id="d6e573"> </a><p class="title"><strong>Example 2.49. List Alarms Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-alarms-list --entity-id=enn14Ch5mc --details</pre></div></div><br class="example-break"/><div class="example"><a id="d6e576"> </a><p class="title"><strong>Example 2.50. List Alarms raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">{'criteria': u'if (metric["average"] &lt; 50) { return OK } return WARNING',
  'driver': &lt;rackspace_monitoring.drivers.rackspace.RackspaceMonitoringDriver object at 0x100649ad0&gt;,
  'entity_id': u'enn14Ch5mc',
  'id': u'alIxnPKcZp',

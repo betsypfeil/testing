@@ -6,7 +6,7 @@
 <title>2.7. Modify an Entity - Rackspace Cloud Monitoring Getting Started Guide
    - API v1.4</title><meta name="generator" content="DocBook XSL-NS Stylesheets V1.76.1"/><link rel="home" href="index.html" title="Rackspace Cloud Monitoring Getting Started Guide"/><link rel="up" href="tutorials.html" title="Chapter 2. Create Your First Monitor"/><link rel="prev" href="concepts-tutorial-create-alarm.html" title="2.6. Create an Alarm"/><link rel="next" href="concepts-tutorial-delete-entity.html" title="2.8. Delete an Entity"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script type="text/javascript">
             //The id for tree cookie
-            var treeCookieId = "treeview-1518";
+            var treeCookieId = "treeview-1521";
             var language = "en";
             var w = new Object();
             //Localization
@@ -52,7 +52,7 @@
        
       <a href="../atom.xml"><img alt="Atom feed of this document" src="../common/images/feed-icon.png"/></a></div></div><div id="content"><div class="statustext">INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL - </div><div class="section"><div xmlns="" class="titlepage"><div><div><h2 xmlns="http://www.w3.org/1999/xhtml" class="title" style="clear: both"><a id="concepts-tutorial-modify-entity"> </a>2.7. Modify an Entity</h2></div></div></div><p>Let's assume that the IP address for the web server has changed. You can issue a <span class="command"><strong>PUT</strong></span>
         request for only those fields that have changed and the change is reflected in all
-        downstream checks.</p><div class="example"><a id="d6e585"> </a><p class="title"><strong>Example 2.51. Modify an Entity Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X PUT \
+        downstream checks.</p><div class="example"><a id="d6e587"> </a><p class="title"><strong>Example 2.51. Modify an Entity Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X PUT \
 --data-binary \
 '{
    "ip_addresses": {
@@ -62,7 +62,7 @@
 -H 'X-Auth-Token: auth_token' \
 -H 'Content-Type: application/json' \
 -H 'Accept: application/json' \
-'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc'</pre></div></div><br class="example-break"/><div class="example"><a id="d6e588"> </a><p class="title"><strong>Example 2.52. Modify an Entity cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 204 No Content
+'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc'</pre></div></div><br class="example-break"/><div class="example"><a id="d6e590"> </a><p class="title"><strong>Example 2.52. Modify an Entity cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 204 No Content
 X-Ratelimit-Remaining: 49953
 X-Response-Id: .rh-NGRc.h-dfw1-maas-prod-api0.r-AudSFsQj.c-36911.ts-1329412867712.v-b9d7626
 Content-Length: 0
@@ -73,7 +73,7 @@ Location: https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5m
 Date: Thu, 16 Feb 2012 17:21:07 GMT
 X-Ratelimit-Window: 24 hours
 Content-Type: text/plain
-</pre></div></div><br class="example-break"/><div class="example"><a id="d6e591"> </a><p class="title"><strong>Example 2.53. Modify an Entity Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-entities-update --id=enn14Ch5mc --ip-addresses=default=192.168.0.1</pre></div></div><br class="example-break"/><div class="example"><a id="d6e594"> </a><p class="title"><strong>Example 2.54. Modify an Entity raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource has been successfully updated
+</pre></div></div><br class="example-break"/><div class="example"><a id="d6e593"> </a><p class="title"><strong>Example 2.53. Modify an Entity Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-entities-update --id=enn14Ch5mc --ip-addresses=default=192.168.0.1</pre></div></div><br class="example-break"/><div class="example"><a id="d6e596"> </a><p class="title"><strong>Example 2.54. Modify an Entity raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource has been successfully updated
 </pre></div></div><br class="example-break"/><p>Note that a PUT updates all top level fields. If a top level field contains a hash, the
         PUT overwrites the entire field. To avoid this, you must specify the complete hash.</p><p><a class="link" href="concepts-tutorial-delete-entity.html" title="2.8. Delete an Entity"><span class="bold"><strong>NEXT
             UP:</strong></span>

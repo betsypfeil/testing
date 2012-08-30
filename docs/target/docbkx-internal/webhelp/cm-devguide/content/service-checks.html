@@ -66,7 +66,7 @@
         example of how to create a new check.</p><p>The check, as created, will not trigger alert messages until you <a class="link" href="service-alarms.html" title="4.7. Alarms">create an alarm</a> to generate notifications, to enable the creation of a single alarm that acts upon multiple checks (e.g. alert if any of ten different servers stops responding) or multiple alarms off of a single check. (e.g. ensure both that a HTTPS server is responding and that it has a valid certificate).</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Checks are strictly associated with a parent entity,
           therefore the REST URLs for checks are underneath the entity
           that they are associated with.</p></td></tr></table></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-checks-prefix"> </a>4.5.2. <span class="internal">Hash Prefix</span></h3></div></div></div><p><code class="code"><span class="internal">ch</span></code></p><p><span class="emphasis"><em><span class="internal">example: ch722az21</span></em></span><span class="internal">
-      </span></p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-Checks"> </a>4.5.3. Attributes</h3></div></div></div><table rules="all" id="d255e1450"><thead><tr><td>Name</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr><td colspan="3"><span class="emphasis"><em>Attributes used for all checks</em></span></td></tr><tr>
+      </span></p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-Checks"> </a>4.5.3. Attributes</h3></div></div></div><table rules="all" id="d256e1450"><thead><tr><td>Name</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr><td colspan="3"><span class="emphasis"><em>Attributes used for all checks</em></span></td></tr><tr>
 <td><span class="command"><strong>type</strong></span></td>
 <td>The type of check.</td>
 <td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Immutable</p></li><li class="listitem"><p>String</p></li><li class="listitem"><p>One of (remote.dns, remote.ssh, remote.smtp, remote.http, remote.tcp, remote.ping, remote.ftp-banner, remote.imap-banner, remote.pop3-banner, remote.smtp-banner, remote.postgresql-banner, remote.telnet-banner, remote.mysql-banner, remote.mssql-banner)</p></li></ul></div></td>
@@ -175,7 +175,7 @@
         apply the work to the external monitoring zones, if the zone
         cannot be contacted or the work failed to run within a
         specified window the callback will be executed per the account
-        policy </span></p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-checks-create"> </a>4.5.6. Create Check</h3></div></div></div><table rules="all" id="d255e1636"><thead><tr>
+        policy </span></p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-checks-create"> </a>4.5.6. Create Check</h3></div></div></div><table rules="all" id="d256e1636"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -189,7 +189,7 @@
         check.</p><p>Error Response Codes: <span class="errorcode">400</span>,
           <span class="errorcode">401</span>, <span class="errorcode">403</span>,
           <span class="errorcode">500</span>,
-        <span class="errorcode">503</span></p><div class="example"><a id="d255e1658"> </a><p class="title"><strong>Example 4.17. Check Create Request: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+        <span class="errorcode">503</span></p><div class="example"><a id="d256e1658"> </a><p class="title"><strong>Example 4.17. Check Create Request: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;check&gt;
   &lt;label&gt;Website check 1&lt;/label&gt;
@@ -206,7 +206,7 @@
   &lt;target_alias&gt;default&lt;/target_alias&gt;
 &lt;/check&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d255e1661"> </a><p class="title"><strong>Example 4.18. Check Create Request: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d256e1661"> </a><p class="title"><strong>Example 4.18. Check Create Request: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "label": "Website check 1",
     "type": "remote.http",
@@ -222,7 +222,7 @@
     "target_alias": "default"
 }
 
-</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-checks-test"> </a>4.5.7. Test Check</h3></div></div></div><div class="toc"><dl><dt><span class="section"><a href="service-checks.html#service-checks-test-debug">4.5.7.1. Test Check And Include Debug Information</a></span></dt></dl></div><table rules="all" id="d255e1666"><thead><tr>
+</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-checks-test"> </a>4.5.7. Test Check</h3></div></div></div><div class="toc"><dl><dt><span class="section"><a href="service-checks.html#service-checks-test-debug">4.5.7.1. Test Check And Include Debug Information</a></span></dt></dl></div><table rules="all" id="d256e1666"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -237,7 +237,7 @@
           <span class="errorcode">503</span></p><p>This operation causes Rackspace Cloud Monitoring to attempt to run the check on the specified monitoring
         zones and return the results. This allows you to test the check parameters in a single step
         before the check is actually created in the system.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>You can copy the results of a test check response and paste it directly into a test
-            alarm.</p></td></tr></table></div><div class="example"><a id="d255e1691"> </a><p class="title"><strong>Example 4.19. Test Check Request: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+            alarm.</p></td></tr></table></div><div class="example"><a id="d256e1691"> </a><p class="title"><strong>Example 4.19. Test Check Request: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;test_check&gt;
   &lt;type&gt;remote.http&lt;/type&gt;
@@ -252,7 +252,7 @@
   &lt;target_alias&gt;default&lt;/target_alias&gt;
 &lt;/test_check&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d255e1694"> </a><p class="title"><strong>Example 4.20. Test Check Request: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d256e1694"> </a><p class="title"><strong>Example 4.20. Test Check Request: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "type": "remote.http",
     "details": {
@@ -266,7 +266,7 @@
     "target_alias": "default"
 }
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d255e1697"> </a><p class="title"><strong>Example 4.21. Test Check Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d256e1697"> </a><p class="title"><strong>Example 4.21. Test Check Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;checks_data&gt;
   &lt;check_data&gt;
@@ -299,7 +299,7 @@
   &lt;/check_data&gt;
 &lt;/checks_data&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d255e1700"> </a><p class="title"><strong>Example 4.22. Test Check Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d256e1700"> </a><p class="title"><strong>Example 4.22. Test Check Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 [
     {
         "timestamp": 1319222001982,
@@ -331,7 +331,7 @@
     }
 ]
 
-</pre></div></div><br class="example-break"/><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-checks-test-debug"> </a>4.5.7.1. Test Check And Include Debug Information</h4></div></div></div><table rules="all" id="d255e1705"><thead><tr>
+</pre></div></div><br class="example-break"/><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-checks-test-debug"> </a>4.5.7.1. Test Check And Include Debug Information</h4></div></div></div><table rules="all" id="d256e1705"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -352,7 +352,7 @@
           This call also includes debug information. Currently debug
           information is only available for the remote.http check and
           includes the response body.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Only first 512 KB of the response body is read. If the
-            response body is longer, it is truncated to 512KB.</p></td></tr></table></div><div class="example"><a id="d255e1730"> </a><p class="title"><strong>Example 4.23. Test Check Request: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+            response body is longer, it is truncated to 512KB.</p></td></tr></table></div><div class="example"><a id="d256e1730"> </a><p class="title"><strong>Example 4.23. Test Check Request: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;test_check&gt;
   &lt;type&gt;remote.http&lt;/type&gt;
@@ -367,7 +367,7 @@
   &lt;target_alias&gt;default&lt;/target_alias&gt;
 &lt;/test_check&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d255e1733"> </a><p class="title"><strong>Example 4.24. Test Check Request: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d256e1733"> </a><p class="title"><strong>Example 4.24. Test Check Request: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "type": "remote.http",
     "details": {
@@ -381,7 +381,7 @@
     "target_alias": "default"
 }
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d255e1736"> </a><p class="title"><strong>Example 4.25. Test Check With Debug Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d256e1736"> </a><p class="title"><strong>Example 4.25. Test Check With Debug Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;checks_data&gt;
   &lt;check_data&gt;
@@ -417,7 +417,7 @@
   &lt;/check_data&gt;
 &lt;/checks_data&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d255e1739"> </a><p class="title"><strong>Example 4.26. Test Check With Debug Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d256e1739"> </a><p class="title"><strong>Example 4.26. Test Check With Debug Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 [
     {
         "timestamp": 1319222001982,
@@ -452,7 +452,7 @@
     }
 ]
 
-</pre></div></div><br class="example-break"/></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-checks-test-existing"> </a>4.5.8. Test Existing Check</h3></div></div></div><table rules="all" id="d255e1744"><thead><tr>
+</pre></div></div><br class="example-break"/></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-checks-test-existing"> </a>4.5.8. Test Existing Check</h3></div></div></div><table rules="all" id="d256e1744"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -467,7 +467,7 @@
         <span class="errorcode">503</span></p><p>This operation causes Rackspace Cloud Monitoring to attempt to run the check on the specified monitoring
         zones and return the results. This allows you to test the check parameters.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>You can copy the results of a test check response and paste it directly into a test
             alarm.  </p></td></tr></table></div><p>
-        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>There is no request body, just posting to the url executes the request.</p></td></tr></table></div><div class="example"><a id="d255e1772"> </a><p class="title"><strong>Example 4.27. Test Existing Check Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>There is no request body, just posting to the url executes the request.</p></td></tr></table></div><div class="example"><a id="d256e1772"> </a><p class="title"><strong>Example 4.27. Test Existing Check Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;checks_data&gt;
   &lt;check_data&gt;
@@ -500,7 +500,7 @@
   &lt;/check_data&gt;
 &lt;/checks_data&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d255e1775"> </a><p class="title"><strong>Example 4.28. Test Existing Check Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d256e1775"> </a><p class="title"><strong>Example 4.28. Test Existing Check Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 [
     {
         "timestamp": 1319222001982,
@@ -532,7 +532,7 @@
     }
 ]
 
-</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-checks-list"> </a>4.5.9. List Checks</h3></div></div></div><table rules="all" id="d255e1780"><thead><tr>
+</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-checks-list"> </a>4.5.9. List Checks</h3></div></div></div><table rules="all" id="d256e1780"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -544,7 +544,7 @@
           </tr></tbody></table><p>There are no parameters for this call.</p><p>Normal Response Code:
         <span class="returnvalue">200</span></p><p>Error Response Codes: <span class="errorcode">401</span>,
           <span class="errorcode">403</span>, <span class="errorcode">500</span>,
-          <span class="errorcode">503</span></p><div class="example"><a id="d255e1801"> </a><p class="title"><strong>Example 4.29. List Checks Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+          <span class="errorcode">503</span></p><div class="example"><a id="d256e1801"> </a><p class="title"><strong>Example 4.29. List Checks Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;container&gt;
   &lt;values&gt;
@@ -572,7 +572,7 @@
   &lt;/metadata&gt;
 &lt;/container&gt;
 
-          </pre></div></div><br class="example-break"/><div class="example"><a id="d255e1804"> </a><p class="title"><strong>Example 4.30. List Checks Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+          </pre></div></div><br class="example-break"/><div class="example"><a id="d256e1804"> </a><p class="title"><strong>Example 4.30. List Checks Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "values": [
         {
@@ -600,7 +600,7 @@
     }
 }
 
-          </pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-checks-get"> </a>4.5.10. Get Check</h3></div></div></div><table rules="all" id="d255e1809"><thead><tr>
+          </pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-checks-get"> </a>4.5.10. Get Check</h3></div></div></div><table rules="all" id="d256e1809"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -612,7 +612,7 @@
         <span class="returnvalue">200</span></p><p>Error Response Codes: <span class="errorcode">401</span>,
           <span class="errorcode">403</span>, <span class="errorcode">404</span>,
           <span class="errorcode">413</span>, <span class="errorcode">500</span>,
-          <span class="errorcode">503</span></p><div class="example"><a id="d255e1833"> </a><p class="title"><strong>Example 4.31. Get Check Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+          <span class="errorcode">503</span></p><div class="example"><a id="d256e1833"> </a><p class="title"><strong>Example 4.31. Get Check Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;check id="chAAAA"&gt;
   &lt;label&gt;Website check 1&lt;/label&gt;
@@ -629,7 +629,7 @@
   &lt;target_alias&gt;default&lt;/target_alias&gt;
 &lt;/check&gt;
 
-          </pre></div></div><br class="example-break"/><div class="example"><a id="d255e1836"> </a><p class="title"><strong>Example 4.32. Get Check Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+          </pre></div></div><br class="example-break"/><div class="example"><a id="d256e1836"> </a><p class="title"><strong>Example 4.32. Get Check Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "id": "chAAAA",
     "label": "Website check 1",
@@ -646,7 +646,7 @@
     "target_alias": "default"
 }
 
-          </pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-checks-update"> </a>4.5.11. Update Checks</h3></div></div></div><table rules="all" id="d255e1841"><thead><tr>
+          </pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-checks-update"> </a>4.5.11. Update Checks</h3></div></div></div><table rules="all" id="d256e1841"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -660,20 +660,20 @@
         body.</p><p>Error Response Codes: <span class="errorcode">400</span>,
           <span class="errorcode">401</span>, <span class="errorcode">403</span>,
           <span class="errorcode">404</span>, <span class="errorcode">500</span>,
-          <span class="errorcode">503</span></p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Updating monitoring zones can effect the billing of the product.</p></td></tr></table></div><div class="example"><a id="d255e1867"> </a><p class="title"><strong>Example 4.33. Check Update Request: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+          <span class="errorcode">503</span></p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Updating monitoring zones can effect the billing of the product.</p></td></tr></table></div><div class="example"><a id="d256e1867"> </a><p class="title"><strong>Example 4.33. Check Update Request: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;check&gt;
   &lt;label&gt;New check label&lt;/label&gt;
   &lt;timeout&gt;10&lt;/timeout&gt;
 &lt;/check&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d255e1870"> </a><p class="title"><strong>Example 4.34. Check Update Request: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d256e1870"> </a><p class="title"><strong>Example 4.34. Check Update Request: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "label": "New check label",
     "timeout": 10
 }
 
-</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-checks-delete"> </a>4.5.12. Delete Checks</h3></div></div></div><table rules="all" id="d255e1875"><thead><tr>
+</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-checks-delete"> </a>4.5.12. Delete Checks</h3></div></div></div><table rules="all" id="d256e1875"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>

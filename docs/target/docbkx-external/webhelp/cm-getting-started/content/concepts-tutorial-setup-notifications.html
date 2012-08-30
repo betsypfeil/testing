@@ -6,7 +6,7 @@
 <title>2.5. Set Up Notifications - Rackspace Cloud Monitoring Getting Started Guide
    - API v1.4</title><meta name="generator" content="DocBook XSL-NS Stylesheets V1.76.1"/><link rel="home" href="index.html" title="Rackspace Cloud Monitoring Getting Started Guide"/><link rel="up" href="tutorials.html" title="Chapter 2. Create Your First Monitor"/><link rel="prev" href="tutorial-list-all-checks.html" title="2.4. List All Checks for the Entity"/><link rel="next" href="concepts-tutorial-create-alarm.html" title="2.6. Create an Alarm"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script type="text/javascript">
             //The id for tree cookie
-            var treeCookieId = "treeview-1518";
+            var treeCookieId = "treeview-1521";
             var language = "en";
             var w = new Object();
             //Localization
@@ -82,7 +82,7 @@
         one. However, to create an a notification plan, you do need to create a notification
         first.</p><p>First step is we will create an email notification, which
         will be an attribute to the notification plan.</p><p>
-        </p><div class="example"><a id="d6e470"> </a><p class="title"><strong>Example 2.31. Create Notification Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X POST \
+        </p><div class="example"><a id="d6e472"> </a><p class="title"><strong>Example 2.31. Create Notification Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X POST \
 --data-binary \
    '{ "details" : { "address" : "joe@example.org" },
   "label" : "Alert email 1",
@@ -93,7 +93,7 @@
 'https://monitoring.api.rackspacecloud.com/v1.0/1234/notifications'
 
 </pre></div></div><p><br class="example-break"/>
-        </p><div class="example"><a id="d6e473"> </a><p class="title"><strong>Example 2.32. Create Notification cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
+        </p><div class="example"><a id="d6e475"> </a><p class="title"><strong>Example 2.32. Create Notification cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
 X-Ratelimit-Remaining: 49964
 X-Response-Id: .rh-00oi.h-ord1-maas-prod-api1.r-WZWtj0Vc.c-5711.ts-1329408343356.v-b9d7626
 Content-Length: 0
@@ -105,8 +105,8 @@ Date: Thu, 16 Feb 2012 16:05:43 GMT
 X-Ratelimit-Window: 24 hours
 Content-Type: text/plain
 </pre></div></div><p><br class="example-break"/>
-        </p><div class="example"><a id="d6e476"> </a><p class="title"><strong>Example 2.33. Create Notification Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-notifications-create --label="Alert email 1" --type=email --details=address=joe@example.org </pre></div></div><p><br class="example-break"/>
-        </p><div class="example"><a id="d6e479"> </a><p class="title"><strong>Example 2.34. Create Notification raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource created. ID: nt2T8WtWte
+        </p><div class="example"><a id="d6e478"> </a><p class="title"><strong>Example 2.33. Create Notification Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-notifications-create --label="Alert email 1" --type=email --details=address=joe@example.org </pre></div></div><p><br class="example-break"/>
+        </p><div class="example"><a id="d6e481"> </a><p class="title"><strong>Example 2.34. Create Notification raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource created. ID: nt2T8WtWte
 </pre></div></div><p><br class="example-break"/>
       </p><p>If the notification is successfully created, the endpoint returns a response code of
           <span class="returnvalue">201</span> and a <code class="code">Location:</code> Header containing the URL of
@@ -116,7 +116,7 @@ Content-Type: text/plain
         entity is in different states. </p><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="create-notification-plan"> </a>2.5.1. Create a Notification Plan</h3></div></div></div><p>A notification represents a single action, whereas a notification plan represents a
           set of actions. Assuming the ID of the notification you created is nt2T8WtWte, here's an
           example of how you might specify the attributes for a notification plan: </p><div class="variablelist"><dl><dt><span class="term"><em class="parameter"><code>label</code></em></span></dt><dd><p>Specifies a descriptive name for the notification plan.</p></dd><dt><span class="term"><em class="parameter"><code>warning_state</code></em></span></dt><dd><p>Specifies a list of notification ids to send when the state is WARNING.</p></dd><dt><span class="term"><em class="parameter"><code>critical_state</code></em></span></dt><dd><p>Specifies a list of notification ids to send when the state is CRITICAL.</p></dd><dt><span class="term"><em class="parameter"><code>ok_state</code></em></span></dt><dd><p>Specifies a list of notification ids to send when the state is OK.</p></dd></dl></div><p>In this case, you're configuring the system to send an
-          email when a state changes.</p><div class="example"><a id="d6e513"> </a><p class="title"><strong>Example 2.35. Create Notification Plan Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X POST \
+          email when a state changes.</p><div class="example"><a id="d6e515"> </a><p class="title"><strong>Example 2.35. Create Notification Plan Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X POST \
 --data-binary \
 '{
       "label": "Notification Plan 1",
@@ -134,7 +134,7 @@ Content-Type: text/plain
 -H 'Content-Type: application/json' \
 -H 'Accept: application/json' \
 'https://monitoring.api.rackspacecloud.com/v1.0/1234/notification_plans'
-</pre></div></div><br class="example-break"/><div class="example"><a id="d6e516"> </a><p class="title"><strong>Example 2.36. Create Notification Plan cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
+</pre></div></div><br class="example-break"/><div class="example"><a id="d6e518"> </a><p class="title"><strong>Example 2.36. Create Notification Plan cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 201 Created
 X-Ratelimit-Remaining: 49958
 X-Response-Id: .rh-ew99.h-dfw1-maas-prod-api1.r-dRuk75SF.c-35593.ts-1329410023443.v-b9d7626
 Content-Length: 0
@@ -145,7 +145,7 @@ Location: https://monitoring.api.rackspacecloud.com/v1.0/1234/notification_plans
 Date: Thu, 16 Feb 2012 16:33:43 GMT
 X-Ratelimit-Window: 24 hours
 Content-Type: text/plain
-</pre></div></div><br class="example-break"/><div class="example"><a id="d6e519"> </a><p class="title"><strong>Example 2.37. Create Notification Plan Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-notification-plans-create --label="Notification Plan 1" --critical-state=nt2T8WtWte --warning-state=nt2T8WtWte --ok-state=nt2T8WtWte </pre></div></div><br class="example-break"/><div class="example"><a id="d6e522"> </a><p class="title"><strong>Example 2.38. Create Notification Plan raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource created. ID: npkmLh5vVk</pre></div></div><br class="example-break"/><p>If the endpoint responds with a <span class="returnvalue">201</span> and a
+</pre></div></div><br class="example-break"/><div class="example"><a id="d6e521"> </a><p class="title"><strong>Example 2.37. Create Notification Plan Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-notification-plans-create --label="Notification Plan 1" --critical-state=nt2T8WtWte --warning-state=nt2T8WtWte --ok-state=nt2T8WtWte </pre></div></div><br class="example-break"/><div class="example"><a id="d6e524"> </a><p class="title"><strong>Example 2.38. Create Notification Plan raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource created. ID: npkmLh5vVk</pre></div></div><br class="example-break"/><p>If the endpoint responds with a <span class="returnvalue">201</span> and a
             <code class="code">Location:</code> Header containing the URL of the new notification plan, the
           notification plan was created. If the notification plan was not created, an error is
           returned. </p><p><a class="link" href="concepts-tutorial-create-alarm.html" title="2.6. Create an Alarm"><span class="bold"><strong>NEXT

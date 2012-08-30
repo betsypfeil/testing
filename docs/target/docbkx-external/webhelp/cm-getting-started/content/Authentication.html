@@ -6,7 +6,7 @@
 <title>1.4. Authentication - Rackspace Cloud Monitoring Getting Started Guide
    - API v1.4</title><meta name="generator" content="DocBook XSL-NS Stylesheets V1.76.1"/><link rel="home" href="index.html" title="Rackspace Cloud Monitoring Getting Started Guide"/><link rel="up" href="Introduction.html" title="Chapter 1. Introduction"/><link rel="prev" href="endpoint-access.html" title="1.3. Accessing the API"/><link rel="next" href="working-with-tutorial.html" title="1.5. Working with the Exercises in this Guide"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script type="text/javascript">
             //The id for tree cookie
-            var treeCookieId = "treeview-1518";
+            var treeCookieId = "treeview-1521";
             var language = "en";
             var w = new Object();
             //Localization
@@ -83,7 +83,7 @@
           request, the Authentication Service validates your credentials and returns an
           authorization token and a list of the services you can access along with your account
           number. You'll need to include the authentication token and your account number with each
-          request you make to the API. We'll show you how in <a class="xref" href="Authentication.html#example-auth" title="1.4.3. Example Authentication">Section 1.4.3, “Example Authentication”</a>.</p><p>If you need help finding your API key, follow the steps below.</p><div class="procedure"><a id="d6e96"> </a><p class="title"><strong>Procedure 1.1. To find your API key</strong></p><ol class="procedure" type="1"><li class="step"><p>Log into the Control Panel at <a class="link" href="https://manage.rackspacecloud.com" target="_top">https://manage.rackspacecloud.com</a>.</p></li><li class="step"><p>When the console opens, click <span class="guilabel"><strong>Your Account</strong></span>, and then
+          request you make to the API. We'll show you how in <a class="xref" href="Authentication.html#example-auth" title="1.4.3. Example Authentication">Section 1.4.3, “Example Authentication”</a>.</p><p>If you need help finding your API key, follow the steps below.</p><div class="procedure"><a id="d6e98"> </a><p class="title"><strong>Procedure 1.1. To find your API key</strong></p><ol class="procedure" type="1"><li class="step"><p>Log into the Control Panel at <a class="link" href="https://manage.rackspacecloud.com" target="_top">https://manage.rackspacecloud.com</a>.</p></li><li class="step"><p>When the console opens, click <span class="guilabel"><strong>Your Account</strong></span>, and then
                 <span class="bold"><strong>API Access</strong></span>.</p></li><li class="step"><p>From the API Access page you can generate a new key or
                 <span class="guilabel"><strong>Show/Hide</strong></span> an existing key. </p></li></ol></div><p>When you're ready to send your authentication request, you'll need to copy and paste
           your key into the <code class="code">key</code> attribute of the <code class="code">credentials</code> parameter,
@@ -91,7 +91,7 @@
               username="your_Rackspace_username" 
               <span class="bold"><strong>key="00000000-0000-0000-0000-000000000000"</strong></span>/&gt;'</pre></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="example-auth"> </a>1.4.3. Example Authentication</h3></div></div></div><p>The following example demonstrates how to authenticate. Remember to insert your
           Rackspace user name and API key in the <code class="code">username</code> and <code class="code">key</code>
-          options.</p><div class="example"><a id="d6e118"> </a><p class="title"><strong>Example 1.1. Authentication Request: XML</strong></p><div class="example-contents"><pre class="programlisting">curl -i \
+          options.</p><div class="example"><a id="d6e120"> </a><p class="title"><strong>Example 1.1. Authentication Request: XML</strong></p><div class="example-contents"><pre class="programlisting">curl -i \
 -H "Content-Type: application/xml" \ 
 -H "Accept: application/xml" \ 
 -d \ 
@@ -99,7 +99,7 @@
  &lt;credentials xmlns="http://docs.rackspacecloud.com/auth/api/v1.1" 
               username="your_Rackspace_username" 
               key="00000000-0000-0000-0000-000000000000"/&gt;' \ 
-https://auth.api.rackspacecloud.com/v1.1/auth</pre></div></div><br class="example-break"/><div class="example"><a id="d6e121"> </a><p class="title"><strong>Example 1.2. Authentication Request: JSON</strong></p><div class="example-contents"><pre class="programlisting">curl -i \
+https://auth.api.rackspacecloud.com/v1.1/auth</pre></div></div><br class="example-break"/><div class="example"><a id="d6e123"> </a><p class="title"><strong>Example 1.2. Authentication Request: JSON</strong></p><div class="example-contents"><pre class="programlisting">curl -i \
 -H "Content-Type: application/json" \
 -H "Accept: application/json" \ 
 -d \
@@ -108,7 +108,7 @@ https://auth.api.rackspacecloud.com/v1.1/auth</pre></div></div><br class="exampl
     "username": "my_Rackspace_username",
     "key": "00000000-0000-0000-0000-000000000000"}
     }' \
-https://auth.api.rackspacecloud.com/v1.1/auth</pre></div></div><br class="example-break"/><div class="example"><a id="d6e124"> </a><p class="title"><strong>Example 1.3. Authentication Response: XML</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 200 OK
+https://auth.api.rackspacecloud.com/v1.1/auth</pre></div></div><br class="example-break"/><div class="example"><a id="d6e126"> </a><p class="title"><strong>Example 1.3. Authentication Response: XML</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 200 OK
 Server: Apache/2.2.3 (Red Hat)
 vary: Accept,Accept-Encoding
 Content-Type: application/xml
@@ -131,7 +131,7 @@ Content-Length: 1901
 		  &lt;service name="cloudMonitoring"&gt;&lt;endpoint v1Default="false" publicURL="https://monitoring.api.rackspacecloud.com/v1.0/1234"/&gt;&lt;/service&gt;
 		&lt;/serviceCatalog&gt;
 &lt;/auth&gt;
-</pre></div></div><br class="example-break"/><div class="example"><a id="d6e127"> </a><p class="title"><strong>Example 1.4. Authentication Response: JSON</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 200 OK
+</pre></div></div><br class="example-break"/><div class="example"><a id="d6e129"> </a><p class="title"><strong>Example 1.4. Authentication Response: JSON</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 200 OK
 Server: Apache/2.2.3 (Red Hat)
 vary: Accept,Accept-Encoding
 Content-Type: application/json

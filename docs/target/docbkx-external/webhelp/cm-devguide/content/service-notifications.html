@@ -80,7 +80,7 @@
 </style><![endif]--><script type="text/javascript">_ga.trackFacebook();</script><div class="fb-like" data-send="false" data-width="50" data-show-faces="false" data-layout="button_count" data-font="arial">   </div><div id="gplusone"><g:plusone xmlns:g="http://www.google.com" size="medium" annotation="none"/></div><div id="rstwitter"><a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out this Rackspace documentation page:" data-lang="en" data-count="none">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div></div></div><div id="content"><div class="statustext"> </div><div class="section"><div xmlns="" class="titlepage"><div><div><h2 xmlns="http://www.w3.org/1999/xhtml" class="title" style="clear: both"><a id="service-notifications"> </a>4.10. Notifications</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="service-notifications.html#service-notifications-summary">4.10.1. Summary</a></span></dt><dt><span class="section"><a href="service-notifications.html#section-Notifications">4.10.2. Attributes</a></span></dt><dt><span class="section"><a href="service-notifications.html#service-notifications-create">4.10.3. Create Notification</a></span></dt><dt><span class="section"><a href="service-notifications.html#service-notifications-test-new">4.10.4. Test Notification</a></span></dt><dt><span class="section"><a href="service-notifications.html#service-notifications-test-existing">4.10.5. Test Existing Notification</a></span></dt><dt><span class="section"><a href="service-notifications.html#service-notifications-list">4.10.6.  List Notifications</a></span></dt><dt><span class="section"><a href="service-notifications.html#service-notifications-get">4.10.7. Get Notifications</a></span></dt><dt><span class="section"><a href="service-notifications.html#service-notifications-update">4.10.8. Update Notifications</a></span></dt><dt><span class="section"><a href="service-notifications.html#service-notifications-delete">4.10.9. Delete Notifications</a></span></dt></dl></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-notifications-summary"> </a>4.10.1. Summary</h3></div></div></div><p>For instance, with a webhook type notification Rackspace Cloud Monitoring posts JSON
         formatted data to a user-specified URL on an alert condition
         (Check goes from <code class="code">OK</code> -&gt; <code class="code">CRITICAL</code> and
-        so on).</p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-Notifications"> </a>4.10.2. Attributes</h3></div></div></div><table rules="all" id="d254e3474"><thead><tr><td>Name</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
+        so on).</p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-Notifications"> </a>4.10.2. Attributes</h3></div></div></div><table rules="all" id="d255e3474"><thead><tr><td>Name</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
 <td><span class="command"><strong>details</strong></span></td>
 <td>A hash of notification specific details based on the notification type.</td>
 <td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Hash [String,String between 1 and 255 characters long:Non-empty string,String between 1 and 4096 characters long]</p></li></ul></div></td>
@@ -93,7 +93,7 @@
 <td>The notification type to send.</td>
 <td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>String</p></li><li class="listitem"><p>One of (webhook, email)</p></li></ul></div></td>
 </tr></tbody></table><p>
-</p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-notifications-create"> </a>4.10.3. Create Notification</h3></div></div></div><table rules="all" id="d254e3509"><thead><tr>
+</p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-notifications-create"> </a>4.10.3. Create Notification</h3></div></div></div><table rules="all" id="d255e3509"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -108,7 +108,7 @@
         notification.</p><p>Error Response Codes: <span class="errorcode">400</span>,
           <span class="errorcode">401</span>, <span class="errorcode">403</span>,
           <span class="errorcode">500</span>,
-        <span class="errorcode">503</span></p><div class="example"><a id="d254e3529"> </a><p class="title"><strong>Example 4.73. Create Notification Request: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+        <span class="errorcode">503</span></p><div class="example"><a id="d255e3529"> </a><p class="title"><strong>Example 4.73. Create Notification Request: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;notification&gt;
   &lt;label&gt;my webhook #1&lt;/label&gt;
@@ -118,7 +118,7 @@
   &lt;/details&gt;
 &lt;/notification&gt;
 
-          </pre></div></div><br class="example-break"/><div class="example"><a id="d254e3532"> </a><p class="title"><strong>Example 4.74. Create Notification Request: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+          </pre></div></div><br class="example-break"/><div class="example"><a id="d255e3532"> </a><p class="title"><strong>Example 4.74. Create Notification Request: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "label": "my webhook #1",
     "type": "webhook",
@@ -127,7 +127,7 @@
     }
 }
 
-          </pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-notifications-test-new"> </a>4.10.4. Test Notification</h3></div></div></div><table rules="all" id="d254e3537"><thead><tr>
+          </pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-notifications-test-new"> </a>4.10.4. Test Notification</h3></div></div></div><table rules="all" id="d255e3537"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -141,7 +141,7 @@
           <span class="errorcode">503</span></p><p>This operation allows you to test a notification before creating it.
         The actual notification comes from the same server where the actual alert
         messages come from. This allow you to, among other things, verify that your
-        firewall is configured properly.</p><div class="example"><a id="d254e3558"> </a><p class="title"><strong>Example 4.75. Test Notification Request: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+        firewall is configured properly.</p><div class="example"><a id="d255e3558"> </a><p class="title"><strong>Example 4.75. Test Notification Request: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;test_notification&gt;
   &lt;type&gt;webhook&lt;/type&gt;
@@ -150,7 +150,7 @@
   &lt;/details&gt;
 &lt;/test_notification&gt;
 
-          </pre></div></div><br class="example-break"/><div class="example"><a id="d254e3561"> </a><p class="title"><strong>Example 4.76. Test Notification Request: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+          </pre></div></div><br class="example-break"/><div class="example"><a id="d255e3561"> </a><p class="title"><strong>Example 4.76. Test Notification Request: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "type": "webhook",
     "details": {
@@ -158,20 +158,20 @@
     }
 }
 
-          </pre></div></div><br class="example-break"/><div class="example"><a id="d254e3564"> </a><p class="title"><strong>Example 4.77. Test Notification Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+          </pre></div></div><br class="example-break"/><div class="example"><a id="d255e3564"> </a><p class="title"><strong>Example 4.77. Test Notification Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;notification_data&gt;
   &lt;status&gt;success&lt;/status&gt;
   &lt;message&gt;Success: Webhook successfully executed&lt;/message&gt;
 &lt;/notification_data&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d254e3567"> </a><p class="title"><strong>Example 4.78. Test Notification Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d255e3567"> </a><p class="title"><strong>Example 4.78. Test Notification Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "status": "success",
     "message": "Success: Webhook successfully executed"
 }
 
-</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-notifications-test-existing"> </a>4.10.5. Test Existing Notification</h3></div></div></div><table rules="all" id="d254e3572"><thead><tr>
+</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-notifications-test-existing"> </a>4.10.5. Test Existing Notification</h3></div></div></div><table rules="all" id="d255e3572"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -185,20 +185,20 @@
           <span class="errorcode">503</span></p><p>This operation allows you to test an existing notification.
         The actual notification comes from the same server where the actual alert
         messages come from. This allow you to, among other things, verify that your
-        firewall is configured properly.</p><div class="example"><a id="d254e3594"> </a><p class="title"><strong>Example 4.79. Test Existing Notification Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+        firewall is configured properly.</p><div class="example"><a id="d255e3594"> </a><p class="title"><strong>Example 4.79. Test Existing Notification Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;notification_data&gt;
   &lt;status&gt;success&lt;/status&gt;
   &lt;message&gt;Success: Webhook successfully executed&lt;/message&gt;
 &lt;/notification_data&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d254e3597"> </a><p class="title"><strong>Example 4.80. Test Existing Notification Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d255e3597"> </a><p class="title"><strong>Example 4.80. Test Existing Notification Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "status": "success",
     "message": "Success: Webhook successfully executed"
 }
 
-</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-notifications-list"> </a>4.10.6.  List Notifications</h3></div></div></div><table rules="all" id="d254e3602"><thead><tr>
+</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-notifications-list"> </a>4.10.6.  List Notifications</h3></div></div></div><table rules="all" id="d255e3602"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -210,7 +210,7 @@
           </tr></tbody></table><p>There are no parameters for this call.</p><p>Normal Response Code:
         <span class="returnvalue">200</span></p><p>Error Response Codes: <span class="errorcode">401</span>,
           <span class="errorcode">403</span>, <span class="errorcode">500</span>,
-          <span class="errorcode">503</span></p><div class="example"><a id="d254e3622"> </a><p class="title"><strong>Example 4.81. List Notifications Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+          <span class="errorcode">503</span></p><div class="example"><a id="d255e3622"> </a><p class="title"><strong>Example 4.81. List Notifications Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;container&gt;
   &lt;values&gt;
@@ -231,7 +231,7 @@
   &lt;/metadata&gt;
 &lt;/container&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d254e3625"> </a><p class="title"><strong>Example 4.82. List Notifications Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d255e3625"> </a><p class="title"><strong>Example 4.82. List Notifications Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "values": [
         {
@@ -252,7 +252,7 @@
     }
 }
 
-</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-notifications-get"> </a>4.10.7. Get Notifications</h3></div></div></div><table rules="all" id="d254e3630"><thead><tr>
+</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-notifications-get"> </a>4.10.7. Get Notifications</h3></div></div></div><table rules="all" id="d255e3630"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -263,7 +263,7 @@
           </tr></tbody></table><p>There are no parameters for this call.</p><p>Normal Response Code:
         <span class="returnvalue">200</span></p><p>Error Response Codes: <span class="errorcode">401</span>,
           <span class="errorcode">403</span>, <span class="errorcode">500</span>,
-          <span class="errorcode">503</span></p><div class="example"><a id="d254e3651"> </a><p class="title"><strong>Example 4.83. Get Notification Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+          <span class="errorcode">503</span></p><div class="example"><a id="d255e3651"> </a><p class="title"><strong>Example 4.83. Get Notification Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;notification id="ntAAAA"&gt;
   &lt;label&gt;my webhook #1&lt;/label&gt;
@@ -273,7 +273,7 @@
   &lt;/details&gt;
 &lt;/notification&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d254e3654"> </a><p class="title"><strong>Example 4.84. Get Notification Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d255e3654"> </a><p class="title"><strong>Example 4.84. Get Notification Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "id": "ntAAAA",
     "label": "my webhook #1",
@@ -283,7 +283,7 @@
     }
 }
 
-</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-notifications-update"> </a>4.10.8. Update Notifications</h3></div></div></div><table rules="all" id="d254e3659"><thead><tr>
+</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-notifications-update"> </a>4.10.8. Update Notifications</h3></div></div></div><table rules="all" id="d255e3659"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -297,7 +297,7 @@
         body.</p><p>Error Response Codes: <span class="errorcode">400</span>,
           <span class="errorcode">401</span>, <span class="errorcode">403</span>,
           <span class="errorcode">404</span>, <span class="errorcode">500</span>,
-          <span class="errorcode">503</span></p><div class="example"><a id="d254e3681"> </a><p class="title"><strong>Example 4.85. Notification Update Request: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+          <span class="errorcode">503</span></p><div class="example"><a id="d255e3681"> </a><p class="title"><strong>Example 4.85. Notification Update Request: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;notification&gt;
   &lt;type&gt;webhook&lt;/type&gt;
@@ -305,7 +305,7 @@
     &lt;url&gt;https://systems.example.org/new_alert&lt;/url&gt;
   &lt;/details&gt;
 &lt;/notification&gt;
-</pre></div></div><br class="example-break"/><div class="example"><a id="d254e3684"> </a><p class="title"><strong>Example 4.86. Notification Update Request: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d255e3684"> </a><p class="title"><strong>Example 4.86. Notification Update Request: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "type": "webhook",
     "details": {
@@ -313,7 +313,7 @@
     }
 }
 
-</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-notifications-delete"> </a>4.10.9. Delete Notifications</h3></div></div></div><table rules="all" id="d254e3689"><thead><tr>
+</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-notifications-delete"> </a>4.10.9. Delete Notifications</h3></div></div></div><table rules="all" id="d255e3689"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>

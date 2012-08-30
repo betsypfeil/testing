@@ -6,7 +6,7 @@
 <title>2.4. List All Checks for the Entity - Rackspace Cloud Monitoring Getting Started Guide
    - API v1.4</title><meta name="generator" content="DocBook XSL-NS Stylesheets V1.76.1"/><link rel="home" href="index.html" title="Rackspace Cloud Monitoring Getting Started Guide"/><link rel="up" href="tutorials.html" title="Chapter 2. Create Your First Monitor"/><link rel="prev" href="concepts-tutorial-create-checks.html" title="2.3. Create Checks"/><link rel="next" href="concepts-tutorial-setup-notifications.html" title="2.5. Set Up Notifications"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script type="text/javascript">
             //The id for tree cookie
-            var treeCookieId = "treeview-1518";
+            var treeCookieId = "treeview-1521";
             var language = "en";
             var w = new Object();
             //Localization
@@ -75,10 +75,10 @@
 #rstwitter{top:-.15em}
 .fb-like{top:-.5em}
 </style><![endif]--><script type="text/javascript">_ga.trackFacebook();</script><div class="fb-like" data-send="false" data-width="50" data-show-faces="false" data-layout="button_count" data-font="arial">   </div><div id="gplusone"><g:plusone xmlns:g="http://www.google.com" size="medium" annotation="none"/></div><div id="rstwitter"><a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out this Rackspace documentation page:" data-lang="en" data-count="none">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div></div></div><div id="content"><div class="statustext"> </div><div class="section"><div xmlns="" class="titlepage"><div><div><h2 xmlns="http://www.w3.org/1999/xhtml" class="title" style="clear: both"><a id="tutorial-list-all-checks"> </a>2.4. List All Checks for the Entity</h2></div></div></div><p>You can list the checks for a specific entity at any time by doing <code class="code">GET</code> for
-        a specific entity id. </p><div class="example"><a id="d6e450"> </a><p class="title"><strong>Example 2.27. List All Checks for an Entity using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X GET \
+        a specific entity id. </p><div class="example"><a id="d6e452"> </a><p class="title"><strong>Example 2.27. List All Checks for an Entity using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X GET \
 -H 'X-Auth-Token: auth_token' \
 -H 'Accept: application/json' \
-'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/checks'</pre></div></div><br class="example-break"/><div class="example"><a id="d6e453"> </a><p class="title"><strong>Example 2.28. List all Checks cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 200 OK
+'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/checks'</pre></div></div><br class="example-break"/><div class="example"><a id="d6e455"> </a><p class="title"><strong>Example 2.28. List all Checks cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 200 OK
 X-Ratelimit-Remaining: 49967
 X-Response-Id: .rh-NGRc.h-dfw1-maas-prod-api0.r-fKxxaymj.c-34581.ts-1329407832952.v-b9d7626
 Transfer-Encoding: chunked
@@ -162,7 +162,7 @@ f37
             "updated_at": 1329337042992
         },
 }
-</pre></div></div><br class="example-break"/><div class="example"><a id="d6e456"> </a><p class="title"><strong>Example 2.29. List All Checks using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-checks-list --entity-id=enn14Ch5mc</pre></div></div><br class="example-break"/><div class="example"><a id="d6e459"> </a><p class="title"><strong>Example 2.30. List All Checks raxmon response</strong></p><div class="example-contents"><pre class="programlisting">&lt;Check: id=ch4ccHWyyI label=RemoteHTTP for Test page...&gt;
+</pre></div></div><br class="example-break"/><div class="example"><a id="d6e458"> </a><p class="title"><strong>Example 2.29. List All Checks using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-checks-list --entity-id=enn14Ch5mc</pre></div></div><br class="example-break"/><div class="example"><a id="d6e461"> </a><p class="title"><strong>Example 2.30. List All Checks raxmon response</strong></p><div class="example-contents"><pre class="programlisting">&lt;Check: id=ch4ccHWyyI label=RemoteHTTP for Test page...&gt;
 &lt;Check: id=chyYWNw59I label=Website Ping Check...&gt;
 &lt;Check: id=chTTs1RF7v label=RemoteHTTP...&gt;</pre></div></div><br class="example-break"/><p><a class="link" href="concepts-tutorial-setup-notifications.html" title="2.5. Set Up Notifications"><span class="bold"><strong>NEXT UP:</strong></span></a> With three new checks created, it's now time
         to set up notifications.</p></div><script type="text/javascript" src="../common/main.js"><!----></script><hr/><div id="disqus_thread"><script type="text/javascript">

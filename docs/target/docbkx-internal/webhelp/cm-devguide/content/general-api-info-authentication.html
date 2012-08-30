@@ -57,7 +57,7 @@
       token, supplied by the <code class="code">X-Auth-Token</code> HTTP header. You obtain this token by first
       using the Rackspace Cloud Authentication Service and supplying a valid username and API access
       key. </p><p>The Rackspace Cloud Authentication Service serves as the entry point to all Rackspace
-      Cloud APIs and is itself a RESTful web service. </p><p> To access the Authentication Service, authenticate through:</p><p><a class="link" href="https://auth.api.rackspacecloud.com/v1.1" target="_top">https://auth.api.rackspacecloud.com/v1.1</a></p><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="Authenticate-d1e171"> </a>3.1.1. Retrieving the Authentication Token</h3></div></div></div><table rules="all" id="d255e222"><thead><tr>
+      Cloud APIs and is itself a RESTful web service. </p><p> To access the Authentication Service, authenticate through:</p><p><a class="link" href="https://auth.api.rackspacecloud.com/v1.1" target="_top">https://auth.api.rackspacecloud.com/v1.1</a></p><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="Authenticate-d1e171"> </a>3.1.1. Retrieving the Authentication Token</h3></div></div></div><table rules="all" id="d256e222"><thead><tr>
             <td>Verb</td>
             <td>URI</td>
             <td colspan="4">Description</td>
@@ -75,14 +75,14 @@
           (<span class="errorcode">400</span>), authFault
           (<span class="errorcode">500</span>), serviceUnavailable
           (<span class="errorcode">503</span>) </p><p> The authenticate operation provides clients with an
-        authentication token and a list of regional cloud endpoints. </p><div class="example"><a id="d255e244"> </a><p class="title"><strong>Example 3.1. Auth Request: XML</strong></p><div class="example-contents"><div class="programlistingco"><pre class="programlisting brush: xml; ">
+        authentication token and a list of regional cloud endpoints. </p><div class="example"><a id="d256e244"> </a><p class="title"><strong>Example 3.1. Auth Request: XML</strong></p><div class="example-contents"><div class="programlistingco"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 
 &lt;credentials xmlns="http://docs.rackspacecloud.com/auth/api/v1.1"
              username=<span xmlns="" class="co" id="5 23"><img src="../common/images/callouts/1.png" alt="(1)"/></span>"hub_cap"
              key=<span xmlns="" class="co" id="6 18"><img src="../common/images/callouts/2.png" alt="(2)"/></span>"a86850deb2742ec3cb41518e26aa2d89"/&gt;
 
-                        </pre></div></div></div><br class="example-break"/><div class="example"><a id="d255e251"> </a><p class="title"><strong>Example 3.2. Auth Request: JSON</strong></p><div class="example-contents"><div class="programlistingco"><pre class="programlisting brush: javascript; ">
+                        </pre></div></div></div><br class="example-break"/><div class="example"><a id="d256e251"> </a><p class="title"><strong>Example 3.2. Auth Request: JSON</strong></p><div class="example-contents"><div class="programlistingco"><pre class="programlisting brush: javascript; ">
 {
     "credentials":{
         "username":<span xmlns="" class="co" id="4 20"><img src="../common/images/callouts/1.png" alt="(1)"/></span>"hub_cap",
@@ -94,7 +94,7 @@
             Cloud username. </p></td></tr><tr><td width="5%" valign="top" align="left"><p><img src="../common/images/callouts/2.png" alt="2" border="0"/></p></td><td valign="top" align="left"><p> The key is your API access key. The key can be
             obtained from the Rackspace Cloud Control Panel in the
               <span class="guimenu"><strong>Your Account</strong></span> / <span class="guimenuitem"><strong>API
-              Access</strong></span> section. </p></td></tr></table></div><div class="example"><a id="d255e265"> </a><p class="title"><strong>Example 3.3. Auth Response: XML</strong></p><div class="example-contents"><div class="programlistingco"><pre class="programlisting brush: xml; ">
+              Access</strong></span> section. </p></td></tr></table></div><div class="example"><a id="d256e265"> </a><p class="title"><strong>Example 3.3. Auth Response: XML</strong></p><div class="example-contents"><div class="programlistingco"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0"?&gt;
 &lt;container&gt;
     &lt;values&gt;
@@ -127,7 +127,7 @@
     &lt;/metadata&gt;
 &lt;/container&gt;
 
-                        </pre></div></div></div><br class="example-break"/><div class="example"><a id="d255e276"> </a><p class="title"><strong>Example 3.4. Auth Response: JSON</strong></p><div class="example-contents"><div class="programlistingco"><pre class="programlisting brush: javascript; ">
+                        </pre></div></div></div><br class="example-break"/><div class="example"><a id="d256e276"> </a><p class="title"><strong>Example 3.4. Auth Response: JSON</strong></p><div class="example-contents"><div class="programlistingco"><pre class="programlisting brush: javascript; ">
 {
     "auth":{
         "token":{

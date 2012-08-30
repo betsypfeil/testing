@@ -64,7 +64,7 @@
           alarm with a notification plan.  For example, if you set a ping check 
           on a server, it won't alert until the pings actually fail to be returned, whereas
           adding criteria would enable the alert to trigger if the ping round trip time went past
-          a certain threshold.</p></td></tr></table></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-alarms-prefix"> </a>4.7.2. <span class="internal">Hash Prefix</span></h3></div></div></div><p><span class="internal">al - (e.g. </span><span class="emphasis"><em><span class="internal">alBcEG40kd</span></em></span><span class="internal">) </span></p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-Alarms"> </a>4.7.3. Attributes</h3></div></div></div><table rules="all" id="d255e2857"><thead><tr><td>Name</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
+          a certain threshold.</p></td></tr></table></div></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-alarms-prefix"> </a>4.7.2. <span class="internal">Hash Prefix</span></h3></div></div></div><p><span class="internal">al - (e.g. </span><span class="emphasis"><em><span class="internal">alBcEG40kd</span></em></span><span class="internal">) </span></p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-Alarms"> </a>4.7.3. Attributes</h3></div></div></div><table rules="all" id="d256e2857"><thead><tr><td>Name</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
 <td><span class="command"><strong>notification_plan_id</strong></span></td>
 <td>The id of the notification plan to execute when the state changes.</td>
 <td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Valid Notification Plan</p></li><li class="listitem"><p>Non-empty string</p></li></ul></div></td>
@@ -89,7 +89,7 @@
 <td>Arbitrary key/value pairs.</td>
 <td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>Hash [String,String between 1 and 255 characters long:String,String between 1 and 255 characters long]</p></li></ul></div></td>
 </tr></tbody></table><p>
-</p></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>check_id and check_type are mutually exclusive.  Either check_id or check_type must be set but not both.</p></td></tr></table></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-alarms-create"> </a>4.7.4. Create Alarm</h3></div></div></div><table rules="all" id="d255e2936"><thead><tr>
+</p></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>check_id and check_type are mutually exclusive.  Either check_id or check_type must be set but not both.</p></td></tr></table></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-alarms-create"> </a>4.7.4. Create Alarm</h3></div></div></div><table rules="all" id="d256e2936"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -105,7 +105,7 @@
         alarm.</p><p>Error Response Codes: <span class="errorcode">400</span>,
           <span class="errorcode">401</span>, <span class="errorcode">403</span>,
           <span class="errorcode">500</span>,
-        <span class="errorcode">503</span></p><div class="example"><a id="d255e2958"> </a><p class="title"><strong>Example 4.39. Alarm Create Request: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+        <span class="errorcode">503</span></p><div class="example"><a id="d256e2958"> </a><p class="title"><strong>Example 4.39. Alarm Create Request: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;alarm&gt;
   &lt;check_type&gt;remote.http&lt;/check_type&gt;
@@ -113,14 +113,14 @@
   &lt;notification_plan_id&gt;npAAAAA&lt;/notification_plan_id&gt;
 &lt;/alarm&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d255e2961"> </a><p class="title"><strong>Example 4.40. Alarm Create Request: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d256e2961"> </a><p class="title"><strong>Example 4.40. Alarm Create Request: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "check_type": "remote.http",
     "criteria": "if (metric[\"t\"] &gt;= 2.1) { return OK } return CRITICAL",
     "notification_plan_id": "npAAAAA"
 }
 
-</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-alarms-test"> </a>4.7.5. Test Alarm</h3></div></div></div><table rules="all" id="d255e2966"><thead><tr>
+</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-alarms-test"> </a>4.7.5. Test Alarm</h3></div></div></div><table rules="all" id="d256e2966"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -132,7 +132,7 @@
         <span class="returnvalue">200</span></p><p>Error Response Codes: <span class="errorcode">400</span>,
           <span class="errorcode">401</span>, <span class="errorcode">403</span>,
           <span class="errorcode">413</span>, <span class="errorcode">500</span>,
-          <span class="errorcode">503</span></p><div class="example"><a id="d255e2988"> </a><p class="title"><strong>Example 4.41. Test Alarm Request: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+          <span class="errorcode">503</span></p><div class="example"><a id="d256e2988"> </a><p class="title"><strong>Example 4.41. Test Alarm Request: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;test_run_alarm&gt;
   &lt;criteria&gt;if (metric["code"] == "404") { return CRITICAL, "not found" } return OK&lt;/criteria&gt;
@@ -168,7 +168,7 @@
   &lt;/checks_data&gt;
 &lt;/test_run_alarm&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d255e2991"> </a><p class="title"><strong>Example 4.42. Test Alarm Request: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d256e2991"> </a><p class="title"><strong>Example 4.42. Test Alarm Request: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "criteria": "if (metric[\"code\"] == \"404\") { return CRITICAL, \"not found\" } return OK",
     "check_data": [
@@ -203,7 +203,7 @@
     ]
 }
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d255e2994"> </a><p class="title"><strong>Example 4.43. Test Alarm Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d256e2994"> </a><p class="title"><strong>Example 4.43. Test Alarm Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;alarm_data&gt;
   &lt;alarm_data&gt;
@@ -213,7 +213,7 @@
   &lt;/alarm_data&gt;
 &lt;/alarm_data&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d255e2997"> </a><p class="title"><strong>Example 4.44. Test Alarm Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d256e2997"> </a><p class="title"><strong>Example 4.44. Test Alarm Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 [
     {
         "timestamp": 1319224500831,
@@ -222,7 +222,7 @@
     }
 ]
 
-</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-alarms-list"> </a>4.7.6. List Alarms</h3></div></div></div><table rules="all" id="d255e3002"><thead><tr>
+</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-alarms-list"> </a>4.7.6. List Alarms</h3></div></div></div><table rules="all" id="d256e3002"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -234,7 +234,7 @@
           </tr></tbody></table><p>There are no parameters for this call.</p><p>Normal Response Code:
         <span class="returnvalue">200</span></p><p>Error Response Codes: <span class="errorcode">401</span>,
           <span class="errorcode">403</span>, <span class="errorcode">500</span>,
-          <span class="errorcode">503</span></p><div class="example"><a id="d255e3023"> </a><p class="title"><strong>Example 4.45. List Alarms Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+          <span class="errorcode">503</span></p><div class="example"><a id="d256e3023"> </a><p class="title"><strong>Example 4.45. List Alarms Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;container&gt;
   &lt;values&gt;
@@ -252,7 +252,7 @@
   &lt;/metadata&gt;
 &lt;/container&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d255e3026"> </a><p class="title"><strong>Example 4.46. List Alarms Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d256e3026"> </a><p class="title"><strong>Example 4.46. List Alarms Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "values": [
         {
@@ -270,7 +270,7 @@
     }
 }
 
-</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-alarms-get"> </a>4.7.7. Get Alarm</h3></div></div></div><table rules="all" id="d255e3031"><thead><tr>
+</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-alarms-get"> </a>4.7.7. Get Alarm</h3></div></div></div><table rules="all" id="d256e3031"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -281,21 +281,21 @@
           </tr></tbody></table><p>There are no parameters for this call.</p><p>Normal Response Code:
         <span class="returnvalue">200</span></p><p>Error Response Codes: <span class="errorcode">401</span>,
           <span class="errorcode">403</span>, <span class="errorcode">500</span>,
-          <span class="errorcode">503</span></p><div class="example"><a id="d255e3053"> </a><p class="title"><strong>Example 4.47. Get Alarm Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+          <span class="errorcode">503</span></p><div class="example"><a id="d256e3053"> </a><p class="title"><strong>Example 4.47. Get Alarm Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;alarm id="alAAAA"&gt;
   &lt;check_type&gt;remote.http&lt;/check_type&gt;
   &lt;criteria&gt;if (metric["t"] &amp;gt;= 2.1) { return OK } return CRITICAL&lt;/criteria&gt;
 &lt;/alarm&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d255e3056"> </a><p class="title"><strong>Example 4.48. Get Alarm Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d256e3056"> </a><p class="title"><strong>Example 4.48. Get Alarm Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "id": "alAAAA",
     "check_type": "remote.http",
     "criteria": "if (metric[\"t\"] &gt;= 2.1) { return OK } return CRITICAL"
 }
 
-</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-alarms-update"> </a>4.7.8. Update Alarm</h3></div></div></div><table rules="all" id="d255e3061"><thead><tr>
+</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-alarms-update"> </a>4.7.8. Update Alarm</h3></div></div></div><table rules="all" id="d256e3061"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -311,7 +311,7 @@
         body.</p><p>Error Response Codes: <span class="errorcode">400</span>,
           <span class="errorcode">401</span>, <span class="errorcode">403</span>,
           <span class="errorcode">404</span>, <span class="errorcode">500</span>,
-          <span class="errorcode">503</span></p><div class="example"><a id="d255e3084"> </a><p class="title"><strong>Example 4.49. Update Alarm Request: XML</strong></p><div class="example-contents"><p>Normal Response Code: (<span class="returnvalue">204</span>)
+          <span class="errorcode">503</span></p><div class="example"><a id="d256e3084"> </a><p class="title"><strong>Example 4.49. Update Alarm Request: XML</strong></p><div class="example-contents"><p>Normal Response Code: (<span class="returnvalue">204</span>)
           This operation does not contain a response body.</p><p>Error Response Code:
             <span class="errorcode">500</span></p><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
@@ -319,12 +319,12 @@
   &lt;criteria&gt;if (metric["average"] &amp;lt; 100) { return OK } return WARNING&lt;/criteria&gt;
 &lt;/alarm&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d255e3091"> </a><p class="title"><strong>Example 4.50. Alarm Update Request: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d256e3091"> </a><p class="title"><strong>Example 4.50. Alarm Update Request: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "criteria": "if (metric[\"average\"] &lt; 100) { return OK } return WARNING"
 }
 
-</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-alarms-delete"> </a>4.7.9. Delete Alarm</h3></div></div></div><table rules="all" id="d255e3096"><thead><tr>
+</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-alarms-delete"> </a>4.7.9. Delete Alarm</h3></div></div></div><table rules="all" id="d256e3096"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>

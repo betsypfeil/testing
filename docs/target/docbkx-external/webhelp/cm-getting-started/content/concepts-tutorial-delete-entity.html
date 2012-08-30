@@ -6,7 +6,7 @@
 <title>2.8. Delete an Entity - Rackspace Cloud Monitoring Getting Started Guide
    - API v1.4</title><meta name="generator" content="DocBook XSL-NS Stylesheets V1.76.1"/><link rel="home" href="index.html" title="Rackspace Cloud Monitoring Getting Started Guide"/><link rel="up" href="tutorials.html" title="Chapter 2. Create Your First Monitor"/><link rel="prev" href="concepts-tutorial-modify-entity.html" title="2.7. Modify an Entity"/><link rel="next" href="additional-resources.html" title="Chapter 3. Additional Resources"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script type="text/javascript">
             //The id for tree cookie
-            var treeCookieId = "treeview-1518";
+            var treeCookieId = "treeview-1521";
             var language = "en";
             var w = new Object();
             //Localization
@@ -78,11 +78,11 @@
         created. Entities may not be removed until all of their checks and alarms have been removed.
         In this exercise, you'll practise removing one of the checks you created, one of the alarms,
         and then entity.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>To quickly delete an entity and its children, use <a class="link" href="concepts-tutorial-delete-entity.html#raxmon-entities-delete" title="Example 2.61. Delete Entity Request using raxmon"><code class="code">raxmon--entities-delete</code></a>. This
-            command lets you delete the entity and all of its children in a single command.</p></td></tr></table></div><div class="example"><a id="d6e607"> </a><p class="title"><strong>Example 2.55. Delete Checks Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X \
+            command lets you delete the entity and all of its children in a single command.</p></td></tr></table></div><div class="example"><a id="d6e609"> </a><p class="title"><strong>Example 2.55. Delete Checks Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X \
 DELETE \
 -H 'X-Auth-Token: auth_token' \
 -H 'Accept: application/json' \ 
-'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/checks/chyYWNw59I</pre></div></div><br class="example-break"/><div class="example"><a id="d6e610"> </a><p class="title"><strong>Example 2.56. Delete Checks cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 204 No Content
+'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14Ch5mc/checks/chyYWNw59I</pre></div></div><br class="example-break"/><div class="example"><a id="d6e612"> </a><p class="title"><strong>Example 2.56. Delete Checks cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 204 No Content
 X-Ratelimit-Remaining: 49993
 X-Response-Id: .rh-Fxp3.h-ord1-maas-prod-api0.r-4Fb5IwLs.c-455.ts-1330554327071.v-50c8c2d
 Content-Length: 0
@@ -91,10 +91,10 @@ X-Ratelimit-Type: global
 X-Ratelimit-Limit: 50000
 Date: Wed, 29 Feb 2012 22:25:27 GMT
 X-Ratelimit-Window: 24 hours
-Content-Type: text/plain</pre></div></div><br class="example-break"/><div class="example"><a id="d6e613"> </a><p class="title"><strong>Example 2.57. Delete Alarms Requests using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X \
+Content-Type: text/plain</pre></div></div><br class="example-break"/><div class="example"><a id="d6e615"> </a><p class="title"><strong>Example 2.57. Delete Alarms Requests using cURL</strong></p><div class="example-contents"><pre class="programlisting">curl -i -X \
 DELETE \
 -H 'X-Auth-Token: auth_key' \
-'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14CH5mc/alarms/alIxnPKczp</pre></div></div><br class="example-break"/><div class="example"><a id="d6e616"> </a><p class="title"><strong>Example 2.58. Delete Alarms cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 204 No Content
+'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14CH5mc/alarms/alIxnPKczp</pre></div></div><br class="example-break"/><div class="example"><a id="d6e618"> </a><p class="title"><strong>Example 2.58. Delete Alarms cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 204 No Content
 X-Ratelimit-Remaining: 49987
 X-Response-Id: .rh-GLyy.h-dfw1-maas-prod-api0.r-2Ulro75y.c-32883.ts-1330554811888.v-6fee2d2
 Content-Length: 0
@@ -104,9 +104,9 @@ X-Ratelimit-Limit: 50000
 Date: Wed, 29 Feb 2012 22:33:31 GMT
 X-Ratelimit-Window: 24 hours
 Content-Type: text/plain
-</pre></div></div><br class="example-break"/><div class="example"><a id="d6e619"> </a><p class="title"><strong>Example 2.59. Delete Entity Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">H 'X-Auth-Token: auth_token' \
+</pre></div></div><br class="example-break"/><div class="example"><a id="d6e621"> </a><p class="title"><strong>Example 2.59. Delete Entity Request using cURL</strong></p><div class="example-contents"><pre class="programlisting">H 'X-Auth-Token: auth_token' \
 -H 'Accept: application/json' \
-'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14CH5mc'</pre></div></div><br class="example-break"/><div class="example"><a id="d6e622"> </a><p class="title"><strong>Example 2.60. Delete Entity cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 204 No Content
+'https://monitoring.api.rackspacecloud.com/v1.0/1234/entities/enn14CH5mc'</pre></div></div><br class="example-break"/><div class="example"><a id="d6e624"> </a><p class="title"><strong>Example 2.60. Delete Entity cURL Response</strong></p><div class="example-contents"><pre class="programlisting">HTTP/1.1 204 No Content
 X-Ratelimit-Remaining: 49984
 X-Response-Id: .rh-zyPa.h-dfw1-maas-prod-api0.r-6RuOWE2V.c-236.ts-1330555655887.v-50c8c2d
 Content-Length: 0
@@ -116,7 +116,7 @@ X-Ratelimit-Limit: 50000
 Date: Wed, 29 Feb 2012 22:47:35 GMT
 X-Ratelimit-Window: 24 hours
 Content-Type: text/plain
-</pre></div></div><br class="example-break"/><div class="example"><a id="raxmon-entities-delete"> </a><p class="title"><strong>Example 2.61. Delete Entity Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-entities-delete --id=ennCH15mc</pre></div></div><br class="example-break"/><div class="example"><a id="d6e628"> </a><p class="title"><strong>Example 2.62. Delete Entity raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource deleted</pre></div></div><br class="example-break"/><p>This completes the tutorial on creating, modifying, and deleting a monitor using the
+</pre></div></div><br class="example-break"/><div class="example"><a id="raxmon-entities-delete"> </a><p class="title"><strong>Example 2.61. Delete Entity Request using raxmon</strong></p><div class="example-contents"><pre class="programlisting">raxmon-entities-delete --id=ennCH15mc</pre></div></div><br class="example-break"/><div class="example"><a id="d6e630"> </a><p class="title"><strong>Example 2.62. Delete Entity raxmon Response</strong></p><div class="example-contents"><pre class="programlisting">Resource deleted</pre></div></div><br class="example-break"/><p>This completes the tutorial on creating, modifying, and deleting a monitor using the
         Rackspace Cloud Monitoring API. </p><p><span class="bold"><strong><a class="link" href="additional-resources.html" title="Chapter 3. Additional Resources">GET MORE INFO</a></strong></span></p></div><script type="text/javascript" src="../common/main.js"><!----></script><hr/><div id="disqus_thread"><script type="text/javascript">
 	      var disqus_shortname = 'rc-api-docs';
 	      

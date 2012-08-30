@@ -125,89 +125,134 @@
           <para>Trending and capacity planning</para>
         </listitem>
         <listitem>
-          <para>Change here BETS</para>
+          <para>First item changed</para>
+        </listitem>
+        <listitem>
+          <para>New item right here</para>
+        </listitem>
+        <listitem>
+          <para/>
+        </listitem>
+        <listitem>
+          <para/>
         </listitem>
       </itemizedlist></para>
-    <para>Using &MAAS;'s RESTful API you can quickly create multiple monitors using predefined
-      checks, such as PING, HTTPS, SMTP (and many more), to keep track of your cloud resources and
-      receive instant notification when a resource needs your attention. </para>
-    <para>This guide explains the basics of how to access and use the API so you can begin to
-      monitor your resources immediately. </para>
+    <para>Using &MAAS;'s RESTful API you can quickly create multiple
+      monitors using predefined checks, such as PING, HTTPS, SMTP (and
+      many more), to keep track of your cloud resources and receive
+      instant notification when a resource needs your attention. </para>
+    <para>Added para. Bets. no red.</para>
+    <para>This guide explains the basics of how to access and use the
+      API so you can begin to monitor your resources immediately. </para>
+    <para security="reviewer">Test Bets para. I'm tagging this as
+      reviewer security.</para>
+    <para security="internal">Test Bets para. I'm tagging this as
+      internal security.</para>
+    <para revisionflag="added">Test Bets para. I'm adding a revision
+      flag of added.</para>
+    <para>New para Bets. See
+      <?oxy_comment_start author="eliz5290" timestamp="20120827T122322-0500" comment="Bets. Adding a comment. How does this appear?
+"?>about<?oxy_comment_end?>
+      that I added a comment and it highlighted the word about but I
+      don't see it. Oh, you can edit it and see info on it. Wonder if
+      it appears in the output?</para>
+    <section xml:id="test-bets-new-sec">
+      <title>Test Bets New Section</title>
+      <para>added this test para after the test section</para>
+      <para/>
+    </section>
     <section xml:id="how-it-works">
       <title>How Rackspace Cloud Monitoring Works</title>
-      <para>Rackspace Cloud Monitoring helps you to stay one step ahead of your customers by keeping
-        a keen eye on all of your resources; from web sites to web servers, routers, load balancers,
-        and more.</para>
+      <para>Rackspace Cloud Monitoring helps you to stay one step
+        ahead of your customers by keeping a keen eye on all of your
+        resources; from web sites to web servers, routers, load
+        balancers, and more.</para>
       <para>All you need to do is create an entity that represents the
         thing you want to monitor and then attach a check to it using
         one our predefined checks. For example, you might want to use
         the PING check to monitor your web site's public IP
         address.</para>
-      <para>You can run your checks from multiple monitoring zones. Each check has an alarm
-        associated with it that serves as a threshold and processes the output of the check. When a
-        specific condition is met, the alarm is triggered and your notification plan is put into
-        action; sending you an email notification or a webhook to a URL.   </para>
+      <para>You can run your checks from multiple monitoring zones.
+        Each check has an alarm associated with it that serves as a
+        threshold and processes the output of the check. When a
+        specific condition is met, the alarm is triggered and your
+        notification plan is put into action; sending you an email
+        notification or a webhook to a URL.   </para>
       <figure>
         <title>Rackspace Cloud Monitoring Work Flow</title>
-        <mediaobject >
+        <mediaobject>
           <imageobject role="html">
-            <imagedata format="PNG" align="center" fileref="img/Rackspace_monitor_svc_image-2.png"/>
+            <imagedata format="PNG" align="center"
+              fileref="img/Rackspace_monitor_svc_image-2.png"/>
           </imageobject>
           <imageobject role="fo">
-            <imagedata format="svg" align="center" contentwidth="6in" fileref="img/Rackspace_monitor_svc_image.svg"/>
-           </imageobject>
+            <imagedata format="svg" align="center" contentwidth="6in"
+              fileref="img/Rackspace_monitor_svc_image.svg"/>
+          </imageobject>
         </mediaobject>
       </figure>
     </section>
     <section xml:id="pre-reqs">
       <title>Prerequisites</title>
-      <para>Before you attempt to use the &MAAS; API, make sure you have met the following prerequisites:<itemizedlist>
+      <para>Before you attempt to use the &MAAS; API, make sure you
+        have met the following prerequisites:<itemizedlist>
           <listitem>
             <para>You have a Rackspace account. </para>
           </listitem>
           <listitem>
-            <para>You are familiar with HTTP v1.1 and <glossterm xml:id="RESTfull.glossary"
-                >RESTful</glossterm> web services.</para>
+            <para>You are familiar with HTTP v1.1 and <glossterm
+                xml:id="RESTfull.glossary">RESTful</glossterm> web
+              services.</para>
           </listitem>
         </itemizedlist></para>
     </section>
     <section xml:id="endpoint-access">
       <title>Accessing the API</title>
       <para>To access the &MAAS; use the following URL:</para>
-      <para>&URL;<replaceable role="italic"
-        >1234</replaceable></para>
+      <para>&URL;<replaceable role="italic">1234</replaceable></para>
       <note>
-        <para>1234 represents your account number and is used as a placeholder in the examples and
-          exercises in this guide. When you work through the examples you'll need to replace 1234
-          with your Rackspace account number. If you don't know your account number now, don't
-          worry. We'll explain how to find it later. To see find that information now, read
-            <code>publicURL</code> at <xref linkend="auth-response-description"/>.</para>
+        <para>1234 represents your account number and is used as a
+          placeholder in the examples and exercises in this guide.
+          When you work through the examples you'll need to replace
+          1234 with your Rackspace account number. If you don't know
+          your account number now, don't worry. We'll explain how to
+          find it later. To see find that information now, read
+            <code>publicURL</code> at <xref
+            linkend="auth-response-description"/>.</para>
       </note>
     </section>
     <section xml:id="Authentication">
       <title>Authentication</title>
       <?dbhtml stop-chunking?>
-      <para>Authentication validates your user credentials and provides access to Rackspace services
-        and products. You'll need to authenticate prior to each request you make to the API. This
-        section gives you a quick introduction to Rackspace authentication so that you can access
-        the &MAAS; API. For a complete discussion of authentication, see <link
+      <para>Authentication validates your user credentials and
+        provides access to Rackspace services and products. You'll
+        need to authenticate prior to each request you make to the
+        API. This section gives you a quick introduction to Rackspace
+        authentication so that you can access the &MAAS; API. For a
+        complete discussion of authentication, see <link
           xlink:href="http://docs.rackspace.com/auth/api/v1.1/auth-client-devguide/content/index.html"
           >Cloud Identity Client Developer Guide</link>.</para>
       <section xml:id="auth-endpoint">
         <title>The Authentication Endpoint</title>
-        <para>You'll send your authentication request to the Rackspace Cloud Authentication Service
-          using the following URL:</para>
+        <para>You'll send your authentication request to the Rackspace
+          Cloud Authentication Service using the following URL:</para>
         <para>https://auth.api.rackspacecloud.com/v1.1/auth</para>
       </section>
       <section xml:id="finding-key">
         <title>The Authentication Process</title>
-        <para>When sending an authentication request, you'll send your Rackspace account username
-          and API access key to the Rackspace Cloud Authentication Service. After receiving your
-          request, the Authentication Service validates your credentials and returns an
-          authorization token and a list of the services you can access along with your account
-          number. You'll need to include the authentication token and your account number with each
-          request you make to the API. We'll show you how in <xref linkend="example-auth"/>.</para>
-        <para>If you need help finding your API key, follow the steps below.</para>
+        <para>New test paragraph. Bets</para>
+        <para>When sending an authentication request, you'll send your
+          Rackspace account username and API access key to the
+          Rackspace Cloud Authentication Service. </para>
+        <para>Split para. Bets. After receiving your request, the
+          Authentication Service validates your credentials and
+          returns an authorization token and a list of the services
+          you can access along with your account number. You'll need
+          to include the authentication token and your account number
+          with each request you make to the API. We'll show you how in
+            <xref linkend="example-auth"/>.</para>
+        <para>If you need help finding your API key, follow the steps
+          below.</para>
         <procedure>
           <title>To find your API key</title>
           <step>
@@ -216,25 +261,32 @@
                 >https://manage.rackspacecloud.com</link>.</para>
           </step>
           <step>
-            <para>When the console opens, click <guilabel>Your Account</guilabel>, and then
-                <emphasis role="bold">API Access</emphasis>.</para>
+            <para>When the console opens, click <guilabel>Your
+                Account</guilabel>, and then <emphasis role="bold">API
+                Access</emphasis>.</para>
           </step>
           <step>
-            <para>From the API Access page you can generate a new key or
-                <guilabel>Show/Hide</guilabel> an existing key. </para>
+            <para>From the API Access page you can generate a new key
+              or <guilabel>Show/Hide</guilabel> an existing key.
+            </para>
+          </step>
+          <step>
+            <para>Added ste</para>
           </step>
         </procedure>
-        <para>When you're ready to send your authentication request, you'll need to copy and paste
-          your key into the <code>key</code> attribute of the <code>credentials</code> parameter,
-          like this:</para>
+        <para>When you're ready to send your authentication request,
+          you'll need to copy and paste your key into the
+            <code>key</code> attribute of the <code>credentials</code>
+          parameter, like this:</para>
         <programlisting>&lt;credentials xmlns="http://docs.rackspacecloud.com/auth/api/v1.1" 
               username="your_Rackspace_username" 
               <emphasis role="bold">key="00000000-0000-0000-0000-000000000000"</emphasis>/>'</programlisting>
       </section>
       <section xml:id="example-auth">
         <title>Example Authentication</title>
-        <para>The following example demonstrates how to authenticate. Remember to insert your
-          Rackspace user name and API key in the <code>username</code> and <code>key</code>
+        <para>The following example demonstrates how to authenticate.
+          Remember to insert your Rackspace user name and API key in
+          the <code>username</code> and <code>key</code>
           options.</para>
         <example>
           <title>Authentication Request: XML</title>
@@ -350,33 +402,39 @@ Content-Length: 1451
               <term><code>token id</code>
               </term>
               <listitem>
-                <para>Specifies the authentication token. Tokens are valid for a finite duration; a
-                  token's default lifespan is twenty-four hours. </para>
+                <para>Specifies the authentication token. Tokens are
+                  valid for a finite duration; a token's default
+                  lifespan is twenty-four hours. </para>
               </listitem>
             </varlistentry>
             <varlistentry>
               <term><code>expires</code></term>
               <listitem>
-                <para>Denotes the time after which the token will automatically become invalid. A
-                  token may be manually revoked before the time identified by the
-                    <code>expires</code> attribute; this attribute predicts a token's maximum
-                  possible lifespan but does not guarantee that it will reach that lifespan. Clients
-                  are encouraged to cache a token until it expires.</para>
+                <para>Denotes the time after which the token will
+                  automatically become invalid. A token may be
+                  manually revoked before the time identified by the
+                    <code>expires</code> attribute; this attribute
+                  predicts a token's maximum possible lifespan but
+                  does not guarantee that it will reach that lifespan.
+                  Clients are encouraged to cache a token until it
+                  expires.</para>
               </listitem>
             </varlistentry>
             <varlistentry>
               <term><code>serviceCatalog</code></term>
               <listitem>
-                <para>Lists the regions and public and private URLs for each of the Rackspace
-                  products and services you have access to.</para>
+                <para>Lists the regions and public and private URLs
+                  for each of the Rackspace products and services you
+                  have access to.</para>
               </listitem>
             </varlistentry>
             <varlistentry>
               <term><code>publicURL</code></term>
               <listitem>
                 <para>Lists the public URL for each product and service.<note>
-                    <para>You will find your account number after the final '/' in the
-                        <code>publicURL</code> field. In this example the account number is 1234.
+                    <para>You will find your account number after the
+                      final '/' in the <code>publicURL</code> field.
+                      In this example the account number is 1234.
                     </para>
                   </note></para>
               </listitem>
@@ -387,17 +445,21 @@ Content-Length: 1451
     </section>
     <section xml:id="working-with-tutorial">
       <title>Working with the Exercises in this Guide</title>
-      <para>The main purpose of this guide is to get you up and running quickly with &MAAS;. To help
-        you accomplish this goal, we've included a tutorial that lets you try out the basic
-        operations for creating a monitor. To run through the exercises you can use the cURL command
-        line tool or <code>raxmon</code>, the &MAAS; command line interface. Read on for a brief
-        introduction to both of these tools.</para>
+      <para>The main purpose of this guide is to get you up and
+        running quickly with &MAAS;. To help you accomplish this goal,
+        we've included a tutorial that lets you try out the basic
+        operations for creating a monitor. To run through the
+        exercises you can use the cURL command line tool or
+          <code>raxmon</code>, the &MAAS; command line interface. Read
+        on for a brief introduction to both of these tools.</para>
       <section xml:id="curl">
         <title>Using cURL</title>
-        <para>The cURL command line makes it easier to interact with RESTful APIs. It lets you
-          transmit and receive HTTP requests and responses from the command line or from within a
-          shell script. It is available on most UNIX®-like environments, on Mac OS X®, and Windows®.
-          For more information on cURL, visit <link xlink:href="http://curl.haxx.se"/>.</para>
+        <para>The cURL command line makes it easier to interact with
+          RESTful APIs. It lets you transmit and receive HTTP requests
+          and responses from the command line or from within a shell
+          script. It is available on most UNIX®-like environments, on
+          Mac OS X®, and Windows®. For more information on cURL, visit
+            <link xlink:href="http://curl.haxx.se"/>.</para>
         <para>This guide uses the following cURL command line options: </para>
         <itemizedlist>
           <listitem>
@@ -406,7 +468,8 @@ Content-Length: 1451
           </listitem>
           <listitem>
             <para><code>--data-binary</code></para>
-            <para>Sends the specified data in a POST request to the HTTP server.</para>
+            <para>Sends the specified data in a POST request to the
+              HTTP server.</para>
           </listitem>
           <listitem>
             <para><code>-H HEADER</code></para>
@@ -415,34 +478,42 @@ Content-Length: 1451
         </itemizedlist>
         <section xml:id="curl-copying-examples">
           <title>Copying Request Examples</title>
-          <para>To avoid a lot of typing, you can copy, edit, and paste the cURL request examples
-            from this guide into a terminal or command window.</para>
+          <para>To avoid a lot of typing, you can copy, edit, and
+            paste the cURL request examples from this guide into a
+            terminal or command window.</para>
           <procedure xml:id="curl-copy-examples">
             <title>To copy and paste the cURL request examples</title>
             <step>
-              <para>Copy and paste the example request into your favorite text editor. </para>
+              <para>Copy and paste the example request into your
+                favorite text editor. </para>
             </step>
             <step>
-              <para>Replace <code>auth_token</code> with your authorization token and <replaceable
-                  role="italic">1234</replaceable> with your account number. </para>
+              <para>Replace <code>auth_token</code> with your
+                authorization token and <replaceable role="italic"
+                  >1234</replaceable> with your account number.
+              </para>
             </step>
             <step>
-              <para>Paste the revised example into a terminal or command window and press
-                  <guilabel>Enter</guilabel> to execute the command.</para>
+              <para>Paste the revised example into a terminal or
+                command window and press <guilabel>Enter</guilabel> to
+                execute the command.</para>
             </step>
           </procedure>
         </section>
         <section xml:id="curl-escaping-returns">
           <title>Escaping Carriage Returns</title>
-          <para security="internal">For cutting and pasting purposes, do CRs need to be escaped for
-            XML and JSON when using cURL?</para>
-          <para>To make the cURL commands easier to read, the examples have carriage returns at the
-            end of each line,  followed by a backslash ('\') to avoid prematurely terminating the
-            command when it's executed. Note that you shouldn't escape carriage returns inside the
-            message body.</para>
-          <para>In the following XML example, you can see that the lines that are part of the cURL
-            command syntax have all been escaped with a backslash ('\') to indicate that the command
-            continues on the next line:</para>
+          <para security="internal">For cutting and pasting purposes,
+            do CRs need to be escaped for XML and JSON when using
+            cURL?</para>
+          <para>To make the cURL commands easier to read, the examples
+            have carriage returns at the end of each line, followed by
+            a backslash ('\') to avoid prematurely terminating the
+            command when it's executed. Note that you shouldn't escape
+            carriage returns inside the message body.</para>
+          <para>In the following XML example, you can see that the
+            lines that are part of the cURL command syntax have all
+            been escaped with a backslash ('\') to indicate that the
+            command continues on the next line:</para>
           <example>
             <title>Escaping Carriage Returns in cURL</title>
             <?dbfo keep-together="always"?>
@@ -455,9 +526,10 @@ Content-Length: 1451
 <option>-H "Accept: application/xml"</option> \
 <uri>'https://auth.api.rackspacecloud.com/v1.1/auth'</uri></screen>
           </example>
-          <para>However, the lines <emphasis>within</emphasis> the body of the message are
-              <emphasis>not</emphasis> escaped with a backslash ('\') to avoid issues with
-            processing the command:</para>
+          <para>However, the lines <emphasis>within</emphasis> the
+            body of the message are <emphasis>not</emphasis> escaped
+            with a backslash ('\') to avoid issues with processing the
+            command:</para>
           <screen>'&lt;?xml version="1.0" encoding="UTF-8"?>  
 &lt;credentials xmlns="http://docs.rackspacecloud.com/auth/api/v1.1" 
              username="your_username" 
@@ -467,22 +539,29 @@ Content-Length: 1451
       </section>
       <section xml:id="using-raxmon">
         <title>Using the raxmon Command Line Interface</title>
-        <para>The <code>raxmon</code> command line interface lets you interact with the &MAAS; API
-          in a quick and efficient manner. If you're not a programmer by nature, we suggest using
-            <code>raxmon</code> to become familiar with the product and its capabilities. Even if
-          you're a programming guru, we think you'll like the speed at which you can set up monitors
-          using <code>raxmon</code>. To try out <code>raxmon</code>, go to <link
+        <para>The <code>raxmon</code> command line interface lets you
+          interact with the &MAAS; API in a quick and efficient
+          manner. If you're not a programmer by nature, we suggest
+          using <code>raxmon</code> to become familiar with the
+          product and its capabilities. Even if you're a programming
+          guru, we think you'll like the speed at which you can set up
+          monitors using <code>raxmon</code>. To try out
+            <code>raxmon</code>, go to <link
             xlink:href="https://github.com/racker/rackspace-monitoring-cli"
-            >https://github.com/racker/rackspace-monitoring-cli</link> for the installation and
-          configuration information. </para>
-        <para>Once you have installed <code>raxmon</code>, type the following command in a terminal
-          or command window to see a list of the available <code>raxmon</code> commands:</para>
-        <para><code>raxmon --help</code> or <code>raxmon --h</code></para>
+            >https://github.com/racker/rackspace-monitoring-cli</link>
+          for the installation and configuration information. </para>
+        <para>Once you have installed <code>raxmon</code>, type the
+          following command in a terminal or command window to see a
+          list of the available <code>raxmon</code> commands:</para>
+        <para><code>raxmon --help</code> or <code>raxmon
+          --h</code></para>
         <para>To get help for a particular command, type:</para>
-        <para><code>raxmon-command-name --help</code> or <code>raxmon-command-name --h</code>
+        <para><code>raxmon-command-name --help</code> or
+            <code>raxmon-command-name --h</code>
         </para>
-        <para>For example, you can see a brief description of each option you would use to create an
-          entity in the monitoring system by typing the following command:</para>
+        <para>For example, you can see a brief description of each
+          option you would use to create an entity in the monitoring
+          system by typing the following command:</para>
         <para><code>raxmon-entities-create --h</code></para>
       </section>
     </section>

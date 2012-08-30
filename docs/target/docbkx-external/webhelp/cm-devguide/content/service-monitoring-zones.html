@@ -90,7 +90,7 @@
         run from. </p><p>
         </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Users cannot create, update or delete monitoring
             zones.</p></td></tr></table></div><p>
-      </p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-Monitoring_zones"> </a>4.8.2. Attributes</h3></div></div></div><table rules="all" id="d254e3202"><thead><tr><td>Name</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
+      </p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-Monitoring_zones"> </a>4.8.2. Attributes</h3></div></div></div><table rules="all" id="d255e3202"><thead><tr><td>Name</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
 <td><span class="command"><strong>country_code</strong></span></td>
 <td>Country Code</td>
 <td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>String longer than 2 characters</p></li></ul></div></td>
@@ -105,7 +105,7 @@
 </tr></tbody></table><p>
 </p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-monitoring-zones-create"> </a>4.8.3. Create Monitoring Zone</h3></div></div></div><p>
         <span class="emphasis"><em>Users cannot create monitoring zones.</em></span>
-      </p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-monitoring-zones-list"> </a>4.8.4. List Monitoring Zones</h3></div></div></div><table rules="all" id="d254e3241"><thead><tr>
+      </p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-monitoring-zones-list"> </a>4.8.4. List Monitoring Zones</h3></div></div></div><table rules="all" id="d255e3241"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -116,7 +116,7 @@
           </tr></tbody></table><p>There are no parameters for this call.</p><p>Normal Response Code:
         <span class="returnvalue">200</span></p><p>Error Response Codes: <span class="errorcode">401</span>,
           <span class="errorcode">403</span>, <span class="errorcode">500</span>,
-          <span class="errorcode">503</span></p><div class="example"><a id="d254e3261"> </a><p class="title"><strong>Example 4.59. List Monitoring Zones Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+          <span class="errorcode">503</span></p><div class="example"><a id="d255e3261"> </a><p class="title"><strong>Example 4.59. List Monitoring Zones Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;container&gt;
   &lt;values&gt;
@@ -137,7 +137,7 @@
   &lt;/metadata&gt;
 &lt;/container&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d254e3264"> </a><p class="title"><strong>Example 4.60. List Monitoring Zones Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d255e3264"> </a><p class="title"><strong>Example 4.60. List Monitoring Zones Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "values": [
         {
@@ -158,7 +158,7 @@
     }
 }
 
-</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-monitoring-zones-get"> </a>4.8.5. Get Monitoring Zone</h3></div></div></div><table rules="all" id="d254e3269"><thead><tr>
+</pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-monitoring-zones-get"> </a>4.8.5. Get Monitoring Zone</h3></div></div></div><table rules="all" id="d255e3269"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -169,7 +169,7 @@
           </tr></tbody></table><p>There are no parameters for this call.</p><p>Normal Response Code:
         <span class="returnvalue">200</span></p><p>Error Response Codes: <span class="errorcode">401</span>,
           <span class="errorcode">403</span>, <span class="errorcode">500</span>,
-          <span class="errorcode">503</span></p><div class="example"><a id="d254e3290"> </a><p class="title"><strong>Example 4.61. Get Monitoring Zone Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+          <span class="errorcode">503</span></p><div class="example"><a id="d255e3290"> </a><p class="title"><strong>Example 4.61. Get Monitoring Zone Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;monitoring_zone id="mzAAAAA"&gt;
   &lt;label&gt;US South (Atlanta) - 5&lt;/label&gt;
@@ -179,7 +179,7 @@
   &lt;/source_ips&gt;
 &lt;/monitoring_zone&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d254e3293"> </a><p class="title"><strong>Example 4.62. Get Monitoring Zone Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d255e3293"> </a><p class="title"><strong>Example 4.62. Get Monitoring Zone Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "id": "mzAAAAA",
     "label": "US South (Atlanta) - 5",
@@ -193,7 +193,7 @@
         <span class="emphasis"><em>Users cannot update monitoring zones.</em></span>
       </p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-monitoring-zones-delete"> </a>4.8.7. Delete Monitoring Zone</h3></div></div></div><p>
         <span class="emphasis"><em>Users cannot delete monitoring zones.</em></span>
-      </p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-monitoring-zones-traceroute"> </a>4.8.8. Perform a "traceroute" from a Monitoring Zone</h3></div></div></div><div class="toc"><dl><dt><span class="section"><a href="service-monitoring-zones.html#section-Traceroute">4.8.8.1. Attributes</a></span></dt></dl></div><table rules="all" id="d254e3306"><thead><tr>
+      </p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-monitoring-zones-traceroute"> </a>4.8.8. Perform a "traceroute" from a Monitoring Zone</h3></div></div></div><div class="toc"><dl><dt><span class="section"><a href="service-monitoring-zones.html#section-Traceroute">4.8.8.1. Attributes</a></span></dt></dl></div><table rules="all" id="d255e3306"><thead><tr>
 <td>Verb</td>
 <td colspan="4">URI</td>
 <td colspan="3">Description</td>
@@ -209,7 +209,7 @@
         features, the Traceroute API is fully dual stack, supporting
         both IPv4 and IPv6. The Traceroute API can be used to debug
         networking issues between the Cloud Monitoring collectors and
-        your infrastructure. </p><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-Traceroute"> </a>4.8.8.1. Attributes</h4></div></div></div><table rules="all" id="d254e3330"><thead><tr><td>Name</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
+        your infrastructure. </p><div class="section"><div xmlns="" class="titlepage"><div><div><h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-Traceroute"> </a>4.8.8.1. Attributes</h4></div></div></div><table rules="all" id="d255e3330"><thead><tr><td>Name</td><td>Description</td><td>Validation</td></tr></thead><tbody><tr>
 <td><span class="command"><strong>target</strong></span></td>
 <td>Traceroute target IP or hostname.</td>
 <td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Valid hostname, IPv4 or IPv6 address</p></li></ul></div></td>
@@ -218,20 +218,20 @@
 <td>Target resolver type. Only applicable if hostname is provided.</td>
 <td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Optional</p></li><li class="listitem"><p>One of (IPv4, IPv6)</p></li></ul></div></td>
 </tr></tbody></table><p>
-</p></div><div class="example"><a id="d254e3355"> </a><p class="title"><strong>Example 4.63. Traceroute Request: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+</p></div><div class="example"><a id="d255e3355"> </a><p class="title"><strong>Example 4.63. Traceroute Request: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;traceroute&gt;
   &lt;target&gt;google.com&lt;/target&gt;
   &lt;target_resolver&gt;IPv4&lt;/target_resolver&gt;
 &lt;/traceroute&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d254e3358"> </a><p class="title"><strong>Example 4.64. Traceroute Request: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d255e3358"> </a><p class="title"><strong>Example 4.64. Traceroute Request: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "target": "google.com",
     "target_resolver": "IPv4"
 }
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d254e3361"> </a><p class="title"><strong>Example 4.65. Traceroute Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d255e3361"> </a><p class="title"><strong>Example 4.65. Traceroute Response: XML</strong></p><div class="example-contents"><pre class="programlisting brush: xml; ">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;traceroute&gt;
   &lt;hops&gt;
@@ -391,7 +391,7 @@
   &lt;/hops&gt;
 &lt;/traceroute&gt;
 
-</pre></div></div><br class="example-break"/><div class="example"><a id="d254e3364"> </a><p class="title"><strong>Example 4.66. Traceroute Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
+</pre></div></div><br class="example-break"/><div class="example"><a id="d255e3364"> </a><p class="title"><strong>Example 4.66. Traceroute Response: JSON</strong></p><div class="example-contents"><pre class="programlisting brush: javascript; ">
 {
     "result": [
         {

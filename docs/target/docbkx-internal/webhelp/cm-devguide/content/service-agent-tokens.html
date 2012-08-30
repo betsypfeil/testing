@@ -54,12 +54,12 @@
    - API v1.4</a></p><a onclick="_gaq.push(['_trackEvent', 'Header', 'pdfDownload', 'click', 1]);" alt="Download a pdf of this document" class="pdficon" href="../../../cm-devguide-latest.pdf"><img src="../common/images/pdf.png"/></a>
        
       <a href="../atom.xml"><img alt="Atom feed of this document" src="../common/images/feed-icon.png"/></a></div></div><div id="content"><div class="statustext">INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL -  INTERNAL - </div><div class="section"><div xmlns="" class="titlepage"><div><div><h2 xmlns="http://www.w3.org/1999/xhtml" class="title" style="clear: both"><a id="service-agent-tokens"> </a>4.17. <span class="internal">Agent Token</span></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="service-agent-tokens.html#service-agent-token-summary">4.17.1. Summary</a></span></dt><dt><span class="section"><a href="service-agent-tokens.html#service-agent-token-hp">4.17.2. Hash Prefix</a></span></dt><dt><span class="section"><a href="service-agent-tokens.html#section-Agent_tokens">4.17.3. Attributes</a></span></dt><dt><span class="section"><a href="service-agent-tokens.html#service-agent-token-create-token">4.17.4. Create Agent Token</a></span></dt><dt><span class="section"><a href="service-agent-tokens.html#service-agent-token-list">4.17.5. List Agent Tokens</a></span></dt><dt><span class="section"><a href="service-agent-tokens.html#service-agent-token-get">4.17.6. Get Agent Token</a></span></dt><dt><span class="section"><a href="service-agent-tokens.html#service-agent-token-update">4.17.7. Update Agent Token</a></span></dt><dt><span class="section"><a href="service-agent-tokens.html#service-agent-token-delete">4.17.8. Delete Agent Token</a></span></dt></dl></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent-token-summary"> </a>4.17.1. <span class="internal">Summary</span></h3></div></div></div><p><span class="internal">Agent Tokens are used to authenticate Agents to the
-        Monitoring Service.</span></p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent-token-hp"> </a>4.17.2. <span class="internal">Hash Prefix</span></h3></div></div></div><p><span class="internal">at - (e.g. </span><span class="emphasis"><em><span class="internal">at793kjdf9</span></em></span><span class="internal">) </span></p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-Agent_tokens"> </a>4.17.3. <span class="internal">Attributes</span></h3></div></div></div><table rules="all" id="d255e4318"><thead><tr><td><span class="internal">Name</span></td><td><span class="internal">Description</span></td><td><span class="internal">Validation</span></td></tr></thead><tbody><tr>
+        Monitoring Service.</span></p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent-token-hp"> </a>4.17.2. <span class="internal">Hash Prefix</span></h3></div></div></div><p><span class="internal">at - (e.g. </span><span class="emphasis"><em><span class="internal">at793kjdf9</span></em></span><span class="internal">) </span></p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="section-Agent_tokens"> </a>4.17.3. <span class="internal">Attributes</span></h3></div></div></div><table rules="all" id="d256e4318"><thead><tr><td><span class="internal">Name</span></td><td><span class="internal">Description</span></td><td><span class="internal">Validation</span></td></tr></thead><tbody><tr>
 <td><span class="command"><strong><span class="internal">label</span></strong></span></td>
 <td><span class="internal">Label</span></td>
 <td><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p><span class="internal">Optional</span></p></li><li class="listitem"><p><span class="internal">String</span></p></li></ul></div></td>
 </tr></tbody></table><p><span class="internal">
-</span></p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent-token-create-token"> </a>4.17.4. <span class="internal">Create Agent Token</span></h3></div></div></div><table rules="all" id="d255e4337"><thead><tr>
+</span></p></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent-token-create-token"> </a>4.17.4. <span class="internal">Create Agent Token</span></h3></div></div></div><table rules="all" id="d256e4337"><thead><tr>
 <td><span class="internal">Verb</span></td>
 <td colspan="4"><span class="internal">URI</span></td>
 <td colspan="3"><span class="internal">Description</span></td>
@@ -72,18 +72,18 @@
         alarm.</span></p><p><span class="internal">Error Response Codes: </span><span class="errorcode"><span class="internal">400</span></span><span class="internal">,
           </span><span class="errorcode"><span class="internal">401</span></span><span class="internal">, </span><span class="errorcode"><span class="internal">403</span></span><span class="internal">,
           </span><span class="errorcode"><span class="internal">500</span></span><span class="internal">,
-        </span><span class="errorcode"><span class="internal">503</span></span></p><div class="example"><a id="d255e4357"> </a><p class="title"><strong>Example 4.106. <span class="internal">Agent Token Request: XML</span></strong></p><div class="example-contents"><pre class="programlisting brush: xml; "><span class="internal">
+        </span><span class="errorcode"><span class="internal">503</span></span></p><div class="example"><a id="d256e4357"> </a><p class="title"><strong>Example 4.106. <span class="internal">Agent Token Request: XML</span></strong></p><div class="example-contents"><pre class="programlisting brush: xml; "><span class="internal">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;agent_token&gt;
   &lt;label&gt;Some Label&lt;/label&gt;
 &lt;/agent_token&gt;
 
-</span></pre></div></div><br class="example-break"/><div class="example"><a id="d255e4360"> </a><p class="title"><strong>Example 4.107. <span class="internal">Agent Token Request: JSON</span></strong></p><div class="example-contents"><pre class="programlisting brush: javascript; "><span class="internal">
+</span></pre></div></div><br class="example-break"/><div class="example"><a id="d256e4360"> </a><p class="title"><strong>Example 4.107. <span class="internal">Agent Token Request: JSON</span></strong></p><div class="example-contents"><pre class="programlisting brush: javascript; "><span class="internal">
 {
     "label": "Some Label"
 }
 
-</span></pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent-token-list"> </a>4.17.5. <span class="internal">List Agent Tokens</span></h3></div></div></div><table rules="all" id="d255e4365"><thead><tr>
+</span></pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent-token-list"> </a>4.17.5. <span class="internal">List Agent Tokens</span></h3></div></div></div><table rules="all" id="d256e4365"><thead><tr>
 <td><span class="internal">Verb</span></td>
 <td colspan="4"><span class="internal">URI</span></td>
 <td colspan="3"><span class="internal">Description</span></td>
@@ -94,7 +94,7 @@
           </tr></tbody></table><p><span class="internal">There are no parameters for this call.</span></p><p><span class="internal">Normal Response Code:
         </span><span class="returnvalue"><span class="internal">200</span></span></p><p><span class="internal">Error Response Codes: </span><span class="errorcode"><span class="internal">401</span></span><span class="internal">,
           </span><span class="errorcode"><span class="internal">403</span></span><span class="internal">, </span><span class="errorcode"><span class="internal">500</span></span><span class="internal">,
-          </span><span class="errorcode"><span class="internal">503</span></span></p><div class="example"><a id="d255e4385"> </a><p class="title"><strong>Example 4.108. <span class="internal">List Agent Tokens Response: XML</span></strong></p><div class="example-contents"><pre class="programlisting brush: xml; "><span class="internal">
+          </span><span class="errorcode"><span class="internal">503</span></span></p><div class="example"><a id="d256e4385"> </a><p class="title"><strong>Example 4.108. <span class="internal">List Agent Tokens Response: XML</span></strong></p><div class="example-contents"><pre class="programlisting brush: xml; "><span class="internal">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;container&gt;
   &lt;values&gt;
@@ -112,7 +112,7 @@
   &lt;/metadata&gt;
 &lt;/container&gt;
 
-</span></pre></div></div><br class="example-break"/><div class="example"><a id="d255e4388"> </a><p class="title"><strong>Example 4.109. <span class="internal">List Agent Tokens Response: JSON</span></strong></p><div class="example-contents"><pre class="programlisting brush: javascript; "><span class="internal">
+</span></pre></div></div><br class="example-break"/><div class="example"><a id="d256e4388"> </a><p class="title"><strong>Example 4.109. <span class="internal">List Agent Tokens Response: JSON</span></strong></p><div class="example-contents"><pre class="programlisting brush: javascript; "><span class="internal">
 {
     "values": [
         {
@@ -129,7 +129,7 @@
     }
 }
 
-</span></pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent-token-get"> </a>4.17.6. <span class="internal">Get Agent Token</span></h3></div></div></div><table rules="all" id="d255e4393"><thead><tr>
+</span></pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent-token-get"> </a>4.17.6. <span class="internal">Get Agent Token</span></h3></div></div></div><table rules="all" id="d256e4393"><thead><tr>
 <td><span class="internal">Verb</span></td>
 <td colspan="4"><span class="internal">URI</span></td>
 <td colspan="3"><span class="internal">Description</span></td>
@@ -140,20 +140,20 @@
           </tr></tbody></table><p><span class="internal">There are no parameters for this call.</span></p><p><span class="internal">Normal Response Code:
         </span><span class="returnvalue"><span class="internal">200</span></span></p><p><span class="internal">Error Response Codes: </span><span class="errorcode"><span class="internal">401</span></span><span class="internal">,
           </span><span class="errorcode"><span class="internal">403</span></span><span class="internal">, </span><span class="errorcode"><span class="internal">500</span></span><span class="internal">,
-          </span><span class="errorcode"><span class="internal">503</span></span></p><div class="example"><a id="d255e4414"> </a><p class="title"><strong>Example 4.110. <span class="internal">Get Agent Token Response: XML</span></strong></p><div class="example-contents"><pre class="programlisting brush: xml; "><span class="internal">
+          </span><span class="errorcode"><span class="internal">503</span></span></p><div class="example"><a id="d256e4414"> </a><p class="title"><strong>Example 4.110. <span class="internal">Get Agent Token Response: XML</span></strong></p><div class="example-contents"><pre class="programlisting brush: xml; "><span class="internal">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;agent_token&gt;
   &lt;token&gt;4c5e28f0-0b3f-11e1-860d-c55c4705a286:1234&lt;/token&gt;
   &lt;label&gt;aLabel&lt;/label&gt;
 &lt;/agent_token&gt;
 
-</span></pre></div></div><br class="example-break"/><div class="example"><a id="d255e4417"> </a><p class="title"><strong>Example 4.111. <span class="internal">Get Agent Token Response: JSON</span></strong></p><div class="example-contents"><pre class="programlisting brush: javascript; "><span class="internal">
+</span></pre></div></div><br class="example-break"/><div class="example"><a id="d256e4417"> </a><p class="title"><strong>Example 4.111. <span class="internal">Get Agent Token Response: JSON</span></strong></p><div class="example-contents"><pre class="programlisting brush: javascript; "><span class="internal">
 {
     "token": "4c5e28f0-0b3f-11e1-860d-c55c4705a286:1234",
     "label": "aLabel"
 }
 
-</span></pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent-token-update"> </a>4.17.7. <span class="internal">Update Agent Token</span></h3></div></div></div><table rules="all" id="d255e4422"><thead><tr>
+</span></pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent-token-update"> </a>4.17.7. <span class="internal">Update Agent Token</span></h3></div></div></div><table rules="all" id="d256e4422"><thead><tr>
 <td><span class="internal">Verb</span></td>
 <td colspan="4"><span class="internal">URI</span></td>
 <td colspan="3"><span class="internal">Description</span></td>
@@ -169,7 +169,7 @@
         body.</span></p><p><span class="internal">Error Response Codes: </span><span class="errorcode"><span class="internal">400</span></span><span class="internal">,
           </span><span class="errorcode"><span class="internal">401</span></span><span class="internal">, </span><span class="errorcode"><span class="internal">403</span></span><span class="internal">,
           </span><span class="errorcode"><span class="internal">404</span></span><span class="internal">, </span><span class="errorcode"><span class="internal">500</span></span><span class="internal">,
-          </span><span class="errorcode"><span class="internal">503</span></span></p><div class="example"><a id="d255e4444"> </a><p class="title"><strong>Example 4.112. <span class="internal">Update Alarm Request: XML</span></strong></p><div class="example-contents"><p><span class="internal">Normal Response Code: (</span><span class="returnvalue"><span class="internal">204</span></span><span class="internal">)
+          </span><span class="errorcode"><span class="internal">503</span></span></p><div class="example"><a id="d256e4444"> </a><p class="title"><strong>Example 4.112. <span class="internal">Update Alarm Request: XML</span></strong></p><div class="example-contents"><p><span class="internal">Normal Response Code: (</span><span class="returnvalue"><span class="internal">204</span></span><span class="internal">)
           This operation does not contain a response body.</span></p><p><span class="internal">Error Response Code:
             </span><span class="errorcode"><span class="internal">500</span></span></p><pre class="programlisting brush: xml; "><span class="internal">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
@@ -177,12 +177,12 @@
   &lt;label&gt;aNewLabel&lt;/label&gt;
 &lt;/agent_token&gt;
 
-</span></pre></div></div><br class="example-break"/><div class="example"><a id="d255e4451"> </a><p class="title"><strong>Example 4.113. <span class="internal">Alarm Update Request: JSON</span></strong></p><div class="example-contents"><pre class="programlisting brush: javascript; "><span class="internal">
+</span></pre></div></div><br class="example-break"/><div class="example"><a id="d256e4451"> </a><p class="title"><strong>Example 4.113. <span class="internal">Alarm Update Request: JSON</span></strong></p><div class="example-contents"><pre class="programlisting brush: javascript; "><span class="internal">
 {
     "label": "aNewLabel"
 }
 
-</span></pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent-token-delete"> </a>4.17.8. <span class="internal">Delete Agent Token</span></h3></div></div></div><table rules="all" id="d255e4456"><thead><tr>
+</span></pre></div></div><br class="example-break"/></div><div class="section"><div xmlns="" class="titlepage"><div><div><h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="service-agent-token-delete"> </a>4.17.8. <span class="internal">Delete Agent Token</span></h3></div></div></div><table rules="all" id="d256e4456"><thead><tr>
 <td><span class="internal">Verb</span></td>
 <td colspan="4"><span class="internal">URI</span></td>
 <td colspan="3"><span class="internal">Description</span></td>
